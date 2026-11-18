@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /ExamLanPro/
+
+    # Pastikan /admin dialihkan dengan rapi ke /admin/
+    RewriteRule ^admin$ admin/ [R=301,L]
+
+    # Rewrite internal: akses /admin/* langsung dilayani oleh frontend/admin/*
+    # Alamat di browser tetap http://localhost/ExamLanPro/admin/
+    RewriteRule ^admin/(.*)$ frontend/admin/$1 [L]
+</IfModule>

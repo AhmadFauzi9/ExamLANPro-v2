@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaturan Sistem - ExamLAN Pro</title>
+    <!-- Tailwind CSS & FontAwesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/guru.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe',
+                            500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 800: '#3730a3'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col m-0 p-0 overflow-x-hidden">
+
+    <!-- Injected Global Header -->
+    <div id="guru-header-placeholder"></div>
+
+    <!-- Main Container -->
+    <main class="flex-grow w-full px-4 sm:px-6 lg:px-8 py-5">
+        <div class="grid grid-cols-1 md:grid-cols-[230px_minmax(0,1fr)] gap-5 items-start">
+            
+            <!-- Injected Sidebar Navigation -->
+            <div id="guru-sidebar-placeholder" class="sticky top-16 z-20"></div>
+
+            <!-- Content Area: PENGATURAN -->
+            <div class="space-y-4 min-w-0 w-full">
+                
+                <!-- Page Title Card -->
+                <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-lg font-bold">
+                        <i class="fa-solid fa-gear"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-bold text-slate-800 text-sm sm:text-base leading-tight">Pengaturan Sistem Ujian</h2>
+                        <p class="text-[11px] text-slate-500 mt-0.5">Konfigurasi akun administrator dan cadangan database server.</p>
+                    </div>
+                </div>
+
+                <!-- 2-Column Grid: Ganti Password Guru (Kiri) & Cadangan Database (Kanan) -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 items-start">
+                    
+                    <!-- CARD 1: GANTI PASSWORD GURU / ADMINISTRATOR (KIRI) -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs space-y-4">
+                        <div class="flex items-center gap-2.5 border-b pb-3">
+                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center text-sm font-bold">
+                                <i class="fa-solid fa-key"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-800 text-xs sm:text-sm">Ganti Password Guru</h3>
+                                <p class="text-[11px] text-slate-500">Perbarui kata sandi untuk mengakses dashboard guru ExamLAN Pro.</p>
+                            </div>
+                        </div>
+
+                        <div id="change-pwd-form" class="space-y-3 text-xs w-full">
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1">Password Baru (Minimal 8 Karakter)</label>
+                                <div class="relative">
+                                    <input type="text" id="new-teacher-password" minlength="8" required autocomplete="new-password" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-form-type="other" onkeydown="if(event.key === 'Enter') handleChangeTeacherPassword(event)" style="-webkit-text-security: disc; text-security: disc;" placeholder="Masukkan kata sandi baru..." class="w-full pl-3 pr-9 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none text-xs">
+                                    <button type="button" onclick="togglePasswordVisibility('new-teacher-password', this)" class="absolute right-2.5 top-2 text-slate-400 hover:text-slate-600">
+                                        <i class="fa-regular fa-eye text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1">Konfirmasi Password Baru</label>
+                                <div class="relative">
+                                    <input type="text" id="confirm-teacher-password" minlength="8" required autocomplete="new-password" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-form-type="other" onkeydown="if(event.key === 'Enter') handleChangeTeacherPassword(event)" style="-webkit-text-security: disc; text-security: disc;" placeholder="Ulangi kata sandi baru..." class="w-full pl-3 pr-9 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none text-xs">
+                                    <button type="button" onclick="togglePasswordVisibility('confirm-teacher-password', this)" class="absolute right-2.5 top-2 text-slate-400 hover:text-slate-600">
+                                        <i class="fa-regular fa-eye text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="pt-2 flex justify-start">
+                                <button type="button" onclick="handleChangeTeacherPassword(event)" class="btn-compact bg-amber-600 hover:bg-amber-700 text-white font-bold flex items-center gap-1.5 shadow-xs transition">
+                                    <i class="fa-solid fa-lock text-xs"></i> <span>Ganti Password</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD 2: BACKUP DATABASE SERVER (KANAN) -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs space-y-4">
+                        <div class="flex items-center justify-between border-b pb-3">
+                            <div class="flex items-center gap-2.5">
+                                <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm font-bold">
+                                    <i class="fa-solid fa-database"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-800 text-xs sm:text-sm">Cadangan Database (Backup)</h3>
+                                    <p class="text-[11px] text-slate-500">Amankan seluruh data paket soal, data siswa, dan rekap nilai ke arsip server.</p>
+                                </div>
+                            </div>
+                            <button type="button" onclick="createBackup()" class="btn-compact bg-emerald-600 hover:bg-emerald-700 text-white font-bold flex items-center gap-1.5 shadow-xs transition">
+                                <i class="fa-solid fa-cloud-arrow-down text-xs"></i> <span>Buat Backup</span>
+                            </button>
+                        </div>
+
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <p class="text-xs font-bold text-slate-700">Riwayat Berkas Cadangan:</p>
+                                    <span id="backup-total-badge" class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">0 berkas</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span id="backup-selected-badge" class="hidden text-[10px] font-bold text-rose-700 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded-full animate-pulse">0 dipilih</span>
+                                    <button type="button" id="btn-delete-selected-backups" onclick="deleteSelectedBackups()" class="hidden px-2.5 py-1 text-xs font-bold text-white bg-rose-600 hover:bg-rose-700 rounded-lg shadow-2xs transition flex items-center gap-1.5" title="Hapus berkas cadangan yang dipilih">
+                                        <i class="fa-solid fa-trash-can text-[11px]"></i>
+                                        <span>Hapus Terpilih</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Table Header / Toolbar -->
+                            <div id="backup-table-header" class="hidden bg-slate-100/90 border border-slate-200 rounded-xl px-2.5 py-1.5 text-[11px] font-bold text-slate-600 flex items-center justify-between gap-2 select-none">
+                                <div class="flex items-center gap-2 min-w-0 flex-1">
+                                    <input type="checkbox" id="backup-select-all" onchange="toggleSelectAllBackups(this.checked)" class="w-3.5 h-3.5 rounded text-brand-600 focus:ring-brand-500 cursor-pointer shrink-0" title="Pilih Semua Berkas">
+                                    <span class="w-6 text-center text-slate-400 shrink-0">No.</span>
+                                    <span>Nama Berkas Cadangan</span>
+                                </div>
+                                <div class="flex items-center gap-2 shrink-0">
+                                    <span class="hidden sm:inline">Waktu Cadangan</span>
+                                    <span class="w-7 text-center">Aksi</span>
+                                </div>
+                            </div>
+
+                            <div id="backup-history-list" class="space-y-1.5 max-h-64 overflow-y-auto custom-scrollbar text-xs">
+                                <p class="text-slate-400 text-xs py-2">Memuat daftar cadangan...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../assets/js/guru-core.js"></script>
+    <script src="../assets/js/guru-nav.js"></script>
+    <script>
+        window.onDataLoaded = loadSettingsData;
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const ok = await checkServerSession(loadSettingsData);
+            if (ok) await loadSettingsData();
+        });
+
+        async function loadSettingsData() {
+            await fetchDataFromAPI();
+            renderBackupList();
+        }
+
+        function togglePasswordVisibility(inputId, btn) {
+            const input = document.getElementById(inputId);
+            if (!input) return;
+            const isMasked = (input.style.webkitTextSecurity !== 'none');
+            if (isMasked) {
+                input.style.webkitTextSecurity = 'none';
+                btn.innerHTML = '<i class="fa-regular fa-eye-slash text-xs text-brand-600"></i>';
+            } else {
+                input.style.webkitTextSecurity = 'disc';
+                btn.innerHTML = '<i class="fa-regular fa-eye text-xs"></i>';
+            }
+        }
+
+        async function handleChangeTeacherPassword(e) {
+            if (e && e.preventDefault) e.preventDefault();
+            const el1 = document.getElementById('new-teacher-password');
+            const el2 = document.getElementById('confirm-teacher-password');
+            const p1 = el1 ? el1.value : '';
+            const p2 = el2 ? el2.value : '';
+
+            if (p1 !== p2) {
+                appAlert('Konfirmasi kata sandi tidak cocok. Silakan periksa kembali.', 'Validasi Gagal');
+                return;
+            }
+
+            if (p1.length < 8) {
+                appAlert('Password baru minimal 8 karakter.', 'Validasi Gagal');
+                return;
+            }
+
+            // Segera bersihkan DOM dari kata sandi
+            if (el1) el1.value = '';
+            if (el2) el2.value = '';
+
+            try {
+                const res = await fetch(`${API_URL}?action=change_teacher_password`, {
+                    method: 'POST',
+                    credentials: 'same-origin',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ new_password: p1 })
+                });
+
+                const data = await res.json();
+                if (!res.ok || data.status !== 'success') {
+                    appAlert(data.message || 'Gagal mengganti password.', 'Gagal');
+                    return;
+                }
+
+                document.getElementById('change-pwd-form').reset();
+                appAlert('Password guru berhasil diperbarui. Harap catat kata sandi baru Anda.', 'Berhasil');
+            } catch (err) {
+                appAlert('Terjadi kesalahan jaringan.', 'Gagal');
+            }
+        }
+
+        function resetBackupSelection() {
+            const selectAll = document.getElementById('backup-select-all');
+            const badge = document.getElementById('backup-selected-badge');
+            const btnDelete = document.getElementById('btn-delete-selected-backups');
+            if (selectAll) {
+                selectAll.checked = false;
+                selectAll.indeterminate = false;
+            }
+            if (badge) {
+                badge.textContent = '0 dipilih';
+                badge.classList.add('hidden');
+            }
+            if (btnDelete) {
+                btnDelete.classList.add('hidden');
+            }
+        }
+
+        function renderBackupList() {
+            const list = document.getElementById('backup-history-list');
+            const backups = (dbData && dbData.backups) ? dbData.backups : [];
+            const header = document.getElementById('backup-table-header');
+            const totalBadge = document.getElementById('backup-total-badge');
+
+            if (totalBadge) totalBadge.textContent = `${backups.length} berkas`;
+
+            if (!backups.length) {
+                if (header) header.classList.add('hidden');
+                list.innerHTML = '<p class="text-slate-400 text-xs py-4 text-center">Belum ada riwayat berkas cadangan.</p>';
+                resetBackupSelection();
+                return;
+            }
+
+            if (header) header.classList.remove('hidden');
+
+            const reversed = backups.slice().reverse();
+            list.innerHTML = reversed.map((b, index) => {
+                const fileName = b.file || b.name || 'backup.json';
+                const timeStr = b.time ? new Date(b.time).toLocaleString('id-ID') : '-';
+                const noUrut = index + 1;
+                const safeName = typeof escapeHtml === 'function' ? escapeHtml(fileName) : fileName;
+                return `
+                    <div class="p-2.5 bg-slate-50 hover:bg-slate-100/70 border border-slate-200 rounded-xl flex items-center justify-between text-xs gap-2 transition group">
+                        <div class="flex items-center gap-2 min-w-0 flex-1">
+                            <input type="checkbox" class="backup-checkbox w-3.5 h-3.5 rounded text-brand-600 focus:ring-brand-500 cursor-pointer shrink-0" value="${safeName}" onchange="updateBackupSelection()">
+                            <span class="w-6 text-center font-bold text-slate-400 text-[11px] shrink-0">${noUrut}</span>
+                            <i class="fa-solid fa-file-zipper text-brand-600 shrink-0"></i>
+                            <span class="font-mono font-bold text-slate-700 truncate" title="${safeName}">${safeName}</span>
+                        </div>
+                        <div class="flex items-center gap-2 shrink-0">
+                            <span class="text-slate-500 font-mono text-[11px] hidden sm:inline">${timeStr}</span>
+                            <button type="button" onclick="deleteBackup('${safeName}')" class="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition" title="Hapus Berkas Cadangan Ini">
+                                <i class="fa-solid fa-trash-can text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            resetBackupSelection();
+        }
+
+        function toggleSelectAllBackups(checked) {
+            const checkboxes = document.querySelectorAll('.backup-checkbox');
+            checkboxes.forEach(cb => { cb.checked = checked; });
+            updateBackupSelection();
+        }
+
+        function updateBackupSelection() {
+            const checkboxes = document.querySelectorAll('.backup-checkbox');
+            const selected = Array.from(checkboxes).filter(cb => cb.checked);
+            const count = selected.length;
+            const selectAll = document.getElementById('backup-select-all');
+            const badge = document.getElementById('backup-selected-badge');
+            const btnDelete = document.getElementById('btn-delete-selected-backups');
+
+            if (selectAll) {
+                if (checkboxes.length > 0) {
+                    selectAll.checked = (count === checkboxes.length);
+                    selectAll.indeterminate = (count > 0 && count < checkboxes.length);
+                } else {
+                    selectAll.checked = false;
+                    selectAll.indeterminate = false;
+                }
+            }
+
+            if (badge) {
+                if (count > 0) {
+                    badge.textContent = `${count} dipilih`;
+                    badge.classList.remove('hidden');
+                } else {
+                    badge.classList.add('hidden');
+                }
+            }
+
+            if (btnDelete) {
+                if (count > 0) {
+                    btnDelete.classList.remove('hidden');
+                } else {
+                    btnDelete.classList.add('hidden');
+                }
+            }
+        }
+
+        async function createBackup() {
+            try {
+                const res = await fetch(`${API_URL}?action=create_backup`, {
+                    method: 'POST',
+                    credentials: 'same-origin'
+                });
+                const d = await res.json();
+                if (d.backups) dbData.backups = d.backups;
+                renderBackupList();
+                if (typeof showToast === 'function') {
+                    showToast(d.message || 'Backup database berhasil dibuat.');
+                } else {
+                    appAlert(d.message || 'Backup database berhasil dibuat.', 'Cadangan Dibuat');
+                }
+            } catch (e) {
+                appAlert('Gagal membuat backup database.');
+            }
+        }
+
+        async function deleteBackup(fileName) {
+            if (!fileName) return;
+            const ok = await appConfirm(
+                `Hapus berkas cadangan <strong>${fileName}</strong>?<br><span class="text-xs text-rose-500">Tindakan ini tidak dapat dibatalkan.</span>`,
+                'Hapus Berkas Cadangan',
+                'Batal',
+                'Ya, Hapus'
+            );
+            if (!ok) return;
+
+            resetBackupSelection();
+
+            try {
+                const res = await fetch(`${API_URL}?action=delete_backup`, {
+                    method: 'POST',
+                    credentials: 'same-origin',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ file: fileName })
+                });
+                const d = await res.json();
+                if (!res.ok || d.status !== 'success') {
+                    appAlert(d.message || 'Gagal menghapus berkas cadangan.', 'Gagal');
+                    return;
+                }
+                if (d.backups) dbData.backups = d.backups;
+                renderBackupList();
+                if (typeof showToast === 'function') {
+                    showToast('Berkas cadangan berhasil dihapus.');
+                } else {
+                    appAlert('Berkas cadangan berhasil dihapus.', 'Berhasil');
+                }
+            } catch (e) {
+                appAlert('Gagal menghubungi server.', 'Gagal');
+            }
+        }
+
+        async function deleteSelectedBackups() {
+            const checkboxes = document.querySelectorAll('.backup-checkbox:checked');
+            const files = Array.from(checkboxes).map(cb => cb.value).filter(Boolean);
+            if (!files.length) {
+                appAlert('Pilih minimal satu berkas cadangan yang ingin dihapus.');
+                return;
+            }
+
+            const ok = await appConfirm(
+                `Hapus <strong>${files.length} berkas cadangan</strong> yang dipilih?<br><span class="text-xs text-rose-500">Berkas yang dihapus tidak dapat dipulihkan kembali.</span>`,
+                'Hapus Berkas Cadangan Terpilih',
+                'Batal',
+                'Ya, Hapus Semua Terpilih'
+            );
+            if (!ok) return;
+
+            resetBackupSelection();
+
+            try {
+                const res = await fetch(`${API_URL}?action=delete_backup`, {
+                    method: 'POST',
+                    credentials: 'same-origin',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ files: files })
+                });
+                const d = await res.json();
+                if (!res.ok || d.status !== 'success') {
+                    appAlert(d.message || 'Gagal menghapus berkas cadangan terpilih.', 'Gagal');
+                    return;
+                }
+                if (d.backups) dbData.backups = d.backups;
+                renderBackupList();
+                if (typeof showToast === 'function') {
+                    showToast(d.message || `${files.length} berkas cadangan berhasil dihapus.`);
+                } else {
+                    appAlert(d.message || `${files.length} berkas cadangan berhasil dihapus.`, 'Berhasil');
+                }
+            } catch (e) {
+                appAlert('Gagal menghubungi server.', 'Gagal');
+            }
+        }
+    </script>
+</body>
+</html>

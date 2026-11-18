@@ -1,0 +1,14 @@
+# Sesi & temporary files
+backend/storage/sessions/*
+!backend/storage/sessions/.gitkeep
+backend/storage/backups/*
+!backend/storage/backups/.gitkeep
+sessions/*
+!sessions/.gitkeep
+backups/*
+!backups/.gitkeep
+*.log
+*.tmp
+~$*
+.DS_Store
+Thumbs.db

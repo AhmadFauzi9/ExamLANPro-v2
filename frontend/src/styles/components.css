@@ -1,0 +1,24 @@
+/* ExamLAN Pro - Component Specific Styles */
+
+/* Animasi & transisi halus antar tampilan */
+.fade-enter {
+    opacity: 0;
+    transform: scale(0.98);
+}
+.fade-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 200ms ease, transform 200ms ease;
+}
+
+/* Question option hover/selection styling */
+.option-label {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Fullscreen overlays */
+.overlay-backdrop {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}

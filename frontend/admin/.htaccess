@@ -1,0 +1,2 @@
+# Dashboard Admin dilindungi oleh autentikasi sesi dan kata sandi server.
+Require all granted
