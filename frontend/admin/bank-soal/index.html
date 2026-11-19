@@ -445,16 +445,16 @@
             renderQuizCards();
         }
 
-        // Palet warna latar belakang kartu paket kuis (Warna Pastel)
+        // Palet warna latar belakang kartu paket kuis
         const QUIZ_CARD_THEMES = [
-            { bg: 'bg-sky-100', border: 'border-sky-300', hoverBorder: 'hover:border-sky-400' },
-            { bg: 'bg-emerald-100', border: 'border-emerald-300', hoverBorder: 'hover:border-emerald-400' },
-            { bg: 'bg-purple-100', border: 'border-purple-300', hoverBorder: 'hover:border-purple-400' },
-            { bg: 'bg-amber-100', border: 'border-amber-300', hoverBorder: 'hover:border-amber-400' },
-            { bg: 'bg-rose-100', border: 'border-rose-300', hoverBorder: 'hover:border-rose-400' },
-            { bg: 'bg-teal-100', border: 'border-teal-300', hoverBorder: 'hover:border-teal-400' },
-            { bg: 'bg-indigo-100', border: 'border-indigo-300', hoverBorder: 'hover:border-indigo-400' },
-            { bg: 'bg-orange-100', border: 'border-orange-300', hoverBorder: 'hover:border-orange-400' }
+            { bg: 'bg-brand-600', border: 'border-brand-700', hoverBorder: 'hover:border-brand-800', btnText: 'text-brand-700' },
+            { bg: 'bg-rose-600', border: 'border-rose-700', hoverBorder: 'hover:border-rose-800', btnText: 'text-rose-700' },
+            { bg: 'bg-emerald-600', border: 'border-emerald-700', hoverBorder: 'hover:border-emerald-800', btnText: 'text-emerald-700' },
+            { bg: 'bg-amber-500', border: 'border-amber-600', hoverBorder: 'hover:border-amber-700', btnText: 'text-amber-800' },
+            { bg: 'bg-purple-600', border: 'border-purple-700', hoverBorder: 'hover:border-purple-800', btnText: 'text-purple-700' },
+            { bg: 'bg-teal-600', border: 'border-teal-700', hoverBorder: 'hover:border-teal-800', btnText: 'text-teal-700' },
+            { bg: 'bg-indigo-600', border: 'border-indigo-700', hoverBorder: 'hover:border-indigo-800', btnText: 'text-indigo-700' },
+            { bg: 'bg-orange-500', border: 'border-orange-600', hoverBorder: 'hover:border-orange-700', btnText: 'text-orange-700' }
         ];
 
         // Render Quiz Cards Grid
@@ -520,10 +520,10 @@
                         <div class="space-y-2">
                             <div class="flex items-center justify-between gap-2">
                                 <div class="flex items-center gap-1.5 flex-wrap">
-                                    <span class="text-[11px] font-bold text-brand-700 bg-white/90 px-2.5 py-0.5 rounded-lg border border-brand-200/80 truncate max-w-[150px]" title="${escapeHtml(q.subject || 'Umum')}">
+                                    <span class="text-[11px] font-bold ${theme.btnText} bg-white px-2.5 py-0.5 rounded-lg border border-white/80 shadow-2xs truncate max-w-[150px]" title="${escapeHtml(q.subject || 'Umum')}">
                                         ${escapeHtml(q.subject || 'Umum')}
                                     </span>
-                                    <span class="text-[10px] font-semibold text-slate-600 bg-white/80 px-2 py-0.5 rounded-lg border border-slate-200">
+                                    <span class="text-[10px] font-semibold text-slate-700 bg-white/95 px-2 py-0.5 rounded-lg border border-white/80 shadow-2xs">
                                         ${q.class ? 'Kelas ' + escapeHtml(q.class) : 'Semua Kelas'}
                                     </span>
                                 </div>
@@ -531,17 +531,17 @@
                             </div>
 
                             <div>
-                                <h3 class="font-bold text-slate-900 text-sm sm:text-[15px] leading-snug line-clamp-2 group-hover:text-brand-600 transition" title="${escapeHtml(q.title)}">
+                                <h3 class="font-bold text-white text-sm sm:text-[15px] leading-snug line-clamp-2 transition" title="${escapeHtml(q.title)}">
                                     ${escapeHtml(q.title)}
                                 </h3>
-                                <p class="text-[11px] text-slate-400 mt-1 flex items-center gap-1.5">
-                                    <span class="inline-flex items-center gap-1 text-slate-500 font-medium"><i class="fa-solid fa-shapes text-slate-400 text-[10px]"></i> ${typeName}</span>
+                                <p class="text-[11px] text-white/80 mt-1 flex items-center gap-1.5">
+                                    <span class="inline-flex items-center gap-1 text-white/90 font-medium"><i class="fa-solid fa-shapes text-white/70 text-[10px]"></i> ${typeName}</span>
                                 </p>
                             </div>
                         </div>
 
                         <!-- Info Box: Soal Aktif per Total Soal & Durasi Waktu -->
-                        <div class="bg-white/85 rounded-xl p-3 border border-white/60 space-y-2.5 shadow-2xs">
+                        <div class="bg-white rounded-xl p-3 border border-white/40 space-y-2.5 shadow-2xs">
                             <div class="flex items-center justify-between gap-2 text-xs">
                                 <!-- Info Soal Aktif per Total Soal -->
                                 <div class="flex items-center gap-2.5 min-w-0 flex-1">
@@ -554,13 +554,13 @@
                                             ${isSubset ? '<span class="text-[9px] font-bold bg-indigo-50 text-indigo-600 border border-indigo-200 px-1.5 py-0.2 rounded-md">Acak</span>' : '<span class="text-[9px] font-bold bg-emerald-50 text-emerald-600 border border-emerald-200 px-1.5 py-0.2 rounded-md">Semua</span>'}
                                         </div>
                                         <p class="text-[10px] text-slate-500 mt-0.5 leading-tight truncate">
-                                            ${isSubset ? `Siswa mengerjakan ${activeCount} soal acak dari total ${qCount}` : `Seluruh ${qCount} butir soal dikerjakan`}
+                                            ${isSubset ? `${activeCount} soal acak dari total ${qCount} soal` : `Seluruh ${qCount} butir soal dikerjakan`}
                                         </p>
                                     </div>
                                 </div>
 
                                 <!-- Durasi Waktu -->
-                                <div class="text-right shrink-0 pl-2.5 border-l border-slate-200/70">
+                                <div class="text-right shrink-0 pl-2.5 border-l border-slate-200/70 align-items-center">
                                     <span class="font-bold text-slate-700 text-xs flex items-center justify-end gap-1">
                                         <i class="fa-regular fa-clock text-slate-400"></i> ${q.duration || 60}m
                                     </span>
@@ -579,7 +579,7 @@
 
                         <!-- Footer Actions -->
                         <div class="pt-1 flex items-center justify-between gap-1.5">
-                            <button type="button" onclick="openQuestionManager('${q.id}')" class="flex-1 btn-compact py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 border border-brand-200 rounded-xl flex items-center justify-center gap-1.5 font-bold transition text-xs shadow-2xs">
+                            <button type="button" onclick="openQuestionManager('${q.id}')" class="flex-1 btn-compact py-2 bg-white hover:bg-slate-50 ${theme.btnText} border border-white/80 rounded-xl flex items-center justify-center gap-1.5 font-bold transition text-xs shadow-2xs">
                                 <i class="fa-solid fa-list-check text-xs"></i> <span>Kelola Soal (${qCount})</span>
                             </button>
                             <button type="button" onclick="openQuizModal('${q.id}')" class="p-2 w-[36px] h-[36px] bg-white text-slate-600 hover:text-brand-600 hover:bg-slate-50 rounded-xl border border-slate-200 transition" title="Edit Paket Kuis">
