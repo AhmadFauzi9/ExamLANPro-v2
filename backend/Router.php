@@ -46,6 +46,8 @@ class Router {
         'reset_student_violations'    => [MonitoringController::class, 'resetStudentViolations'],
         'reset_student_session'       => [MonitoringController::class, 'resetStudentSession'],
         'force_finish_student_session'=> [MonitoringController::class, 'forceFinishStudentSession'],
+        'delete_student_session'      => [MonitoringController::class, 'deleteStudentSession'],
+        'delete_student_sessions'     => [MonitoringController::class, 'deleteStudentSessions'],
         'clear_student_sessions'      => [MonitoringController::class, 'clearStudentSessions'],
         'exam_analytics'              => [MonitoringController::class, 'examAnalytics'],
 

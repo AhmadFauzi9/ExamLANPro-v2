@@ -130,8 +130,8 @@
                     <div class="flex items-center gap-2 flex-wrap flex-1 min-w-0">
                         <!-- 1. View (Angka Saja) default 20 -->
                         <select id="mon-per-page" onchange="changeMonPerPage(this.value)" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none" title="Jumlah data per halaman">
-                            <option value="10">10</option>
-                            <option value="20" selected>20</option>
+                            <option value="10" selected>10</option>
+                            <option value="20">20</option>
                             <option value="30">30</option>
                             <option value="40">40</option>
                             <option value="50">50</option>
@@ -148,8 +148,8 @@
                         </select>
 
                         <!-- 3. Filter Status -->
-                        <select id="mon-filter-status" onchange="handleMonFilter()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none font-medium" title="Filter Status Peserta">
-                            <option value="ALL">Semua Status</option>
+                        <select id="mon-filter-status" onchange="handleMonFilter()" class="px-2.5 py-1.5 w-20 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none font-medium" title="Filter Status Peserta">
+                            <option value="ALL">Status</option>
                             <option value="WORKING">Sedang Mengerjakan</option>
                             <option value="STANDBY">Login / Standby</option>
                             <option value="OFFLINE">Terputus / Offline</option>
@@ -189,19 +189,27 @@
 
                     <!-- Right: Toolbar Action Buttons (Icon Only with Tooltip) -->
                     <div class="flex items-center gap-1.5 shrink-0">
+                        
                         <label class="flex items-center gap-1.5 text-xs text-slate-600 bg-slate-50 px-2.5 py-1.5 rounded-xl border border-slate-200 cursor-pointer mr-1" title="Perbarui data otomatis tiap 5 detik (Heartbeat)">
                             <input type="checkbox" id="auto-refresh-toggle" onchange="toggleAutoRefresh(this.checked)" checked class="w-3.5 h-3.5 rounded text-brand-600 focus:ring-brand-500">
                             <span class="font-semibold text-[11px] flex items-center gap-1">
                                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Live (5s)
                             </span>
                         </label>
+                        
+                        <!-- Hapus Terpilih -->
+                        <button type="button" id="btn-delete-selected-mon" onclick="deleteSelectedMonitoring()" disabled class="btn-icon bg-slate-100 text-slate-400 border border-slate-200 cursor-not-allowed transition" title="Hapus Data Monitoring Terpilih">
+                            <i class="fa-solid fa-trash-can text-xs"></i>
+                        </button>
+                        <!-- Badge Jumlah Terpilih -->
+                        <span id="monitoring-selected-badge" class="hidden text-[11px] font-bold text-rose-600 bg-rose-50 px-2.5 py-1 rounded-xl border border-rose-200">0 dipilih</span>
 
                         <button type="button" onclick="loadMonitoringData()" class="btn-icon border border-slate-300 text-slate-700 hover:bg-slate-50 transition" title="Muat Ulang Data Monitoring">
                             <i class="fa-solid fa-rotate text-xs"></i>
                         </button>
 
                         <button type="button" onclick="confirmClearAllSessions()" class="btn-icon border border-rose-200 text-rose-600 hover:bg-rose-50 transition" title="Bersihkan Semua Data Monitoring">
-                            <i class="fa-solid fa-trash-can text-xs"></i>
+                            <i class="fa-solid fa-rotate-left text-xs"></i>
                         </button>
                     </div>
                 </div>
@@ -212,6 +220,9 @@
                         <table class="w-full text-left text-xs border-collapse compact-table">
                             <thead class="bg-slate-100 uppercase font-bold text-slate-600 tracking-wider">
                                 <tr>
+                                    <th class="w-10 text-center">
+                                        <input id="select-all-monitoring" type="checkbox" onchange="toggleSelectAllMonitoring(this.checked)" class="w-3.5 h-3.5 rounded border-slate-300 text-brand-600 focus:ring-brand-500 cursor-pointer" title="Pilih Semua Peserta">
+                                    </th>
                                     <th class="w-10 text-center">No</th>
                                     <th>NIS</th>
                                     <th>Nama Siswa</th>
@@ -221,12 +232,12 @@
                                     <th class="text-center min-w-[130px]">Progres Siswa</th>
                                     <th class="min-w-[100px]">Sisa Waktu</th>
                                     <th>Terakhir Aktif</th>
-                                    <th class="w-24 text-center">Aksi Guru</th>
+                                    <th class="w-28 text-center">Aksi Guru</th>
                                 </tr>
                             </thead>
                             <tbody id="monitoring-tbody" class="divide-y divide-slate-100">
                                 <tr>
-                                    <td colspan="10" class="p-8 text-center text-slate-400">
+                                    <td colspan="11" class="p-8 text-center text-slate-400">
                                         <i class="fa-solid fa-spinner fa-spin mr-1"></i> Memuat data monitoring real-time...
                                     </td>
                                 </tr>
@@ -423,6 +434,7 @@
     <script>
         let rawMonitoring = [];
         let filteredMonitoring = [];
+        let selectedMonNis = new Set();
         let monPerPage = 20;
         let monCurrentPage = 1;
         let autoRefreshTimer = null;
@@ -481,7 +493,7 @@
             } catch (e) {
                 if (!silent) {
                     document.getElementById('monitoring-tbody').innerHTML = `
-                        <tr><td colspan="10" class="p-6 text-center text-rose-500 font-medium">Gagal memuat data monitoring dari server. Pastikan server aktif.</td></tr>
+                        <tr><td colspan="11" class="p-6 text-center text-rose-500 font-medium">Gagal memuat data monitoring dari server. Pastikan server aktif.</td></tr>
                     `;
                 }
             }
@@ -589,13 +601,14 @@
             if (!filteredMonitoring.length) {
                 tbody.innerHTML = `
                     <tr>
-                        <td colspan="10" class="p-8 text-center text-slate-400">
+                        <td colspan="11" class="p-8 text-center text-slate-400">
                             <i class="fa-solid fa-mug-hot text-2xl mb-1 text-slate-300"></i>
                             <p class="text-xs">Tidak ada data peserta ujian yang sesuai filter.</p>
                         </td>
                     </tr>
                 `;
                 renderPagination(0);
+                updateSelectedMonitoringToolbar();
                 return;
             }
 
@@ -610,19 +623,32 @@
 
             tbody.innerHTML = pageData.map((m, idx) => {
                 const rowNum = startIdx + idx + 1;
+                const rowKey = m.attempt_id ? (m.nis + '::' + m.attempt_id) : m.nis;
                 const statusBadge = getStatusBadge(m);
                 const progressHtml = getProgressHtml(m);
                 const timeHtml = getRemainingTimeHtml(m);
                 const lastActive = formatRelativeTime(m.updated_at);
                 const isWorkingOrOffline = m.status === 'WORKING' || m.status === 'OFFLINE' || m.status === 'TIME_OVER';
+                const isSelected = selectedMonNis.has(rowKey);
+
+                let retakeBadge = '';
+                if (m.is_retake || (m.attempt_number || 1) > 1) {
+                    retakeBadge = `<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200 shrink-0" title="Ujian Ulang / Remedial (Pengerjaan ke-${m.attempt_number || 2})"><i class="fa-solid fa-rotate-left text-[9px]"></i> Remedial (${m.attempt_number || 2})</span>`;
+                } else if ((m.total_attempts || 1) > 1) {
+                    retakeBadge = `<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600 border border-slate-200 shrink-0" title="Ujian Utama (Pengerjaan ke-1)"><i class="fa-solid fa-clock-rotate-left text-[9px]"></i> Utama</span>`;
+                }
 
                 return `
-                    <tr class="hover:bg-slate-50 transition">
+                    <tr class="hover:bg-slate-50 transition ${isSelected ? 'bg-brand-50/40' : ''}">
+                        <td class="p-3 text-center">
+                            <input type="checkbox" value="${escapeHtml(rowKey)}" ${isSelected ? 'checked' : ''} onchange="toggleSelectMonitoring('${escapeHtml(rowKey)}', this.checked)" class="mon-row-check w-3.5 h-3.5 rounded border-slate-300 text-brand-600 focus:ring-brand-500 cursor-pointer">
+                        </td>
                         <td class="p-3 text-center font-bold text-slate-400">${rowNum}</td>
                         <td class="p-3 font-mono font-bold text-brand-700">${escapeHtml(m.nis || '-')}</td>
                         <td class="p-3">
                             <div class="flex items-center gap-1.5 flex-wrap">
                                 <span class="font-bold text-slate-800">${escapeHtml(m.name || '-')}</span>
+                                ${retakeBadge}
                                 ${m.violations_count > 0 ? `
                                     <button type="button" onclick="openViolationModal('${escapeHtml(m.nis)}', '${escapeHtml(m.name || m.nis)}', ${m.violations_count})" class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black bg-rose-500 hover:bg-rose-600 active:scale-95 text-white shadow-xs animate-pulse transition cursor-pointer" title="Klik untuk melihat rincian ${m.violations_count}x kecurangan siswa">
                                         <i class="fa-solid fa-triangle-exclamation"></i> ${m.violations_count}x Curang
@@ -644,14 +670,17 @@
                         </td>
                         <td class="p-3 text-center whitespace-nowrap">
                             <div class="flex items-center justify-center gap-1">
-                                <button type="button" onclick="confirmResetSession('${escapeHtml(m.nis)}', '${escapeHtml(m.name || m.nis)}')" class="p-1.5 rounded-lg border border-amber-300 bg-amber-50 text-amber-700 hover:bg-amber-100 transition shadow-2xs" data-tooltip="Reset Sesi: Buka kunci sesi jika PC mati/hang tanpa hilang jawaban">
+                                <button type="button" onclick="confirmResetSession('${escapeHtml(m.nis)}', '${escapeHtml(m.name || m.nis)}', '${escapeHtml(m.attempt_id || '')}')" class="p-1.5 rounded-lg border border-amber-300 bg-amber-50 text-amber-700 hover:bg-amber-100 transition shadow-2xs" data-tooltip="Reset Sesi: Buka kunci sesi jika PC mati/hang tanpa hilang jawaban">
                                     <i class="fa-solid fa-arrow-rotate-left text-xs"></i>
                                 </button>
                                 ${isWorkingOrOffline ? `
-                                <button type="button" onclick="confirmForceFinish('${escapeHtml(m.nis)}', '${escapeHtml(m.name || m.nis)}')" class="p-1.5 rounded-lg border border-emerald-300 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition shadow-2xs" data-tooltip="Kumpulkan Paksa Ujian Siswa">
+                                <button type="button" onclick="confirmForceFinish('${escapeHtml(m.nis)}', '${escapeHtml(m.name || m.nis)}', '${escapeHtml(m.attempt_id || '')}')" class="p-1.5 rounded-lg border border-emerald-300 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition shadow-2xs" data-tooltip="Kumpulkan Paksa Ujian Siswa">
                                     <i class="fa-solid fa-file-circle-check text-xs"></i>
                                 </button>
                                 ` : ''}
+                                <button type="button" onclick="confirmDeleteSession('${escapeHtml(m.nis)}', '${escapeHtml(m.name || m.nis)}', '${escapeHtml(m.attempt_id || '')}')" class="p-1.5 rounded-lg border border-rose-200 bg-rose-50 text-rose-600 hover:bg-rose-100 transition shadow-2xs" data-tooltip="Hapus Sesi Siswa Ini dari Monitoring">
+                                    <i class="fa-solid fa-trash-can text-xs"></i>
+                                </button>
                             </div>
                         </td>
                     </tr>
@@ -659,6 +688,7 @@
             }).join('');
 
             renderPagination(total);
+            updateSelectedMonitoringToolbar();
         }
 
         function getProgressHtml(m) {
@@ -738,7 +768,7 @@
             return new Date(timestamp * 1000).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
         }
 
-        async function confirmResetSession(nis, name) {
+        async function confirmResetSession(nis, name, attemptId = '') {
             const ok = await showConfirm(
                 `Yakin ingin mereset sesi ujian untuk siswa <b>${escapeHtml(name)}</b> (NIS: ${escapeHtml(nis)})?<br><br>` +
                 `<div class="p-2.5 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-900 leading-relaxed text-left">` +
@@ -755,7 +785,7 @@
                     method: 'POST',
                     credentials: 'same-origin',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ nis })
+                    body: JSON.stringify({ nis, attempt_id: attemptId })
                 });
                 const d = await res.json();
                 if (res.ok && d.status === 'success') {
@@ -769,7 +799,7 @@
             }
         }
 
-        async function confirmForceFinish(nis, name) {
+        async function confirmForceFinish(nis, name, attemptId = '') {
             const ok = await showConfirm(
                 `Kumpulkan ujian secara paksa untuk siswa <b>${escapeHtml(name)}</b> (NIS: ${escapeHtml(nis)})?<br><br>` +
                 `<div class="p-2.5 bg-sky-50 rounded-xl border border-sky-200 text-xs text-sky-900 leading-relaxed text-left">` +
@@ -786,7 +816,7 @@
                     method: 'POST',
                     credentials: 'same-origin',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ nis })
+                    body: JSON.stringify({ nis, attempt_id: attemptId })
                 });
                 const d = await res.json();
                 if (res.ok && d.status === 'success') {
@@ -794,6 +824,126 @@
                     await loadMonitoringData();
                 } else {
                     showAlert(d.message || 'Gagal mengumpulkan ujian siswa.', 'Gagal');
+                }
+            } catch (e) {
+                showAlert('Gagal menghubungi server.', 'Error');
+            }
+        }
+
+        function toggleSelectMonitoring(rowKey, isSelected) {
+            if (isSelected) selectedMonNis.add(rowKey);
+            else selectedMonNis.delete(rowKey);
+            updateSelectedMonitoringToolbar();
+        }
+
+        function toggleSelectAllMonitoring(isChecked) {
+            const checkboxes = document.querySelectorAll('.mon-row-check');
+            checkboxes.forEach(cb => {
+                cb.checked = isChecked;
+                const rowKey = cb.value;
+                if (rowKey) {
+                    if (isChecked) selectedMonNis.add(rowKey);
+                    else selectedMonNis.delete(rowKey);
+                }
+            });
+            updateSelectedMonitoringToolbar();
+        }
+
+        function updateSelectedMonitoringToolbar() {
+            const count = selectedMonNis.size;
+            const btn = document.getElementById('btn-delete-selected-mon');
+            const badge = document.getElementById('monitoring-selected-badge');
+            const selectAllCheck = document.getElementById('select-all-monitoring');
+
+            if (badge) {
+                if (count > 0) {
+                    badge.innerText = `${count} dipilih`;
+                    badge.classList.remove('hidden');
+                } else {
+                    badge.classList.add('hidden');
+                }
+            }
+
+            if (btn) {
+                if (count > 0) {
+                    btn.disabled = false;
+                    btn.className = 'btn-icon bg-rose-600 hover:bg-rose-700 text-white shadow-2xs transition cursor-pointer';
+                } else {
+                    btn.disabled = true;
+                    btn.className = 'btn-icon bg-slate-100 text-slate-400 border border-slate-200 cursor-not-allowed transition';
+                }
+            }
+
+            if (selectAllCheck) {
+                const rowChecks = document.querySelectorAll('.mon-row-check');
+                selectAllCheck.checked = rowChecks.length > 0 && Array.from(rowChecks).every(cb => cb.checked);
+            }
+        }
+
+        async function confirmDeleteSession(nis, name, attemptId = '') {
+            const ok = await showConfirm(
+                `Hapus sesi monitoring untuk siswa <b>${escapeHtml(name)}</b> (NIS: ${escapeHtml(nis)}) dari layar pantauan?<br><br>` +
+                `<div class="p-2.5 bg-rose-50 rounded-xl border border-rose-200 text-xs text-rose-900 leading-relaxed text-left">` +
+                `<b>Info:</b> Tindakan ini membersihkan sesi ini dari monitoring live. Jika siswa sudah mengumpulkan ujian, nilai resmi di <b>Hasil Ujian</b> tetap aman di server.` +
+                `</div>`,
+                'Hapus Sesi Monitoring',
+                'Batal',
+                'Hapus Sesi'
+            );
+            if (!ok) return;
+
+            try {
+                const res = await fetch(`${API_URL}?action=delete_student_session`, {
+                    method: 'POST',
+                    credentials: 'same-origin',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ nis, attempt_id: attemptId })
+                });
+                const d = await res.json();
+                if (res.ok && d.status === 'success') {
+                    const rowKey = attemptId ? (nis + '::' + attemptId) : nis;
+                    selectedMonNis.delete(rowKey);
+                    selectedMonNis.delete(nis);
+                    showToast(d.message || 'Sesi monitoring berhasil dihapus.');
+                    await loadMonitoringData();
+                } else {
+                    showAlert(d.message || 'Gagal menghapus sesi monitoring.', 'Gagal');
+                }
+            } catch (e) {
+                showAlert('Gagal menghubungi server.', 'Error');
+            }
+        }
+
+        async function deleteSelectedMonitoring() {
+            const count = selectedMonNis.size;
+            if (count === 0) return;
+
+            const ok = await showConfirm(
+                `Hapus <b>${count}</b> data monitoring siswa yang dipilih?<br><br>` +
+                `<div class="p-2.5 bg-rose-50 rounded-xl border border-rose-200 text-xs text-rose-900 leading-relaxed text-left">` +
+                `<b>Info:</b> Tindakan ini menghapus sesi terpilih dari layar pantauan monitoring live. Hasil ujian resmi siswa yang sudah selesai tetap aman di database.` +
+                `</div>`,
+                'Hapus Sesi Terpilih',
+                'Batal',
+                'Hapus Semua Terpilih'
+            );
+            if (!ok) return;
+
+            try {
+                const itemsList = Array.from(selectedMonNis);
+                const res = await fetch(`${API_URL}?action=delete_student_sessions`, {
+                    method: 'POST',
+                    credentials: 'same-origin',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ items: itemsList })
+                });
+                const d = await res.json();
+                if (res.ok && d.status === 'success') {
+                    selectedMonNis.clear();
+                    showToast(d.message || 'Sesi monitoring terpilih berhasil dihapus.');
+                    await loadMonitoringData();
+                } else {
+                    showAlert(d.message || 'Gagal menghapus sesi terpilih.', 'Gagal');
                 }
             } catch (e) {
                 showAlert('Gagal menghubungi server.', 'Error');

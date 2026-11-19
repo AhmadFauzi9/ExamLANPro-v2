@@ -12,10 +12,10 @@
             "start_at": "",
             "end_at": "",
             "status": "ACTIVE",
-            "pin": "ZK5NFV",
+            "pin": "J5LTFH",
             "pin_enabled": true,
             "pin_auto_refresh": true,
-            "pin_updated_at": 1795045426,
+            "pin_updated_at": 1795062719,
             "questions": [
                 {
                     "type": "mc",
@@ -891,35 +891,49 @@
     ],
     "results": [
         {
-            "nis": "250266",
-            "name": "M. RAQILLA AFFAN BUDIYANTO",
+            "id": "res_e64fc6ddfa32a1bcfbfaac470691ba5c",
+            "nis": "250053",
+            "name": "AHMAD ZIYAD ASSYAFIQ",
             "class": "VIII A (UNGGULAN MIPA)",
             "code": "quiz-1794921157572",
             "title": "UB Informatika Semester Ganjil 2026-2027",
-            "score": 0,
-            "correct": 0,
-            "wrong": 6,
-            "date": "18/11/2026 23:26:36",
-            "review_token": "27ee7c314179966c7870fbc2ee7f646d03225466884e4daa85544d8d9fd89780",
+            "score": 83,
+            "correct": 5,
+            "wrong": 1,
+            "date": "19/11/2026 05:38:30",
+            "review_token": "46671d1c174063e8ea3574462a9b45b8a469970455f64456d36e348925c19a95",
             "question_order": [
-                45,
-                22,
-                48,
-                23,
-                38,
-                6
+                29,
+                40,
+                43,
+                6,
+                37,
+                2
             ],
-            "answers": [],
+            "answers": [
+                [
+                    2,
+                    0,
+                    1
+                ],
+                2,
+                2,
+                "both_correct_connected",
+                [
+                    0
+                ],
+                "both_correct_connected"
+            ],
             "breakdowns": [
                 {
                     "question": {
                         "type": "complex",
-                        "question": "Pada keyboard, jari telunjuk tangan kanan digunakan untuk menekan huruf apa saat posisi mengetik 10 jari dasar?",
+                        "question": "Manakah yang termasuk dari pengaturan spasi baris (Line Spacing) yang biasa digunakan pada grup Paragraph?",
                         "options": [
-                            "U",
-                            "J",
-                            "Y",
-                            "K"
+                            "1.0 (Single)",
+                            "1.5 lines",
+                            "2.0 (Double)",
+                            "100%"
                         ],
                         "answer": 0,
                         "answers": [
@@ -927,59 +941,251 @@
                             1,
                             2
                         ],
-                        "explanation": "Telunjuk kanan pada posisi home row mengetik tombol J, U, Y, H, N, dan M.",
+                        "explanation": "Line spacing dapat diatur ke Single, 1.5 lines, atau Double untuk menentukan jarak spasi antar baris.",
                         "image": "",
                         "premises": [],
                         "targets": [],
                         "pairs": []
                     },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "A. U<br>B. J<br>C. Y"
+                    "studentAnswer": [
+                        2,
+                        0,
+                        1
+                    ],
+                    "isCorrect": true,
+                    "studentAnswerText": "C. 2.0 (Double)<br>A. 1.0 (Single)<br>B. 1.5 lines",
+                    "correctAnswerText": "A. 1.0 (Single)<br>B. 1.5 lines<br>C. 2.0 (Double)"
+                },
+                {
+                    "question": {
+                        "type": "mc",
+                        "question": "Pada saat menyimpan dokumen untuk pertama kalinya, format file standar (Save as type) MS Word 2007 adalah?",
+                        "options": [
+                            "PDF",
+                            "Excel Workbook",
+                            "Word Document",
+                            "JPEG"
+                        ],
+                        "answer": 2,
+                        "answers": [],
+                        "explanation": "MS Word 2007 menyimpan file ketikan secara otomatis ke dalam format Word Document.",
+                        "image": "",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": []
+                    },
+                    "studentAnswer": 2,
+                    "isCorrect": true,
+                    "studentAnswerText": "C. Word Document",
+                    "correctAnswerText": "C. Word Document"
+                },
+                {
+                    "question": {
+                        "type": "case_analysis",
+                        "question": "Nama garis mistar pembantu tersebut adalah?",
+                        "options": [
+                            "Scroll Bar",
+                            "Ribbon",
+                            "Ruler",
+                            "Status Bar"
+                        ],
+                        "answer": 2,
+                        "answers": [],
+                        "explanation": "Ruler (mistar) adalah elemen untuk mengetahui posisi kursor dan tabulasi batas margin.",
+                        "image": "",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": [],
+                        "passage": "Saat membuka MS Word 2007, terlihat garis mistar berangka di bagian atas dan kiri layar putih untuk membantu mengukur batas margin."
+                    },
+                    "studentAnswer": 2,
+                    "isCorrect": true,
+                    "studentAnswerText": "C. Ruler",
+                    "correctAnswerText": "C. Ruler"
                 },
                 {
                     "question": {
                         "type": "cause_effect",
                         "question": "",
                         "options": [],
-                        "answer": "statement_false_reason_true",
+                        "answer": "both_correct_connected",
                         "answers": [],
-                        "explanation": "Kolom adalah kumpulan sel dari atas ke bawah, sedangkan yang mendatar dari kiri ke kanan adalah baris (Row).",
+                        "explanation": "Kita bisa membuka file yang sudah disimpan (Open) melalui Office Button atau shortcut Ctrl + O.",
                         "image": "",
                         "premises": [],
                         "targets": [],
                         "pairs": [],
-                        "statement": "Kolom (Column) di dalam sebuah tabel adalah kotak yang berjajar dari kiri ke kanan.",
-                        "reason": "Kumpulan kotak mendatar dari kiri ke kanan disebut baris (Row)."
+                        "statement": "Saat mengetik, kita dapat membuka kembali dokumen yang sudah pernah disimpan sebelumnya.",
+                        "reason": "Perintah \"Open\" digunakan untuk menampilkan kotak dialog agar bisa mencari file lama untuk dibuka."
                     },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "Pernyataan salah, alasan benar (D)"
+                    "studentAnswer": "both_correct_connected",
+                    "isCorrect": true,
+                    "studentAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)",
+                    "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
                 },
                 {
                     "question": {
-                        "type": "mc",
-                        "question": "Tanda (simbol) khusus selain angka dan huruf alfabet, seperti copyright atau tanda akar, disisipkan menggunakan menu?",
+                        "type": "complex",
+                        "question": "Fitur yang berfungsi memberi warna latar belakang pada baris teks tertentu (sering disebut efek stabilo) adalah?",
                         "options": [
-                            "WordArt",
-                            "Symbol",
-                            "Shapes",
-                            "Equation"
+                            "Text Highlight Color",
+                            "Font Color",
+                            "Shading",
+                            "Format Painter"
                         ],
-                        "answer": 1,
-                        "answers": [],
-                        "explanation": "Symbol digunakan untuk menyisipkan karakter atau simbol khusus yang tidak ada di keyboard.",
+                        "answer": 0,
+                        "answers": [
+                            0,
+                            2
+                        ],
+                        "explanation": "Text Highlight Color (warna sorot) atau Shading (warna latar di tab border) memberikan warna pada background tulisan/sel.",
                         "image": "",
                         "premises": [],
                         "targets": [],
                         "pairs": []
                     },
-                    "studentAnswer": null,
+                    "studentAnswer": [
+                        0
+                    ],
                     "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "B. Symbol"
+                    "studentAnswerText": "A. Text Highlight Color",
+                    "correctAnswerText": "A. Text Highlight Color<br>C. Shading"
+                },
+                {
+                    "question": {
+                        "type": "cause_effect",
+                        "question": "",
+                        "options": [],
+                        "answer": "both_correct_connected",
+                        "answers": [],
+                        "explanation": "Printer merupakan output device karena tugasnya mengeluarkan hasil pemrosesan ke atas kertas.",
+                        "image": "",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": [],
+                        "statement": "Printer adalah peralatan keluaran (output device) pada sistem komputer.",
+                        "reason": "Printer berfungsi untuk mencetak hasil proses komputer berupa teks atau gambar pada media kertas."
+                    },
+                    "studentAnswer": "both_correct_connected",
+                    "isCorrect": true,
+                    "studentAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)",
+                    "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
+                }
+            ]
+        },
+        {
+            "nis": "250266",
+            "name": "M. RAQILLA AFFAN BUDIYANTO",
+            "class": "VIII A (UNGGULAN MIPA)",
+            "code": "quiz-1794921157572",
+            "title": "UB Informatika Semester Ganjil 2026-2027",
+            "score": 100,
+            "correct": 6,
+            "wrong": 0,
+            "date": "19/11/2026 04:20:32",
+            "review_token": "34471aa75151bb495e50c26416e3ce3f7e656ae39c0c18fad5dde0a2642490f5",
+            "question_order": [
+                26,
+                49,
+                12,
+                10,
+                23,
+                43
+            ],
+            "answers": [
+                "both_correct_connected",
+                2,
+                0,
+                "both_correct_connected",
+                1,
+                2
+            ],
+            "breakdowns": [
+                {
+                    "question": {
+                        "type": "cause_effect",
+                        "question": "",
+                        "options": [],
+                        "answer": "both_correct_connected",
+                        "answers": [],
+                        "explanation": "Equation adalah fasilitas di Word 2007 untuk menulis rumus (typesetting matematis).",
+                        "image": "",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": [],
+                        "statement": "Kita dapat menyisipkan rumus matematika yang rumit di Word menggunakan Equation.",
+                        "reason": "Ikon Equation berfungsi menyisipkan lambang persamaan/rumus dalam bidang matematika."
+                    },
+                    "studentAnswer": "both_correct_connected",
+                    "isCorrect": true,
+                    "studentAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)",
+                    "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
+                },
+                {
+                    "question": {
+                        "type": "mc",
+                        "question": "Bagian paling bawah (status bar) yang digunakan untuk memperbesar dan memperkecil tampilan lembar kerja adalah?",
+                        "options": [
+                            "View Buttons",
+                            "Horizontal scroll bar",
+                            "Zoom slider",
+                            "Ruler"
+                        ],
+                        "answer": 2,
+                        "answers": [],
+                        "explanation": "Zoom slider ada di bagian kanan bawah Status Bar untuk memperbesar/memperkecil tampilan dokumen.",
+                        "image": "",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": []
+                    },
+                    "studentAnswer": 2,
+                    "isCorrect": true,
+                    "studentAnswerText": "C. Zoom slider",
+                    "correctAnswerText": "C. Zoom slider"
+                },
+                {
+                    "question": {
+                        "type": "mc",
+                        "question": "Untuk menebalkan teks yang sudah diblok, ikon yang harus diklik adalah?",
+                        "options": [
+                            "Bold",
+                            "Italic",
+                            "Underline",
+                            "Drop Cap"
+                        ],
+                        "answer": 0,
+                        "answers": [],
+                        "explanation": "Ikon Bold atau shortcut Ctrl + B berfungsi untuk mencetak teks menjadi tebal.",
+                        "image": "",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": []
+                    },
+                    "studentAnswer": 0,
+                    "isCorrect": true,
+                    "studentAnswerText": "A. Bold",
+                    "correctAnswerText": "A. Bold"
+                },
+                {
+                    "question": {
+                        "type": "cause_effect",
+                        "question": "",
+                        "options": [],
+                        "answer": "both_correct_connected",
+                        "answers": [],
+                        "explanation": "Perintah Ctrl + U atau ikon Underline pada tab Home digunakan untuk memberi garis bawah pada teks.",
+                        "image": "",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": [],
+                        "statement": "Teks pada MS Word 2007 dapat dibuat bergaris bawah dengan menekan Ctrl + U.",
+                        "reason": "Ikon Underline (U) berfungsi untuk memberikan efek cetak bergaris bawah pada huruf atau kata yang dipilih."
+                    },
+                    "studentAnswer": "both_correct_connected",
+                    "isCorrect": true,
+                    "studentAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)",
+                    "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
                 },
                 {
                     "question": {
@@ -1000,52 +1206,37 @@
                         "pairs": [],
                         "passage": "Setelah membuat tabel berisi jadwal piket kelas, Doni merasa kolom \"Nama Siswa\" kurang lebar untuk nama yang panjang."
                     },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
+                    "studentAnswer": 1,
+                    "isCorrect": true,
+                    "studentAnswerText": "B. Menggeser (drag) garis batas (margin) antar kolom dengan mouse",
                     "correctAnswerText": "B. Menggeser (drag) garis batas (margin) antar kolom dengan mouse"
                 },
                 {
                     "question": {
-                        "type": "cause_effect",
-                        "question": "",
-                        "options": [],
-                        "answer": "statement_false_reason_true",
+                        "type": "case_analysis",
+                        "question": "Nama garis mistar pembantu tersebut adalah?",
+                        "options": [
+                            "Scroll Bar",
+                            "Ribbon",
+                            "Ruler",
+                            "Status Bar"
+                        ],
+                        "answer": 2,
                         "answers": [],
-                        "explanation": "Hanging Indent mengatur baris selain baris pertama agar menjorok (menggantung). First Line Indent memang untuk baris pertama.",
+                        "explanation": "Ruler (mistar) adalah elemen untuk mengetahui posisi kursor dan tabulasi batas margin.",
                         "image": "",
                         "premises": [],
                         "targets": [],
                         "pairs": [],
-                        "statement": "Hanging Indent berfungsi untuk memasukkan seluruh baris paragraf agar menjorok ke dalam.",
-                        "reason": "First Line Indent bertugas untuk memasukkan baris pertama saja pada paragraf."
+                        "passage": "Saat membuka MS Word 2007, terlihat garis mistar berangka di bagian atas dan kiri layar putih untuk membantu mengukur batas margin."
                     },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "Pernyataan salah, alasan benar (D)"
-                },
-                {
-                    "question": {
-                        "type": "cause_effect",
-                        "question": "",
-                        "options": [],
-                        "answer": "both_correct_connected",
-                        "answers": [],
-                        "explanation": "Kita bisa membuka file yang sudah disimpan (Open) melalui Office Button atau shortcut Ctrl + O.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "statement": "Saat mengetik, kita dapat membuka kembali dokumen yang sudah pernah disimpan sebelumnya.",
-                        "reason": "Perintah \"Open\" digunakan untuk menampilkan kotak dialog agar bisa mencari file lama untuk dibuka."
-                    },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
+                    "studentAnswer": 2,
+                    "isCorrect": true,
+                    "studentAnswerText": "C. Ruler",
+                    "correctAnswerText": "C. Ruler"
                 }
-            ]
+            ],
+            "id": "res_34471aa75151bb49"
         },
         {
             "nis": "250262",
@@ -1216,313 +1407,8 @@
                     "studentAnswerText": "Tidak dijawab",
                     "correctAnswerText": "A. Klik (Click)<br>B. Klik ganda (Double click)<br>C. Drag & Drop"
                 }
-            ]
-        },
-        {
-            "nis": "250163",
-            "name": "DZEKO ZAHWAN KASIYANTO",
-            "class": "VIII A (UNGGULAN MIPA)",
-            "code": "quiz-1794921157572",
-            "title": "UB Informatika Semester Ganjil 2026-2027",
-            "score": 100,
-            "correct": 5,
-            "wrong": 0,
-            "date": "18/11/2026 01:18:58",
-            "review_token": "c77063d41f52aeb4876ed458ae02b99f8505ea425d133771ffae652e4d7467a0",
-            "question_order": [
-                48,
-                19,
-                32,
-                0,
-                29
             ],
-            "answers": [
-                1,
-                3,
-                2,
-                1,
-                [
-                    2,
-                    0,
-                    1
-                ]
-            ],
-            "breakdowns": [
-                {
-                    "question": {
-                        "type": "mc",
-                        "question": "Tanda (simbol) khusus selain angka dan huruf alfabet, seperti copyright atau tanda akar, disisipkan menggunakan menu?",
-                        "options": [
-                            "WordArt",
-                            "Symbol",
-                            "Shapes",
-                            "Equation"
-                        ],
-                        "answer": 1,
-                        "answers": [],
-                        "explanation": "Symbol digunakan untuk menyisipkan karakter atau simbol khusus yang tidak ada di keyboard.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": 1,
-                    "isCorrect": true,
-                    "studentAnswerText": "B. Symbol",
-                    "correctAnswerText": "B. Symbol"
-                },
-                {
-                    "question": {
-                        "type": "case_analysis",
-                        "question": "Fitur apakah yang paling tepat diakses melalui menu Insert?",
-                        "options": [
-                            "Shapes",
-                            "Header",
-                            "Footer",
-                            "Page Number"
-                        ],
-                        "answer": 3,
-                        "answers": [],
-                        "explanation": "Page Number digunakan untuk memberikan dan mengatur nomor otomatis pada setiap halaman file.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "passage": "Ani ingin menambahkan nomor urut halaman di pojok kanan bawah pada dokumen laporannya."
-                    },
-                    "studentAnswer": 3,
-                    "isCorrect": true,
-                    "studentAnswerText": "D. Page Number",
-                    "correctAnswerText": "D. Page Number"
-                },
-                {
-                    "question": {
-                        "type": "mc",
-                        "question": "Setelah membuat naskah, langkah terakhir biasanya adalah mencetak dokumen ke kertas. Kombinasi tombol keyboard (shortcut) untuk mencetak adalah?",
-                        "options": [
-                            "Ctrl + S",
-                            "Ctrl + N",
-                            "Ctrl + P",
-                            "Ctrl + C"
-                        ],
-                        "answer": 2,
-                        "answers": [],
-                        "explanation": "Mencetak dokumen (Print) dapat dilakukan dari Office Button lalu klik Print atau dengan menekan tombol alternatif Ctrl + P.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": 2,
-                    "isCorrect": true,
-                    "studentAnswerText": "C. Ctrl + P",
-                    "correctAnswerText": "C. Ctrl + P"
-                },
-                {
-                    "question": {
-                        "type": "mc",
-                        "question": "Perhatikan gambar di bawah ini! Perangkat komputer yang berfungsi untuk memproses data yang masuk adalah?",
-                        "options": [
-                            "Monitor",
-                            "CPU (Central Processing Unit)",
-                            "Keyboard",
-                            "Printer"
-                        ],
-                        "answer": 1,
-                        "answers": [],
-                        "explanation": "CPU bertugas memproses data yang masuk dan bekerja sesuai perintah dari pengguna.",
-                        "image": "uploads/soal/img_soal_quiz-1794921157572_1794921157_533478.png",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": 1,
-                    "isCorrect": true,
-                    "studentAnswerText": "B. CPU (Central Processing Unit)",
-                    "correctAnswerText": "B. CPU (Central Processing Unit)"
-                },
-                {
-                    "question": {
-                        "type": "complex",
-                        "question": "Manakah yang termasuk dari pengaturan spasi baris (Line Spacing) yang biasa digunakan pada grup Paragraph?",
-                        "options": [
-                            "1.0 (Single)",
-                            "1.5 lines",
-                            "2.0 (Double)",
-                            "100%"
-                        ],
-                        "answer": 0,
-                        "answers": [
-                            0,
-                            1,
-                            2
-                        ],
-                        "explanation": "Line spacing dapat diatur ke Single, 1.5 lines, atau Double untuk menentukan jarak spasi antar baris.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": [
-                        2,
-                        0,
-                        1
-                    ],
-                    "isCorrect": true,
-                    "studentAnswerText": "C. 2.0 (Double)<br>A. 1.0 (Single)<br>B. 1.5 lines",
-                    "correctAnswerText": "A. 1.0 (Single)<br>B. 1.5 lines<br>C. 2.0 (Double)"
-                }
-            ]
-        },
-        {
-            "nis": "250163",
-            "name": "DZEKO ZAHWAN KASIYANTO",
-            "class": "VIII A (UNGGULAN MIPA)",
-            "code": "quiz-1794921157572",
-            "title": "UB Informatika Semester Ganjil 2026-2027",
-            "score": 60,
-            "correct": 3,
-            "wrong": 2,
-            "date": "18/11/2026 00:38:15",
-            "review_token": "3eea62a1f379263b78d897902100d2d2eb30523d607ea6ada8edb2cd823b1c2a",
-            "question_order": [
-                9,
-                11,
-                44,
-                4,
-                42
-            ],
-            "answers": [
-                [
-                    0,
-                    1
-                ],
-                0,
-                0,
-                2,
-                "both_correct_not_connected"
-            ],
-            "breakdowns": [
-                {
-                    "question": {
-                        "type": "complex",
-                        "question": "Ukuran kertas apa saja yang biasanya ada di pengaturan \"Paper Size\" pada Page Setup?",
-                        "options": [
-                            "A4",
-                            "Letter",
-                            "Arial",
-                            "Calibri"
-                        ],
-                        "answer": 0,
-                        "answers": [
-                            0,
-                            1
-                        ],
-                        "explanation": "A4 dan Letter adalah jenis ukuran kertas (Paper Size), sedangkan Arial dan Calibri adalah jenis huruf (Font).",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": [
-                        0,
-                        1
-                    ],
-                    "isCorrect": true,
-                    "studentAnswerText": "A. A4<br>B. Letter",
-                    "correctAnswerText": "A. A4<br>B. Letter"
-                },
-                {
-                    "question": {
-                        "type": "case_analysis",
-                        "question": "Ikon efek huruf apakah yang harus diklik oleh Anton?",
-                        "options": [
-                            "Subscript",
-                            "Superscript",
-                            "Strikethrough",
-                            "Highlight Color"
-                        ],
-                        "answer": 1,
-                        "answers": [],
-                        "explanation": "Superscript digunakan untuk memberi efek pangkat atas.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "passage": "Anton mengetik rumus matematika di MS Word. Ia ingin angka \"2\" pada m² berada di atas (pangkat)."
-                    },
-                    "studentAnswer": 0,
-                    "isCorrect": false,
-                    "studentAnswerText": "A. Subscript",
-                    "correctAnswerText": "B. Superscript"
-                },
-                {
-                    "question": {
-                        "type": "mc",
-                        "question": "Menu berbentuk lingkaran dengan logo Windows/Office di pojok kiri atas MS Word 2007 yang menyimpan perintah dasar seperti New, Open, Save disebut?",
-                        "options": [
-                            "Office Button",
-                            "Start Button",
-                            "Title Bar",
-                            "Quick Access Toolbar"
-                        ],
-                        "answer": 0,
-                        "answers": [],
-                        "explanation": "Tombol Microsoft Office (Office Button) berisi menu utama dokumen seperti New, Open, Save, dan Print.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": 0,
-                    "isCorrect": true,
-                    "studentAnswerText": "A. Office Button",
-                    "correctAnswerText": "A. Office Button"
-                },
-                {
-                    "question": {
-                        "type": "mc",
-                        "question": "Ikon apa yang digunakan untuk membuat dokumen kosong yang baru di MS Word 2007?",
-                        "options": [
-                            "Save",
-                            "Open",
-                            "New",
-                            "Print"
-                        ],
-                        "answer": 2,
-                        "answers": [],
-                        "explanation": "Tombol New digunakan untuk membuat lembar dokumen baru (Blank document).",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": 2,
-                    "isCorrect": true,
-                    "studentAnswerText": "C. New",
-                    "correctAnswerText": "C. New"
-                },
-                {
-                    "question": {
-                        "type": "cause_effect",
-                        "question": "",
-                        "options": [],
-                        "answer": "statement_true_reason_false",
-                        "answers": [],
-                        "explanation": "RAM berada di dalam CPU namun ia tergolong sebagai Memori Internal, bukan Eksternal.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "statement": "Memori RAM (Random Access Memory) berada di dalam komputer atau CPU.",
-                        "reason": "RAM merupakan contoh dari Memori Eksternal."
-                    },
-                    "studentAnswer": "both_correct_not_connected",
-                    "isCorrect": false,
-                    "studentAnswerText": "Pernyataan & alasan benar, TIDAK berhubungan (B)",
-                    "correctAnswerText": "Pernyataan benar, alasan salah (C)"
-                }
-            ]
+            "id": "res_f7d4461f8ca6c230"
         },
         {
             "nis": "250053",
@@ -1788,7 +1674,8 @@
                     "studentAnswerText": "Tidak dijawab",
                     "correctAnswerText": "A. Klik tab Insert -> klik ikon Table<br>C. Klik tab Insert -> klik Insert Table"
                 }
-            ]
+            ],
+            "id": "res_2ac4a40ce5e9a221"
         },
         {
             "nis": "250121",
@@ -1945,7 +1832,8 @@
                     "studentAnswerText": "C. Klik tab Insert -> klik Insert Table",
                     "correctAnswerText": "A. Klik tab Insert -> klik ikon Table<br>C. Klik tab Insert -> klik Insert Table"
                 }
-            ]
+            ],
+            "id": "res_86b7793a368bbb26"
         },
         {
             "nis": "250051",
@@ -2204,7 +2092,8 @@
                     "studentAnswerText": "Tidak dijawab",
                     "correctAnswerText": "C. Pilih Pages lalu ketik 5-7"
                 }
-            ]
+            ],
+            "id": "res_7d5dda2cf9b0fff6"
         },
         {
             "nis": "250031",
@@ -2461,22 +2350,15 @@
                     "studentAnswerText": "Tidak dijawab",
                     "correctAnswerText": "C. Shapes"
                 }
-            ]
+            ],
+            "id": "res_dc3847c6a95a2583"
         }
     ],
     "review_settings": {
         "quiz-1794921157572": false,
         "all": false
     },
-    "retake_permissions": {
-        "250266_quiz-1794921157572": {
-            "remaining": 1,
-            "reason": "",
-            "expires_at": null,
-            "granted_by": "guru",
-            "granted_at": "2026-11-19T00:38:56+01:00"
-        }
-    },
+    "retake_permissions": [],
     "students": [
         {
             "id": "std_4989c145e9b0",
@@ -12192,6 +12074,623 @@
                     "count": 6
                 }
             ]
+        },
+        "8412e712b0d92337c546a965152eda3eef1125b7c139489a2c0c8a3e747bcd1b": {
+            "token": "5db385d5a3ab3f7ff99136a20cde3662d22fe8d9341e2c35872a57bdbbd5bc19",
+            "token_hash": "8412e712b0d92337c546a965152eda3eef1125b7c139489a2c0c8a3e747bcd1b",
+            "quiz_id": "quiz-1794921157572",
+            "quiz_title": "UB Informatika Semester Ganjil 2026-2027",
+            "nis": "250266",
+            "name": "M. RAQILLA AFFAN BUDIYANTO",
+            "class": "VIII A (UNGGULAN MIPA)",
+            "question_order": [
+                26,
+                49,
+                12,
+                10,
+                23,
+                43
+            ],
+            "option_order": {
+                "26": [],
+                "49": [
+                    2,
+                    1,
+                    0,
+                    3
+                ],
+                "12": [
+                    3,
+                    2,
+                    0,
+                    1
+                ],
+                "10": [],
+                "23": [
+                    3,
+                    2,
+                    1,
+                    0
+                ],
+                "43": [
+                    1,
+                    2,
+                    0,
+                    3
+                ]
+            },
+            "answers": [
+                "both_correct_connected",
+                0,
+                2,
+                "both_correct_connected",
+                2,
+                1
+            ],
+            "started_at": 1795058260,
+            "ends_at": 1795058620,
+            "updated_at": 1795058429,
+            "violations_count": 3,
+            "last_violation_at": 1795058432,
+            "last_violation_type": "exit_fullscreen",
+            "violations_log": [
+                {
+                    "time": "19/11/2026 04:17:59",
+                    "timestamp": 1795058279,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 1
+                },
+                {
+                    "time": "19/11/2026 04:19:37",
+                    "timestamp": 1795058377,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 2
+                },
+                {
+                    "time": "19/11/2026 04:20:32",
+                    "timestamp": 1795058432,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari mode layar penuh (Full Screen)",
+                    "count": 3
+                }
+            ],
+            "finished": true,
+            "result_token": "34471aa75151bb495e50c26416e3ce3f7e656ae39c0c18fad5dde0a2642490f5",
+            "score": 100
+        },
+        "5cae27f49b9e96a7988c9fb766e151ac110525fbe616af349a32303776413add": {
+            "token": "258c56dcf3fd564dded8f208f14a8f8d3a4b531f869cd20095e72ee00cfa8d4f",
+            "token_hash": "5cae27f49b9e96a7988c9fb766e151ac110525fbe616af349a32303776413add",
+            "quiz_id": "quiz-1794921157572",
+            "quiz_title": "UB Informatika Semester Ganjil 2026-2027",
+            "nis": "250053",
+            "name": "AHMAD ZIYAD ASSYAFIQ",
+            "class": "VIII A (UNGGULAN MIPA)",
+            "question_order": [
+                29,
+                40,
+                43,
+                6,
+                37,
+                2
+            ],
+            "option_order": {
+                "29": [
+                    2,
+                    0,
+                    3,
+                    1
+                ],
+                "40": [
+                    1,
+                    2,
+                    3,
+                    0
+                ],
+                "43": [
+                    0,
+                    3,
+                    2,
+                    1
+                ],
+                "6": [],
+                "37": [
+                    0,
+                    2,
+                    3,
+                    1
+                ],
+                "2": []
+            },
+            "answers": [
+                [
+                    0,
+                    1,
+                    3
+                ],
+                1,
+                2,
+                "both_correct_connected",
+                [
+                    0
+                ],
+                "both_correct_connected"
+            ],
+            "started_at": 1795059758,
+            "ends_at": 1795063323,
+            "updated_at": 1795063109,
+            "violations_count": 66,
+            "last_violation_at": 1795063078,
+            "last_violation_type": "tab_switch",
+            "violations_log": [
+                {
+                    "time": "19/11/2026 04:44:01",
+                    "timestamp": 1795059841,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 1
+                },
+                {
+                    "time": "19/11/2026 04:47:15",
+                    "timestamp": 1795060035,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 2
+                },
+                {
+                    "time": "19/11/2026 04:48:23",
+                    "timestamp": 1795060103,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 3
+                },
+                {
+                    "time": "19/11/2026 04:52:35",
+                    "timestamp": 1795060355,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 4
+                },
+                {
+                    "time": "19/11/2026 04:52:49",
+                    "timestamp": 1795060369,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 5
+                },
+                {
+                    "time": "19/11/2026 04:53:02",
+                    "timestamp": 1795060382,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 6
+                },
+                {
+                    "time": "19/11/2026 04:54:39",
+                    "timestamp": 1795060479,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 7
+                },
+                {
+                    "time": "19/11/2026 04:58:10",
+                    "timestamp": 1795060690,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 8
+                },
+                {
+                    "time": "19/11/2026 04:58:34",
+                    "timestamp": 1795060714,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 9
+                },
+                {
+                    "time": "19/11/2026 04:58:43",
+                    "timestamp": 1795060723,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 10
+                },
+                {
+                    "time": "19/11/2026 04:58:47",
+                    "timestamp": 1795060727,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 11
+                },
+                {
+                    "time": "19/11/2026 04:58:52",
+                    "timestamp": 1795060732,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 12
+                },
+                {
+                    "time": "19/11/2026 05:00:16",
+                    "timestamp": 1795060816,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 13
+                },
+                {
+                    "time": "19/11/2026 05:00:37",
+                    "timestamp": 1795060837,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 14
+                },
+                {
+                    "time": "19/11/2026 05:01:04",
+                    "timestamp": 1795060864,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 15
+                },
+                {
+                    "time": "19/11/2026 05:01:17",
+                    "timestamp": 1795060877,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 16
+                },
+                {
+                    "time": "19/11/2026 05:02:40",
+                    "timestamp": 1795060960,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 17
+                },
+                {
+                    "time": "19/11/2026 05:02:44",
+                    "timestamp": 1795060964,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 18
+                },
+                {
+                    "time": "19/11/2026 05:04:26",
+                    "timestamp": 1795061066,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 19
+                },
+                {
+                    "time": "19/11/2026 05:04:29",
+                    "timestamp": 1795061069,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 20
+                },
+                {
+                    "time": "19/11/2026 05:05:55",
+                    "timestamp": 1795061155,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 21
+                },
+                {
+                    "time": "19/11/2026 05:06:00",
+                    "timestamp": 1795061160,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 22
+                },
+                {
+                    "time": "19/11/2026 05:06:03",
+                    "timestamp": 1795061163,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 23
+                },
+                {
+                    "time": "19/11/2026 05:06:05",
+                    "timestamp": 1795061165,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 24
+                },
+                {
+                    "time": "19/11/2026 05:06:10",
+                    "timestamp": 1795061170,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 25
+                },
+                {
+                    "time": "19/11/2026 05:06:19",
+                    "timestamp": 1795061179,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 26
+                },
+                {
+                    "time": "19/11/2026 05:06:31",
+                    "timestamp": 1795061191,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 27
+                },
+                {
+                    "time": "19/11/2026 05:06:52",
+                    "timestamp": 1795061212,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 28
+                },
+                {
+                    "time": "19/11/2026 05:06:58",
+                    "timestamp": 1795061218,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 29
+                },
+                {
+                    "time": "19/11/2026 05:07:14",
+                    "timestamp": 1795061234,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 30
+                },
+                {
+                    "time": "19/11/2026 05:07:31",
+                    "timestamp": 1795061251,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 31
+                },
+                {
+                    "time": "19/11/2026 05:09:00",
+                    "timestamp": 1795061340,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 32
+                },
+                {
+                    "time": "19/11/2026 05:09:07",
+                    "timestamp": 1795061347,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 33
+                },
+                {
+                    "time": "19/11/2026 05:09:10",
+                    "timestamp": 1795061350,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 34
+                },
+                {
+                    "time": "19/11/2026 05:09:15",
+                    "timestamp": 1795061355,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 35
+                },
+                {
+                    "time": "19/11/2026 05:09:18",
+                    "timestamp": 1795061358,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 36
+                },
+                {
+                    "time": "19/11/2026 05:09:47",
+                    "timestamp": 1795061387,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 37
+                },
+                {
+                    "time": "19/11/2026 05:09:52",
+                    "timestamp": 1795061392,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 38
+                },
+                {
+                    "time": "19/11/2026 05:10:09",
+                    "timestamp": 1795061409,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 39
+                },
+                {
+                    "time": "19/11/2026 05:10:11",
+                    "timestamp": 1795061411,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 40
+                },
+                {
+                    "time": "19/11/2026 05:10:37",
+                    "timestamp": 1795061437,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 41
+                },
+                {
+                    "time": "19/11/2026 05:10:57",
+                    "timestamp": 1795061457,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 42
+                },
+                {
+                    "time": "19/11/2026 05:11:42",
+                    "timestamp": 1795061502,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 43
+                },
+                {
+                    "time": "19/11/2026 05:11:44",
+                    "timestamp": 1795061504,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 44
+                },
+                {
+                    "time": "19/11/2026 05:11:54",
+                    "timestamp": 1795061514,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 45
+                },
+                {
+                    "time": "19/11/2026 05:13:38",
+                    "timestamp": 1795061618,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 46
+                },
+                {
+                    "time": "19/11/2026 05:13:42",
+                    "timestamp": 1795061622,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 47
+                },
+                {
+                    "time": "19/11/2026 05:13:44",
+                    "timestamp": 1795061624,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 48
+                },
+                {
+                    "time": "19/11/2026 05:13:55",
+                    "timestamp": 1795061635,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 49
+                },
+                {
+                    "time": "19/11/2026 05:16:57",
+                    "timestamp": 1795061817,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 50
+                },
+                {
+                    "time": "19/11/2026 05:20:08",
+                    "timestamp": 1795062008,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 51
+                },
+                {
+                    "time": "19/11/2026 05:20:10",
+                    "timestamp": 1795062010,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 52
+                },
+                {
+                    "time": "19/11/2026 05:20:16",
+                    "timestamp": 1795062016,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 53
+                },
+                {
+                    "time": "19/11/2026 05:21:08",
+                    "timestamp": 1795062068,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 54
+                },
+                {
+                    "time": "19/11/2026 05:22:22",
+                    "timestamp": 1795062142,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 55
+                },
+                {
+                    "time": "19/11/2026 05:22:26",
+                    "timestamp": 1795062146,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 56
+                },
+                {
+                    "time": "19/11/2026 05:23:13",
+                    "timestamp": 1795062193,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 57
+                },
+                {
+                    "time": "19/11/2026 05:23:17",
+                    "timestamp": 1795062197,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 58
+                },
+                {
+                    "time": "19/11/2026 05:27:07",
+                    "timestamp": 1795062427,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 59
+                },
+                {
+                    "time": "19/11/2026 05:27:15",
+                    "timestamp": 1795062435,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 60
+                },
+                {
+                    "time": "19/11/2026 05:32:01",
+                    "timestamp": 1795062721,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 61
+                },
+                {
+                    "time": "19/11/2026 05:32:41",
+                    "timestamp": 1795062761,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 62
+                },
+                {
+                    "time": "19/11/2026 05:35:12",
+                    "timestamp": 1795062912,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 63
+                },
+                {
+                    "time": "19/11/2026 05:35:39",
+                    "timestamp": 1795062939,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 64
+                },
+                {
+                    "time": "19/11/2026 05:36:58",
+                    "timestamp": 1795063018,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 65
+                },
+                {
+                    "time": "19/11/2026 05:37:58",
+                    "timestamp": 1795063078,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 66
+                }
+            ],
+            "finished": true,
+            "result_token": "46671d1c174063e8ea3574462a9b45b8a469970455f64456d36e348925c19a95",
+            "score": 83
         }
     },
     "student_sessions": {
@@ -12226,11 +12725,482 @@
             "class": "VIII A (UNGGULAN MIPA)",
             "quiz_id": "quiz-1794921157572",
             "quiz_title": "UB Informatika Semester Ganjil 2026-2027",
-            "status": "STANDBY",
+            "status": "FINISHED",
             "ip": "::1",
             "login_at": 1794953862,
-            "last_seen": 1794956479,
-            "attempt_token_hash": "4b29a8371f2d4078fecfadf5f76bf458a5a4a31dbf7c09c40ec31b185552685d"
+            "last_seen": 1795063110,
+            "attempt_token_hash": "5cae27f49b9e96a7988c9fb766e151ac110525fbe616af349a32303776413add",
+            "started_at": 1795059758,
+            "ends_at": 1795063323,
+            "violations_count": 66,
+            "last_violation_at": 1795063078,
+            "last_violation_type": "tab_switch",
+            "violations_log": [
+                {
+                    "time": "19/11/2026 04:44:01",
+                    "timestamp": 1795059841,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 1
+                },
+                {
+                    "time": "19/11/2026 04:47:15",
+                    "timestamp": 1795060035,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 2
+                },
+                {
+                    "time": "19/11/2026 04:48:23",
+                    "timestamp": 1795060103,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 3
+                },
+                {
+                    "time": "19/11/2026 04:52:35",
+                    "timestamp": 1795060355,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 4
+                },
+                {
+                    "time": "19/11/2026 04:52:49",
+                    "timestamp": 1795060369,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 5
+                },
+                {
+                    "time": "19/11/2026 04:53:02",
+                    "timestamp": 1795060382,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 6
+                },
+                {
+                    "time": "19/11/2026 04:54:39",
+                    "timestamp": 1795060479,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 7
+                },
+                {
+                    "time": "19/11/2026 04:58:10",
+                    "timestamp": 1795060690,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 8
+                },
+                {
+                    "time": "19/11/2026 04:58:34",
+                    "timestamp": 1795060714,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 9
+                },
+                {
+                    "time": "19/11/2026 04:58:43",
+                    "timestamp": 1795060723,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 10
+                },
+                {
+                    "time": "19/11/2026 04:58:47",
+                    "timestamp": 1795060727,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 11
+                },
+                {
+                    "time": "19/11/2026 04:58:52",
+                    "timestamp": 1795060732,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 12
+                },
+                {
+                    "time": "19/11/2026 05:00:16",
+                    "timestamp": 1795060816,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 13
+                },
+                {
+                    "time": "19/11/2026 05:00:37",
+                    "timestamp": 1795060837,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 14
+                },
+                {
+                    "time": "19/11/2026 05:01:04",
+                    "timestamp": 1795060864,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 15
+                },
+                {
+                    "time": "19/11/2026 05:01:17",
+                    "timestamp": 1795060877,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 16
+                },
+                {
+                    "time": "19/11/2026 05:02:40",
+                    "timestamp": 1795060960,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 17
+                },
+                {
+                    "time": "19/11/2026 05:02:44",
+                    "timestamp": 1795060964,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 18
+                },
+                {
+                    "time": "19/11/2026 05:04:26",
+                    "timestamp": 1795061066,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 19
+                },
+                {
+                    "time": "19/11/2026 05:04:29",
+                    "timestamp": 1795061069,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 20
+                },
+                {
+                    "time": "19/11/2026 05:05:55",
+                    "timestamp": 1795061155,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 21
+                },
+                {
+                    "time": "19/11/2026 05:06:00",
+                    "timestamp": 1795061160,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 22
+                },
+                {
+                    "time": "19/11/2026 05:06:03",
+                    "timestamp": 1795061163,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 23
+                },
+                {
+                    "time": "19/11/2026 05:06:05",
+                    "timestamp": 1795061165,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 24
+                },
+                {
+                    "time": "19/11/2026 05:06:10",
+                    "timestamp": 1795061170,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 25
+                },
+                {
+                    "time": "19/11/2026 05:06:19",
+                    "timestamp": 1795061179,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 26
+                },
+                {
+                    "time": "19/11/2026 05:06:31",
+                    "timestamp": 1795061191,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 27
+                },
+                {
+                    "time": "19/11/2026 05:06:52",
+                    "timestamp": 1795061212,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 28
+                },
+                {
+                    "time": "19/11/2026 05:06:58",
+                    "timestamp": 1795061218,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 29
+                },
+                {
+                    "time": "19/11/2026 05:07:14",
+                    "timestamp": 1795061234,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 30
+                },
+                {
+                    "time": "19/11/2026 05:07:31",
+                    "timestamp": 1795061251,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 31
+                },
+                {
+                    "time": "19/11/2026 05:09:00",
+                    "timestamp": 1795061340,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 32
+                },
+                {
+                    "time": "19/11/2026 05:09:07",
+                    "timestamp": 1795061347,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 33
+                },
+                {
+                    "time": "19/11/2026 05:09:10",
+                    "timestamp": 1795061350,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 34
+                },
+                {
+                    "time": "19/11/2026 05:09:15",
+                    "timestamp": 1795061355,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 35
+                },
+                {
+                    "time": "19/11/2026 05:09:18",
+                    "timestamp": 1795061358,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 36
+                },
+                {
+                    "time": "19/11/2026 05:09:47",
+                    "timestamp": 1795061387,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 37
+                },
+                {
+                    "time": "19/11/2026 05:09:52",
+                    "timestamp": 1795061392,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 38
+                },
+                {
+                    "time": "19/11/2026 05:10:09",
+                    "timestamp": 1795061409,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 39
+                },
+                {
+                    "time": "19/11/2026 05:10:11",
+                    "timestamp": 1795061411,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 40
+                },
+                {
+                    "time": "19/11/2026 05:10:37",
+                    "timestamp": 1795061437,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 41
+                },
+                {
+                    "time": "19/11/2026 05:10:57",
+                    "timestamp": 1795061457,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 42
+                },
+                {
+                    "time": "19/11/2026 05:11:42",
+                    "timestamp": 1795061502,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 43
+                },
+                {
+                    "time": "19/11/2026 05:11:44",
+                    "timestamp": 1795061504,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 44
+                },
+                {
+                    "time": "19/11/2026 05:11:54",
+                    "timestamp": 1795061514,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 45
+                },
+                {
+                    "time": "19/11/2026 05:13:38",
+                    "timestamp": 1795061618,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 46
+                },
+                {
+                    "time": "19/11/2026 05:13:42",
+                    "timestamp": 1795061622,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 47
+                },
+                {
+                    "time": "19/11/2026 05:13:44",
+                    "timestamp": 1795061624,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 48
+                },
+                {
+                    "time": "19/11/2026 05:13:55",
+                    "timestamp": 1795061635,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 49
+                },
+                {
+                    "time": "19/11/2026 05:16:57",
+                    "timestamp": 1795061817,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 50
+                },
+                {
+                    "time": "19/11/2026 05:20:08",
+                    "timestamp": 1795062008,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 51
+                },
+                {
+                    "time": "19/11/2026 05:20:10",
+                    "timestamp": 1795062010,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 52
+                },
+                {
+                    "time": "19/11/2026 05:20:16",
+                    "timestamp": 1795062016,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 53
+                },
+                {
+                    "time": "19/11/2026 05:21:08",
+                    "timestamp": 1795062068,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 54
+                },
+                {
+                    "time": "19/11/2026 05:22:22",
+                    "timestamp": 1795062142,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 55
+                },
+                {
+                    "time": "19/11/2026 05:22:26",
+                    "timestamp": 1795062146,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 56
+                },
+                {
+                    "time": "19/11/2026 05:23:13",
+                    "timestamp": 1795062193,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 57
+                },
+                {
+                    "time": "19/11/2026 05:23:17",
+                    "timestamp": 1795062197,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 58
+                },
+                {
+                    "time": "19/11/2026 05:27:07",
+                    "timestamp": 1795062427,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 59
+                },
+                {
+                    "time": "19/11/2026 05:27:15",
+                    "timestamp": 1795062435,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 60
+                },
+                {
+                    "time": "19/11/2026 05:32:01",
+                    "timestamp": 1795062721,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 61
+                },
+                {
+                    "time": "19/11/2026 05:32:41",
+                    "timestamp": 1795062761,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 62
+                },
+                {
+                    "time": "19/11/2026 05:35:12",
+                    "timestamp": 1795062912,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 63
+                },
+                {
+                    "time": "19/11/2026 05:35:39",
+                    "timestamp": 1795062939,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 64
+                },
+                {
+                    "time": "19/11/2026 05:36:58",
+                    "timestamp": 1795063018,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 65
+                },
+                {
+                    "time": "19/11/2026 05:37:58",
+                    "timestamp": 1795063078,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 66
+                }
+            ],
+            "finished_at": 1795063110,
+            "score": 83
         },
         "250121": {
             "nis": "250121",
@@ -12460,60 +13430,41 @@
             "class": "VIII A (UNGGULAN MIPA)",
             "quiz_id": "quiz-1794921157572",
             "quiz_title": "UB Informatika Semester Ganjil 2026-2027",
-            "status": "WORKING",
+            "status": "FINISHED",
             "ip": "::1",
             "login_at": 1795012783,
-            "last_seen": 1795045486,
-            "attempt_token_hash": "3df36b2fdcd85e0655a99a03fd18eecc54ea94546d5ebb6ba9ddea7638c54ddc",
-            "started_at": 1795045163,
-            "ends_at": 1795045523,
-            "violations_count": 6,
-            "last_violation_at": 1795045406,
-            "last_violation_type": "tab_switch",
+            "last_seen": 1795058432,
+            "attempt_token_hash": "8412e712b0d92337c546a965152eda3eef1125b7c139489a2c0c8a3e747bcd1b",
+            "started_at": 1795058260,
+            "ends_at": 1795058620,
+            "violations_count": 3,
+            "last_violation_at": 1795058432,
+            "last_violation_type": "exit_fullscreen",
             "violations_log": [
                 {
-                    "time": "19/11/2026 00:41:04",
-                    "timestamp": 1795045264,
+                    "time": "19/11/2026 04:17:59",
+                    "timestamp": 1795058279,
                     "type": "app_switch",
                     "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
                     "count": 1
                 },
                 {
-                    "time": "19/11/2026 00:41:53",
-                    "timestamp": 1795045313,
-                    "type": "app_switch",
-                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "time": "19/11/2026 04:19:37",
+                    "timestamp": 1795058377,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
                     "count": 2
                 },
                 {
-                    "time": "19/11/2026 00:42:31",
-                    "timestamp": 1795045351,
-                    "type": "tab_switch",
-                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "time": "19/11/2026 04:20:32",
+                    "timestamp": 1795058432,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari mode layar penuh (Full Screen)",
                     "count": 3
-                },
-                {
-                    "time": "19/11/2026 00:43:16",
-                    "timestamp": 1795045396,
-                    "type": "tab_switch",
-                    "details": "Pindah tab atau meminimalkan jendela browser",
-                    "count": 4
-                },
-                {
-                    "time": "19/11/2026 00:43:24",
-                    "timestamp": 1795045404,
-                    "type": "tab_switch",
-                    "details": "Pindah tab atau meminimalkan jendela browser",
-                    "count": 5
-                },
-                {
-                    "time": "19/11/2026 00:43:26",
-                    "timestamp": 1795045406,
-                    "type": "tab_switch",
-                    "details": "Pindah tab atau meminimalkan jendela browser",
-                    "count": 6
                 }
-            ]
+            ],
+            "finished_at": 1795058432,
+            "score": 100
         }
     },
     "audit_logs": [
@@ -14875,6 +15826,573 @@
             "action": "Peringatan Kecurangan",
             "target": "Siswa M. RAQILLA AFFAN BUDIYANTO (NIS: 250266) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-6)",
             "detail": ""
+        },
+        {
+            "time": "2026-11-19T04:11:40+01:00",
+            "user": "guru",
+            "action": "Login guru",
+            "target": "::1",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T04:12:26+01:00",
+            "user": "guru",
+            "action": "Hapus hasil",
+            "target": "250266 / quiz-1794921157572",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T04:12:57+01:00",
+            "user": "guru",
+            "action": "Hapus hasil",
+            "target": "250163 / quiz-1794921157572",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T04:17:29+01:00",
+            "user": "guru",
+            "action": "Login siswa",
+            "target": "250266 - M. RAQILLA AFFAN BUDIYANTO",
+            "detail": "Kelas VIII A (UNGGULAN MIPA) (UB Informatika Semester Ganjil 2026-2027)"
+        },
+        {
+            "time": "2026-11-19T04:17:40+01:00",
+            "user": "guru",
+            "action": "Mulai ujian",
+            "target": "250266 - M. RAQILLA AFFAN BUDIYANTO",
+            "detail": "Paket: UB Informatika Semester Ganjil 2026-2027"
+        },
+        {
+            "time": "2026-11-19T04:17:59+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa M. RAQILLA AFFAN BUDIYANTO (NIS: 250266) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-1)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T04:19:37+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa M. RAQILLA AFFAN BUDIYANTO (NIS: 250266) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-2)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T04:20:32+01:00",
+            "user": "guru",
+            "action": "Selesai ujian",
+            "target": "250266 - M. RAQILLA AFFAN BUDIYANTO",
+            "detail": "Nilai: 100 (6 Benar, 0 Salah) - UB Informatika Semester Ganjil 2026-2027"
+        },
+        {
+            "time": "2026-11-19T04:20:32+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa M. RAQILLA AFFAN BUDIYANTO (NIS: 250266) terdeteksi: Keluar dari mode layar penuh (Full Screen) (ke-3)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T04:41:29+01:00",
+            "user": "guru",
+            "action": "Login siswa",
+            "target": "250053 - AHMAD ZIYAD ASSYAFIQ",
+            "detail": "Kelas VIII A (UNGGULAN MIPA) (UB Informatika Semester Ganjil 2026-2027)"
+        },
+        {
+            "time": "2026-11-19T04:42:30+01:00",
+            "user": "guru",
+            "action": "Izin ujian ulang",
+            "target": "250053 / quiz-1794921157572",
+            "detail": "Kesempatan: 1"
+        },
+        {
+            "time": "2026-11-19T04:42:38+01:00",
+            "user": "guru",
+            "action": "Mulai ujian",
+            "target": "250053 - AHMAD ZIYAD ASSYAFIQ",
+            "detail": "Paket: UB Informatika Semester Ganjil 2026-2027"
+        },
+        {
+            "time": "2026-11-19T04:44:01+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-1)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T04:47:15+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-2)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T04:48:23+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-3)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T04:52:35+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-4)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T04:52:49+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-5)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T04:53:02+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-6)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T04:54:39+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-7)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T04:58:10+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-8)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T04:58:34+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-9)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T04:58:43+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-10)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T04:58:47+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-11)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T04:58:52+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-12)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:00:16+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-13)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:00:37+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-14)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:01:04+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-15)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:01:17+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-16)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:02:40+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-17)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:02:44+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-18)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:04:26+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-19)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:04:29+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-20)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:05:55+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-21)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:06:00+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-22)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:06:03+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-23)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:06:05+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-24)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:06:10+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-25)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:06:19+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-26)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:06:31+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-27)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:06:52+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-28)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:06:58+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-29)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:07:14+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-30)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:07:31+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-31)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:09:00+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-32)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:09:07+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-33)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:09:10+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-34)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:09:15+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-35)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:09:18+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-36)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:09:47+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-37)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:09:52+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-38)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:10:09+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-39)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:10:11+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-40)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:10:37+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-41)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:10:57+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-42)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:11:42+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-43)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:11:44+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-44)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:11:54+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-45)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:13:38+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-46)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:13:42+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-47)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:13:44+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-48)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:13:55+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-49)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:16:57+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-50)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:20:08+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-51)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:20:10+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-52)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:20:16+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-53)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:21:08+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-54)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:22:22+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-55)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:22:26+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-56)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:23:13+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-57)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:23:17+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-58)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:27:07+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-59)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:27:15+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-60)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:32:01+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-61)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:32:41+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-62)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:35:12+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-63)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:35:39+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-64)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:36:56+01:00",
+            "user": "guru",
+            "action": "Minta perpanjangan waktu",
+            "target": "250053 / quiz-1794921157572",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:36:58+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-65)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:37:03+01:00",
+            "user": "guru",
+            "action": "Setujui perpanjangan waktu +5m",
+            "target": "250053",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:37:58+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-66)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T05:38:30+01:00",
+            "user": "guru",
+            "action": "Selesai ujian",
+            "target": "250053 - AHMAD ZIYAD ASSYAFIQ",
+            "detail": "Nilai: 83 (5 Benar, 1 Salah) - UB Informatika Semester Ganjil 2026-2027"
         }
     ],
     "backups": [
@@ -14895,7 +16413,471 @@
         }
     ],
     "trash": {
-        "results": [],
+        "results": [
+            {
+                "nis": "250266",
+                "name": "M. RAQILLA AFFAN BUDIYANTO",
+                "class": "VIII A (UNGGULAN MIPA)",
+                "code": "quiz-1794921157572",
+                "title": "UB Informatika Semester Ganjil 2026-2027",
+                "score": 0,
+                "correct": 0,
+                "wrong": 6,
+                "date": "18/11/2026 23:26:36",
+                "review_token": "27ee7c314179966c7870fbc2ee7f646d03225466884e4daa85544d8d9fd89780",
+                "question_order": [
+                    45,
+                    22,
+                    48,
+                    23,
+                    38,
+                    6
+                ],
+                "answers": [],
+                "breakdowns": [
+                    {
+                        "question": {
+                            "type": "complex",
+                            "question": "Pada keyboard, jari telunjuk tangan kanan digunakan untuk menekan huruf apa saat posisi mengetik 10 jari dasar?",
+                            "options": [
+                                "U",
+                                "J",
+                                "Y",
+                                "K"
+                            ],
+                            "answer": 0,
+                            "answers": [
+                                0,
+                                1,
+                                2
+                            ],
+                            "explanation": "Telunjuk kanan pada posisi home row mengetik tombol J, U, Y, H, N, dan M.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "A. U<br>B. J<br>C. Y"
+                    },
+                    {
+                        "question": {
+                            "type": "cause_effect",
+                            "question": "",
+                            "options": [],
+                            "answer": "statement_false_reason_true",
+                            "answers": [],
+                            "explanation": "Kolom adalah kumpulan sel dari atas ke bawah, sedangkan yang mendatar dari kiri ke kanan adalah baris (Row).",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "statement": "Kolom (Column) di dalam sebuah tabel adalah kotak yang berjajar dari kiri ke kanan.",
+                            "reason": "Kumpulan kotak mendatar dari kiri ke kanan disebut baris (Row)."
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "Pernyataan salah, alasan benar (D)"
+                    },
+                    {
+                        "question": {
+                            "type": "mc",
+                            "question": "Tanda (simbol) khusus selain angka dan huruf alfabet, seperti copyright atau tanda akar, disisipkan menggunakan menu?",
+                            "options": [
+                                "WordArt",
+                                "Symbol",
+                                "Shapes",
+                                "Equation"
+                            ],
+                            "answer": 1,
+                            "answers": [],
+                            "explanation": "Symbol digunakan untuk menyisipkan karakter atau simbol khusus yang tidak ada di keyboard.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "B. Symbol"
+                    },
+                    {
+                        "question": {
+                            "type": "case_analysis",
+                            "question": "Cara termudah bagi Doni untuk melebarkan kolom tersebut adalah?",
+                            "options": [
+                                "Menghapus tabel dan membuat baru",
+                                "Menggeser (drag) garis batas (margin) antar kolom dengan mouse",
+                                "Mengubah ukuran kertas menjadi Legal",
+                                "Menambah baris pada tabel"
+                            ],
+                            "answer": 1,
+                            "answers": [],
+                            "explanation": "Cara manual melebarkan kolom tabel adalah mendrag (menyeret) garis pembatas kolom dengan mouse.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "passage": "Setelah membuat tabel berisi jadwal piket kelas, Doni merasa kolom \"Nama Siswa\" kurang lebar untuk nama yang panjang."
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "B. Menggeser (drag) garis batas (margin) antar kolom dengan mouse"
+                    },
+                    {
+                        "question": {
+                            "type": "cause_effect",
+                            "question": "",
+                            "options": [],
+                            "answer": "statement_false_reason_true",
+                            "answers": [],
+                            "explanation": "Hanging Indent mengatur baris selain baris pertama agar menjorok (menggantung). First Line Indent memang untuk baris pertama.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "statement": "Hanging Indent berfungsi untuk memasukkan seluruh baris paragraf agar menjorok ke dalam.",
+                            "reason": "First Line Indent bertugas untuk memasukkan baris pertama saja pada paragraf."
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "Pernyataan salah, alasan benar (D)"
+                    },
+                    {
+                        "question": {
+                            "type": "cause_effect",
+                            "question": "",
+                            "options": [],
+                            "answer": "both_correct_connected",
+                            "answers": [],
+                            "explanation": "Kita bisa membuka file yang sudah disimpan (Open) melalui Office Button atau shortcut Ctrl + O.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "statement": "Saat mengetik, kita dapat membuka kembali dokumen yang sudah pernah disimpan sebelumnya.",
+                            "reason": "Perintah \"Open\" digunakan untuk menampilkan kotak dialog agar bisa mencari file lama untuk dibuka."
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
+                    }
+                ]
+            },
+            {
+                "nis": "250163",
+                "name": "DZEKO ZAHWAN KASIYANTO",
+                "class": "VIII A (UNGGULAN MIPA)",
+                "code": "quiz-1794921157572",
+                "title": "UB Informatika Semester Ganjil 2026-2027",
+                "score": 100,
+                "correct": 5,
+                "wrong": 0,
+                "date": "18/11/2026 01:18:58",
+                "review_token": "c77063d41f52aeb4876ed458ae02b99f8505ea425d133771ffae652e4d7467a0",
+                "question_order": [
+                    48,
+                    19,
+                    32,
+                    0,
+                    29
+                ],
+                "answers": [
+                    1,
+                    3,
+                    2,
+                    1,
+                    [
+                        2,
+                        0,
+                        1
+                    ]
+                ],
+                "breakdowns": [
+                    {
+                        "question": {
+                            "type": "mc",
+                            "question": "Tanda (simbol) khusus selain angka dan huruf alfabet, seperti copyright atau tanda akar, disisipkan menggunakan menu?",
+                            "options": [
+                                "WordArt",
+                                "Symbol",
+                                "Shapes",
+                                "Equation"
+                            ],
+                            "answer": 1,
+                            "answers": [],
+                            "explanation": "Symbol digunakan untuk menyisipkan karakter atau simbol khusus yang tidak ada di keyboard.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": 1,
+                        "isCorrect": true,
+                        "studentAnswerText": "B. Symbol",
+                        "correctAnswerText": "B. Symbol"
+                    },
+                    {
+                        "question": {
+                            "type": "case_analysis",
+                            "question": "Fitur apakah yang paling tepat diakses melalui menu Insert?",
+                            "options": [
+                                "Shapes",
+                                "Header",
+                                "Footer",
+                                "Page Number"
+                            ],
+                            "answer": 3,
+                            "answers": [],
+                            "explanation": "Page Number digunakan untuk memberikan dan mengatur nomor otomatis pada setiap halaman file.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "passage": "Ani ingin menambahkan nomor urut halaman di pojok kanan bawah pada dokumen laporannya."
+                        },
+                        "studentAnswer": 3,
+                        "isCorrect": true,
+                        "studentAnswerText": "D. Page Number",
+                        "correctAnswerText": "D. Page Number"
+                    },
+                    {
+                        "question": {
+                            "type": "mc",
+                            "question": "Setelah membuat naskah, langkah terakhir biasanya adalah mencetak dokumen ke kertas. Kombinasi tombol keyboard (shortcut) untuk mencetak adalah?",
+                            "options": [
+                                "Ctrl + S",
+                                "Ctrl + N",
+                                "Ctrl + P",
+                                "Ctrl + C"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "Mencetak dokumen (Print) dapat dilakukan dari Office Button lalu klik Print atau dengan menekan tombol alternatif Ctrl + P.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": 2,
+                        "isCorrect": true,
+                        "studentAnswerText": "C. Ctrl + P",
+                        "correctAnswerText": "C. Ctrl + P"
+                    },
+                    {
+                        "question": {
+                            "type": "mc",
+                            "question": "Perhatikan gambar di bawah ini! Perangkat komputer yang berfungsi untuk memproses data yang masuk adalah?",
+                            "options": [
+                                "Monitor",
+                                "CPU (Central Processing Unit)",
+                                "Keyboard",
+                                "Printer"
+                            ],
+                            "answer": 1,
+                            "answers": [],
+                            "explanation": "CPU bertugas memproses data yang masuk dan bekerja sesuai perintah dari pengguna.",
+                            "image": "uploads/soal/img_soal_quiz-1794921157572_1794921157_533478.png",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": 1,
+                        "isCorrect": true,
+                        "studentAnswerText": "B. CPU (Central Processing Unit)",
+                        "correctAnswerText": "B. CPU (Central Processing Unit)"
+                    },
+                    {
+                        "question": {
+                            "type": "complex",
+                            "question": "Manakah yang termasuk dari pengaturan spasi baris (Line Spacing) yang biasa digunakan pada grup Paragraph?",
+                            "options": [
+                                "1.0 (Single)",
+                                "1.5 lines",
+                                "2.0 (Double)",
+                                "100%"
+                            ],
+                            "answer": 0,
+                            "answers": [
+                                0,
+                                1,
+                                2
+                            ],
+                            "explanation": "Line spacing dapat diatur ke Single, 1.5 lines, atau Double untuk menentukan jarak spasi antar baris.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": [
+                            2,
+                            0,
+                            1
+                        ],
+                        "isCorrect": true,
+                        "studentAnswerText": "C. 2.0 (Double)<br>A. 1.0 (Single)<br>B. 1.5 lines",
+                        "correctAnswerText": "A. 1.0 (Single)<br>B. 1.5 lines<br>C. 2.0 (Double)"
+                    }
+                ]
+            },
+            {
+                "nis": "250163",
+                "name": "DZEKO ZAHWAN KASIYANTO",
+                "class": "VIII A (UNGGULAN MIPA)",
+                "code": "quiz-1794921157572",
+                "title": "UB Informatika Semester Ganjil 2026-2027",
+                "score": 60,
+                "correct": 3,
+                "wrong": 2,
+                "date": "18/11/2026 00:38:15",
+                "review_token": "3eea62a1f379263b78d897902100d2d2eb30523d607ea6ada8edb2cd823b1c2a",
+                "question_order": [
+                    9,
+                    11,
+                    44,
+                    4,
+                    42
+                ],
+                "answers": [
+                    [
+                        0,
+                        1
+                    ],
+                    0,
+                    0,
+                    2,
+                    "both_correct_not_connected"
+                ],
+                "breakdowns": [
+                    {
+                        "question": {
+                            "type": "complex",
+                            "question": "Ukuran kertas apa saja yang biasanya ada di pengaturan \"Paper Size\" pada Page Setup?",
+                            "options": [
+                                "A4",
+                                "Letter",
+                                "Arial",
+                                "Calibri"
+                            ],
+                            "answer": 0,
+                            "answers": [
+                                0,
+                                1
+                            ],
+                            "explanation": "A4 dan Letter adalah jenis ukuran kertas (Paper Size), sedangkan Arial dan Calibri adalah jenis huruf (Font).",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": [
+                            0,
+                            1
+                        ],
+                        "isCorrect": true,
+                        "studentAnswerText": "A. A4<br>B. Letter",
+                        "correctAnswerText": "A. A4<br>B. Letter"
+                    },
+                    {
+                        "question": {
+                            "type": "case_analysis",
+                            "question": "Ikon efek huruf apakah yang harus diklik oleh Anton?",
+                            "options": [
+                                "Subscript",
+                                "Superscript",
+                                "Strikethrough",
+                                "Highlight Color"
+                            ],
+                            "answer": 1,
+                            "answers": [],
+                            "explanation": "Superscript digunakan untuk memberi efek pangkat atas.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "passage": "Anton mengetik rumus matematika di MS Word. Ia ingin angka \"2\" pada m² berada di atas (pangkat)."
+                        },
+                        "studentAnswer": 0,
+                        "isCorrect": false,
+                        "studentAnswerText": "A. Subscript",
+                        "correctAnswerText": "B. Superscript"
+                    },
+                    {
+                        "question": {
+                            "type": "mc",
+                            "question": "Menu berbentuk lingkaran dengan logo Windows/Office di pojok kiri atas MS Word 2007 yang menyimpan perintah dasar seperti New, Open, Save disebut?",
+                            "options": [
+                                "Office Button",
+                                "Start Button",
+                                "Title Bar",
+                                "Quick Access Toolbar"
+                            ],
+                            "answer": 0,
+                            "answers": [],
+                            "explanation": "Tombol Microsoft Office (Office Button) berisi menu utama dokumen seperti New, Open, Save, dan Print.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": 0,
+                        "isCorrect": true,
+                        "studentAnswerText": "A. Office Button",
+                        "correctAnswerText": "A. Office Button"
+                    },
+                    {
+                        "question": {
+                            "type": "mc",
+                            "question": "Ikon apa yang digunakan untuk membuat dokumen kosong yang baru di MS Word 2007?",
+                            "options": [
+                                "Save",
+                                "Open",
+                                "New",
+                                "Print"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "Tombol New digunakan untuk membuat lembar dokumen baru (Blank document).",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": 2,
+                        "isCorrect": true,
+                        "studentAnswerText": "C. New",
+                        "correctAnswerText": "C. New"
+                    },
+                    {
+                        "question": {
+                            "type": "cause_effect",
+                            "question": "",
+                            "options": [],
+                            "answer": "statement_true_reason_false",
+                            "answers": [],
+                            "explanation": "RAM berada di dalam CPU namun ia tergolong sebagai Memori Internal, bukan Eksternal.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "statement": "Memori RAM (Random Access Memory) berada di dalam komputer atau CPU.",
+                            "reason": "RAM merupakan contoh dari Memori Eksternal."
+                        },
+                        "studentAnswer": "both_correct_not_connected",
+                        "isCorrect": false,
+                        "studentAnswerText": "Pernyataan & alasan benar, TIDAK berhubungan (B)",
+                        "correctAnswerText": "Pernyataan benar, alasan salah (C)"
+                    }
+                ]
+            }
+        ],
         "students": [],
         "quizzes": []
     },
@@ -14971,6 +16953,20 @@
             "added_minutes": 5,
             "new_ends_at": 1795015574,
             "responded_at": 1795015274
+        },
+        {
+            "id": "req_7c5b1d1c7dfb287f",
+            "token_hash": "5cae27f49b9e96a7988c9fb766e151ac110525fbe616af349a32303776413add",
+            "nis": "250053",
+            "name": "AHMAD ZIYAD ASSYAFIQ",
+            "class": "VIII A (UNGGULAN MIPA)",
+            "quiz_id": "quiz-1794921157572",
+            "quiz_title": "UB Informatika Semester Ganjil 2026-2027",
+            "requested_at": 1795063016,
+            "status": "APPROVED",
+            "added_minutes": 5,
+            "new_ends_at": 1795063323,
+            "responded_at": 1795063023
         }
     ],
     "settings": {

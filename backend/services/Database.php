@@ -68,6 +68,14 @@ class Database {
         unset($q);
 
         $db['results'] = $db['results'] ?? [];
+        foreach ($db['results'] as &$r) {
+            if (empty($r['id'])) {
+                $r['id'] = !empty($r['review_token']) ? ('res_' . substr($r['review_token'], 0, 16)) : ('res_' . bin2hex(random_bytes(8)));
+                $dirty = true;
+            }
+        }
+        unset($r);
+
         $db['review_settings'] = $db['review_settings'] ?? [];
         $db['retake_permissions'] = $db['retake_permissions'] ?? [];
         $db['students'] = $db['students'] ?? [];

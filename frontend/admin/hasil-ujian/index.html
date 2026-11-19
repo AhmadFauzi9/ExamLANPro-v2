@@ -358,14 +358,11 @@
             await fetchDataFromAPI();
             allResults = [...(dbData.results || [])];
             
-            // Sertakan juga siswa yang sedang aktif mengerjakan soal di lab sebagai "Hasil Sementara"
+            // Sertakan juga siswa yang sedang aktif mengerjakan soal di lab sebagai "Hasil Sementara" (termasuk yang sedang ujian ulang / remedial)
             const activeAttempts = dbData.active_attempts ? Object.values(dbData.active_attempts) : [];
-            const finishedKeys = new Set(allResults.map(r => `${r.nis}|${r.code}`));
 
             activeAttempts.forEach(att => {
                 if (!att || att.finished) return;
-                const key = `${att.nis}|${att.quiz_id}`;
-                if (finishedKeys.has(key)) return;
 
                 const quiz = (dbData.questions || []).find(q => q.id === att.quiz_id);
                 const qOrder = att.question_order || [];
@@ -599,6 +596,14 @@
             const endIdx = Math.min(startIdx + perPage, total);
             const pageData = filteredResults.slice(startIdx, endIdx);
 
+            // Hitung duplikasi pengerjaan per siswa per kuis untuk pelabelan attempt / remedial
+            const studentExamCounts = {};
+            allResults.forEach(item => {
+                const k = (item.nis || '') + '_' + (item.code || item.quiz_id || '');
+                if (!studentExamCounts[k]) studentExamCounts[k] = [];
+                studentExamCounts[k].push(item);
+            });
+
             if (total === 0) {
                 tbody.innerHTML = `
                     <tr>
@@ -612,11 +617,24 @@
                 tbody.innerHTML = pageData.map((s, idx) => {
                     const rowNumber = startIdx + idx + 1;
                     const globalIdx = startIdx + idx;
-                    const itemKey = `${s.nis || ''}|${s.code || ''}`;
+                    const itemKey = getResultKey(s);
                     const isChecked = selectedKeys.has(itemKey);
                     const score = Number(s.score ?? 0);
                     const isInProgress = !!s.is_in_progress;
                     const isPassed = score >= 75;
+
+                    const studentKey = (s.nis || '') + '_' + (s.code || s.quiz_id || '');
+                    const recordsForStudent = studentExamCounts[studentKey] || [];
+                    let attemptBadge = '';
+                    if (recordsForStudent.length > 1) {
+                        const recIdx = recordsForStudent.indexOf(s);
+                        const attemptNum = recordsForStudent.length - (recIdx >= 0 ? recIdx : 0);
+                        if (attemptNum > 1 || isInProgress) {
+                            attemptBadge = `<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200 shrink-0" title="Ujian Ulang / Remedial (Percobaan ke-${attemptNum})"><i class="fa-solid fa-rotate-left text-[9px]"></i> Remedial (${attemptNum})</span>`;
+                        } else {
+                            attemptBadge = `<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600 border border-slate-200 shrink-0" title="Ujian Utama (Percobaan 1)"><i class="fa-solid fa-clock-rotate-left text-[9px]"></i> Ujian Utama</span>`;
+                        }
+                    }
 
                     let scoreBadge = isPassed
                         ? `<span class="inline-block px-2.5 py-0.5 rounded-lg text-xs font-black bg-emerald-100 text-emerald-800">${score}</span>`
@@ -637,11 +655,16 @@
                     return `
                         <tr class="hover:bg-slate-50/80 transition ${isInProgress ? 'bg-sky-50/20' : ''}">
                             <td class="p-3 text-center">
-                                ${isInProgress ? `<span class="text-slate-300 text-[10px]">-</span>` : `<input type="checkbox" class="result-row-check w-3.5 h-3.5 rounded border-slate-300 text-brand-600 focus:ring-brand-500 cursor-pointer" data-result-key="${encodeURIComponent(s.nis || '')}|${encodeURIComponent(s.code || '')}" ${isChecked ? 'checked' : ''} onchange="toggleResultSelection('${encodeURIComponent(s.nis || '')}|${encodeURIComponent(s.code || '')}', this.checked)">`}
+                                ${isInProgress ? `<span class="text-slate-300 text-[10px]">-</span>` : `<input type="checkbox" class="result-row-check w-3.5 h-3.5 rounded border-slate-300 text-brand-600 focus:ring-brand-500 cursor-pointer" data-result-key="${encodeURIComponent(itemKey)}" ${isChecked ? 'checked' : ''} onchange="toggleResultSelection('${encodeURIComponent(itemKey)}', this.checked)">`}
                             </td>
                             <td class="p-3 text-center font-bold text-slate-400 whitespace-nowrap">${rowNumber}</td>
                             <td class="p-3 font-mono font-bold text-brand-700 whitespace-nowrap">${escapeHtml(s.nis || '-')}</td>
-                            <td class="p-3 font-bold text-slate-800 whitespace-nowrap min-w-[200px]">${escapeHtml(s.name || '-')}</td>
+                            <td class="p-3 whitespace-nowrap min-w-[200px]">
+                                <div class="flex items-center gap-1.5 flex-wrap">
+                                    <span class="font-bold text-slate-800">${escapeHtml(s.name || '-')}</span>
+                                    ${attemptBadge}
+                                </div>
+                            </td>
                             <td class="p-3 text-slate-600 whitespace-nowrap">${escapeHtml(s.class || '-')}</td>
                             <td class="p-3 font-medium text-slate-700 max-w-[180px] truncate" title="${escapeHtml(s.title || s.code || '-')}">${escapeHtml(s.title || s.code || '-')}</td>
                             <td class="p-3 text-center font-bold text-emerald-600 whitespace-nowrap">${s.correct ?? 0}</td>
@@ -653,7 +676,7 @@
                                 <div class="flex items-center justify-center gap-1">
                                     ${isInProgress ? `
                                         <a href="../monitoring/" class="px-2.5 py-1 bg-brand-50 text-brand-700 hover:bg-brand-100 border border-brand-200 rounded-lg font-bold text-[11px] transition flex items-center gap-1 shadow-2xs" data-tooltip="Lihat Siswa di Monitoring Ujian Live">
-                                            <i class="fa-solid fa-tower-broadcast text-[10px]"></i> Pantau Live
+                                             <i class="fa-solid fa-tower-broadcast text-[10px]"></i> Pantau Live
                                         </a>
                                     ` : `
                                         <button type="button" onclick="showStudentDetailModal(${globalIdx})" class="px-2 py-1 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded-lg font-bold text-[11px] transition flex items-center gap-1 shadow-2xs" data-tooltip="Lihat Lembar Jawaban Siswa per Butir Soal">
@@ -662,7 +685,7 @@
                                         <button type="button" onclick="allowRetake('${String(s.nis || '').replace(/'/g, "\\'")}', '${String(s.code || '').replace(/'/g, "\\'")}')" class="px-2 py-1 bg-amber-50 text-amber-700 hover:bg-amber-100 border border-amber-200 rounded-lg font-bold text-[11px] transition flex items-center gap-1 shadow-2xs" data-tooltip="Izinkan Remedial / Ujian Ulang">
                                             <i class="fa-solid fa-rotate-left text-[10px]"></i> Ulang
                                         </button>
-                                        <button type="button" onclick="deleteResult('${String(s.nis || '').replace(/'/g, "\\'")}', '${String(s.code || '').replace(/'/g, "\\'")}')" class="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition" data-tooltip="Hapus Hasil Ujian">
+                                        <button type="button" onclick="deleteSingleResult(${globalIdx})" class="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition" data-tooltip="Hapus Hasil Ujian Ini">
                                             <i class="fa-solid fa-trash-can text-xs"></i>
                                         </button>
                                     `}
@@ -768,14 +791,54 @@
             }
         }
 
+        // Helper untuk mendapatkan key unik setiap rekaman hasil ujian
+        function getResultKey(s) {
+            if (!s) return '';
+            return s.id || s.review_token || `${s.nis || ''}|${s.code || s.quiz_id || ''}|${s.date || ''}`;
+        }
+
         // Delete Result Actions
-        async function deleteResult(nis, quizCode) {
-            if (!await appConfirm(`Hapus hasil ujian NIS ${nis} dari paket ini? Data akan dihapus secara permanen.`, 'Hapus Hasil Ujian', 'Batal', 'Hapus')) return;
+        async function deleteSingleResult(globalIdx) {
+            const item = filteredResults[globalIdx];
+            if (!item) return;
+
+            const name = item.name || `NIS ${item.nis}`;
+            const dateStr = item.date ? ` (${item.date})` : '';
+            const scoreStr = item.score !== undefined ? ` - Nilai: ${item.score}` : '';
+            const confirmMsg = `Hapus rekaman nilai ${name}${scoreStr}${dateStr}? Data ini akan dihapus secara permanen dan tidak akan mempengaruhi rekaman nilai lainnya untuk siswa ini.`;
+
+            if (!await appConfirm(confirmMsg, 'Hapus Hasil Ujian', 'Batal', 'Hapus')) return;
+
+            try {
+                const payload = {
+                    nis: item.nis || '',
+                    quiz_id: item.code || item.quiz_id || '',
+                    id: item.id || '',
+                    review_token: item.review_token || '',
+                    date: item.date || ''
+                };
+                const res = await fetch(`${API_URL}?action=delete_result`, {
+                    method: 'POST', credentials: 'same-origin',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+                const uKey = getResultKey(item);
+                selectedKeys.delete(uKey);
+                appAlert(data.message || 'Hasil berhasil dihapus.', 'Hapus Hasil');
+                await loadResultsData();
+            } catch (err) {
+                appAlert('Gagal menghapus hasil ujian.', 'Gagal');
+            }
+        }
+
+        async function deleteResult(nis, quizCode, date = '', reviewToken = '', id = '') {
+            if (!await appConfirm(`Hapus hasil ujian NIS ${nis}? Data akan dihapus secara permanen.`, 'Hapus Hasil Ujian', 'Batal', 'Hapus')) return;
             try {
                 const res = await fetch(`${API_URL}?action=delete_result`, {
                     method: 'POST', credentials: 'same-origin',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ nis, quiz_id: quizCode })
+                    body: JSON.stringify({ nis, quiz_id: quizCode, date, review_token: reviewToken, id })
                 });
                 const data = await res.json();
                 appAlert(data.message || 'Hasil berhasil dihapus.', 'Hapus Hasil');
@@ -789,10 +852,25 @@
             if (!selectedKeys.size) return;
             if (!await appConfirm(`Hapus ${selectedKeys.size} hasil ujian yang dipilih?`, 'Hapus Hasil Terpilih', 'Batal', 'Hapus')) return;
             
-            const items = Array.from(selectedKeys).map(k => {
-                const parts = k.split('|');
-                return { nis: parts[0], quiz_id: parts[1] };
+            const items = [];
+            selectedKeys.forEach(k => {
+                const found = allResults.find(r => getResultKey(r) === k);
+                if (found) {
+                    items.push({
+                        id: found.id || '',
+                        review_token: found.review_token || '',
+                        date: found.date || '',
+                        nis: found.nis || '',
+                        quiz_id: found.code || found.quiz_id || ''
+                    });
+                }
             });
+
+            if (!items.length) {
+                selectedKeys.clear();
+                updateSelectionBar();
+                return;
+            }
 
             try {
                 const res = await fetch(`${API_URL}?action=delete_results`, {

@@ -330,7 +330,9 @@ class ExamAttemptController {
         [$score, $correct, $wrong, $breakdowns] = ScoringEngine::calculateSubmission($quiz, $questionOrder, $answers);
 
         $token = bin2hex(random_bytes(32));
+        $recordId = 'res_' . bin2hex(random_bytes(16));
         $record = [
+            'id' => $recordId,
             'nis' => $nis,
             'name' => (string)$attempt['name'],
             'class' => (string)$attempt['class'],

@@ -60,121 +60,74 @@ class MonitoringController {
         }
 
         $monitoring = [];
-        $trackedNis = [];
+        $trackedAttemptKeys = [];
+        $studentsWithAttempt = [];
 
-        // 1. Sesi siswa yang login / standby / mengerjakan / selesai
         $db['student_sessions'] = $db['student_sessions'] ?? [];
-        foreach ($db['student_sessions'] as $nisKey => $sess) {
-            $sNis = (string)($sess['nis'] ?? $nisKey);
-            if ($sNis === '') continue;
+        $db['active_attempts'] = $db['active_attempts'] ?? [];
 
-            $matchedAttempt = null;
-            if (!empty($sess['attempt_token_hash']) && isset($db['active_attempts'][$sess['attempt_token_hash']])) {
-                $matchedAttempt = $db['active_attempts'][$sess['attempt_token_hash']];
-            } else {
-                foreach ($db['active_attempts'] as $candidate) {
-                    if ((string)($candidate['nis'] ?? '') === $sNis) {
-                        if (!$matchedAttempt || ($candidate['started_at'] ?? 0) > ($matchedAttempt['started_at'] ?? 0)) {
-                            $matchedAttempt = $candidate;
-                        }
-                    }
-                }
+        // Hitung urutan attempt per siswa & per kuis (untuk mendeteksi pengerjaan remedial / attempt ke-2 dst)
+        $attemptsByStudentQuiz = [];
+        foreach ($db['active_attempts'] as $attKey => $a) {
+            $aNis = (string)($a['nis'] ?? '');
+            $qid = (string)($a['quiz_id'] ?? '');
+            if ($aNis === '') continue;
+            $sqKey = $aNis . '_' . $qid;
+            if (!isset($attemptsByStudentQuiz[$sqKey])) {
+                $attemptsByStudentQuiz[$sqKey] = [];
             }
-
-            $qid = (string)($sess['quiz_id'] ?? ($matchedAttempt['quiz_id'] ?? ''));
-            $title = (!empty($sess['quiz_title']) && $sess['quiz_title'] !== $qid) ? $sess['quiz_title'] : ($quizMap[$qid] ?? ($qid !== '' ? $qid : '-'));
-
-            $lastSeen = (int)($sess['last_seen'] ?? ($matchedAttempt['updated_at'] ?? $sess['login_at'] ?? time()));
-            $endsAt = (int)($matchedAttempt['ends_at'] ?? ($sess['ends_at'] ?? 0));
-            $startedAt = (int)($matchedAttempt['started_at'] ?? ($sess['started_at'] ?? $sess['login_at'] ?? 0));
-
-            $rawStatus = strtoupper((string)($sess['status'] ?? 'STANDBY'));
-            $status = 'STANDBY';
-            $statusLabel = 'Login / Standby';
-
-            if ($rawStatus === 'FINISHED' || !empty($matchedAttempt['finished'])) {
-                $status = 'FINISHED';
-                $statusLabel = 'Selesai';
-            } elseif ($matchedAttempt && $endsAt > 0 && time() > $endsAt) {
-                $status = 'TIME_OVER';
-                $statusLabel = 'Waktu Habis';
-            } elseif ($rawStatus === 'WORKING' || $matchedAttempt) {
-                if (time() - $lastSeen > 90) {
-                    $status = 'OFFLINE';
-                    $statusLabel = 'Terputus';
-                } else {
-                    $status = 'WORKING';
-                    $statusLabel = 'Sedang Mengerjakan';
-                }
-            } else {
-                if (time() - $lastSeen > 180) {
-                    $status = 'OFFLINE';
-                    $statusLabel = 'Terputus';
-                } else {
-                    $status = 'STANDBY';
-                    $statusLabel = 'Login / Standby';
-                }
-            }
-
-            $ansCount = 0;
-            $totalQ = 0;
-            if ($matchedAttempt) {
-                $totalQ = count($matchedAttempt['question_order'] ?? []);
-                if (!empty($matchedAttempt['answers']) && is_array($matchedAttempt['answers'])) {
-                    foreach ($matchedAttempt['answers'] as $ansVal) {
-                        if ($ansVal !== null && $ansVal !== '' && $ansVal !== []) {
-                            $ansCount++;
-                        }
-                    }
-                }
-            }
-
-            $monitoring[] = [
-                'nis' => $sNis,
-                'name' => (string)($sess['name'] ?? ($matchedAttempt['name'] ?? $sNis)),
-                'class' => (string)($sess['class'] ?? ($matchedAttempt['class'] ?? '-')),
-                'quiz_id' => $qid,
-                'quiz_title' => $title,
-                'status' => $status,
-                'status_label' => $statusLabel,
-                'question' => $totalQ > 0 ? "{$ansCount} / {$totalQ}" : '-',
-                'answered_count' => $ansCount,
-                'total_questions' => $totalQ,
-                'score' => $sess['score'] ?? ($matchedAttempt['score'] ?? null),
-                'started_at' => $startedAt,
-                'ends_at' => $endsAt,
-                'updated_at' => $lastSeen,
-                'login_at' => (int)($sess['login_at'] ?? $startedAt),
-                'finished_at' => (int)($sess['finished_at'] ?? 0),
-                'time_remaining' => ($status === 'WORKING' && $endsAt > time()) ? ($endsAt - time()) : 0,
-                'ip' => (string)($sess['ip'] ?? ''),
-                'violations_count' => (int)($sess['violations_count'] ?? ($matchedAttempt['violations_count'] ?? 0))
+            $attemptsByStudentQuiz[$sqKey][] = [
+                'key' => $attKey,
+                'started_at' => (int)($a['started_at'] ?? 0)
             ];
-            $trackedNis[$sNis] = true;
         }
 
-        // 2. Sertakan attempt aktif/terbaru dalam 24 jam terakhir yang belum tercatat di student_sessions
-        $oneDayAgo = time() - 86400;
-        foreach ($db['active_attempts'] as $a) {
+        $attemptNumberMap = [];
+        foreach ($attemptsByStudentQuiz as $sqKey => $list) {
+            usort($list, fn($x, $y) => $x['started_at'] <=> $y['started_at']);
+            foreach ($list as $idx => $item) {
+                $attemptNumberMap[$item['key']] = [
+                    'number' => $idx + 1,
+                    'total' => count($list),
+                    'is_retake' => ($idx > 0)
+                ];
+            }
+        }
+
+        // 1. Masukkan semua pengerjaan ujian (attempt) dari active_attempts
+        // Menampilkan baik ujian utama maupun ujian ulang/remedial secara lengkap mandiri
+        $cutoffTime = time() - (7 * 86400); // 7 hari terakhir
+        foreach ($db['active_attempts'] as $attKey => $a) {
             $aNis = (string)($a['nis'] ?? '');
-            if ($aNis === '' || isset($trackedNis[$aNis])) continue;
+            if ($aNis === '') continue;
+
             $aStart = (int)($a['started_at'] ?? 0);
             $aUpdated = (int)($a['updated_at'] ?? $aStart);
-            if ($aStart < $oneDayAgo && $aUpdated < $oneDayAgo) continue;
+            if ($aStart > 0 && $aStart < $cutoffTime && $aUpdated < $cutoffTime) {
+                continue;
+            }
 
             $qid = (string)($a['quiz_id'] ?? '');
             $title = (!empty($a['quiz_title']) && $a['quiz_title'] !== $qid) ? $a['quiz_title'] : ($quizMap[$qid] ?? ($qid !== '' ? $qid : '-'));
             $endsAt = (int)($a['ends_at'] ?? 0);
 
+            // Sinkronkan data real-time dari student_sessions jika sesi aktif siswa mengarah ke attempt ini
+            $sess = $db['student_sessions'][$aNis] ?? null;
+            $isCurrentSession = ($sess && (($sess['attempt_token_hash'] ?? '') === $attKey || empty($sess['attempt_token_hash'])));
+            $lastSeen = $isCurrentSession ? (int)($sess['last_seen'] ?? $aUpdated) : $aUpdated;
+            $ip = $isCurrentSession ? (string)($sess['ip'] ?? ($a['ip'] ?? '')) : (string)($a['ip'] ?? '');
+            $violationsCount = $isCurrentSession ? (int)($sess['violations_count'] ?? ($a['violations_count'] ?? 0)) : (int)($a['violations_count'] ?? 0);
+
             $status = 'WORKING';
             $statusLabel = 'Sedang Mengerjakan';
-            if (!empty($a['finished'])) {
+
+            if (!empty($a['finished']) || ($isCurrentSession && ($sess['status'] ?? '') === 'FINISHED')) {
                 $status = 'FINISHED';
                 $statusLabel = 'Selesai';
             } elseif ($endsAt > 0 && time() > $endsAt) {
                 $status = 'TIME_OVER';
                 $statusLabel = 'Waktu Habis';
-            } elseif (time() - $aUpdated > 90) {
+            } elseif (time() - $lastSeen > 90) {
                 $status = 'OFFLINE';
                 $statusLabel = 'Terputus';
             }
@@ -189,28 +142,97 @@ class MonitoringController {
                 }
             }
 
+            $attMeta = $attemptNumberMap[$attKey] ?? ['number' => 1, 'total' => 1, 'is_retake' => false];
+
             $monitoring[] = [
+                'attempt_id' => $attKey,
                 'nis' => $aNis,
-                'name' => (string)($a['name'] ?? $aNis),
-                'class' => (string)($a['class'] ?? '-'),
+                'name' => (string)($a['name'] ?? ($sess['name'] ?? $aNis)),
+                'class' => (string)($a['class'] ?? ($sess['class'] ?? '-')),
                 'quiz_id' => $qid,
                 'quiz_title' => $title,
+                'attempt_number' => $attMeta['number'],
+                'total_attempts' => $attMeta['total'],
+                'is_retake' => $attMeta['is_retake'],
                 'status' => $status,
                 'status_label' => $statusLabel,
                 'question' => $totalQ > 0 ? "{$ansCount} / {$totalQ}" : '-',
                 'answered_count' => $ansCount,
                 'total_questions' => $totalQ,
-                'score' => $a['score'] ?? null,
+                'score' => $a['score'] ?? ($sess['score'] ?? null),
                 'started_at' => $aStart,
                 'ends_at' => $endsAt,
-                'updated_at' => $aUpdated,
-                'login_at' => $aStart,
+                'updated_at' => $lastSeen,
+                'login_at' => (int)($sess['login_at'] ?? $aStart),
                 'finished_at' => !empty($a['finished']) ? $aUpdated : 0,
                 'time_remaining' => ($status === 'WORKING' && $endsAt > time()) ? ($endsAt - time()) : 0,
-                'violations_count' => (int)($a['violations_count'] ?? 0),
-                'ip' => (string)($a['ip'] ?? '')
+                'violations_count' => $violationsCount,
+                'ip' => $ip
             ];
-            $trackedNis[$aNis] = true;
+
+            $trackedAttemptKeys[$attKey] = true;
+            if ($status === 'WORKING' || $status === 'OFFLINE') {
+                $studentsWithAttempt[$aNis] = true;
+            }
+        }
+
+        // 2. Sertakan siswa yang berstatus STANDBY (sudah login tapi belum mulai ujian / baru klik izinkan ujian)
+        foreach ($db['student_sessions'] as $nisKey => $sess) {
+            $sNis = (string)($sess['nis'] ?? $nisKey);
+            if ($sNis === '') continue;
+
+            $sessAttHash = (string)($sess['attempt_token_hash'] ?? '');
+            if ($sessAttHash !== '' && isset($trackedAttemptKeys[$sessAttHash])) {
+                continue;
+            }
+
+            // Jika siswa sudah memiliki attempt aktif yang sedang berjalan, jangan buat duplikat baris standby
+            if (!empty($studentsWithAttempt[$sNis])) {
+                continue;
+            }
+
+            $rawStatus = strtoupper((string)($sess['status'] ?? 'STANDBY'));
+            if ($rawStatus === 'FINISHED' && $sessAttHash !== '') {
+                continue;
+            }
+
+            $qid = (string)($sess['quiz_id'] ?? '');
+            $title = (!empty($sess['quiz_title']) && $sess['quiz_title'] !== $qid) ? $sess['quiz_title'] : ($quizMap[$qid] ?? ($qid !== '' ? $qid : '-'));
+            $lastSeen = (int)($sess['last_seen'] ?? ($sess['login_at'] ?? time()));
+            $startedAt = (int)($sess['started_at'] ?? ($sess['login_at'] ?? 0));
+
+            $status = 'STANDBY';
+            $statusLabel = 'Login / Standby';
+            if (time() - $lastSeen > 180) {
+                $status = 'OFFLINE';
+                $statusLabel = 'Terputus';
+            }
+
+            $monitoring[] = [
+                'attempt_id' => '',
+                'nis' => $sNis,
+                'name' => (string)($sess['name'] ?? $sNis),
+                'class' => (string)($sess['class'] ?? '-'),
+                'quiz_id' => $qid,
+                'quiz_title' => $title,
+                'attempt_number' => 1,
+                'total_attempts' => 1,
+                'is_retake' => false,
+                'status' => $status,
+                'status_label' => $statusLabel,
+                'question' => '-',
+                'answered_count' => 0,
+                'total_questions' => 0,
+                'score' => $sess['score'] ?? null,
+                'started_at' => $startedAt,
+                'ends_at' => (int)($sess['ends_at'] ?? 0),
+                'updated_at' => $lastSeen,
+                'login_at' => (int)($sess['login_at'] ?? $startedAt),
+                'finished_at' => (int)($sess['finished_at'] ?? 0),
+                'time_remaining' => 0,
+                'ip' => (string)($sess['ip'] ?? ''),
+                'violations_count' => (int)($sess['violations_count'] ?? 0)
+            ];
         }
 
         // Urutkan peserta: aktivitas terbaru di atas
@@ -477,11 +499,18 @@ class MonitoringController {
         AuthMiddleware::teacherOnly();
         $input = Utils::getJsonInput();
         $nis = trim((string)($input['nis'] ?? ''));
+        $attemptId = trim((string)($input['attempt_id'] ?? ''));
         $db = Database::load();
         $stName = $nis;
 
+        if ($attemptId !== '' && isset($db['active_attempts'][$attemptId])) {
+            $db['active_attempts'][$attemptId]['reset_allowed'] = true;
+            if ($nis === '') $nis = (string)($db['active_attempts'][$attemptId]['nis'] ?? '');
+            $stName = $db['active_attempts'][$attemptId]['name'] ?? $stName;
+        }
+
         if (isset($db['student_sessions'][$nis])) {
-            $stName = $db['student_sessions'][$nis]['name'] ?? $nis;
+            $stName = $db['student_sessions'][$nis]['name'] ?? $stName;
             $db['student_sessions'][$nis]['reset_allowed'] = true;
             $db['student_sessions'][$nis]['is_locked'] = false;
             $db['student_sessions'][$nis]['status'] = 'STANDBY';
@@ -507,15 +536,28 @@ class MonitoringController {
         AuthMiddleware::teacherOnly();
         $input = Utils::getJsonInput();
         $nis = trim((string)($input['nis'] ?? ''));
+        $attemptId = trim((string)($input['attempt_id'] ?? ''));
         $db = Database::load();
 
         $matchedAttempt = null;
         $matchedKey = null;
-        foreach ($db['active_attempts'] as $ak => $cand) {
-            if ((string)($cand['nis'] ?? '') === $nis && empty($cand['finished'])) {
+
+        if ($attemptId !== '' && isset($db['active_attempts'][$attemptId])) {
+            $cand = $db['active_attempts'][$attemptId];
+            if ((string)($cand['nis'] ?? '') === $nis || $nis === '') {
                 $matchedAttempt = $cand;
-                $matchedKey = $ak;
-                break;
+                $matchedKey = $attemptId;
+                if ($nis === '') $nis = (string)($cand['nis'] ?? '');
+            }
+        }
+
+        if (!$matchedAttempt) {
+            foreach ($db['active_attempts'] as $ak => $cand) {
+                if ((string)($cand['nis'] ?? '') === $nis && empty($cand['finished'])) {
+                    $matchedAttempt = $cand;
+                    $matchedKey = $ak;
+                    break;
+                }
             }
         }
 
@@ -547,7 +589,9 @@ class MonitoringController {
 
         [$score, $correct, $wrong, $breakdowns] = ScoringEngine::calculateSubmission($quiz, $questionOrder, $answers);
         $token = bin2hex(random_bytes(32));
+        $recordId = 'res_' . bin2hex(random_bytes(16));
         $record = [
+            'id' => $recordId,
             'nis' => $nis,
             'name' => (string)$matchedAttempt['name'],
             'class' => (string)$matchedAttempt['class'],
@@ -569,9 +613,11 @@ class MonitoringController {
         $db['active_attempts'][$matchedKey]['score'] = $score;
 
         if (isset($db['student_sessions'][$nis])) {
-            $db['student_sessions'][$nis]['status'] = 'FINISHED';
-            $db['student_sessions'][$nis]['finished_at'] = time();
-            $db['student_sessions'][$nis]['score'] = $score;
+            if (empty($db['student_sessions'][$nis]['attempt_token_hash']) || $db['student_sessions'][$nis]['attempt_token_hash'] === $matchedKey) {
+                $db['student_sessions'][$nis]['status'] = 'FINISHED';
+                $db['student_sessions'][$nis]['finished_at'] = time();
+                $db['student_sessions'][$nis]['score'] = $score;
+            }
         }
 
         AuditService::log($db, 'Selesaikan paksa ujian', "{$nis} - " . (string)$matchedAttempt['name'], "Diselesaikan oleh guru pengawas. Nilai: {$score}");
@@ -579,6 +625,119 @@ class MonitoringController {
         Response::json([
             'status' => 'success',
             'message' => "Ujian siswa {$matchedAttempt['name']} ({$nis}) berhasil dikumpulkan paksa. Nilai akhir: {$score}."
+        ]);
+    }
+
+    public static function deleteStudentSession() {
+        AuthMiddleware::teacherOnly();
+        $input = Utils::getJsonInput();
+        $nis = trim((string)($input['nis'] ?? ''));
+        $attemptId = trim((string)($input['attempt_id'] ?? ''));
+        if ($nis === '' && $attemptId === '') {
+            Response::error('Identitas sesi siswa tidak valid.', 400);
+        }
+
+        $db = Database::load();
+        $studentName = $nis;
+
+        if ($attemptId !== '') {
+            // Hapus HANYA attempt spesifik ini
+            if (isset($db['active_attempts'][$attemptId])) {
+                $studentName = $db['active_attempts'][$attemptId]['name'] ?? $studentName;
+                if ($nis === '') $nis = (string)($db['active_attempts'][$attemptId]['nis'] ?? '');
+                unset($db['active_attempts'][$attemptId]);
+            }
+            if (isset($db['student_sessions'][$nis]) && ($db['student_sessions'][$nis]['attempt_token_hash'] ?? '') === $attemptId) {
+                unset($db['student_sessions'][$nis]);
+            }
+            AuditService::log($db, 'Hapus sesi attempt monitoring', "{$nis} - {$studentName}", "Attempt {$attemptId} dihapus dari monitoring");
+        } else {
+            // Hapus seluruh sesi monitoring siswa ini
+            if (isset($db['student_sessions'][$nis])) {
+                $studentName = $db['student_sessions'][$nis]['name'] ?? $nis;
+                unset($db['student_sessions'][$nis]);
+            }
+
+            foreach ($db['active_attempts'] as $ak => $av) {
+                if ((string)($av['nis'] ?? '') === $nis) {
+                    if ($studentName === $nis && !empty($av['name'])) {
+                        $studentName = $av['name'];
+                    }
+                    unset($db['active_attempts'][$ak]);
+                }
+            }
+
+            if (isset($db['time_extension_requests'][$nis])) {
+                unset($db['time_extension_requests'][$nis]);
+            }
+            AuditService::log($db, 'Hapus sesi monitoring', "{$nis} - {$studentName}", 'Dihapus dari layar monitoring');
+        }
+
+        Database::save($db);
+        Response::json([
+            'status' => 'success',
+            'message' => "Sesi monitoring siswa {$studentName} ({$nis}) berhasil dihapus."
+        ]);
+    }
+
+    public static function deleteStudentSessions() {
+        AuthMiddleware::teacherOnly();
+        $input = Utils::getJsonInput();
+        $items = $input['items'] ?? $input['nis_list'] ?? [];
+        if (!is_array($items) || empty($items)) {
+            Response::error('Tidak ada siswa yang dipilih.', 400);
+        }
+
+        $db = Database::load();
+        $deletedCount = 0;
+
+        foreach ($items as $item) {
+            $nis = '';
+            $attemptId = '';
+            if (is_array($item)) {
+                $nis = trim((string)($item['nis'] ?? ''));
+                $attemptId = trim((string)($item['attempt_id'] ?? ''));
+            } else {
+                $raw = trim((string)$item);
+                if (strpos($raw, '::') !== false) {
+                    [$nis, $attemptId] = explode('::', $raw, 2);
+                } else {
+                    $nis = $raw;
+                }
+            }
+
+            if ($nis === '' && $attemptId === '') continue;
+
+            if ($attemptId !== '') {
+                if (isset($db['active_attempts'][$attemptId])) {
+                    unset($db['active_attempts'][$attemptId]);
+                    $deletedCount++;
+                }
+                if ($nis !== '' && isset($db['student_sessions'][$nis]) && ($db['student_sessions'][$nis]['attempt_token_hash'] ?? '') === $attemptId) {
+                    unset($db['student_sessions'][$nis]);
+                }
+            } else {
+                if (isset($db['student_sessions'][$nis])) {
+                    unset($db['student_sessions'][$nis]);
+                    $deletedCount++;
+                }
+                foreach ($db['active_attempts'] as $ak => $av) {
+                    if ((string)($av['nis'] ?? '') === $nis) {
+                        unset($db['active_attempts'][$ak]);
+                        $deletedCount++;
+                    }
+                }
+                if (isset($db['time_extension_requests'][$nis])) {
+                    unset($db['time_extension_requests'][$nis]);
+                }
+            }
+        }
+
+        AuditService::log($db, 'Hapus sesi monitoring terpilih', "{$deletedCount} pengerjaan/sesi siswa dihapus");
+        Database::save($db);
+        Response::json([
+            'status' => 'success',
+            'message' => "{$deletedCount} data monitoring siswa berhasil dihapus."
         ]);
     }
 
