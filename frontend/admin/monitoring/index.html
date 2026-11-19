@@ -225,10 +225,11 @@
                                     </th>
                                     <th class="w-10 text-center">No</th>
                                     <th>NIS</th>
-                                    <th>Nama Siswa</th>
+                                    <th class="min-w-[170px] whitespace-nowrap">Nama Siswa</th>
                                     <th>Kelas</th>
                                     <th>Soal Ujian</th>
                                     <th class="text-center">Status Kehadiran</th>
+                                    <th class="text-center whitespace-nowrap" title="Status Pelanggaran / Curang Siswa">Pelanggaran</th>
                                     <th class="text-center min-w-[130px]">Progres Siswa</th>
                                     <th class="min-w-[100px]">Sisa Waktu</th>
                                     <th>Terakhir Aktif</th>
@@ -237,7 +238,7 @@
                             </thead>
                             <tbody id="monitoring-tbody" class="divide-y divide-slate-100">
                                 <tr>
-                                    <td colspan="11" class="p-8 text-center text-slate-400">
+                                    <td colspan="12" class="p-8 text-center text-slate-400">
                                         <i class="fa-solid fa-spinner fa-spin mr-1"></i> Memuat data monitoring real-time...
                                     </td>
                                 </tr>
@@ -562,7 +563,7 @@
             } catch (e) {
                 if (!silent) {
                     document.getElementById('monitoring-tbody').innerHTML = `
-                        <tr><td colspan="11" class="p-6 text-center text-rose-500 font-medium">Gagal memuat data monitoring dari server. Pastikan server aktif.</td></tr>
+                        <tr><td colspan="12" class="p-6 text-center text-rose-500 font-medium">Gagal memuat data monitoring dari server. Pastikan server aktif.</td></tr>
                     `;
                 }
             }
@@ -678,7 +679,7 @@
             if (!filteredMonitoring.length) {
                 tbody.innerHTML = `
                     <tr>
-                        <td colspan="11" class="p-8 text-center text-slate-400">
+                        <td colspan="12" class="p-8 text-center text-slate-400">
                             <i class="fa-solid fa-mug-hot text-2xl mb-1 text-slate-300"></i>
                             <p class="text-xs">Tidak ada data peserta ujian yang sesuai filter.</p>
                         </td>
@@ -723,20 +724,22 @@
                         <td class="p-3 text-center font-bold text-slate-400">${rowNum}</td>
                         <td class="p-3 font-mono font-bold text-brand-700">${escapeHtml(m.nis || '-')}</td>
                         <td class="p-3">
-                            <div class="flex items-center gap-1.5 flex-wrap">
-                                <span class="font-bold text-slate-800">${escapeHtml(m.name || '-')}</span>
+                            <div class="flex items-center gap-1.5 flex-nowrap">
+                                <span class="font-bold text-slate-800 whitespace-nowrap">${escapeHtml(m.name || '-')}</span>
                                 ${retakeBadge}
-                                ${m.violations_count > 0 ? `
-                                    <button type="button" onclick="openViolationModal('${escapeHtml(m.nis)}', '${escapeHtml(m.name || m.nis)}', ${m.violations_count})" class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black bg-rose-500 hover:bg-rose-600 active:scale-95 text-white shadow-xs animate-pulse transition cursor-pointer" title="Klik untuk melihat rincian ${m.violations_count}x kecurangan siswa">
-                                        <i class="fa-solid fa-triangle-exclamation"></i> ${m.violations_count}x Curang
-                                    </button>
-                                ` : ''}
                             </div>
-                            ${m.ip ? `<span class="text-[10px] text-slate-400 font-mono"><i class="fa-solid fa-desktop text-[9px] mr-0.5"></i>${escapeHtml(m.ip)}</span>` : ''}
+                            ${m.ip ? `<span class="text-[10px] text-slate-400 font-mono block"><i class="fa-solid fa-desktop text-[9px] mr-0.5"></i>${escapeHtml(m.ip)}</span>` : ''}
                         </td>
                         <td class="p-3 text-slate-600 whitespace-nowrap">${escapeHtml(m.class || '-')}</td>
                         <td class="p-3 font-medium text-slate-700 max-w-[190px] truncate" title="${escapeHtml(m.quiz_title || '-')}">${escapeHtml(m.quiz_title || '-')}</td>
                         <td class="p-3 text-center whitespace-nowrap">${statusBadge}</td>
+                        <td class="p-3 text-center whitespace-nowrap">
+                            ${m.violations_count > 0 ? `
+                                <button type="button" onclick="openViolationModal('${escapeHtml(m.nis)}', '${escapeHtml(m.name || m.nis)}', ${m.violations_count})" class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black bg-rose-500 hover:bg-rose-600 active:scale-95 text-white shadow-xs animate-pulse transition cursor-pointer" title="Klik untuk melihat rincian ${m.violations_count}x kecurangan siswa">
+                                    <i class="fa-solid fa-triangle-exclamation"></i> ${m.violations_count}x Curang
+                                </button>
+                            ` : `<span class="text-slate-300 font-bold text-xs">-</span>`}
+                        </td>
                         <td class="p-3 text-center whitespace-nowrap">${progressHtml}</td>
                         <td class="p-3 whitespace-nowrap">${timeHtml}</td>
                         <td class="p-3 text-slate-500 font-mono text-[11px] whitespace-nowrap" title="${m.updated_at ? new Date(m.updated_at * 1000).toLocaleString('id-ID') : '-'}">
