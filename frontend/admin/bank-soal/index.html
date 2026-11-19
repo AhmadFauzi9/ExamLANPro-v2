@@ -121,7 +121,7 @@
             
             <form id="quiz-form" onsubmit="saveQuiz(event)" class="flex-1 flex flex-col min-h-0">
                 <!-- Form Body (Area yang dapat di-scroll) -->
-                <div class="flex-1 overflow-y-auto custom-scrollbar p-5 sm:p-7 space-y-3.5 text-xs">
+                <div class="flex-1 overflow-y-auto custom-scrollbar p-5 sm:p-7 sm:pt-1 space-y-3.5 text-xs">
                     <input type="hidden" id="edit-quiz-id">
 
                     <div>
@@ -560,11 +560,14 @@
                                 </div>
 
                                 <!-- Durasi Waktu -->
-                                <div class="text-right shrink-0 pl-2.5 border-l border-slate-200/70 align-items-center">
-                                    <span class="font-bold text-slate-700 text-xs flex items-center justify-end gap-1">
-                                        <i class="fa-regular fa-clock text-slate-400"></i> ${q.duration || 60}m
-                                    </span>
-                                    <p class="text-[10px] text-slate-400 mt-0.5 leading-none">Durasi</p>
+                                <div class="flex text-right border-l pl-2.5 border-slate-200/70 items-center justify-center gap-2.5">
+                                    <div class="w-8 h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center text-xs font-bold shrink-0">
+                                        <i class="fa-solid fa-clock text-[10px]"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <span class="font-extrabold text-slate-800 text-xs">${q.duration || 60} m</span>
+                                        <p class="text-[10px] text-slate-500 mt-0.5 leading-tight truncate">Durasi</p>
+                                    </div>
                                 </div>
                             </div>
 

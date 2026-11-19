@@ -24,7 +24,7 @@
                 <header class="bg-slate-900 text-white shadow-sm sticky top-0 z-30">
                     <div class="w-full px-4 sm:px-6 py-2.5 flex justify-between items-center">
                         <div class="flex items-center gap-3">
-                            <div class="bg-brand-600 p-1.5 rounded-lg text-white flex items-center justify-center">
+                            <div class="bg-brand-600 p-1.5 px-2 rounded-lg text-white flex items-center justify-center">
                                 <i class="fa-solid fa-network-wired text-base"></i>
                             </div>
                             <div>
@@ -35,21 +35,15 @@
                             </div>
                         </div>
 
-                        <div class="flex items-center gap-2 sm:gap-3">
-                            <span class="hidden md:inline-flex items-center gap-1.5 bg-slate-800 text-slate-300 text-xs px-2.5 py-1 rounded-lg border border-slate-700">
-                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                                <span>Host: ${host}</span>
-                            </span>
-
+                        <div class="flex items-center">
                             <!-- Admin Extension Bell (Link ke Halaman Permintaan Waktu) -->
-                            <a id="admin-bell-btn" href="${GURU_BASE}notifikasi/" class="relative p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 transition focus:outline-none" title="Permintaan Waktu Siswa">
+                            <a id="admin-bell-btn" href="${GURU_BASE}notifikasi/" class="relative p-2 px-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700 transition focus:outline-none" title="Permintaan Waktu Siswa">
                                 <i class="fa-solid fa-bell text-base"></i>
                                 <span id="admin-bell-dot" class="hidden absolute top-1 right-1 w-2.5 h-2.5 bg-rose-500 rounded-full ring-2 ring-slate-900 animate-pulse"></span>
                             </a>
 
-                            <button type="button" onclick="toggleModal('lan-guide-modal', true)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs font-semibold transition flex items-center gap-1.5 border border-slate-700">
-                                <i class="fa-solid fa-circle-question text-xs"></i>
-                                <span class="hidden sm:inline">Info LAN</span>
+                            <button type="button" onclick="toggleModal('lan-guide-modal', true)" class="relative p-2 px-3 hover:text-white hover:bg-slate-700 text-slate-200 rounded-xl text-xs font-semibold transition flex items-center">
+                                <i class="fa-solid fa-circle-question text-base"></i>                                
                             </button>
                         </div>
                     </div>

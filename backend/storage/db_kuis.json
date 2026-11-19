@@ -12,10 +12,10 @@
             "start_at": "",
             "end_at": "",
             "status": "DRAFT",
-            "pin": "W285ZH",
+            "pin": "4LRVZM",
             "pin_enabled": true,
             "pin_auto_refresh": true,
-            "pin_updated_at": 1795090385,
+            "pin_updated_at": 1795097619,
             "questions": [
                 {
                     "type": "mc",
@@ -900,10 +900,10 @@
             "start_at": "",
             "end_at": "",
             "status": "ACTIVE",
-            "pin": "8ETUD9",
+            "pin": "R9G23M",
             "pin_enabled": true,
             "pin_auto_refresh": true,
-            "pin_updated_at": 1795090496,
+            "pin_updated_at": 1795097760,
             "questions": [
                 {
                     "type": "mc",
@@ -11829,251 +11829,11 @@
             "class": "VIII A (UNGGULAN MIPA)",
             "quiz_id": "quiz-1795077173322",
             "quiz_title": "Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8",
-            "status": "FINISHED",
+            "status": "STANDBY",
             "ip": "::1",
             "login_at": 1795077224,
-            "last_seen": 1795079300,
-            "attempt_token_hash": "4d70014432721da15a24f07c70346289512ba6675feaf4f0d0a47ef5ec560932",
-            "started_at": 1795077235,
-            "ends_at": 1795079266,
-            "violations_count": 33,
-            "last_violation_at": 1795079300,
-            "last_violation_type": "exit_fullscreen",
-            "violations_log": [
-                {
-                    "time": "19/11/2026 09:33:57",
-                    "timestamp": 1795077237,
-                    "type": "app_switch",
-                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
-                    "count": 1
-                },
-                {
-                    "time": "19/11/2026 09:34:31",
-                    "timestamp": 1795077271,
-                    "type": "tab_switch",
-                    "details": "Pindah tab atau meminimalkan jendela browser",
-                    "count": 2
-                },
-                {
-                    "time": "19/11/2026 09:35:09",
-                    "timestamp": 1795077309,
-                    "type": "tab_switch",
-                    "details": "Pindah tab atau meminimalkan jendela browser",
-                    "count": 3
-                },
-                {
-                    "time": "19/11/2026 09:37:58",
-                    "timestamp": 1795077478,
-                    "type": "tab_switch",
-                    "details": "Pindah tab atau meminimalkan jendela browser",
-                    "count": 4
-                },
-                {
-                    "time": "19/11/2026 09:40:15",
-                    "timestamp": 1795077615,
-                    "type": "tab_switch",
-                    "details": "Pindah tab atau meminimalkan jendela browser",
-                    "count": 5
-                },
-                {
-                    "time": "19/11/2026 09:42:27",
-                    "timestamp": 1795077747,
-                    "type": "tab_switch",
-                    "details": "Pindah tab atau meminimalkan jendela browser",
-                    "count": 6
-                },
-                {
-                    "time": "19/11/2026 09:44:43",
-                    "timestamp": 1795077883,
-                    "type": "tab_switch",
-                    "details": "Pindah tab atau meminimalkan jendela browser",
-                    "count": 7
-                },
-                {
-                    "time": "19/11/2026 09:44:57",
-                    "timestamp": 1795077897,
-                    "type": "tab_switch",
-                    "details": "Pindah tab atau meminimalkan jendela browser",
-                    "count": 8
-                },
-                {
-                    "time": "19/11/2026 09:49:13",
-                    "timestamp": 1795078153,
-                    "type": "app_switch",
-                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
-                    "count": 9
-                },
-                {
-                    "time": "19/11/2026 09:49:22",
-                    "timestamp": 1795078162,
-                    "type": "app_switch",
-                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
-                    "count": 10
-                },
-                {
-                    "time": "19/11/2026 09:50:59",
-                    "timestamp": 1795078259,
-                    "type": "app_switch",
-                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
-                    "count": 11
-                },
-                {
-                    "time": "19/11/2026 09:51:02",
-                    "timestamp": 1795078262,
-                    "type": "tab_switch",
-                    "details": "Pindah tab atau meminimalkan jendela browser",
-                    "count": 12
-                },
-                {
-                    "time": "19/11/2026 09:51:31",
-                    "timestamp": 1795078291,
-                    "type": "app_switch",
-                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
-                    "count": 13
-                },
-                {
-                    "time": "19/11/2026 09:53:19",
-                    "timestamp": 1795078399,
-                    "type": "app_switch",
-                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
-                    "count": 14
-                },
-                {
-                    "time": "19/11/2026 09:54:04",
-                    "timestamp": 1795078444,
-                    "type": "app_switch",
-                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
-                    "count": 15
-                },
-                {
-                    "time": "19/11/2026 09:54:06",
-                    "timestamp": 1795078446,
-                    "type": "tab_switch",
-                    "details": "Pindah tab atau meminimalkan jendela browser",
-                    "count": 16
-                },
-                {
-                    "time": "19/11/2026 09:55:12",
-                    "timestamp": 1795078512,
-                    "type": "tab_switch",
-                    "details": "Pindah tab atau meminimalkan jendela browser",
-                    "count": 17
-                },
-                {
-                    "time": "19/11/2026 09:55:23",
-                    "timestamp": 1795078523,
-                    "type": "tab_switch",
-                    "details": "Pindah tab atau meminimalkan jendela browser",
-                    "count": 18
-                },
-                {
-                    "time": "19/11/2026 09:58:58",
-                    "timestamp": 1795078738,
-                    "type": "tab_switch",
-                    "details": "Pindah tab atau meminimalkan jendela browser",
-                    "count": 19
-                },
-                {
-                    "time": "19/11/2026 10:00:07",
-                    "timestamp": 1795078807,
-                    "type": "tab_switch",
-                    "details": "Pindah tab atau meminimalkan jendela browser",
-                    "count": 20
-                },
-                {
-                    "time": "19/11/2026 10:01:51",
-                    "timestamp": 1795078911,
-                    "type": "tab_switch",
-                    "details": "Pindah tab atau meminimalkan jendela browser",
-                    "count": 21
-                },
-                {
-                    "time": "19/11/2026 10:02:10",
-                    "timestamp": 1795078930,
-                    "type": "tab_switch",
-                    "details": "Pindah tab atau meminimalkan jendela browser",
-                    "count": 22
-                },
-                {
-                    "time": "19/11/2026 10:02:42",
-                    "timestamp": 1795078962,
-                    "type": "app_switch",
-                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
-                    "count": 23
-                },
-                {
-                    "time": "19/11/2026 10:04:23",
-                    "timestamp": 1795079063,
-                    "type": "app_switch",
-                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
-                    "count": 24
-                },
-                {
-                    "time": "19/11/2026 10:04:36",
-                    "timestamp": 1795079076,
-                    "type": "tab_switch",
-                    "details": "Pindah tab atau meminimalkan jendela browser",
-                    "count": 25
-                },
-                {
-                    "time": "19/11/2026 10:07:12",
-                    "timestamp": 1795079232,
-                    "type": "exit_fullscreen",
-                    "details": "Keluar dari mode layar penuh (Full Screen)",
-                    "count": 26
-                },
-                {
-                    "time": "19/11/2026 10:07:37",
-                    "timestamp": 1795079257,
-                    "type": "exit_fullscreen",
-                    "details": "Keluar dari mode layar penuh (Full Screen)",
-                    "count": 27
-                },
-                {
-                    "time": "19/11/2026 10:07:39",
-                    "timestamp": 1795079259,
-                    "type": "app_switch",
-                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
-                    "count": 28
-                },
-                {
-                    "time": "19/11/2026 10:08:04",
-                    "timestamp": 1795079284,
-                    "type": "app_switch",
-                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
-                    "count": 29
-                },
-                {
-                    "time": "19/11/2026 10:08:12",
-                    "timestamp": 1795079292,
-                    "type": "app_switch",
-                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
-                    "count": 30
-                },
-                {
-                    "time": "19/11/2026 10:08:14",
-                    "timestamp": 1795079294,
-                    "type": "app_switch",
-                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
-                    "count": 31
-                },
-                {
-                    "time": "19/11/2026 10:08:19",
-                    "timestamp": 1795079299,
-                    "type": "app_switch",
-                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
-                    "count": 32
-                },
-                {
-                    "time": "19/11/2026 10:08:20",
-                    "timestamp": 1795079300,
-                    "type": "exit_fullscreen",
-                    "details": "Keluar dari mode layar penuh (Full Screen)",
-                    "count": 33
-                }
-            ],
-            "finished_at": 1795079300,
-            "score": 80
+            "last_seen": 1795095098,
+            "attempt_token_hash": "4d70014432721da15a24f07c70346289512ba6675feaf4f0d0a47ef5ec560932"
         },
         "250051": {
             "nis": "250051",
@@ -15996,6 +15756,13 @@
             "action": "Selesai ujian",
             "target": "250051 - AHMAD WAHYU RAMADHANI",
             "detail": "Nilai: 100 (5 Benar, 0 Salah) - Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8"
+        },
+        {
+            "time": "2026-11-19T14:31:38+01:00",
+            "user": "guru",
+            "action": "Login siswa",
+            "target": "250031 - AHMAD GHALI WARNA",
+            "detail": "Kelas VIII A (UNGGULAN MIPA) (Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8)"
         }
     ],
     "backups": [
