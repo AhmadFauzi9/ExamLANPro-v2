@@ -105,126 +105,143 @@
 
     <!-- MODAL 1: Buat / Edit Paket Kuis -->
     <div id="quiz-modal" class="hidden fixed inset-0 bg-slate-950/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-2xl sm:max-w-3xl w-full p-6 sm:p-7 shadow-2xl space-y-4 max-h-[92vh] overflow-y-auto custom-scrollbar animate-in fade-in zoom-in-95 duration-150">
-            <div class="flex items-center justify-between border-b pb-3">
+        <div class="bg-white rounded-2xl max-w-lg sm:max-w-2xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+            <!-- Modal Header (Tetap / Tidak Ter-scroll) -->
+            <div class="px-5 py-4 sm:px-7 sm:py-5 border-b border-slate-200 flex items-center justify-between shrink-0 bg-white">
                 <div class="flex items-center gap-2.5">
                     <div class="w-9 h-9 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center text-lg font-bold">
                         <i class="fa-solid fa-folder-plus"></i>
                     </div>
                     <h3 id="quiz-modal-title" class="font-bold text-slate-800 text-sm sm:text-base">Buat Paket Kuis Baru</h3>
                 </div>
-                <button type="button" onclick="toggleModal('quiz-modal', false)" class="text-slate-400 hover:text-slate-600 p-1">
+                <button type="button" onclick="toggleModal('quiz-modal', false)" class="text-slate-400 hover:text-slate-600 p-1 rounded-lg transition" title="Tutup Modal">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
+            
+            <form id="quiz-form" onsubmit="saveQuiz(event)" class="flex-1 flex flex-col min-h-0">
+                <!-- Form Body (Area yang dapat di-scroll) -->
+                <div class="flex-1 overflow-y-auto custom-scrollbar p-5 sm:p-7 space-y-3.5 text-xs">
+                    <input type="hidden" id="edit-quiz-id">
 
-            <form id="quiz-form" onsubmit="saveQuiz(event)" class="space-y-3.5 text-xs">
-                <input type="hidden" id="edit-quiz-id">
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Judul Paket Ujian / Kuis <span class="text-rose-500">*</span></label>
+                        <input type="text" id="quiz-title-input" required placeholder="Contoh: Asesmen Sumatif Akhir Semester Informatika" class="w-full px-3 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none text-xs">
+                    </div>
 
-                <div>
-                    <label class="block font-semibold text-slate-700 mb-1">Judul Paket Ujian / Kuis <span class="text-rose-500">*</span></label>
-                    <input type="text" id="quiz-title-input" required placeholder="Contoh: Asesmen Sumatif Akhir Semester Informatika" class="w-full px-3 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none text-xs">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Jenis Soal <span class="text-rose-500">*</span></label>
+                            <select id="quiz-type-input" required class="w-full px-3 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none text-xs bg-white">
+                                <option value="">Pilih Jenis Soal</option>
+                                <option value="mc">1. Pilihan Ganda (mc)</option>
+                                <option value="complex">2. Pilihan Ganda Kompleks (complex)</option>
+                                <option value="cause_effect">3. Sebab Akibat (cause_effect)</option>
+                                <option value="case_analysis">4. Analisis Kasus (case_analysis)</option>
+                                <option value="matching">5. Menjodohkan (matching)</option>
+                                <option value="mixed">Campuran (5 Bentuk Soal)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Status Publikasi</label>
+                            <select id="quiz-status-input" class="w-full px-3 py-2 rounded-xl border border-slate-200 outline-none text-xs bg-white">
+                                <option value="ACTIVE">Aktif (Tampil ke Siswa)</option>
+                                <option value="DRAFT">Draf (Disembunyikan)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1" title="Berapa banyak soal yang dikerjakan siswa dari total soal di bank">Soal Dikerjakan</label>
+                            <input type="number" id="quiz-max-questions-input" min="0" placeholder="0 = Semua Soal" class="w-full px-3 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none text-xs" title="Jumlah soal yang akan dikerjakan siswa (misal 25 dari 50 soal). Kosongkan atau isi 0 untuk mengerjakan seluruh soal.">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Durasi (Menit) <span class="text-rose-500">*</span></label>
+                            <input type="number" id="quiz-duration-input" required min="1" max="360" value="60" class="w-full px-3 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none text-xs">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Mata Pelajaran</label>
+                            <input type="text" id="quiz-subject-input" placeholder="Contoh: Informatika" class="w-full px-3 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none text-xs">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Kelas</label>
+                            <input type="text" id="quiz-class-input" placeholder="Contoh: 7, 8, 9" class="w-full px-3 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none text-xs">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Waktu Mulai</label>
+                            <input type="datetime-local" id="quiz-start-input" class="w-full px-3 py-1.5 rounded-xl border border-slate-200 outline-none text-xs">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Waktu Selesai</label>
+                            <input type="datetime-local" id="quiz-end-input" class="w-full px-3 py-1.5 rounded-xl border border-slate-200 outline-none text-xs">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Deskripsi / Petunjuk Pengerjaan</label>
+                        <textarea id="quiz-desc-input" rows="3" placeholder="Tuliskan petunjuk pengerjaan ujian, ketentuan, atau catatan tambahan bagi siswa (opsional)..." class="w-full px-3.5 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none text-xs custom-scrollbar resize-y"></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <!-- Token Akses -->
+                        <div class="p-3.5 bg-amber-50/80 border border-amber-200 rounded-xl space-y-2.5">
+                            <div class="flex items-center justify-between">
+                                <label class="block font-bold text-amber-950 text-xs flex items-center gap-1.5">
+                                    <i class="fa-solid fa-key text-amber-600"></i>Token Akses Siswa
+                                </label>
+                                <button type="button" onclick="generateQuizToken()" class="btn-compact py-1 px-2.5 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs flex items-center gap-2 rounded-lg shadow-2xs transition">
+                                    <small class="flex items-center gap-2">
+                                        <i class="fa-solid fa-arrows-rotate text-[10px]"></i> Acak Token
+                                    </small>
+                                </button>
+                            </div>
+                            <div>
+                                <p class="text-[10px] pl-1 text-amber-900 font-medium mb-1">
+                                    Kosongkan jika tidak ingin menggunakan token.
+                                </p>
+                                <input type="text" id="quiz-pin-input" maxlength="6" placeholder="KOSONG = Tanpa Token" class="w-full px-3 py-1.5 rounded-lg border border-amber-300 font-mono font-bold tracking-widest text-slate-800 uppercase focus:ring-2 focus:ring-amber-500 outline-none text-xs bg-white">
+                            </div>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[10px] text-amber-800">
+                                <label class="flex items-center gap-1.5 pl-1 cursor-pointer font-semibold select-none text-amber-900 shrink-0" title="Token otomatis berganti tiap 10 menit dengan toleransi waktu">
+                                    <input type="checkbox" id="quiz-pin-auto-refresh-input" checked class="rounded rounded-full border-amber-300 text-amber-600 focus:ring-amber-500">
+                                    <span>Otomatis ganti tiap 10 menit</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Bagian Import Soal Massal -->
+                        <div class="p-3.5 bg-amber-50/80 border border-amber-200 rounded-xl space-y-2.5">
+                            <div class="flex items-center justify-between">
+                                <label class="block font-bold text-amber-950 text-xs flex items-center gap-1.5">
+                                    <i class="fa-solid fa-file-import text-amber-600"></i> Import Soal (Word / Excel)
+                                </label>
+                                <button type="button" onclick="openGuideFromQuizForm()" class="btn-compact py-1 px-2.5 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs flex items-center gap-2 rounded-lg shadow-2xs transition" title="Buka dialog unduh template resmi Word & Excel">
+                                    <small class="flex items-center gap-2">
+                                        <i class="fa-solid fa-download text-xs"></i> <span>Template</span>
+                                    </small>
+                                </button>
+                            </div>
+                            <div>
+                                <p class="text-[10px] pl-1 text-amber-900 font-medium mb-1">
+                                    Soal Format (.docx, .doc, .xlsx)
+                                </p>
+                                <input type="file" id="quiz-file-import-input" accept=".docx, .doc, .xlsx, .xls, .csv, .txt" class="w-full text-xs text-slate-500 file:mr-2.5 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:text-[11px] file:font-semibold file:bg-amber-100 file:text-amber-800 hover:file:bg-amber-200 border border-amber-200 rounded-xl p-1 bg-white">
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <div>
-                        <label class="block font-semibold text-slate-700 mb-1">Durasi (Menit) <span class="text-rose-500">*</span></label>
-                        <input type="number" id="quiz-duration-input" required min="1" max="360" value="60" class="w-full px-3 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none text-xs">
-                    </div>
-                    <div>
-                        <label class="block font-semibold text-slate-700 mb-1">Jenis Soal <span class="text-rose-500">*</span></label>
-                        <select id="quiz-type-input" required class="w-full px-3 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none text-xs bg-white">
-                            <option value="">-- Pilih Jenis Soal --</option>
-                            <option value="mc">1. Pilihan Ganda (mc)</option>
-                            <option value="complex">2. Pilihan Ganda Kompleks (complex)</option>
-                            <option value="cause_effect">3. Sebab Akibat (cause_effect)</option>
-                            <option value="case_analysis">4. Analisis Kasus (case_analysis)</option>
-                            <option value="matching">5. Menjodohkan (matching)</option>
-                            <option value="mixed">Campuran (5 Bentuk Soal)</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block font-semibold text-slate-700 mb-1" title="Berapa banyak soal yang dikerjakan siswa dari total soal di bank">Soal Dikerjakan</label>
-                        <input type="number" id="quiz-max-questions-input" min="0" placeholder="0 = Semua Soal" class="w-full px-3 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none text-xs" title="Jumlah soal yang akan dikerjakan siswa (misal 25 dari 50 soal). Kosongkan atau isi 0 untuk mengerjakan seluruh soal.">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block font-semibold text-slate-700 mb-1">Mata Pelajaran</label>
-                        <input type="text" id="quiz-subject-input" placeholder="Contoh: Informatika" class="w-full px-3 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none text-xs">
-                    </div>
-                    <div>
-                        <label class="block font-semibold text-slate-700 mb-1">Target Kelas</label>
-                        <input type="text" id="quiz-class-input" placeholder="Contoh: 7A, 7B" class="w-full px-3 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none text-xs">
-                    </div>
-                </div>
-
-                <!-- Token Akses -->
-                <div class="bg-amber-50/70 p-3 rounded-xl border border-amber-200 space-y-1.5">
-                    <div class="flex items-center justify-between">
-                        <label class="block font-bold text-amber-900 text-xs">Token Akses Siswa (6 Karakter)</label>
-                        <button type="button" onclick="generateQuizToken()" class="text-[11px] text-amber-700 hover:text-amber-900 font-bold flex items-center gap-1">
-                            <i class="fa-solid fa-arrows-rotate text-[10px]"></i> Acak Token
-                        </button>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <input type="text" id="quiz-pin-input" maxlength="6" placeholder="KOSONG = Tanpa Token" class="w-full px-3 py-1.5 rounded-lg border border-amber-300 font-mono font-bold tracking-widest text-slate-800 uppercase focus:ring-2 focus:ring-amber-500 outline-none text-xs bg-white">
-                    </div>
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[10px] text-amber-800">
-                        <p>Jika diisi, siswa wajib memasukkan token ini saat akan mengerjakan ujian.</p>
-                        <label class="flex items-center gap-1.5 cursor-pointer font-semibold select-none text-amber-900 shrink-0" title="Token otomatis berganti tiap 10 menit dengan toleransi waktu">
-                            <input type="checkbox" id="quiz-pin-auto-refresh-input" checked class="rounded border-amber-300 text-amber-600 focus:ring-amber-500">
-                            <span>Otomatis ganti tiap 10 menit</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <div>
-                        <label class="block font-semibold text-slate-700 mb-1">Status Publikasi</label>
-                        <select id="quiz-status-input" class="w-full px-3 py-2 rounded-xl border border-slate-200 outline-none text-xs bg-white">
-                            <option value="ACTIVE">Aktif (Tampil ke Siswa)</option>
-                            <option value="DRAFT">Draf (Disembunyikan)</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block font-semibold text-slate-700 mb-1">Waktu Mulai</label>
-                        <input type="datetime-local" id="quiz-start-input" class="w-full px-3 py-1.5 rounded-xl border border-slate-200 outline-none text-xs">
-                    </div>
-                    <div>
-                        <label class="block font-semibold text-slate-700 mb-1">Waktu Selesai</label>
-                        <input type="datetime-local" id="quiz-end-input" class="w-full px-3 py-1.5 rounded-xl border border-slate-200 outline-none text-xs">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block font-semibold text-slate-700 mb-1">Deskripsi / Petunjuk Pengerjaan</label>
-                    <textarea id="quiz-desc-input" rows="3" placeholder="Tuliskan petunjuk pengerjaan ujian, ketentuan, atau catatan tambahan bagi siswa (opsional)..." class="w-full px-3.5 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none text-xs custom-scrollbar resize-y"></textarea>
-                </div>
-
-                <!-- Bagian Import Soal Massal -->
-                <div class="p-3.5 bg-amber-50/80 border border-amber-200 rounded-xl space-y-2.5">
-                    <div class="flex items-center justify-between">
-                        <label class="block font-bold text-amber-950 text-xs flex items-center gap-1.5">
-                            <i class="fa-solid fa-file-import text-amber-600"></i> Import Soal (Word / Excel)
-                        </label>
-                        <button type="button" onclick="openGuideFromQuizForm()" class="btn-compact py-1.5 px-3 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs flex items-center gap-1.5 rounded-lg shadow-2xs transition" title="Buka dialog unduh template resmi Word & Excel">
-                            <i class="fa-solid fa-download text-xs"></i> <span>Download Template Soal</span>
-                        </button>
-                    </div>
-
-                    <div>
-                        <p class="text-[10px] text-amber-900 font-medium mb-1">
-                            Pilih berkas soal (.docx, .doc, .xlsx, .txt) jika ingin langsung mengimpor butir soal saat paket disimpan:
-                        </p>
-                        <input type="file" id="quiz-file-import-input" accept=".docx, .doc, .xlsx, .xls, .csv, .txt" class="w-full text-xs text-slate-500 file:mr-2.5 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:text-[11px] file:font-semibold file:bg-amber-100 file:text-amber-800 hover:file:bg-amber-200 border border-amber-200 rounded-xl p-1 bg-white">
-                    </div>
-                </div>
-
-                <div class="pt-3 flex items-center justify-end gap-2 border-t">
-                    <button type="button" onclick="toggleModal('quiz-modal', false)" class="btn-compact border border-slate-300 text-slate-600 hover:bg-slate-50">Batal</button>
-                    <button type="submit" id="btn-save-quiz" class="btn-compact bg-brand-600 hover:bg-brand-700 text-white font-bold">Simpan</button>
+                <!-- Modal Footer (Tetap / Tidak Ter-scroll) -->
+                <div class="px-5 py-3.5 sm:px-7 sm:py-4 border-t border-slate-200 bg-slate-50/80 flex items-center justify-end gap-2 shrink-0">
+                    <button type="button" onclick="toggleModal('quiz-modal', false)" class="btn-compact border border-slate-300 text-slate-600 hover:bg-slate-100">Batal</button>
+                    <button type="submit" id="btn-save-quiz" class="btn-compact bg-brand-600 hover:bg-brand-700 text-white font-bold shadow-2xs">Simpan</button>
                 </div>
             </form>
         </div>
