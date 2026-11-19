@@ -763,7 +763,12 @@
                         credentials: 'same-origin',
                         body: formData
                     });
-                    const result = await res.json();
+                    let result;
+                    try {
+                        result = await res.json();
+                    } catch (parseErr) {
+                        throw new Error('Terjadi kendala saat membaca respon server.');
+                    }
                     if (!res.ok || result.status !== 'success') {
                         throw new Error(result.message || 'Gagal mengimpor file soal.');
                     }

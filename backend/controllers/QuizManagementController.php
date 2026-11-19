@@ -140,23 +140,27 @@ class QuizManagementController {
 
         $parsedQuestions = [];
 
-        if ($ext === 'docx') {
-            $parsedQuestions = QuestionParserService::parseDocx($fileTmp, $uploadsDir, $quizId);
-        } elseif ($ext === 'doc') {
-            $header = file_get_contents($fileTmp, false, null, 0, 4);
-            if ($header === "PK\x03\x04") {
+        try {
+            if ($ext === 'docx') {
                 $parsedQuestions = QuestionParserService::parseDocx($fileTmp, $uploadsDir, $quizId);
+            } elseif ($ext === 'doc') {
+                $header = file_get_contents($fileTmp, false, null, 0, 4);
+                if ($header === "PK\x03\x04") {
+                    $parsedQuestions = QuestionParserService::parseDocx($fileTmp, $uploadsDir, $quizId);
+                } else {
+                    $parsedQuestions = QuestionParserService::parseDocHtml($fileTmp, $uploadsDir, $quizId);
+                }
+            } elseif ($ext === 'xlsx' || $ext === 'xls') {
+                $parsedQuestions = QuestionParserService::parseXlsx($fileTmp, $uploadsDir, $quizId);
+            } elseif ($ext === 'txt') {
+                $parsedQuestions = QuestionParserService::parseText(file_get_contents($fileTmp), $quizId);
+            } elseif ($ext === 'csv') {
+                $parsedQuestions = QuestionParserService::parseCsv($fileTmp, $quizId);
             } else {
-                $parsedQuestions = QuestionParserService::parseDocHtml($fileTmp, $uploadsDir, $quizId);
+                Response::error('Format berkas tidak didukung. Harap unggah berkas .docx, .doc, .xlsx, .xls, .csv, atau .txt.', 400);
             }
-        } elseif ($ext === 'xlsx' || $ext === 'xls') {
-            $parsedQuestions = QuestionParserService::parseXlsx($fileTmp, $uploadsDir, $quizId);
-        } elseif ($ext === 'txt') {
-            $parsedQuestions = QuestionParserService::parseText(file_get_contents($fileTmp), $quizId);
-        } elseif ($ext === 'csv') {
-            $parsedQuestions = QuestionParserService::parseCsv($fileTmp, $quizId);
-        } else {
-            Response::error('Format berkas tidak didukung. Harap unggah berkas .docx, .doc, .xlsx, .xls, .csv, atau .txt.', 400);
+        } catch (\Throwable $e) {
+            Response::error('Gagal memproses berkas soal: ' . $e->getMessage(), 400);
         }
 
         if (isset($parsedQuestions['error'])) {

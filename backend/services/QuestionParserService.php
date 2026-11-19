@@ -26,6 +26,8 @@ class QuestionParserService {
 
             $optMap = [];
             $matchingPairs = [];
+            $hasExplicitType = false;
+            $hasExplicitKey = false;
 
             foreach ($lines as $line) {
                 $line = trim($line);
@@ -33,6 +35,7 @@ class QuestionParserService {
 
                 if (preg_match('/^TIPE\s*[:=]\s*(.+)$/i', $line, $m)) {
                     $qData['type'] = strtolower(trim($m[1]));
+                    $hasExplicitType = true;
                 } elseif (preg_match('/^PERTANYAAN\s*[:=]\s*(.+)$/i', $line, $m)) {
                     $qData['question'] = trim($m[1]);
                 } elseif (preg_match('/^KASUS\s*[:=]\s*(.+)$/i', $line, $m)) {
@@ -52,16 +55,19 @@ class QuestionParserService {
                     }
                 } elseif (preg_match('/^(PASANGAN|JODOHKAN)\s*[:=]?$/i', $line)) {
                     // Header penanda bagian menjodohkan
-                } elseif ((strpos($line, ' - ') !== false || strpos($line, ' = ') !== false || strpos($line, '=') !== false) && !preg_match('/^(TIPE|PERTANYAAN|KASUS|PERNYATAAN|ALASAN|KUNCI|PEMBAHASAN)/i', $line)) {
-                    $matchingPairs[] = $line;
+                } elseif ((strpos($line, ' - ') !== false || strpos($line, ' = ') !== false || strpos($line, '=') !== false) && !preg_match('/^(TIPE|PERTANYAAN|KASUS|PERNYATAAN|ALASAN|KUNCI|PEMBAHASAN|TEMPLATE|PETUNJUK)/i', $line)) {
+                    if ($qData['type'] === 'matching' || strtolower($qData['type']) === 'jodohkan') {
+                        $matchingPairs[] = $line;
+                    }
                 } elseif (preg_match('/^([A-E])\s*[:\.]\s*(.+)$/i', $line, $m)) {
                     $letter = strtoupper($m[1]);
                     $optMap[$letter] = trim($m[2]);
                 } elseif (preg_match('/^KUNCI(\s*JAWABAN)?\s*[:=]\s*(.+)$/i', $line, $m)) {
                     $qData['key_raw'] = trim($m[2]);
+                    $hasExplicitKey = true;
                 } elseif (preg_match('/^PEMBAHASAN\s*[:=]\s*(.+)$/i', $line, $m)) {
                     $qData['explanation'] = trim($m[1]);
-                } elseif (empty($qData['question']) && !preg_match('/^(TEMPLATE|PETUNJUK|SOAL\s+\d+)/i', $line)) {
+                } elseif (empty($qData['question']) && !preg_match('/^(TEMPLATE|PETUNJUK|SOAL\s+\d+|Paket\s+\d+)/i', $line)) {
                     $qData['question'] = $line;
                 }
             }
@@ -192,11 +198,37 @@ class QuestionParserService {
             }
 
             unset($qData['key_raw']);
+
+            // Lewati blok yang bukan merupakan butir soal (misal: header dokumen/petunjuk template)
+            if (!$hasExplicitType && !$hasExplicitKey && empty($optMap) && empty($matchingPairs) && empty($qData['statement']) && empty($qData['passage'])) {
+                continue;
+            }
+
             if (!empty($qData['question']) || !empty($qData['statement'])) {
                 $questions[] = $qData;
             }
         }
         return $questions;
+    }
+
+    public static function parseDocx(string $filePath, string $uploadsDir, string $quizId = 'quiz') {
+        return self::parseDocxQuestions($filePath, $uploadsDir, $quizId);
+    }
+
+    public static function parseDocHtml(string $filePath, string $uploadsDir, string $quizId = 'quiz') {
+        return self::parseHtmlDocQuestions($filePath, $uploadsDir, $quizId);
+    }
+
+    public static function parseXlsx(string $filePath, string $uploadsDir, string $quizId = 'quiz') {
+        return self::parseXlsxQuestionsWithImages($filePath, $uploadsDir, $quizId);
+    }
+
+    public static function parseText(string $text, string $quizId = 'quiz'): array {
+        return self::parseTextQuestions($text, $quizId);
+    }
+
+    public static function parseCsv(string $filePath, string $quizId = 'quiz') {
+        return self::parseCsvQuestions($filePath, $quizId);
     }
 
     public static function parseDocxQuestions(string $filePath, string $uploadsDir, string $quizId = 'quiz') {
