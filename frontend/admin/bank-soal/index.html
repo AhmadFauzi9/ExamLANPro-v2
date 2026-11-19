@@ -228,7 +228,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div>    
 
     <!-- MODAL 2: Tambah / Edit Butir Soal -->
     <div id="question-modal" class="hidden fixed inset-0 bg-slate-950/60 backdrop-blur-xs z-[60] flex items-center justify-center p-4">
@@ -428,6 +428,18 @@
             renderQuizCards();
         }
 
+        // Palet warna latar belakang kartu paket kuis
+        const QUIZ_CARD_THEMES = [
+            { bg: 'bg-sky-50', border: 'border-sky-200', hoverBorder: 'hover:border-sky-300' },
+            { bg: 'bg-emerald-50', border: 'border-emerald-200', hoverBorder: 'hover:border-emerald-300' },
+            { bg: 'bg-purple-50', border: 'border-purple-200', hoverBorder: 'hover:border-purple-300' },
+            { bg: 'bg-amber-50', border: 'border-amber-200', hoverBorder: 'hover:border-amber-300' },
+            { bg: 'bg-rose-50', border: 'border-rose-200', hoverBorder: 'hover:border-rose-300' },
+            { bg: 'bg-teal-50', border: 'border-teal-200', hoverBorder: 'hover:border-teal-300' },
+            { bg: 'bg-indigo-50', border: 'border-indigo-200', hoverBorder: 'hover:border-indigo-300' },
+            { bg: 'bg-orange-50', border: 'border-orange-200', hoverBorder: 'hover:border-orange-300' }
+        ];
+
         // Render Quiz Cards Grid
         function renderQuizCards() {
             const container = document.getElementById('quiz-cards-container');
@@ -442,7 +454,9 @@
                 return;
             }
 
-            container.innerHTML = filteredQuizzes.map(q => {
+            container.innerHTML = filteredQuizzes.map((q, idx) => {
+                const themeIdx = allQuizzes.findIndex(item => item.id === q.id);
+                const theme = QUIZ_CARD_THEMES[(themeIdx >= 0 ? themeIdx : idx) % QUIZ_CARD_THEMES.length];
                 const qCount = (q.questions || []).length;
                 const isDraft = (q.status || 'ACTIVE') === 'DRAFT';
                 const statusBadge = isDraft
@@ -484,15 +498,15 @@
                 `;
 
                 return `
-                    <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs hover:shadow-md transition-all duration-200 p-4 sm:p-5 flex flex-col justify-between space-y-3.5 group">
+                    <div class="${theme.bg} ${theme.border} ${theme.hoverBorder} rounded-2xl border shadow-2xs hover:shadow-md transition-all duration-200 p-4 sm:p-5 flex flex-col justify-between space-y-3.5 group">
                         <!-- Top: Badges & Judul -->
                         <div class="space-y-2">
                             <div class="flex items-center justify-between gap-2">
                                 <div class="flex items-center gap-1.5 flex-wrap">
-                                    <span class="text-[11px] font-bold text-brand-700 bg-brand-50 px-2.5 py-0.5 rounded-lg border border-brand-200/80 truncate max-w-[150px]" title="${escapeHtml(q.subject || 'Umum')}">
+                                    <span class="text-[11px] font-bold text-brand-700 bg-white/90 px-2.5 py-0.5 rounded-lg border border-brand-200/80 truncate max-w-[150px]" title="${escapeHtml(q.subject || 'Umum')}">
                                         ${escapeHtml(q.subject || 'Umum')}
                                     </span>
-                                    <span class="text-[10px] font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-lg border border-slate-200">
+                                    <span class="text-[10px] font-semibold text-slate-600 bg-white/80 px-2 py-0.5 rounded-lg border border-slate-200">
                                         ${q.class ? 'Kelas ' + escapeHtml(q.class) : 'Semua Kelas'}
                                     </span>
                                 </div>
@@ -510,7 +524,7 @@
                         </div>
 
                         <!-- Info Box: Soal Aktif per Total Soal & Durasi Waktu -->
-                        <div class="bg-slate-50/90 rounded-xl p-3 border border-slate-100 space-y-2.5">
+                        <div class="bg-white/85 rounded-xl p-3 border border-white/60 space-y-2.5 shadow-2xs">
                             <div class="flex items-center justify-between gap-2 text-xs">
                                 <!-- Info Soal Aktif per Total Soal -->
                                 <div class="flex items-center gap-2.5 min-w-0 flex-1">
@@ -551,12 +565,12 @@
                             <button type="button" onclick="openQuestionManager('${q.id}')" class="flex-1 btn-compact py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 border border-brand-200 rounded-xl flex items-center justify-center gap-1.5 font-bold transition text-xs shadow-2xs">
                                 <i class="fa-solid fa-list-check text-xs"></i> <span>Kelola Soal (${qCount})</span>
                             </button>
-                            <button type="button" onclick="openQuizModal('${q.id}')" class="p-2 w-[36px] h-[36px] text-slate-600 hover:text-brand-600 hover:bg-slate-100 rounded-xl border border-slate-200 transition" title="Edit Paket Kuis">
+                            <button type="button" onclick="openQuizModal('${q.id}')" class="p-2 w-[36px] h-[36px] bg-white text-slate-600 hover:text-brand-600 hover:bg-slate-50 rounded-xl border border-slate-200 transition" title="Edit Paket Kuis">
                                 <span class="flex items-center justify-center">
                                     <i class="fa-solid fa-pen text-xs"></i>
                                 </span>
                             </button>
-                            <button type="button" onclick="deleteQuiz('${q.id}')" class="p-2 w-[36px] h-[36px] text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl border border-slate-200 transition" title="Hapus Paket Kuis">
+                            <button type="button" onclick="deleteQuiz('${q.id}')" class="p-2 w-[36px] h-[36px] bg-white text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl border border-slate-200 transition" title="Hapus Paket Kuis">
                                 <span class="flex items-center justify-center">
                                     <i class="fa-solid fa-trash-can text-xs"></i>
                                 </span>
