@@ -770,9 +770,12 @@
 
         async function confirmResetSession(nis, name, attemptId = '') {
             const ok = await showConfirm(
-                `Yakin ingin mereset sesi ujian untuk siswa <b>${escapeHtml(name)}</b> (NIS: ${escapeHtml(nis)})?<br><br>` +
-                `<div class="p-2.5 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-900 leading-relaxed text-left">` +
-                `<b>Fungsi Reset Sesi:</b> Kunci sesi siswa akan dibuka. Siswa dapat login kembali dari komputer lab dan <u>langsung melanjutkan pengerjaan dari nomor terakhir tanpa kehilangan jawaban</u>.` +
+                `<div class="space-y-3">` +
+                `<p class="text-slate-700">Yakin ingin mereset sesi ujian untuk siswa <b>${escapeHtml(name)}</b> (NIS: <span class="font-mono font-medium text-slate-900">${escapeHtml(nis)}</span>)?</p>` +
+                `<div class="p-3 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-900 leading-relaxed text-left flex items-start gap-2.5">` +
+                `<i class="fa-solid fa-triangle-exclamation text-amber-500 text-sm mt-0.5 shrink-0"></i>` +
+                `<div><b>Fungsi Reset Sesi:</b> Kunci sesi siswa akan dibuka. Siswa dapat login kembali dari komputer lab dan <u>langsung melanjutkan pengerjaan dari nomor terakhir tanpa kehilangan jawaban</u>.</div>` +
+                `</div>` +
                 `</div>`,
                 'Reset Sesi Siswa (Kendala PC/Koneksi)',
                 'Batal',
@@ -807,9 +810,12 @@
 
         async function confirmForceFinish(nis, name, attemptId = '') {
             const ok = await showConfirm(
-                `Kumpulkan ujian secara paksa untuk siswa <b>${escapeHtml(name)}</b> (NIS: ${escapeHtml(nis)})?<br><br>` +
-                `<div class="p-2.5 bg-sky-50 rounded-xl border border-sky-200 text-xs text-sky-900 leading-relaxed text-left">` +
-                `<b>Kumpulkan Paksa:</b> Ujian siswa akan dihentikan dan seluruh jawaban yang tersimpan di server akan dinilai secara resmi lalu dikirim ke menu <b>Hasil Ujian</b>.` +
+                `<div class="space-y-3">` +
+                `<p class="text-slate-700">Kumpulkan ujian secara paksa untuk siswa <b>${escapeHtml(name)}</b> (NIS: <span class="font-mono font-medium text-slate-900">${escapeHtml(nis)}</span>)?</p>` +
+                `<div class="p-3 bg-sky-50 rounded-xl border border-sky-200 text-xs text-sky-900 leading-relaxed text-left flex items-start gap-2.5">` +
+                `<i class="fa-solid fa-circle-info text-sky-500 text-sm mt-0.5 shrink-0"></i>` +
+                `<div><b>Kumpulkan Paksa:</b> Ujian siswa akan dihentikan dan seluruh jawaban yang tersimpan di server akan dinilai secara resmi lalu dikirim ke menu <b>Hasil Ujian</b>.</div>` +
+                `</div>` +
                 `</div>`,
                 'Kumpulkan Ujian Siswa Sekarang',
                 'Batal',
@@ -894,9 +900,12 @@
 
         async function confirmDeleteSession(nis, name, attemptId = '') {
             const ok = await showConfirm(
-                `Hapus sesi monitoring untuk siswa <b>${escapeHtml(name)}</b> (NIS: ${escapeHtml(nis)}) dari layar pantauan?<br><br>` +
-                `<div class="p-2.5 bg-rose-50 rounded-xl border border-rose-200 text-xs text-rose-900 leading-relaxed text-left">` +
-                `<b>Info:</b> Tindakan ini membersihkan sesi ini dari monitoring live. Jika siswa sudah mengumpulkan ujian, nilai resmi di <b>Hasil Ujian</b> tetap aman di server.` +
+                `<div class="space-y-3">` +
+                `<p class="text-slate-700">Hapus sesi monitoring untuk siswa <b>${escapeHtml(name)}</b> (NIS: <span class="font-mono font-medium text-slate-900">${escapeHtml(nis)}</span>) dari layar pantauan?</p>` +
+                `<div class="p-3 bg-rose-50 rounded-xl border border-rose-200 text-xs text-rose-900 leading-relaxed text-left flex items-start gap-2.5">` +
+                `<i class="fa-solid fa-circle-info text-rose-500 text-sm mt-0.5 shrink-0"></i>` +
+                `<div><b>Info:</b> Tindakan ini membersihkan sesi ini dari monitoring live. Jika siswa sudah mengumpulkan ujian, nilai resmi di <b>Hasil Ujian</b> tetap aman di server.</div>` +
+                `</div>` +
                 `</div>`,
                 'Hapus Sesi Monitoring',
                 'Batal',
@@ -938,9 +947,12 @@
             if (count === 0) return;
 
             const ok = await showConfirm(
-                `Hapus <b>${count}</b> data monitoring siswa yang dipilih?<br><br>` +
-                `<div class="p-2.5 bg-rose-50 rounded-xl border border-rose-200 text-xs text-rose-900 leading-relaxed text-left">` +
-                `<b>Info:</b> Tindakan ini menghapus sesi terpilih dari layar pantauan monitoring live. Hasil ujian resmi siswa yang sudah selesai tetap aman di database.` +
+                `<div class="space-y-3">` +
+                `<p class="text-slate-700">Hapus <b>${count} data monitoring</b> siswa yang dipilih?</p>` +
+                `<div class="p-3 bg-rose-50 rounded-xl border border-rose-200 text-xs text-rose-900 leading-relaxed text-left flex items-start gap-2.5">` +
+                `<i class="fa-solid fa-circle-info text-rose-500 text-sm mt-0.5 shrink-0"></i>` +
+                `<div><b>Info:</b> Tindakan ini menghapus sesi terpilih dari layar pantauan monitoring live. Hasil ujian resmi siswa yang sudah selesai tetap aman di database.</div>` +
+                `</div>` +
                 `</div>`,
                 'Hapus Sesi Terpilih',
                 'Batal',
@@ -1089,8 +1101,15 @@
 
         async function confirmClearAllSessions() {
             const ok = await showConfirm(
-                'Yakin ingin membersihkan semua riwayat sesi monitoring ujian?<br><br><span class="text-xs text-rose-500">Tindakan ini akan mengosongkan daftar monitoring peserta ujian saat ini. Data hasil ujian siswa yang sudah selesai tetap aman di database.</span>',
+                `<div class="space-y-3">` +
+                `<p class="text-slate-700 font-medium">Yakin ingin membersihkan semua riwayat sesi monitoring ujian?</p>` +
+                `<div class="p-3 bg-rose-50 rounded-xl border border-rose-200 text-xs text-rose-900 leading-relaxed text-left flex items-start gap-2.5">` +
+                `<i class="fa-solid fa-triangle-exclamation text-rose-500 text-sm mt-0.5 shrink-0"></i>` +
+                `<div><b>Perhatian:</b> Tindakan ini akan mengosongkan daftar monitoring peserta ujian saat ini. Data hasil ujian siswa yang sudah selesai tetap aman di database.</div>` +
+                `</div>` +
+                `</div>`,
                 'Bersihkan Sesi Monitoring',
+                'Batal',
                 'Ya, Bersihkan'
             );
             if (!ok) return;
@@ -1256,7 +1275,13 @@
             const name = activeViolationStudent.name;
 
             const ok = await showConfirm(
-                `Apakah Anda yakin ingin mereset hitungan kecurangan untuk siswa:<br><b>${escapeHtml(name)}</b> (NIS: ${escapeHtml(nis)})?<br><br><span class="text-xs text-rose-600">Hitungan pelanggaran akan dikembalikan menjadi 0 kali.</span>`,
+                `<div class="space-y-3">` +
+                `<p class="text-slate-700">Apakah Anda yakin ingin mereset hitungan kecurangan untuk siswa:<br><b>${escapeHtml(name)}</b> (NIS: <span class="font-mono font-medium text-slate-900">${escapeHtml(nis)}</span>)?</p>` +
+                `<div class="p-3 bg-rose-50 rounded-xl border border-rose-200 text-xs text-rose-900 leading-relaxed text-left flex items-start gap-2.5">` +
+                `<i class="fa-solid fa-circle-info text-rose-500 text-sm mt-0.5 shrink-0"></i>` +
+                `<div>Hitungan pelanggaran akan dikembalikan menjadi <b>0 kali</b>.</div>` +
+                `</div>` +
+                `</div>`,
                 'Reset Hitungan Pelanggaran',
                 'Batal',
                 'Reset Sekarang'

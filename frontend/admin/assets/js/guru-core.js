@@ -67,14 +67,14 @@ function appAlert(message, title = 'Informasi') {
             alertModal.className = 'fixed inset-0 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4';
             alertModal.style.zIndex = '99999';
             alertModal.innerHTML = `
-                <div class="bg-white rounded-2xl max-w-sm w-full p-5 shadow-2xl space-y-4 border border-slate-200">
+                <div class="bg-white rounded-2xl max-w-md w-full p-5 shadow-2xl space-y-4 border border-slate-200">
                     <div class="flex items-start gap-3">
                         <div class="w-10 h-10 rounded-full bg-brand-50 text-brand-600 flex items-center justify-center shrink-0 text-lg">
                             <i class="fa-solid fa-circle-info"></i>
                         </div>
-                        <div>
+                        <div class="flex-1 min-w-0">
                             <h4 id="core-alert-title" class="font-bold text-slate-800 text-sm"></h4>
-                            <p id="core-alert-message" class="text-xs text-slate-600 mt-1 whitespace-pre-line leading-relaxed"></p>
+                            <div id="core-alert-message" class="text-xs text-slate-600 mt-1.5 leading-relaxed"></div>
                         </div>
                     </div>
                     <div class="flex justify-end pt-2 border-t border-slate-100">
@@ -85,7 +85,11 @@ function appAlert(message, title = 'Informasi') {
             document.body.appendChild(alertModal);
         }
         document.getElementById('core-alert-title').innerText = title;
-        document.getElementById('core-alert-message').innerText = message;
+        const alertMsgEl = document.getElementById('core-alert-message');
+        const formattedMsg = (typeof message === 'string' && !message.includes('<') && message.includes('\n'))
+            ? message.replace(/\n/g, '<br>')
+            : message;
+        alertMsgEl.innerHTML = formattedMsg;
         alertModal.style.zIndex = '99999';
         alertModal.classList.remove('hidden');
 
@@ -108,26 +112,30 @@ function appConfirm(message, title = 'Konfirmasi', cancelText = 'Batal', okText 
             confirmModal.className = 'fixed inset-0 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4';
             confirmModal.style.zIndex = '99999';
             confirmModal.innerHTML = `
-                <div class="bg-white rounded-2xl max-w-sm w-full p-5 shadow-2xl space-y-4 border border-slate-200">
+                <div class="bg-white rounded-2xl max-w-md w-full p-5 shadow-2xl space-y-4 border border-slate-200">
                     <div class="flex items-start gap-3">
                         <div class="w-10 h-10 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 text-lg">
                             <i class="fa-solid fa-triangle-exclamation"></i>
                         </div>
-                        <div>
+                        <div class="flex-1 min-w-0">
                             <h4 id="core-confirm-title" class="font-bold text-slate-800 text-sm"></h4>
-                            <p id="core-confirm-message" class="text-xs text-slate-600 mt-1 whitespace-pre-line leading-relaxed"></p>
+                            <div id="core-confirm-message" class="text-xs text-slate-600 mt-1.5 leading-relaxed"></div>
                         </div>
                     </div>
                     <div class="flex justify-end items-center gap-2 pt-2 border-t border-slate-100">
-                        <button id="core-confirm-cancel-btn" class="px-3.5 py-1.5 border border-slate-300 text-slate-600 hover:bg-slate-50 rounded-xl text-xs font-semibold transition">Batal</button>
-                        <button id="core-confirm-ok-btn" class="px-4 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-bold transition">OK</button>
+                        <button id="core-confirm-cancel-btn" class="px-3.5 py-1.5 border border-slate-300 text-slate-600 hover:bg-slate-50 rounded-xl text-xs font-semibold transition cursor-pointer">Batal</button>
+                        <button id="core-confirm-ok-btn" class="px-4 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-bold transition cursor-pointer">OK</button>
                     </div>
                 </div>
             `;
             document.body.appendChild(confirmModal);
         }
         document.getElementById('core-confirm-title').innerText = title;
-        document.getElementById('core-confirm-message').innerText = message;
+        const confirmMsgEl = document.getElementById('core-confirm-message');
+        const formattedMsg = (typeof message === 'string' && !message.includes('<') && message.includes('\n'))
+            ? message.replace(/\n/g, '<br>')
+            : message;
+        confirmMsgEl.innerHTML = formattedMsg;
         const cancelBtn = document.getElementById('core-confirm-cancel-btn');
         const okBtn = document.getElementById('core-confirm-ok-btn');
         cancelBtn.innerText = cancelText;

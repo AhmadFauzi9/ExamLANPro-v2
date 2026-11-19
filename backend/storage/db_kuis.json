@@ -12,10 +12,10 @@
             "start_at": "",
             "end_at": "",
             "status": "ACTIVE",
-            "pin": "V3X7S4",
+            "pin": "V2C7HD",
             "pin_enabled": true,
             "pin_auto_refresh": true,
-            "pin_updated_at": 1795074046,
+            "pin_updated_at": 1795074646,
             "questions": [
                 {
                     "type": "mc",
