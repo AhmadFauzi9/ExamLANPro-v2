@@ -32,6 +32,7 @@ let dbData = {
     settings: { require_student_password: true },
     audit_logs: []
 };
+window.dbData = dbData;
 let isServerAuthenticated = false;
 let pendingExtensionRequests = [];
 let adminExtensionPollInterval = null;
@@ -314,6 +315,7 @@ async function fetchDataFromAPI(onSuccessCallback = null) {
         if (!dbData.results) dbData.results = [];
         if (!dbData.students) dbData.students = [];
         if (!dbData.settings) dbData.settings = { require_student_password: true };
+        window.dbData = dbData;
 
         if (typeof onSuccessCallback === 'function') {
             onSuccessCallback(dbData);

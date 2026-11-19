@@ -158,13 +158,13 @@
                         </select>
 
                         <!-- 4. Filter Kelas -->
-                        <select id="mon-filter-class" onchange="handleMonFilter()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none max-w-[140px]" title="Filter Kelas">
-                            <option value="ALL">Kelas</option>
+                        <select id="mon-filter-class" onchange="handleMonFilter()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none max-w-[160px]" title="Filter Kelas">
+                            <option value="ALL">Semua Kelas</option>
                         </select>
 
                         <!-- 5. Filter Soal Ujian -->
-                        <select id="mon-filter-quiz" onchange="handleMonFilter()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none max-w-[160px]" title="Filter Soal Ujian">
-                            <option value="ALL">Soal Ujian</option>
+                        <select id="mon-filter-quiz" onchange="handleMonFilter()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none max-w-[190px]" title="Filter Soal Ujian">
+                            <option value="ALL">Semua Soal Ujian</option>
                         </select>
 
                         <!-- Live Quiz Token Widget in Monitoring -->
@@ -438,7 +438,9 @@
         let monPerPage = 20;
         let monCurrentPage = 1;
         let autoRefreshTimer = null;
-        let initialFilterPopulated = false;
+        let lastClassesSignature = '';
+        let lastQuizzesSignature = '';
+        let monTokenCountdownInterval = null;
 
         window.onDataLoaded = async () => {
             populateFilterDropdowns();
@@ -457,19 +459,85 @@
         });
 
         function populateFilterDropdowns() {
-            if (initialFilterPopulated) return;
-            // Populasi filter kelas
             const classSelect = document.getElementById('mon-filter-class');
-            if (classSelect && window.dbData && Array.isArray(window.dbData.students)) {
-                const classes = [...new Set(window.dbData.students.map(s => s.class).filter(Boolean))].sort();
-                classSelect.innerHTML = `<option value="ALL">Kelas</option>` + classes.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
-            }
-            // Populasi filter soal ujian
             const quizSelect = document.getElementById('mon-filter-quiz');
-            if (quizSelect && window.dbData && Array.isArray(window.dbData.questions)) {
-                quizSelect.innerHTML = `<option value="ALL">Soal Ujian</option>` + window.dbData.questions.map(q => `<option value="${escapeHtml(q.id)}">${escapeHtml(q.title || q.id)}</option>`).join('');
+            if (!classSelect && !quizSelect) return;
+
+            const activeDb = window.dbData || (typeof dbData !== 'undefined' ? dbData : null);
+
+            // 1. Populasi Filter Kelas
+            if (classSelect) {
+                const classSet = new Set();
+                if (activeDb && Array.isArray(activeDb.students)) {
+                    activeDb.students.forEach(s => {
+                        const c = (s && s.class ? String(s.class).trim() : '');
+                        if (c && c !== '-') classSet.add(c);
+                    });
+                }
+                if (Array.isArray(rawMonitoring)) {
+                    rawMonitoring.forEach(m => {
+                        const c = (m && m.class ? String(m.class).trim() : '');
+                        if (c && c !== '-') classSet.add(c);
+                    });
+                }
+
+                const sortedClasses = [...classSet].sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+                const signature = sortedClasses.join('||');
+                if (signature !== lastClassesSignature || classSelect.options.length <= 1) {
+                    lastClassesSignature = signature;
+                    const currentClass = classSelect.value || 'ALL';
+                    let classHtml = `<option value="ALL">Semua Kelas</option>`;
+                    sortedClasses.forEach(c => {
+                        classHtml += `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`;
+                    });
+                    classSelect.innerHTML = classHtml;
+
+                    if (currentClass !== 'ALL' && sortedClasses.includes(currentClass)) {
+                        classSelect.value = currentClass;
+                    } else {
+                        classSelect.value = 'ALL';
+                    }
+                }
             }
-            initialFilterPopulated = true;
+
+            // 2. Populasi Filter Soal Ujian
+            if (quizSelect) {
+                const quizMap = new Map();
+                if (activeDb && Array.isArray(activeDb.questions)) {
+                    activeDb.questions.forEach(q => {
+                        if (q && q.id) {
+                            quizMap.set(String(q.id).trim(), String(q.title || q.id).trim());
+                        }
+                    });
+                }
+                if (Array.isArray(rawMonitoring)) {
+                    rawMonitoring.forEach(m => {
+                        if (m && m.quiz_id) {
+                            const qid = String(m.quiz_id).trim();
+                            if (!quizMap.has(qid) || !quizMap.get(qid)) {
+                                quizMap.set(qid, String(m.quiz_title || qid).trim());
+                            }
+                        }
+                    });
+                }
+
+                const signature = [...quizMap.entries()].map(e => e[0] + ':' + e[1]).sort().join('||');
+                if (signature !== lastQuizzesSignature || quizSelect.options.length <= 1) {
+                    lastQuizzesSignature = signature;
+                    const currentQuiz = quizSelect.value || 'ALL';
+                    let quizHtml = `<option value="ALL">Semua Soal Ujian</option>`;
+                    quizMap.forEach((title, id) => {
+                        quizHtml += `<option value="${escapeHtml(id)}">${escapeHtml(title)}</option>`;
+                    });
+                    quizSelect.innerHTML = quizHtml;
+
+                    if (currentQuiz !== 'ALL' && (quizMap.has(currentQuiz) || [...quizMap.values()].includes(currentQuiz))) {
+                        quizSelect.value = currentQuiz;
+                    } else {
+                        quizSelect.value = 'ALL';
+                    }
+                }
+            }
         }
 
         function toggleAutoRefresh(enabled) {
@@ -489,6 +557,7 @@
 
                 rawMonitoring = d.monitoring || [];
                 updateSummaryCounts(d.counts || {});
+                populateFilterDropdowns();
                 handleMonFilter();
             } catch (e) {
                 if (!silent) {
@@ -570,8 +639,16 @@
                         return false;
                     }
                 }
-                if (classFilter !== 'ALL' && (m.class || '') !== classFilter) return false;
-                if (quizFilter !== 'ALL' && (m.quiz_id || '') !== quizFilter) return false;
+                if (classFilter !== 'ALL') {
+                    const mClass = String(m.class || '').trim().toLowerCase();
+                    if (mClass !== classFilter.trim().toLowerCase()) return false;
+                }
+                if (quizFilter !== 'ALL') {
+                    const mQuizId = String(m.quiz_id || '').trim();
+                    const mQuizTitle = String(m.quiz_title || '').trim().toLowerCase();
+                    const target = quizFilter.trim();
+                    if (mQuizId !== target && mQuizTitle !== target.toLowerCase()) return false;
+                }
                 if (search) {
                     const matchNis = (m.nis || '').toLowerCase().includes(search);
                     const matchName = (m.name || '').toLowerCase().includes(search);
@@ -1046,13 +1123,16 @@
             const quizFilter = document.getElementById('mon-filter-quiz')?.value || 'ALL';
             if (!widget) return;
 
-            if (quizFilter === 'ALL' || !window.dbData || !Array.isArray(window.dbData.questions)) {
+            clearInterval(monTokenCountdownInterval);
+
+            const activeDb = window.dbData || (typeof dbData !== 'undefined' ? dbData : null);
+            if (quizFilter === 'ALL' || !activeDb || !Array.isArray(activeDb.questions)) {
                 widget.classList.add('hidden');
                 widget.classList.remove('inline-flex');
                 return;
             }
 
-            const q = window.dbData.questions.find(x => x.id === quizFilter);
+            const q = activeDb.questions.find(x => String(x.id).trim() === quizFilter.trim() || String(x.title || '').trim().toLowerCase() === quizFilter.trim().toLowerCase());
             if (!q || !q.pin) {
                 widget.classList.add('hidden');
                 widget.classList.remove('inline-flex');
@@ -1069,14 +1149,18 @@
             if (timerBox) {
                 if (isAuto) {
                     timerBox.style.display = 'inline-flex';
-                    const now = Math.floor(Date.now() / 1000);
-                    const updatedAt = parseInt(q.pin_updated_at) || now;
-                    const elapsed = now - updatedAt;
-                    const remaining = Math.max(0, 600 - elapsed);
-                    const mins = Math.floor(remaining / 60);
-                    const secs = remaining % 60;
-                    const cdSpan = document.getElementById('mon-token-countdown');
-                    if (cdSpan) cdSpan.innerText = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+                    const updateCountdown = () => {
+                        const now = Math.floor(Date.now() / 1000);
+                        const updatedAt = parseInt(q.pin_updated_at) || now;
+                        const elapsed = now - updatedAt;
+                        const remaining = Math.max(0, 600 - elapsed);
+                        const mins = Math.floor(remaining / 60);
+                        const secs = remaining % 60;
+                        const cdSpan = document.getElementById('mon-token-countdown');
+                        if (cdSpan) cdSpan.innerText = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+                    };
+                    updateCountdown();
+                    monTokenCountdownInterval = setInterval(updateCountdown, 1000);
                 } else {
                     timerBox.style.display = 'none';
                 }
