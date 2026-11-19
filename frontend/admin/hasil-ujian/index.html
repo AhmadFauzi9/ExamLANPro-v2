@@ -199,7 +199,7 @@
                                     <th class="w-24 text-center whitespace-nowrap">Nilai Akhir</th>
                                     <th class="w-28 text-center whitespace-nowrap">Status KKM</th>
                                     <th class="min-w-[150px] whitespace-nowrap">Waktu Selesai</th>
-                                    <th class="text-center w-36 whitespace-nowrap">Aksi Guru</th>
+                                    <th class="text-center w-20 whitespace-nowrap">Aksi Guru</th>
                                 </tr>
                             </thead>
                             <tbody id="teacher-results-tbody" class="divide-y divide-slate-100">
@@ -678,23 +678,9 @@
                             <td class="p-3 text-center whitespace-nowrap">${kkmBadge}</td>
                             <td class="p-3 text-slate-500 font-mono text-[11px] whitespace-nowrap">${dateDisplay}</td>
                             <td class="p-3 text-center whitespace-nowrap">
-                                <div class="flex items-center justify-center gap-1">
-                                    ${isInProgress ? `
-                                        <a href="../monitoring/" class="px-2.5 py-1 bg-brand-50 text-brand-700 hover:bg-brand-100 border border-brand-200 rounded-lg font-bold text-[11px] transition flex items-center gap-1 shadow-2xs" data-tooltip="Lihat Siswa di Monitoring Ujian Live">
-                                             <i class="fa-solid fa-tower-broadcast text-[10px]"></i> Pantau Live
-                                        </a>
-                                    ` : `
-                                        <button type="button" onclick="showStudentDetailModal(${globalIdx})" class="px-2 py-1 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded-lg font-bold text-[11px] transition flex items-center gap-1 shadow-2xs" data-tooltip="Lihat Lembar Jawaban Siswa per Butir Soal">
-                                            <i class="fa-solid fa-clipboard-check text-[10px]"></i> Rincian
-                                        </button>
-                                        <button type="button" onclick="allowRetake('${String(s.nis || '').replace(/'/g, "\\'")}', '${String(s.code || '').replace(/'/g, "\\'")}')" class="px-2 py-1 bg-amber-50 text-amber-700 hover:bg-amber-100 border border-amber-200 rounded-lg font-bold text-[11px] transition flex items-center gap-1 shadow-2xs" data-tooltip="Izinkan Remedial / Ujian Ulang">
-                                            <i class="fa-solid fa-rotate-left text-[10px]"></i> Ulang
-                                        </button>
-                                        <button type="button" onclick="deleteSingleResult(${globalIdx})" class="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition" data-tooltip="Hapus Hasil Ujian Ini">
-                                            <i class="fa-solid fa-trash-can text-xs"></i>
-                                        </button>
-                                    `}
-                                </div>
+                                <button type="button" onclick="toggleResultActionMenu(event, ${globalIdx})" class="action-menu-btn w-7 h-7 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-900 transition inline-flex items-center justify-center shadow-2xs cursor-pointer" data-tooltip="Menu Aksi">
+                                    <i class="fa-solid fa-ellipsis-vertical text-xs pointer-events-none"></i>
+                                </button>
                             </td>
                         </tr>
                     `;

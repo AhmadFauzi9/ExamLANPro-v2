@@ -236,7 +236,7 @@
                                     <th class="text-center min-w-[130px]">Progres Siswa</th>
                                     <th class="min-w-[100px]">Sisa Waktu</th>
                                     <th>Terakhir Aktif</th>
-                                    <th class="w-28 text-center">Aksi Guru</th>
+                                    <th class="w-20 text-center whitespace-nowrap">Aksi Guru</th>
                                 </tr>
                             </thead>
                             <tbody id="monitoring-tbody" class="divide-y divide-slate-100">
@@ -763,19 +763,9 @@
                             </div>
                         </td>
                         <td class="p-3 text-center whitespace-nowrap">
-                            <div class="flex items-center justify-center gap-1">
-                                <button type="button" onclick="confirmResetSession('${escapeHtml(m.nis)}', '${escapeHtml(m.name || m.nis)}', '${escapeHtml(m.attempt_id || '')}')" class="p-1.5 rounded-lg border border-amber-300 bg-amber-50 text-amber-700 hover:bg-amber-100 transition shadow-2xs" data-tooltip="Reset Sesi: Buka kunci sesi jika PC mati/hang tanpa hilang jawaban">
-                                    <i class="fa-solid fa-arrow-rotate-left text-xs"></i>
-                                </button>
-                                ${isWorkingOrOffline ? `
-                                <button type="button" onclick="confirmForceFinish('${escapeHtml(m.nis)}', '${escapeHtml(m.name || m.nis)}', '${escapeHtml(m.attempt_id || '')}')" class="p-1.5 rounded-lg border border-emerald-300 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition shadow-2xs" data-tooltip="Kumpulkan Paksa Ujian Siswa">
-                                    <i class="fa-solid fa-file-circle-check text-xs"></i>
-                                </button>
-                                ` : ''}
-                                <button type="button" onclick="confirmDeleteSession('${escapeHtml(m.nis)}', '${escapeHtml(m.name || m.nis)}', '${escapeHtml(m.attempt_id || '')}')" class="p-1.5 rounded-lg border border-rose-200 bg-rose-50 text-rose-600 hover:bg-rose-100 transition shadow-2xs" data-tooltip="Hapus Sesi Siswa Ini dari Monitoring">
-                                    <i class="fa-solid fa-trash-can text-xs"></i>
-                                </button>
-                            </div>
+                            <button type="button" onclick="toggleMonActionMenu(event, '${escapeHtml(rowKey)}')" class="action-menu-btn w-7 h-7 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-900 transition inline-flex items-center justify-center shadow-2xs cursor-pointer" data-tooltip="Menu Aksi">
+                                <i class="fa-solid fa-ellipsis-vertical text-xs pointer-events-none"></i>
+                            </button>
                         </td>
                     </tr>
                 `;
