@@ -197,12 +197,12 @@
                             </span>
                         </label>
                         
-                        <!-- Hapus Terpilih -->
-                        <button type="button" id="btn-delete-selected-mon" onclick="deleteSelectedMonitoring()" disabled class="btn-icon bg-slate-100 text-slate-400 border border-slate-200 cursor-not-allowed transition" title="Hapus Data Monitoring Terpilih">
+                        <!-- Hapus Terpilih (Menyatu dengan Jumlah Terpilih) -->
+                        <button type="button" id="btn-delete-selected-mon" onclick="deleteSelectedMonitoring()" disabled class="btn-icon bg-slate-100 text-slate-400 border border-slate-200 cursor-not-allowed transition" title="Pilih peserta untuk menghapus sesi">
                             <i class="fa-solid fa-trash-can text-xs"></i>
+                            <span id="monitoring-selected-label" class="hidden text-xs font-bold">Hapus</span>
+                            <span id="monitoring-selected-badge" class="hidden px-1.5 py-0.5 rounded-md bg-white/25 text-white text-[10px] font-black leading-none">0 dipilih</span>
                         </button>
-                        <!-- Badge Jumlah Terpilih -->
-                        <span id="monitoring-selected-badge" class="hidden text-[11px] font-bold text-rose-600 bg-rose-50 px-2.5 py-1 rounded-xl border border-rose-200">0 dipilih</span>
 
                         <button type="button" onclick="loadMonitoringData()" class="btn-icon border border-slate-300 text-slate-700 hover:bg-slate-50 transition" title="Muat Ulang Data Monitoring">
                             <i class="fa-solid fa-rotate text-xs"></i>
@@ -950,25 +950,26 @@
         function updateSelectedMonitoringToolbar() {
             const count = selectedMonNis.size;
             const btn = document.getElementById('btn-delete-selected-mon');
+            const label = document.getElementById('monitoring-selected-label');
             const badge = document.getElementById('monitoring-selected-badge');
             const selectAllCheck = document.getElementById('select-all-monitoring');
-
-            if (badge) {
-                if (count > 0) {
-                    badge.innerText = `${count} dipilih`;
-                    badge.classList.remove('hidden');
-                } else {
-                    badge.classList.add('hidden');
-                }
-            }
 
             if (btn) {
                 if (count > 0) {
                     btn.disabled = false;
-                    btn.className = 'btn-icon bg-rose-600 hover:bg-rose-700 text-white shadow-2xs transition cursor-pointer';
+                    btn.className = 'h-[2.15rem] px-3 rounded-[0.65rem] bg-rose-600 hover:bg-rose-700 active:scale-95 text-white inline-flex items-center gap-1.5 text-xs font-bold shadow-xs transition cursor-pointer';
+                    btn.title = `Hapus ${count} data monitoring terpilih`;
+                    if (label) label.classList.remove('hidden');
+                    if (badge) {
+                        badge.innerText = `${count} dipilih`;
+                        badge.classList.remove('hidden');
+                    }
                 } else {
                     btn.disabled = true;
                     btn.className = 'btn-icon bg-slate-100 text-slate-400 border border-slate-200 cursor-not-allowed transition';
+                    btn.title = 'Pilih peserta untuk menghapus sesi';
+                    if (label) label.classList.add('hidden');
+                    if (badge) badge.classList.add('hidden');
                 }
             }
 
