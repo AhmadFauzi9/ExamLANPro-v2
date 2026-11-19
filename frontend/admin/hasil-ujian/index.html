@@ -120,16 +120,19 @@
                         </select>
 
                         <!-- 2. Sort (Short) -->
-                        <select id="results-sort" onchange="handleResultsFilter()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none" title="Pengurutan data">
-                            <option value="date_desc">Waktu Terkini</option>
-                            <option value="score_desc">Nilai Tertinggi</option>
-                            <option value="score_asc">Nilai Terendah</option>
-                            <option value="nis_asc">NIS (0 - 9)</option>
-                            <option value="name_asc">Nama (A - Z)</option>
+                        <select id="results-sort" onchange="handleResultsFilter()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none font-medium" title="Pengurutan data">
+                            <option value="date_desc">Terbaru</option>
+                            <option value="date_asc">Terlama</option>
+                            <option value="score_desc">Nilai ↑</option>
+                            <option value="score_asc">Nilai ↓</option>
+                            <option value="nis_asc">NIS (0-9)</option>
+                            <option value="nis_desc">NIS (9-0)</option>
+                            <option value="name_asc">Nama (A-Z)</option>
+                            <option value="name_desc">Nama (Z-A)</option>
                         </select>
 
                         <!-- 3. Filter: Soal Ujian -->
-                        <select id="teacher-quiz-filter" onchange="handleResultsFilter(); updateTeacherReviewControl();" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none max-w-[170px]" title="Filter Soal Ujian">
+                        <select id="teacher-quiz-filter" onchange="handleResultsFilter(); updateTeacherReviewControl();" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none w-[105px] truncate font-medium" title="Filter Soal Ujian">
                             <option value="all">Soal Ujian</option>
                         </select>
 
@@ -139,8 +142,8 @@
                         </select>
 
                         <!-- 5. Filter: Ketuntasan KKM -->
-                        <select id="results-filter-kkm" onchange="handleResultsFilter()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none font-medium" title="Filter Ketuntasan Nilai KKM">
-                            <option value="all">Semua Nilai</option>
+                        <select id="results-filter-kkm" onchange="handleResultsFilter()" class="px-2.5 py-1.5 w-[75px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none font-medium truncate" title="Filter Ketuntasan Nilai KKM">
+                            <option value="all">Nilai</option>
                             <option value="pass">Tuntas (≥ 75)</option>
                             <option value="remedial">Remedial (< 75)</option>
                         </select>
@@ -171,12 +174,12 @@
 
                         <!-- Reset Semua -->
                         <button type="button" onclick="clearSubmissions()" class="btn-icon bg-rose-50 text-rose-600 hover:bg-rose-100 border border-rose-200 transition" data-tooltip="Reset Semua Hasil Ujian">
-                            <i class="fa-solid fa-rotate-left text-xs"></i>
+                            <i class="fa-solid fa-broom text-xs"></i>
                         </button>
 
                         <!-- Refresh -->
                         <button type="button" onclick="loadResultsData()" class="btn-icon border border-slate-300 text-slate-700 hover:bg-slate-50 transition" data-tooltip="Muat Ulang Data Hasil Ujian">
-                            <i class="fa-solid fa-rotate text-xs"></i>
+                            <i class="fa-solid fa-arrows-rotate text-xs"></i>
                         </button>
                     </div>
                 </div>
@@ -511,7 +514,7 @@
             const currentVal = select.value || 'all';
             const quizzes = dbData.questions || [];
 
-            select.innerHTML = '<option value="all">Soal Ujian (Semua)</option>' + quizzes.map(q => `
+            select.innerHTML = '<option value="all">Soal Ujian</option>' + quizzes.map(q => `
                 <option value="${q.id}" ${q.id === currentVal ? 'selected' : ''}>${escapeHtml(q.title || q.id)}</option>
             `).join('');
 
@@ -559,14 +562,22 @@
             filteredResults.sort((a, b) => {
                 if (sortMode === 'nis_asc') {
                     return String(a.nis || '').localeCompare(String(b.nis || ''), undefined, { numeric: true });
+                } else if (sortMode === 'nis_desc') {
+                    return String(b.nis || '').localeCompare(String(a.nis || ''), undefined, { numeric: true });
                 } else if (sortMode === 'name_asc') {
                     return String(a.name || '').localeCompare(String(b.name || ''));
+                } else if (sortMode === 'name_desc') {
+                    return String(b.name || '').localeCompare(String(a.name || ''));
                 } else if (sortMode === 'score_desc') {
                     return (Number(b.score) || 0) - (Number(a.score) || 0);
                 } else if (sortMode === 'score_asc') {
                     return (Number(a.score) || 0) - (Number(b.score) || 0);
+                } else if (sortMode === 'date_asc') {
+                    const dateA = a.date ? new Date(a.date.replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$3-$2-$1')).getTime() : 0;
+                    const dateB = b.date ? new Date(b.date.replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$3-$2-$1')).getTime() : 0;
+                    return dateA - dateB;
                 } else {
-                    // date_desc (default)
+                    // date_desc (default / Terbaru)
                     const dateA = a.date ? new Date(a.date.replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$3-$2-$1')).getTime() : 0;
                     const dateB = b.date ? new Date(b.date.replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$3-$2-$1')).getTime() : 0;
                     return dateB - dateA;
