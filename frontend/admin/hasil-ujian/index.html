@@ -85,11 +85,7 @@
                                     <i class="fa-solid fa-book-bookmark text-[9px]"></i> Buku Rekap Nilai
                                 </span>
                             </div>
-                            <div class="flex items-center gap-2 mt-0.5 flex-wrap">
-                                <span class="text-[11px] text-slate-500">Arsip nilai resmi tersimpan di server. Analisis skor, lembar rincian butir soal, dan cetak laporan resmi kurikulum.</span>
-                                <span id="results-total-badge" class="text-[11px] font-semibold text-slate-500">0 hasil tersimpan</span>
-                                <span id="results-selected-badge" class="hidden text-[11px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-md border border-rose-200">0 dipilih</span>
-                            </div>
+                            <p class="text-[11px] text-slate-500 mt-0.5">Arsip nilai resmi tersimpan di server. Analisis skor, lembar rincian butir soal, dan cetak laporan resmi kurikulum.</p>
                         </div>
                     </div>
 
@@ -137,7 +133,7 @@
                         </select>
 
                         <!-- 4. Filter: Kelas -->
-                        <select id="results-filter-class" onchange="handleResultsFilter()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none" title="Filter Kelas">
+                        <select id="results-filter-class" onchange="handleResultsFilter()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 w-[105px] outline-none" title="Filter Kelas">
                             <option value="all">Kelas</option>
                         </select>
 
@@ -503,8 +499,6 @@
             if (elPassRate) elPassRate.innerText = `${passRate}%`;
             const elPassDetail = document.getElementById('sum-pass-detail');
             if (elPassDetail) elPassDetail.innerText = inProgressCount > 0 ? `${passed} tuntas • ${remedial} remedial (dari ${total} selesai)` : `${passed} tuntas • ${remedial} remedial`;
-            const elTotalBadge = document.getElementById('results-total-badge');
-            if (elTotalBadge) elTotalBadge.innerText = `${allResults.length} hasil terekam`;
         }
 
         // Filter Dropdowns
@@ -774,26 +768,18 @@
 
         function updateSelectionBar() {
             const count = selectedKeys.size;
-            const badge = document.getElementById('results-selected-badge');
             const btnDelete = document.getElementById('btn-delete-selected-res');
             const selectAllCb = document.getElementById('select-all-results');
-
-            if (badge) {
-                if (count > 0) {
-                    badge.innerText = `${count} dipilih`;
-                    badge.classList.remove('hidden');
-                } else {
-                    badge.classList.add('hidden');
-                }
-            }
 
             if (btnDelete) {
                 if (count > 0) {
                     btnDelete.disabled = false;
                     btnDelete.className = 'btn-icon bg-rose-600 hover:bg-rose-700 text-white shadow-2xs transition';
+                    btnDelete.setAttribute('data-tooltip', `Hapus ${count} Hasil Ujian Terpilih`);
                 } else {
                     btnDelete.disabled = true;
                     btnDelete.className = 'btn-icon bg-slate-100 text-slate-400 border border-slate-200 cursor-not-allowed transition';
+                    btnDelete.setAttribute('data-tooltip', 'Hapus Hasil Ujian Terpilih');
                 }
             }
 
