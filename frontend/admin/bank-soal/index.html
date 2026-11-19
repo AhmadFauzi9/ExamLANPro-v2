@@ -551,11 +551,15 @@
                             <button type="button" onclick="openQuestionManager('${q.id}')" class="flex-1 btn-compact py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 border border-brand-200 rounded-xl flex items-center justify-center gap-1.5 font-bold transition text-xs shadow-2xs">
                                 <i class="fa-solid fa-list-check text-xs"></i> <span>Kelola Soal (${qCount})</span>
                             </button>
-                            <button type="button" onclick="openQuizModal('${q.id}')" class="p-2 text-slate-600 hover:text-brand-600 hover:bg-slate-100 rounded-xl border border-slate-200 transition" title="Edit Paket Kuis">
-                                <i class="fa-solid fa-pen text-xs"></i>
+                            <button type="button" onclick="openQuizModal('${q.id}')" class="p-2 w-[36px] h-[36px] text-slate-600 hover:text-brand-600 hover:bg-slate-100 rounded-xl border border-slate-200 transition" title="Edit Paket Kuis">
+                                <span class="flex items-center justify-center">
+                                    <i class="fa-solid fa-pen text-xs"></i>
+                                </span>
                             </button>
-                            <button type="button" onclick="deleteQuiz('${q.id}')" class="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl border border-slate-200 transition" title="Hapus Paket Kuis">
-                                <i class="fa-solid fa-trash-can text-xs"></i>
+                            <button type="button" onclick="deleteQuiz('${q.id}')" class="p-2 w-[36px] h-[36px] text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl border border-slate-200 transition" title="Hapus Paket Kuis">
+                                <span class="flex items-center justify-center">
+                                    <i class="fa-solid fa-trash-can text-xs"></i>
+                                </span>
                             </button>
                         </div>
                     </div>

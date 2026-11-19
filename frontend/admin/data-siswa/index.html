@@ -86,8 +86,8 @@
                     <div class="flex items-center gap-2 flex-wrap flex-1 min-w-0">
                         <!-- 1. View (Angka Saja) default 20 -->
                         <select id="student-per-page" onchange="changePerPage(this.value)" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none" title="Jumlah data per halaman">
-                            <option value="10">10</option>
-                            <option value="20" selected>20</option>
+                            <option value="10" selected>10</option>
+                            <option value="20">20</option>
                             <option value="30">30</option>
                             <option value="40">40</option>
                             <option value="50">50</option>
@@ -95,7 +95,7 @@
                         </select>
 
                         <!-- 2. Sort (Short) -->
-                        <select id="student-sort" onchange="handleSearchFilter()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none" title="Pengurutan data">
+                        <select id="student-sort" onchange="handleSearchFilter()" class="px-1.5 py-1.5 w-[80px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none" title="Pengurutan data">
                             <option value="default">Short</option>
                             <option value="nis_asc">NIS (0 - 9)</option>
                             <option value="nis_desc">NIS (9 - 0)</option>
@@ -105,12 +105,12 @@
                         </select>
 
                         <!-- 3. Filter: Kelas -->
-                        <select id="student-filter-class" onchange="handleSearchFilter()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none" title="Filter Kelas">
+                        <select id="student-filter-class" onchange="handleSearchFilter()" class="px-1.5 py-1.5 w-[80px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none" title="Filter Kelas">
                             <option value="all">Kelas</option>
                         </select>
 
                         <!-- 3. Filter: Tahun -->
-                        <select id="student-filter-year" onchange="handleSearchFilter()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none" title="Filter Tahun">
+                        <select id="student-filter-year" onchange="handleSearchFilter()" class="px-1.5 py-1.5 w-[80px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none" title="Filter Tahun">
                             <option value="all">Tahun</option>
                         </select>
 

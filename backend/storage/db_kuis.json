@@ -11,11 +11,11 @@
             "class": "8",
             "start_at": "",
             "end_at": "",
-            "status": "ACTIVE",
-            "pin": "BANQM2",
+            "status": "DRAFT",
+            "pin": "W285ZH",
             "pin_enabled": true,
             "pin_auto_refresh": true,
-            "pin_updated_at": 1795075846,
+            "pin_updated_at": 1795090385,
             "questions": [
                 {
                     "type": "mc",
@@ -887,9 +887,1442 @@
                     "pairs": []
                 }
             ]
+        },
+        {
+            "id": "quiz-1795077173322",
+            "title": "Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8",
+            "duration": 5,
+            "max_questions": 5,
+            "quiz_type": "mixed",
+            "description": "Jawablah soal dengan benar!",
+            "subject": "Informatika",
+            "class": "8",
+            "start_at": "",
+            "end_at": "",
+            "status": "ACTIVE",
+            "pin": "8ETUD9",
+            "pin_enabled": true,
+            "pin_auto_refresh": true,
+            "pin_updated_at": 1795090496,
+            "questions": [
+                {
+                    "type": "mc",
+                    "question": "Perhatikan gambar perangkat keras di bawah ini! Perangkat tersebut berfungsi untuk menyimpan data dan program di dalam casing komputer dengan kapasitas besar. Apa nama perangkat tersebut?",
+                    "options": [
+                        "RAM",
+                        "Harddisk",
+                        "CD-ROM",
+                        "Flashdisk"
+                    ],
+                    "answer": 1,
+                    "answers": [],
+                    "explanation": "Harddisk (fixed disk) adalah media penyimpanan data utama di dalam casing komputer yang berkapasitas besar.",
+                    "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_fac65b.png",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": []
+                },
+                {
+                    "type": "mc",
+                    "question": "Perhatikan gambar perangkat berikut! Alat ini berfungsi untuk menampilkan hasil proses komputer berupa tulisan, gambar, maupun video agar bisa dilihat oleh pengguna. Perangkat ini disebut...",
+                    "options": [
+                        "Monitor",
+                        "Scanner",
+                        "Printer",
+                        "Keyboard"
+                    ],
+                    "answer": 0,
+                    "answers": [],
+                    "explanation": "Monitor adalah perangkat keluaran (output device) yang menampilkan seluruh perintah dan hasil proses dari CPU ke layar.",
+                    "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_fbd67e.png",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": []
+                },
+                {
+                    "type": "mc",
+                    "question": "Perhatikan gambar ikon pada Microsoft Word 2007 di bawah ini! Jika kita mengeklik ikon tersebut setelah memblok sebuah kalimat, apa yang akan terjadi pada kalimat itu?",
+                    "options": [
+                        "Kalimat akan disalin dan tetap ada di tempat semula",
+                        "Kalimat akan dipotong (digunting) untuk dipindahkan ke tempat lain",
+                        "Kalimat akan diberi garis bawah",
+                        "Kalimat akan dicetak ke kertas"
+                    ],
+                    "answer": 1,
+                    "answers": [],
+                    "explanation": "Ikon bergambar gunting adalah Cut, yang berfungsi memotong teks terpilih agar bisa dipindahkan ke lokasi lain.",
+                    "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_84241a.png",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": []
+                },
+                {
+                    "type": "mc",
+                    "question": "Perhatikan gambar kotak dialog berikut! Bagian pada Microsoft Word 2007 tersebut digunakan untuk mengatur...",
+                    "options": [
+                        "Jenis huruf dan warna tulisan",
+                        "Batas tepi kertas (margin) dan arah kertas (orientation)",
+                        "Jumlah kolom dan baris pada tabel",
+                        "Jenis printer yang akan dipakai"
+                    ],
+                    "answer": 1,
+                    "answers": [],
+                    "explanation": "Kotak dialog Page Setup (tab Margins) digunakan untuk mengatur batas tepi atas, bawah, kiri, kanan serta orientasi Portrait/Landscape.",
+                    "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_4bfdc1.png",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": []
+                },
+                {
+                    "type": "mc",
+                    "question": "Saat mengetik di Microsoft Word 2007, kita ingin membuat huruf menjadi miring (misalnya untuk menulis istilah bahasa asing). Tombol pintasan (shortcut) keyboard yang tepat adalah...",
+                    "options": [
+                        "Ctrl + B",
+                        "Ctrl + I",
+                        "Ctrl + U",
+                        "Ctrl + L"
+                    ],
+                    "answer": 1,
+                    "answers": [],
+                    "explanation": "Ctrl + I adalah pintasan untuk Italic (cetak miring), sedangkan Ctrl + B untuk tebal dan Ctrl + U untuk garis bawah.",
+                    "image": "",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": []
+                },
+                {
+                    "type": "mc",
+                    "question": "Perhatikan gambar ikon pada grup Font yang sedang menyala berwarna kuning berikut ini! Ikon tersebut bernama Subscript yang berguna untuk...",
+                    "options": [
+                        "Membuat huruf kecil di bagian bawah (seperti pada H2O)",
+                        "Membuat angka pangkat di bagian atas (seperti pada m2)",
+                        "Memberi warna stabilo pada tulisan",
+                        "Mencoret tulisan dengan garis tengah"
+                    ],
+                    "answer": 0,
+                    "answers": [],
+                    "explanation": "Ikon x2 (Subscript) berfungsi mengecilkan huruf atau angka ke posisi bawah, misalnya pada penulisan rumus kimia atau bilangan basis.",
+                    "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_bdc126.png",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": []
+                },
+                {
+                    "type": "mc",
+                    "question": "Perhatikan gambar ikon pada tab Insert di bawah ini! Ikon tersebut digunakan untuk...",
+                    "options": [
+                        "Menambahkan catatan di bagian bawah halaman",
+                        "Menambahkan judul berulang di bagian atas setiap halaman",
+                        "Membuat garis bingkai di pinggir kertas",
+                        "Menyisipkan gambar dari folder komputer"
+                    ],
+                    "answer": 1,
+                    "answers": [],
+                    "explanation": "Ikon Header berfungsi membuat teks atau judul berulang di bagian kepala (atas) setiap halaman dokumen.",
+                    "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_f4300a.png",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": []
+                },
+                {
+                    "type": "mc",
+                    "question": "Perhatikan gambar ikon berikut yang ada di tab Page Layout! Fungsi utama dari ikon tersebut adalah...",
+                    "options": [
+                        "Mengubah warna kertas menjadi biru atau kuning",
+                        "Membuat garis bingkai di sekeliling halaman dokumen",
+                        "Membagi tulisan menjadi dua kolom seperti koran",
+                        "Memberi nomor halaman secara otomatis"
+                    ],
+                    "answer": 1,
+                    "answers": [],
+                    "explanation": "Ikon Page Borders digunakan untuk menambahkan bingkai garis atau hiasan tepi (Art) pada halaman dokumen.",
+                    "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_04b272.png",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": []
+                },
+                {
+                    "type": "mc",
+                    "question": "Perhatikan gambar ikon berikut yang berada di tab Insert! Jika kita ingin menyisipkan karakter khusus yang tidak ada di papan keyboard (seperti tanda derajat atau simbol matematika), kita mengeklik ikon...",
+                    "options": [
+                        "Shapes",
+                        "WordArt",
+                        "Symbol",
+                        "Clip Art"
+                    ],
+                    "answer": 2,
+                    "answers": [],
+                    "explanation": "Ikon Symbol (berlambang huruf Yunani Omega) dipakai untuk menyisipkan simbol atau karakter khusus ke dalam naskah.",
+                    "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_71893d.png",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": []
+                },
+                {
+                    "type": "mc",
+                    "question": "Di dalam sebuah tabel pada Microsoft Word 2007, setiap satu kotak kecil hasil pertemuan antara kolom dan baris disebut...",
+                    "options": [
+                        "Range",
+                        "Sel (Cell)",
+                        "Margin",
+                        "Ruler"
+                    ],
+                    "answer": 1,
+                    "answers": [],
+                    "explanation": "Pada tabel MS Word, setiap kotak tunggal disebut sel (cell), sedangkan gabungan dari beberapa sel disebut range.",
+                    "image": "",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": []
+                },
+                {
+                    "type": "complex",
+                    "question": "Perhatikan daftar berikut! Manakah yang termasuk tiga elemen utama pembentuk sistem komputer agar bisa bekerja dengan baik? (Pilih lebih dari satu)",
+                    "options": [
+                        "Hardware (Perangkat Keras)",
+                        "Software (Perangkat Lunak)",
+                        "Brainware (Pengguna/Manusia)",
+                        "Wallpaper",
+                        "Kertas HVS"
+                    ],
+                    "answer": 0,
+                    "answers": [
+                        0,
+                        1,
+                        2
+                    ],
+                    "explanation": "Sistem komputer hanya dapat berjalan jika ada tiga elemen utama: Hardware, Software, dan Brainware.",
+                    "image": "",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": []
+                },
+                {
+                    "type": "complex",
+                    "question": "Berdasarkan klasifikasi komputer di modul, manakah yang termasuk jenis komputer menurut ukuran dan kemampuannya? (Pilih lebih dari satu)",
+                    "options": [
+                        "Mainframe (Komputer Besar)",
+                        "Mini Computer (Komputer Menengah)",
+                        "Micro Computer (Komputer PC)",
+                        "Microsoft Word",
+                        "Windows XP"
+                    ],
+                    "answer": 0,
+                    "answers": [
+                        0,
+                        1,
+                        2
+                    ],
+                    "explanation": "Klasifikasi komputer dibagi menjadi Mainframe, Mini Computer, dan Micro Computer (PC). Word dan Windows adalah software.",
+                    "image": "",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": []
+                },
+                {
+                    "type": "complex",
+                    "question": "Manakah perangkat berikut yang termasuk dalam kelompok Output Device (perangkat keluaran)? (Pilih lebih dari satu)",
+                    "options": [
+                        "Monitor",
+                        "Keyboard",
+                        "Printer",
+                        "Mouse",
+                        "Scanner"
+                    ],
+                    "answer": 0,
+                    "answers": [
+                        0,
+                        2
+                    ],
+                    "explanation": "Monitor dan Printer menampilkan serta mencetak hasil olahan komputer (output), sedangkan Keyboard, Mouse, dan Scanner adalah input device.",
+                    "image": "",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": []
+                },
+                {
+                    "type": "complex",
+                    "question": "Perhatikan gambar menu Office Button berikut! Perintah dasar apa saja yang terlihat dan bisa kita jalankan dari menu tersebut? (Pilih lebih dari satu)",
+                    "options": [
+                        "Save (Menyimpan dokumen)",
+                        "Save As (Menyimpan dengan nama lain)",
+                        "Print (Mencetak dokumen)",
+                        "Drop Cap",
+                        "Insert Table"
+                    ],
+                    "answer": 0,
+                    "answers": [
+                        0,
+                        1,
+                        2
+                    ],
+                    "explanation": "Di dalam Office Button terdapat perintah pengelolaan file seperti New, Open, Save, Save As, dan Print.",
+                    "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_66362e.png",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": []
+                },
+                {
+                    "type": "complex",
+                    "question": "Perhatikan gambar grup Page Setup pada tab Page Layout di bawah ini! Pengaturan apa saja yang bisa dilakukan melalui grup tersebut? (Pilih lebih dari satu)",
+                    "options": [
+                        "Mengatur batas tepi kertas (Margins)",
+                        "Mengatur posisi kertas berdiri atau mendatar (Orientation)",
+                        "Mengatur ukuran kertas (Size)",
+                        "Mengatur jumlah kolom teks (Columns)",
+                        "Mengubah warna huruf (Font Color)"
+                    ],
+                    "answer": 0,
+                    "answers": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ],
+                    "explanation": "Grup Page Setup memuat Margins, Orientation, Size, Columns, Breaks, Line Numbers, dan Hyphenation. Warna huruf ada di tab Home.",
+                    "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_a78f0f.png",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": []
+                },
+                {
+                    "type": "complex",
+                    "question": "Saat ingin mengatur jarak spasi baris di MS Word 2007 dengan cepat menggunakan keyboard, kombinasi tombol manakah yang benar? (Pilih lebih dari satu)",
+                    "options": [
+                        "Ctrl + 1 untuk jarak 1 spasi",
+                        "Ctrl + 2 untuk jarak 2 spasi",
+                        "Ctrl + 5 untuk jarak 1,5 spasi",
+                        "Ctrl + 3 untuk jarak 3 spasi",
+                        "Ctrl + 0 untuk menutup Word"
+                    ],
+                    "answer": 0,
+                    "answers": [
+                        0,
+                        1,
+                        2
+                    ],
+                    "explanation": "Shortcut spasi baris standar di MS Word adalah Ctrl + 1 (1 spasi), Ctrl + 2 (2 spasi), dan Ctrl + 5 (1,5 spasi).",
+                    "image": "",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": []
+                },
+                {
+                    "type": "complex",
+                    "question": "Perhatikan gambar grup Illustrations di bawah ini! Fitur apa saja yang tersedia pada grup tersebut di tab Insert? (Pilih lebih dari satu)",
+                    "options": [
+                        "Picture",
+                        "Clip Art",
+                        "Shapes",
+                        "SmartArt",
+                        "Page Number"
+                    ],
+                    "answer": 0,
+                    "answers": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ],
+                    "explanation": "Grup Illustrations berisi Picture, Clip Art, Shapes, SmartArt, dan Chart. Page Number berada di grup Header & Footer.",
+                    "image": "uploads/soal/img_soal_quiz-1795077173322_1795078948_32919e.png",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": []
+                },
+                {
+                    "type": "complex",
+                    "question": "Perhatikan gambar grup Text pada tab Insert berikut! Ikon apa saja yang termasuk di dalam grup Text? (Pilih lebih dari satu)",
+                    "options": [
+                        "Text Box",
+                        "WordArt",
+                        "Drop Cap",
+                        "Date & Time",
+                        "Margins"
+                    ],
+                    "answer": 0,
+                    "answers": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ],
+                    "explanation": "Grup Text di tab Insert memuat Text Box, Quick Parts, WordArt, Drop Cap, Signature Line, Date & Time, dan Object.",
+                    "image": "uploads/soal/img_soal_quiz-1795077173322_1795078957_84ed31.png",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": []
+                },
+                {
+                    "type": "complex",
+                    "question": "Ketika kita mengklik sebuah objek gambar (Picture) di MS Word 2007 lalu masuk ke tab Format, hal apa saja yang bisa kita ubah pada gambar tersebut? (Pilih lebih dari satu)",
+                    "options": [
+                        "Mengatur kecerahan dan kontras (Adjust)",
+                        "Memberi bingkai dan efek bayangan (Picture Styles)",
+                        "Mengatur posisi gambar terhadap teks (Text Wrapping)",
+                        "Mengatur ukuran dan memotong gambar (Size / Crop)",
+                        "Mengubah kecepatan prosesor CPU"
+                    ],
+                    "answer": 0,
+                    "answers": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ],
+                    "explanation": "Pada menu Format untuk Picture, tersedia grup Adjust, Picture Styles, Arrange (termasuk Text Wrapping), dan Size (termasuk Crop).",
+                    "image": "",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": []
+                },
+                {
+                    "type": "complex",
+                    "question": "Manakah pernyataan yang BENAR mengenai cara menyisipkan dan mengatur teks di dalam AutoShapes (Shapes)? (Pilih lebih dari satu)",
+                    "options": [
+                        "Klik kanan pada gambar AutoShape lalu pilih Add Text",
+                        "Memilih bentuk AutoShape dapat dilakukan melalui tab Insert -> Shapes",
+                        "Setelah memilih bentuk, kita seret (drag) mouse di lembar kerja",
+                        "AutoShape tidak bisa diberi tulisan sama sekali",
+                        "AutoShape hanya ada di program Microsoft Excel"
+                    ],
+                    "answer": 0,
+                    "answers": [
+                        0,
+                        1,
+                        2
+                    ],
+                    "explanation": "AutoShapes dibuat lewat Insert -> Shapes lalu drag di lembar kerja, dan bisa diisi teks lewat klik kanan -> Add Text.",
+                    "image": "",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": []
+                },
+                {
+                    "type": "cause_effect",
+                    "question": "",
+                    "options": [],
+                    "answer": "both_correct_connected",
+                    "answers": [],
+                    "explanation": "Pernyataan BENAR, Alasan BENAR, dan keduanya berhubungan sebab akibat karena komputer membutuhkan manusia sebagai pengendalinya.",
+                    "image": "",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": [],
+                    "statement": "Tanpa adanya Brainware, sebuah komputer yang canggih tetap tidak dapat bekerja sendiri untuk menyelesaikan tugas sekolah.",
+                    "reason": "Brainware adalah manusia (pengguna atau operator) yang memberikan perintah dan mengoperasikan perangkat keras serta perangkat lunak komputer."
+                },
+                {
+                    "type": "cause_effect",
+                    "question": "",
+                    "options": [],
+                    "answer": "both_correct_connected",
+                    "answers": [],
+                    "explanation": "Pernyataan BENAR, Alasan BENAR, dan saling berhubungan sesuai prinsip kerja Memory Device di modul.",
+                    "image": "",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": [],
+                    "statement": "Memori Internal seperti RAM dan ROM terletak di dalam komputer dan berdekatan dengan prosesor.",
+                    "reason": "Memori Internal dikontrol langsung oleh prosesor untuk membantu proses pengolahan data."
+                },
+                {
+                    "type": "cause_effect",
+                    "question": "",
+                    "options": [],
+                    "answer": "both_correct_connected",
+                    "answers": [],
+                    "explanation": "Pernyataan BENAR, Alasan BENAR, dan berhubungan sebab akibat. Copy dan Paste menghindari pengetikan ulang.",
+                    "image": "",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": [],
+                    "statement": "Penggunaan tombol Ctrl + C dan Ctrl + V sangat membantu mempercepat pengetikan kalimat yang sama berulang kali.",
+                    "reason": "Ctrl + C berfungsi menyalin teks yang dipilih, sedangkan Ctrl + V berfungsi menempelkan hasil salinan tersebut."
+                },
+                {
+                    "type": "cause_effect",
+                    "question": "",
+                    "options": [],
+                    "answer": "both_correct_connected",
+                    "answers": [],
+                    "explanation": "Pernyataan BENAR, Alasan BENAR, dan keduanya berhubungan langsung.",
+                    "image": "",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": [],
+                    "statement": "Ketika kita ingin menyimpan dokumen yang sudah pernah disimpan sebelumnya dengan nama file yang baru (berbeda), kita sebaiknya memilih Save As.",
+                    "reason": "Perintah Save As akan membuka kotak dialog agar kita bisa mengganti nama file atau folder tujuan tanpa menimpa file lama."
+                },
+                {
+                    "type": "cause_effect",
+                    "question": "",
+                    "options": [],
+                    "answer": "both_correct_not_connected",
+                    "answers": [],
+                    "explanation": "Pernyataan BENAR dan Alasan BENAR, tetapi tidak menunjukkan hubungan sebab akibat (karena Portrait adalah arah kertas, bukan alasan ukuran A4).",
+                    "image": "",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": [],
+                    "statement": "Posisi kertas Portrait sangat cocok digunakan untuk membuat surat resmi atau laporan tugas biasa.",
+                    "reason": "Ukuran kertas A4 memiliki lebar 21 cm dan tinggi 29,7 cm."
+                },
+                {
+                    "type": "cause_effect",
+                    "question": "",
+                    "options": [],
+                    "answer": "statement_true_reason_false",
+                    "answers": [],
+                    "explanation": "Pernyataan BENAR, tetapi Alasan SALAH karena simbol bintang dan centang dibuat menggunakan Bullets, bukan Numbering.",
+                    "image": "",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": [],
+                    "statement": "Penggunaan fitur Numbering di MS Word 2007 memudahkan kita membuat daftar urutan langkah kerja dari nomor 1, 2, 3 secara otomatis.",
+                    "reason": "Numbering hanya dapat digunakan untuk menuliskan simbol bintang dan tanda centang."
+                },
+                {
+                    "type": "cause_effect",
+                    "question": "",
+                    "options": [],
+                    "answer": "both_correct_connected",
+                    "answers": [],
+                    "explanation": "Pernyataan BENAR, Alasan BENAR, dan berhubungan sebab akibat. Merge Cells memang berfungsi menggabungkan sel.",
+                    "image": "",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": [],
+                    "statement": "Pada tabel di Microsoft Word 2007, kita dapat menggabungkan dua kotak sel menjadi satu kotak yang lebih besar.",
+                    "reason": "Perintah untuk menggabungkan beberapa sel pada tabel adalah Merge Cells."
+                },
+                {
+                    "type": "cause_effect",
+                    "question": "",
+                    "options": [],
+                    "answer": "statement_false_reason_true",
+                    "answers": [],
+                    "explanation": "Pernyataan SALAH (Drop Cap ada di tab Insert, bukan Page Layout), sedangkan Alasan BENAR.",
+                    "image": "",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": [],
+                    "statement": "Fitur Drop Cap di Microsoft Word 2007 berada di dalam tab Page Layout.",
+                    "reason": "Drop Cap berfungsi membuat huruf pertama pada awal paragraf tampil jauh lebih besar dari huruf lainnya."
+                },
+                {
+                    "type": "cause_effect",
+                    "question": "",
+                    "options": [],
+                    "answer": "both_correct_connected",
+                    "answers": [],
+                    "explanation": "Pernyataan BENAR, Alasan BENAR, dan berhubungan sebab akibat. Fitur Start at memungkinkan penentuan nomor awal halaman.",
+                    "image": "",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": [],
+                    "statement": "Kita bisa mengatur agar nomor halaman tidak dimulai dari angka 1, melainkan mulai dari angka 5.",
+                    "reason": "Di dalam menu Page Number terdapat pilihan Format Page Numbers yang memiliki pengaturan Start at."
+                },
+                {
+                    "type": "cause_effect",
+                    "question": "",
+                    "options": [],
+                    "answer": "both_false",
+                    "answers": [],
+                    "explanation": "Keduanya SALAH. Untuk mencetak 5 rangkap, kita mengisi angka 5 di kotak Number of Copies, bukan Pages.",
+                    "image": "",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": [],
+                    "statement": "Jika kita ingin mencetak 5 rangkap lembar soal yang sama di jendela Print, kita harus mengetik angka 5 di kotak Pages.",
+                    "reason": "Kotak Number of Copies di jendela Print digunakan untuk memilih jenis kertas yang akan dicetak."
+                },
+                {
+                    "type": "case_analysis",
+                    "question": "Perangkat keras seperti pada gambar di atas yang digunakan untuk membaca kepingan CD tersebut adalah...",
+                    "options": [
+                        "Harddisk",
+                        "CD-ROM / DVD Drive",
+                        "Flashdisk",
+                        "Printer"
+                    ],
+                    "answer": 1,
+                    "answers": [],
+                    "explanation": "Data pada Compact Disk (CD) berkapasitas 650 MB - 750 MB dibaca menggunakan CD-ROM Drive atau DVD RW Drive.",
+                    "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_8a9397.png",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": [],
+                    "passage": "Perhatikan gambar perangkat keras di bawah ini! Di laboratorium komputer MTs, Pak Guru meminta siswa membuka file latihan yang tersimpan di dalam kepingan CD berkapasitas 700 MB."
+                },
+                {
+                    "type": "case_analysis",
+                    "question": "Kombinasi perataan paragraf (alignment) yang tepat digunakan Salma secara berurutan untuk judul dan isi paragraf adalah...",
+                    "options": [
+                        "Align Left lalu Align Right",
+                        "Align Center lalu Align Justify",
+                        "Align Justify lalu Align Center",
+                        "Align Right lalu Align Center"
+                    ],
+                    "answer": 1,
+                    "answers": [],
+                    "explanation": "Align Center (Ctrl + E) menempatkan judul di tengah, dan Align Justify (Ctrl + J) membuat paragraf rata kiri dan kanan.",
+                    "image": "",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": [],
+                    "passage": "Salma sedang mengetik tugas Bahasa Indonesia di MS Word 2007. Ia ingin judul karangannya berada tepat di tengah halaman, sedangkan paragraf isinya terlihat rapi rata di pinggir kiri maupun kanan seperti buku cetak."
+                },
+                {
+                    "type": "case_analysis",
+                    "question": "Fasilitas apakah pada mistar (Ruler) MS Word 2007 yang paling praktis digunakan Fajar?",
+                    "options": [
+                        "Tabulasi (Tab Stop)",
+                        "WordArt",
+                        "Page Border",
+                        "Zoom Slider"
+                    ],
+                    "answer": 0,
+                    "answers": [],
+                    "explanation": "Tabulasi pada Ruler sangat praktis untuk meluruskan tanda titik dua (:) dan teks secara rapi dalam pembuatan biodata atau surat.",
+                    "image": "",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": [],
+                    "passage": "Fajar diminta membuat daftar biodata seperti:Nama    : Fajar PratamaKelas   : VIII-AAlamat  : Jl. Merdeka No. 10Ia ingin semua tanda titik dua (:) sejajar lurus rapi dari atas sampai bawah tanpa menekan tombol spasi berkali-kali."
+                },
+                {
+                    "type": "case_analysis",
+                    "question": "Pilihan posisi Drop Cap manakah yang harus diklik oleh Nabila?",
+                    "options": [
+                        "None",
+                        "Dropped",
+                        "In margin",
+                        "Cancel"
+                    ],
+                    "answer": 1,
+                    "answers": [],
+                    "explanation": "Pilihan Dropped menempatkan huruf besar di dalam area paragraf, sedangkan In margin menempatkannya di luar batas margin kiri.",
+                    "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_1b36d5.png",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": [],
+                    "passage": "Perhatikan gambar menu Drop Cap berikut! Nabila sedang membuat artikel majalah dinding sekolah. Ia ingin huruf pertama di awal paragraf tampil besar dan masuk di dalam area teks paragraf (bukan di luar batas margin)."
+                },
+                {
+                    "type": "case_analysis",
+                    "question": "Ikon berbentuk ember cat tumpah pada grup Paragraph seperti pada gambar tersebut bernama...",
+                    "options": [
+                        "Font Color",
+                        "Shading",
+                        "Bullets",
+                        "Line Spacing"
+                    ],
+                    "answer": 1,
+                    "answers": [],
+                    "explanation": "Ikon Shading (ember cat tumpah) di grup Paragraph berfungsi memberi warna latar belakang pada paragraf atau sel tabel.",
+                    "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_dba7c1.png",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": [],
+                    "passage": "Perhatikan gambar menu Shading berikut! Saat membuat judul kotak pengumuman kelas, Rizky ingin memberi warna latar belakang kuning muda di belakang baris judul tersebut agar tampak menonjol."
+                },
+                {
+                    "type": "case_analysis",
+                    "question": "Untuk memunculkan jendela Table Properties tersebut dengan cepat, langkah yang harus dilakukan Hanif adalah...",
+                    "options": [
+                        "Klik kanan pada tabel -> pilih Table Properties",
+                        "Klik Office Button -> pilih Save As",
+                        "Tekan Ctrl + P pada keyboard",
+                        "Klik tab View -> pilih Zoom"
+                    ],
+                    "answer": 0,
+                    "answers": [],
+                    "explanation": "Kotak dialog Table Properties dapat dibuka dengan cepat melalui klik kanan pada area tabel lalu memilih Table Properties.",
+                    "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_a354b1.png",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": [],
+                    "passage": "Perhatikan gambar kotak dialog Table Properties berikut! Hanif membuat tabel nilai ujian di MS Word 2007, lalu ia ingin mengatur lebar tabel, posisi tabel di tengah halaman, dan jarak teks di sekeliling tabel."
+                },
+                {
+                    "type": "case_analysis",
+                    "question": "Pengaturan garis tepi (Borders) apakah yang harus dipilih Aisyah agar garis tabel hilang?",
+                    "options": [
+                        "All Borders",
+                        "No Border",
+                        "Outside Borders",
+                        "Thick Box Border"
+                    ],
+                    "answer": 1,
+                    "answers": [],
+                    "explanation": "Memilih No Border pada menu Borders akan menyembunyikan garis tepi tabel sehingga kop surat terlihat rapi tanpa kotak.",
+                    "image": "",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": [],
+                    "passage": "Aisyah sedang membuat kop surat resmi sekolah menggunakan tabel 2 kolom: kolom kiri untuk logo sekolah, dan kolom kanan untuk nama serta alamat sekolah. Setelah selesai, ia ingin garis kotak-kotak tabelnya tidak terlihat saat dicetak."
+                },
+                {
+                    "type": "case_analysis",
+                    "question": "Fitur pada tab Insert seperti gambar ikon di atas yang paling tepat dipakai Dimas adalah...",
+                    "options": [
+                        "Drop Cap",
+                        "WordArt",
+                        "Page Number",
+                        "Symbol"
+                    ],
+                    "answer": 1,
+                    "answers": [],
+                    "explanation": "WordArt digunakan untuk membuat teks bergaya artistik lengkap dengan pilihan bentuk, warna, bayangan, dan efek 3D.",
+                    "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_c9f9ed.png",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": [],
+                    "passage": "Perhatikan gambar ikon berikut! Dimas ingin membuat judul poster lomba 17 Agustus di MS Word 2007 dengan huruf yang melengkung, berwarna gradasi, dan memiliki efek bayangan 3D."
+                },
+                {
+                    "type": "case_analysis",
+                    "question": "Menu apakah di tab Insert yang menyediakan struktur rumus (Fraction, Script, Radical) seperti pada gambar di atas?",
+                    "options": [
+                        "Shapes",
+                        "Equation",
+                        "SmartArt",
+                        "Clip Art"
+                    ],
+                    "answer": 1,
+                    "answers": [],
+                    "explanation": "Equation Editor (Insert -> Equation) menyediakan struktur rumus matematis seperti pecahan (Fraction), pangkat (Script), dan akar (Radical).",
+                    "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_48f827.png",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": [],
+                    "passage": "Saat pelajaran Matematika, guru meminta siswa mengetik soal pecahan dan akar kuadrat seperti x/y dan akar pangkat n di MS Word 2007 agar tampilannya rapi seperti buku pelajaran."
+                },
+                {
+                    "type": "case_analysis",
+                    "question": "Pada kotak dialog Print, bagian Page range manakah yang paling cepat dipilih oleh Laila?",
+                    "options": [
+                        "All",
+                        "Current page",
+                        "Properties",
+                        "Cancel"
+                    ],
+                    "answer": 1,
+                    "answers": [],
+                    "explanation": "Pilihan Current page pada Page range berfungsi mencetak hanya satu halaman tempat kursor sedang berada.",
+                    "image": "",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": [],
+                    "passage": "Laila sudah selesai mengetik 4 halaman tugas makalah. Karena sedang terburu-buru, ia hanya ingin mencetak halaman ke-2 saja (tempat kursornya sedang aktif saat ini) sebanyak 1 lembar."
+                },
+                {
+                    "type": "matching",
+                    "question": "Jodohkan perangkat keras (Hardware) berikut dengan fungsi utamanya yang tepat:",
+                    "options": [],
+                    "answer": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ],
+                    "answers": [],
+                    "explanation": "Setiap perangkat keras memiliki peran masing-masing: Keyboard & Mouse (input), Printer (output), dan Harddisk (penyimpanan).",
+                    "image": "",
+                    "premises": [
+                        "Keyboard",
+                        "Mouse",
+                        "Printer",
+                        "Harddisk"
+                    ],
+                    "targets": [
+                        "Alat input untuk mengetik huruf, angka, dan tanda baca",
+                        "Alat penunjuk untuk menggerakkan pointer dan mengklik menu",
+                        "Alat output untuk mencetak teks atau gambar ke atas kertas",
+                        "Media penyimpan data permanen berkapasitas besar di dalam CPU"
+                    ],
+                    "pairs": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ]
+                },
+                {
+                    "type": "matching",
+                    "question": "Jodohkan istilah elemen dasar tampilan layar Microsoft Word 2007 berikut dengan kegunaannya:",
+                    "options": [],
+                    "answer": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ],
+                    "answers": [],
+                    "explanation": "Keempat elemen tersebut adalah bagian utama jendela kerja MS Word 2007 yang membantu navigasi dokumen.",
+                    "image": "",
+                    "premises": [
+                        "Title Bar",
+                        "Ruler",
+                        "Zoom Slider",
+                        "Scroll Bar"
+                    ],
+                    "targets": [
+                        "Menampilkan nama dokumen yang sedang aktif dibuka",
+                        "Mistar pengukur untuk mengatur batas margin dan tabulasi",
+                        "Mengatur perbesaran atau pengecilan tampilan lembar kerja",
+                        "Menggulung layar dokumen ke atas-bawah atau kiri-kanan"
+                    ],
+                    "pairs": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ]
+                },
+                {
+                    "type": "matching",
+                    "question": "Jodohkan tombol pintasan keyboard (shortcut) pengelolaan dokumen berikut dengan fungsinya:",
+                    "options": [],
+                    "answer": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ],
+                    "answers": [],
+                    "explanation": "Ctrl+N (New), Ctrl+O (Open), Ctrl+S (Save), dan Ctrl+P (Print) adalah shortcut dasar paling sering digunakan.",
+                    "image": "",
+                    "premises": [
+                        "Ctrl + N",
+                        "Ctrl + O",
+                        "Ctrl + S",
+                        "Ctrl + P"
+                    ],
+                    "targets": [
+                        "Membuat dokumen baru yang kosong",
+                        "Membuka dokumen yang sudah pernah disimpan",
+                        "Menyimpan dokumen yang sedang dikerjakan",
+                        "Membuka jendela untuk mencetak dokumen"
+                    ],
+                    "pairs": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ]
+                },
+                {
+                    "type": "matching",
+                    "question": "Jodohkan efek huruf pada grup Font (Tab Home) berikut dengan hasilnya pada teks:",
+                    "options": [],
+                    "answer": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ],
+                    "answers": [],
+                    "explanation": "Keempat perintah tersebut berada di grup Font pada tab Home untuk mempercantik dan memberi penekanan teks.",
+                    "image": "",
+                    "premises": [
+                        "Bold (Ctrl + B)",
+                        "Italic (Ctrl + I)",
+                        "Underline (Ctrl + U)",
+                        "Strikethrough"
+                    ],
+                    "targets": [
+                        "Membuat tulisan bercetak tebal",
+                        "Membuat tulisan bercetak miring",
+                        "Memberikan garis bawah pada tulisan",
+                        "Memberikan garis coretan di tengah tulisan"
+                    ],
+                    "pairs": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ]
+                },
+                {
+                    "type": "matching",
+                    "question": "Jodohkan jenis perataan paragraf (Alignment) berikut dengan shortcut keyboard-nya:",
+                    "options": [],
+                    "answer": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ],
+                    "answers": [],
+                    "explanation": "Perataan paragraf dapat diatur cepat memakai Ctrl+L, Ctrl+E, Ctrl+R, dan Ctrl+J.",
+                    "image": "",
+                    "premises": [
+                        "Align Text Left (Rata Kiri)",
+                        "Align Center (Rata Tengah)",
+                        "Align Text Right (Rata Kanan)",
+                        "Align Justify (Rata Kiri-Kanan)"
+                    ],
+                    "targets": [
+                        "Ctrl + L",
+                        "Ctrl + E",
+                        "Ctrl + R",
+                        "Ctrl + J"
+                    ],
+                    "pairs": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ]
+                },
+                {
+                    "type": "matching",
+                    "question": "Jodohkan istilah pengaturan indentasi pada mistar (Ruler) berikut dengan fungsinya:",
+                    "options": [],
+                    "answer": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ],
+                    "answers": [],
+                    "explanation": "Pengaturan indentasi pada Ruler membantu merapikan awal paragraf dan daftar pustaka.",
+                    "image": "",
+                    "premises": [
+                        "First Line Indent",
+                        "Hanging Indent",
+                        "Left Indent",
+                        "Right Indent"
+                    ],
+                    "targets": [
+                        "Menjorokkan baris pertama paragraf ke dalam",
+                        "Menjorokkan baris kedua dan seterusnya (indentasi gantung)",
+                        "Menggeser seluruh baris paragraf dari batas margin kiri",
+                        "Mengatur batas akhir teks dari margin kanan"
+                    ],
+                    "pairs": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ]
+                },
+                {
+                    "type": "matching",
+                    "question": "Jodohkan istilah bagian-bagian pada Tabel MS Word 2007 berikut dengan pengertiannya:",
+                    "options": [],
+                    "answer": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ],
+                    "answers": [],
+                    "explanation": "Memahami perbedaan Cell, Column, Row, dan Range adalah dasar utama saat bekerja dengan tabel.",
+                    "image": "",
+                    "premises": [
+                        "Cell (Sel)",
+                        "Column (Kolom)",
+                        "Row (Baris)",
+                        "Range"
+                    ],
+                    "targets": [
+                        "Satu kotak tunggal di dalam tabel",
+                        "Kumpulan sel yang tersusun tegak dari atas ke bawah",
+                        "Kumpulan sel yang tersusun mendatar dari kiri ke kanan",
+                        "Kumpulan atau gabungan dari beberapa sel"
+                    ],
+                    "pairs": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ]
+                },
+                {
+                    "type": "matching",
+                    "question": "Jodohkan fitur pada Tab Page Layout berikut dengan fungsinya:",
+                    "options": [],
+                    "answer": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ],
+                    "answers": [],
+                    "explanation": "Keempat fitur tersebut merupakan bagian utama dari grup Page Setup di tab Page Layout.",
+                    "image": "",
+                    "premises": [
+                        "Margins",
+                        "Orientation",
+                        "Size",
+                        "Columns"
+                    ],
+                    "targets": [
+                        "Mengatur jarak batas tepi atas, bawah, kiri, dan kanan kertas",
+                        "Mengatur posisi kertas berdiri (Portrait) atau mendatar (Landscape)",
+                        "Memilih ukuran kertas seperti A4, Letter, atau Legal",
+                        "Membagi teks dalam satu halaman menjadi beberapa lajur kolom"
+                    ],
+                    "pairs": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ]
+                },
+                {
+                    "type": "matching",
+                    "question": "Jodohkan ikon-ikon pada Tab Insert berikut dengan kegunaannya:",
+                    "options": [],
+                    "answer": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ],
+                    "answers": [],
+                    "explanation": "Tab Insert menyediakan beragam objek visual dan kelengkapan halaman untuk memperkaya dokumen.",
+                    "image": "",
+                    "premises": [
+                        "Picture",
+                        "Shapes",
+                        "Text Box",
+                        "Page Number"
+                    ],
+                    "targets": [
+                        "Menyisipkan foto atau gambar yang tersimpan di komputer",
+                        "Menyisipkan bentuk bangun datar, garis, dan anak panah",
+                        "Menyisipkan kotak bebas yang bisa diisi tulisan",
+                        "Menambahkan nomor halaman secara otomatis"
+                    ],
+                    "pairs": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ]
+                },
+                {
+                    "type": "matching",
+                    "question": "Jodohkan istilah pengaturan pada kotak dialog Print berikut dengan fungsinya:",
+                    "options": [],
+                    "answer": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ],
+                    "answers": [],
+                    "explanation": "Pengaturan Page range dan Copies memastikan dokumen dicetak sesuai kebutuhan tanpa membuang kertas.",
+                    "image": "",
+                    "premises": [
+                        "All",
+                        "Current page",
+                        "Pages",
+                        "Number of copies"
+                    ],
+                    "targets": [
+                        "Mencetak seluruh halaman yang ada di dalam dokumen",
+                        "Mencetak hanya halaman tempat kursor sedang berada",
+                        "Mencetak nomor halaman tertentu saja sesuai yang diketik",
+                        "Menentukan berapa rangkap salinan dokumen yang dicetak"
+                    ],
+                    "pairs": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ]
+                }
+            ]
         }
     ],
-    "results": [],
+    "results": [
+        {
+            "id": "res_5d2f55c7abf659957e7e89a8eeacc5d3",
+            "nis": "250051",
+            "name": "AHMAD WAHYU RAMADHANI",
+            "class": "VIII A (UNGGULAN MIPA)",
+            "code": "quiz-1795077173322",
+            "title": "Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8",
+            "score": 100,
+            "correct": 5,
+            "wrong": 0,
+            "date": "19/11/2026 11:05:54",
+            "review_token": "9ee196063d990c8b105a98838f7e9bd3d8cc5c0019dd34eeaebe5666983efb6f",
+            "question_order": [
+                38,
+                45,
+                14,
+                29,
+                43
+            ],
+            "answers": [
+                1,
+                [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                [
+                    3,
+                    2,
+                    1,
+                    0
+                ],
+                "both_false",
+                [
+                    0,
+                    1,
+                    2,
+                    3
+                ]
+            ],
+            "breakdowns": [
+                {
+                    "question": {
+                        "type": "case_analysis",
+                        "question": "Menu apakah di tab Insert yang menyediakan struktur rumus (Fraction, Script, Radical) seperti pada gambar di atas?",
+                        "options": [
+                            "Shapes",
+                            "Equation",
+                            "SmartArt",
+                            "Clip Art"
+                        ],
+                        "answer": 1,
+                        "answers": [],
+                        "explanation": "Equation Editor (Insert -> Equation) menyediakan struktur rumus matematis seperti pecahan (Fraction), pangkat (Script), dan akar (Radical).",
+                        "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_48f827.png",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": [],
+                        "passage": "Saat pelajaran Matematika, guru meminta siswa mengetik soal pecahan dan akar kuadrat seperti x/y dan akar pangkat n di MS Word 2007 agar tampilannya rapi seperti buku pelajaran."
+                    },
+                    "studentAnswer": 1,
+                    "isCorrect": true,
+                    "studentAnswerText": "B. Equation",
+                    "correctAnswerText": "B. Equation"
+                },
+                {
+                    "question": {
+                        "type": "matching",
+                        "question": "Jodohkan istilah pengaturan indentasi pada mistar (Ruler) berikut dengan fungsinya:",
+                        "options": [],
+                        "answer": [
+                            0,
+                            1,
+                            2,
+                            3
+                        ],
+                        "answers": [],
+                        "explanation": "Pengaturan indentasi pada Ruler membantu merapikan awal paragraf dan daftar pustaka.",
+                        "image": "",
+                        "premises": [
+                            "First Line Indent",
+                            "Hanging Indent",
+                            "Left Indent",
+                            "Right Indent"
+                        ],
+                        "targets": [
+                            "Menjorokkan baris pertama paragraf ke dalam",
+                            "Menjorokkan baris kedua dan seterusnya (indentasi gantung)",
+                            "Menggeser seluruh baris paragraf dari batas margin kiri",
+                            "Mengatur batas akhir teks dari margin kanan"
+                        ],
+                        "pairs": [
+                            0,
+                            1,
+                            2,
+                            3
+                        ]
+                    },
+                    "studentAnswer": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ],
+                    "isCorrect": true,
+                    "studentAnswerText": "<b>First Line Indent</b> ➔ Menjorokkan baris pertama paragraf ke dalam<br><b>Hanging Indent</b> ➔ Menjorokkan baris kedua dan seterusnya (indentasi gantung)<br><b>Left Indent</b> ➔ Menggeser seluruh baris paragraf dari batas margin kiri<br><b>Right Indent</b> ➔ Mengatur batas akhir teks dari margin kanan",
+                    "correctAnswerText": "<b>First Line Indent</b> ➔ Menjorokkan baris pertama paragraf ke dalam<br><b>Hanging Indent</b> ➔ Menjorokkan baris kedua dan seterusnya (indentasi gantung)<br><b>Left Indent</b> ➔ Menggeser seluruh baris paragraf dari batas margin kiri<br><b>Right Indent</b> ➔ Mengatur batas akhir teks dari margin kanan"
+                },
+                {
+                    "question": {
+                        "type": "complex",
+                        "question": "Perhatikan gambar grup Page Setup pada tab Page Layout di bawah ini! Pengaturan apa saja yang bisa dilakukan melalui grup tersebut? (Pilih lebih dari satu)",
+                        "options": [
+                            "Mengatur batas tepi kertas (Margins)",
+                            "Mengatur posisi kertas berdiri atau mendatar (Orientation)",
+                            "Mengatur ukuran kertas (Size)",
+                            "Mengatur jumlah kolom teks (Columns)",
+                            "Mengubah warna huruf (Font Color)"
+                        ],
+                        "answer": 0,
+                        "answers": [
+                            0,
+                            1,
+                            2,
+                            3
+                        ],
+                        "explanation": "Grup Page Setup memuat Margins, Orientation, Size, Columns, Breaks, Line Numbers, dan Hyphenation. Warna huruf ada di tab Home.",
+                        "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_a78f0f.png",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": []
+                    },
+                    "studentAnswer": [
+                        3,
+                        2,
+                        1,
+                        0
+                    ],
+                    "isCorrect": true,
+                    "studentAnswerText": "D. Mengatur jumlah kolom teks (Columns)<br>C. Mengatur ukuran kertas (Size)<br>B. Mengatur posisi kertas berdiri atau mendatar (Orientation)<br>A. Mengatur batas tepi kertas (Margins)",
+                    "correctAnswerText": "A. Mengatur batas tepi kertas (Margins)<br>B. Mengatur posisi kertas berdiri atau mendatar (Orientation)<br>C. Mengatur ukuran kertas (Size)<br>D. Mengatur jumlah kolom teks (Columns)"
+                },
+                {
+                    "question": {
+                        "type": "cause_effect",
+                        "question": "",
+                        "options": [],
+                        "answer": "both_false",
+                        "answers": [],
+                        "explanation": "Keduanya SALAH. Untuk mencetak 5 rangkap, kita mengisi angka 5 di kotak Number of Copies, bukan Pages.",
+                        "image": "",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": [],
+                        "statement": "Jika kita ingin mencetak 5 rangkap lembar soal yang sama di jendela Print, kita harus mengetik angka 5 di kotak Pages.",
+                        "reason": "Kotak Number of Copies di jendela Print digunakan untuk memilih jenis kertas yang akan dicetak."
+                    },
+                    "studentAnswer": "both_false",
+                    "isCorrect": true,
+                    "studentAnswerText": "Keduanya salah (E)",
+                    "correctAnswerText": "Keduanya salah (E)"
+                },
+                {
+                    "question": {
+                        "type": "matching",
+                        "question": "Jodohkan efek huruf pada grup Font (Tab Home) berikut dengan hasilnya pada teks:",
+                        "options": [],
+                        "answer": [
+                            0,
+                            1,
+                            2,
+                            3
+                        ],
+                        "answers": [],
+                        "explanation": "Keempat perintah tersebut berada di grup Font pada tab Home untuk mempercantik dan memberi penekanan teks.",
+                        "image": "",
+                        "premises": [
+                            "Bold (Ctrl + B)",
+                            "Italic (Ctrl + I)",
+                            "Underline (Ctrl + U)",
+                            "Strikethrough"
+                        ],
+                        "targets": [
+                            "Membuat tulisan bercetak tebal",
+                            "Membuat tulisan bercetak miring",
+                            "Memberikan garis bawah pada tulisan",
+                            "Memberikan garis coretan di tengah tulisan"
+                        ],
+                        "pairs": [
+                            0,
+                            1,
+                            2,
+                            3
+                        ]
+                    },
+                    "studentAnswer": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ],
+                    "isCorrect": true,
+                    "studentAnswerText": "<b>Bold (Ctrl + B)</b> ➔ Membuat tulisan bercetak tebal<br><b>Italic (Ctrl + I)</b> ➔ Membuat tulisan bercetak miring<br><b>Underline (Ctrl + U)</b> ➔ Memberikan garis bawah pada tulisan<br><b>Strikethrough</b> ➔ Memberikan garis coretan di tengah tulisan",
+                    "correctAnswerText": "<b>Bold (Ctrl + B)</b> ➔ Membuat tulisan bercetak tebal<br><b>Italic (Ctrl + I)</b> ➔ Membuat tulisan bercetak miring<br><b>Underline (Ctrl + U)</b> ➔ Memberikan garis bawah pada tulisan<br><b>Strikethrough</b> ➔ Memberikan garis coretan di tengah tulisan"
+                }
+            ]
+        },
+        {
+            "id": "res_b6d629539b3bb442112188600b54c60c",
+            "nis": "250031",
+            "name": "AHMAD GHALI WARNA",
+            "class": "VIII A (UNGGULAN MIPA)",
+            "code": "quiz-1795077173322",
+            "title": "Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8",
+            "score": 80,
+            "correct": 4,
+            "wrong": 1,
+            "date": "19/11/2026 10:08:20",
+            "review_token": "be1c193f0c7c8c1223e249c0f562dee49882c27be8c8b44e802ecccbb6b7fe41",
+            "question_order": [
+                43,
+                17,
+                4,
+                7,
+                28
+            ],
+            "answers": [
+                [],
+                [
+                    0,
+                    1,
+                    3,
+                    2
+                ],
+                1,
+                1,
+                "both_correct_connected"
+            ],
+            "breakdowns": [
+                {
+                    "question": {
+                        "type": "matching",
+                        "question": "Jodohkan efek huruf pada grup Font (Tab Home) berikut dengan hasilnya pada teks:",
+                        "options": [],
+                        "answer": [
+                            0,
+                            1,
+                            2,
+                            3
+                        ],
+                        "answers": [],
+                        "explanation": "Keempat perintah tersebut berada di grup Font pada tab Home untuk mempercantik dan memberi penekanan teks.",
+                        "image": "",
+                        "premises": [
+                            "Bold (Ctrl + B)",
+                            "Italic (Ctrl + I)",
+                            "Underline (Ctrl + U)",
+                            "Strikethrough"
+                        ],
+                        "targets": [
+                            "Membuat tulisan bercetak tebal",
+                            "Membuat tulisan bercetak miring",
+                            "Memberikan garis bawah pada tulisan",
+                            "Memberikan garis coretan di tengah tulisan"
+                        ],
+                        "pairs": [
+                            0,
+                            1,
+                            2,
+                            3
+                        ]
+                    },
+                    "studentAnswer": [],
+                    "isCorrect": false,
+                    "studentAnswerText": "Tidak dijawab",
+                    "correctAnswerText": "<b>Bold (Ctrl + B)</b> ➔ Membuat tulisan bercetak tebal<br><b>Italic (Ctrl + I)</b> ➔ Membuat tulisan bercetak miring<br><b>Underline (Ctrl + U)</b> ➔ Memberikan garis bawah pada tulisan<br><b>Strikethrough</b> ➔ Memberikan garis coretan di tengah tulisan"
+                },
+                {
+                    "question": {
+                        "type": "complex",
+                        "question": "Perhatikan gambar grup Text pada tab Insert berikut! Ikon apa saja yang termasuk di dalam grup Text? (Pilih lebih dari satu)",
+                        "options": [
+                            "Text Box",
+                            "WordArt",
+                            "Drop Cap",
+                            "Date & Time",
+                            "Margins"
+                        ],
+                        "answer": 0,
+                        "answers": [
+                            0,
+                            1,
+                            2,
+                            3
+                        ],
+                        "explanation": "Grup Text di tab Insert memuat Text Box, Quick Parts, WordArt, Drop Cap, Signature Line, Date & Time, dan Object.",
+                        "image": "uploads/soal/img_soal_quiz-1795077173322_1795078957_84ed31.png",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": []
+                    },
+                    "studentAnswer": [
+                        0,
+                        1,
+                        3,
+                        2
+                    ],
+                    "isCorrect": true,
+                    "studentAnswerText": "A. Text Box<br>B. WordArt<br>D. Date & Time<br>C. Drop Cap",
+                    "correctAnswerText": "A. Text Box<br>B. WordArt<br>C. Drop Cap<br>D. Date & Time"
+                },
+                {
+                    "question": {
+                        "type": "mc",
+                        "question": "Saat mengetik di Microsoft Word 2007, kita ingin membuat huruf menjadi miring (misalnya untuk menulis istilah bahasa asing). Tombol pintasan (shortcut) keyboard yang tepat adalah...",
+                        "options": [
+                            "Ctrl + B",
+                            "Ctrl + I",
+                            "Ctrl + U",
+                            "Ctrl + L"
+                        ],
+                        "answer": 1,
+                        "answers": [],
+                        "explanation": "Ctrl + I adalah pintasan untuk Italic (cetak miring), sedangkan Ctrl + B untuk tebal dan Ctrl + U untuk garis bawah.",
+                        "image": "",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": []
+                    },
+                    "studentAnswer": 1,
+                    "isCorrect": true,
+                    "studentAnswerText": "B. Ctrl + I",
+                    "correctAnswerText": "B. Ctrl + I"
+                },
+                {
+                    "question": {
+                        "type": "mc",
+                        "question": "Perhatikan gambar ikon berikut yang ada di tab Page Layout! Fungsi utama dari ikon tersebut adalah...",
+                        "options": [
+                            "Mengubah warna kertas menjadi biru atau kuning",
+                            "Membuat garis bingkai di sekeliling halaman dokumen",
+                            "Membagi tulisan menjadi dua kolom seperti koran",
+                            "Memberi nomor halaman secara otomatis"
+                        ],
+                        "answer": 1,
+                        "answers": [],
+                        "explanation": "Ikon Page Borders digunakan untuk menambahkan bingkai garis atau hiasan tepi (Art) pada halaman dokumen.",
+                        "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_04b272.png",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": []
+                    },
+                    "studentAnswer": 1,
+                    "isCorrect": true,
+                    "studentAnswerText": "B. Membuat garis bingkai di sekeliling halaman dokumen",
+                    "correctAnswerText": "B. Membuat garis bingkai di sekeliling halaman dokumen"
+                },
+                {
+                    "question": {
+                        "type": "cause_effect",
+                        "question": "",
+                        "options": [],
+                        "answer": "both_correct_connected",
+                        "answers": [],
+                        "explanation": "Pernyataan BENAR, Alasan BENAR, dan berhubungan sebab akibat. Fitur Start at memungkinkan penentuan nomor awal halaman.",
+                        "image": "",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": [],
+                        "statement": "Kita bisa mengatur agar nomor halaman tidak dimulai dari angka 1, melainkan mulai dari angka 5.",
+                        "reason": "Di dalam menu Page Number terdapat pilihan Format Page Numbers yang memiliki pengaturan Start at."
+                    },
+                    "studentAnswer": "both_correct_connected",
+                    "isCorrect": true,
+                    "studentAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)",
+                    "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
+                }
+            ]
+        }
+    ],
     "review_settings": {
         "quiz-1794921157572": false,
         "all": false
@@ -9798,8 +11231,1096 @@
             "photo": ""
         }
     ],
-    "active_attempts": [],
-    "student_sessions": [],
+    "active_attempts": {
+        "4d70014432721da15a24f07c70346289512ba6675feaf4f0d0a47ef5ec560932": {
+            "token": "820c12d73314bfd0ee41631ce3f20a09a8af796d5f028dd6278d0342cf7ca706",
+            "token_hash": "4d70014432721da15a24f07c70346289512ba6675feaf4f0d0a47ef5ec560932",
+            "quiz_id": "quiz-1795077173322",
+            "quiz_title": "Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8",
+            "nis": "250031",
+            "name": "AHMAD GHALI WARNA",
+            "class": "VIII A (UNGGULAN MIPA)",
+            "question_order": [
+                43,
+                17,
+                4,
+                7,
+                28
+            ],
+            "option_order": {
+                "43": [],
+                "17": [
+                    2,
+                    1,
+                    4,
+                    0,
+                    3
+                ],
+                "4": [
+                    1,
+                    3,
+                    2,
+                    0
+                ],
+                "7": [
+                    0,
+                    3,
+                    1,
+                    2
+                ],
+                "28": []
+            },
+            "answers": [
+                [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                [
+                    3,
+                    1,
+                    4,
+                    0
+                ],
+                0,
+                2,
+                "both_correct_connected"
+            ],
+            "started_at": 1795077235,
+            "ends_at": 1795079266,
+            "updated_at": 1795079250,
+            "violations_count": 33,
+            "last_violation_at": 1795079300,
+            "last_violation_type": "exit_fullscreen",
+            "violations_log": [
+                {
+                    "time": "19/11/2026 09:33:57",
+                    "timestamp": 1795077237,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 1
+                },
+                {
+                    "time": "19/11/2026 09:34:31",
+                    "timestamp": 1795077271,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 2
+                },
+                {
+                    "time": "19/11/2026 09:35:09",
+                    "timestamp": 1795077309,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 3
+                },
+                {
+                    "time": "19/11/2026 09:37:58",
+                    "timestamp": 1795077478,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 4
+                },
+                {
+                    "time": "19/11/2026 09:40:15",
+                    "timestamp": 1795077615,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 5
+                },
+                {
+                    "time": "19/11/2026 09:42:27",
+                    "timestamp": 1795077747,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 6
+                },
+                {
+                    "time": "19/11/2026 09:44:43",
+                    "timestamp": 1795077883,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 7
+                },
+                {
+                    "time": "19/11/2026 09:44:57",
+                    "timestamp": 1795077897,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 8
+                },
+                {
+                    "time": "19/11/2026 09:49:13",
+                    "timestamp": 1795078153,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 9
+                },
+                {
+                    "time": "19/11/2026 09:49:22",
+                    "timestamp": 1795078162,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 10
+                },
+                {
+                    "time": "19/11/2026 09:50:59",
+                    "timestamp": 1795078259,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 11
+                },
+                {
+                    "time": "19/11/2026 09:51:02",
+                    "timestamp": 1795078262,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 12
+                },
+                {
+                    "time": "19/11/2026 09:51:31",
+                    "timestamp": 1795078291,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 13
+                },
+                {
+                    "time": "19/11/2026 09:53:19",
+                    "timestamp": 1795078399,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 14
+                },
+                {
+                    "time": "19/11/2026 09:54:04",
+                    "timestamp": 1795078444,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 15
+                },
+                {
+                    "time": "19/11/2026 09:54:06",
+                    "timestamp": 1795078446,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 16
+                },
+                {
+                    "time": "19/11/2026 09:55:12",
+                    "timestamp": 1795078512,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 17
+                },
+                {
+                    "time": "19/11/2026 09:55:23",
+                    "timestamp": 1795078523,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 18
+                },
+                {
+                    "time": "19/11/2026 09:58:58",
+                    "timestamp": 1795078738,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 19
+                },
+                {
+                    "time": "19/11/2026 10:00:07",
+                    "timestamp": 1795078807,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 20
+                },
+                {
+                    "time": "19/11/2026 10:01:51",
+                    "timestamp": 1795078911,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 21
+                },
+                {
+                    "time": "19/11/2026 10:02:10",
+                    "timestamp": 1795078930,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 22
+                },
+                {
+                    "time": "19/11/2026 10:02:42",
+                    "timestamp": 1795078962,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 23
+                },
+                {
+                    "time": "19/11/2026 10:04:23",
+                    "timestamp": 1795079063,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 24
+                },
+                {
+                    "time": "19/11/2026 10:04:36",
+                    "timestamp": 1795079076,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 25
+                },
+                {
+                    "time": "19/11/2026 10:07:12",
+                    "timestamp": 1795079232,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari mode layar penuh (Full Screen)",
+                    "count": 26
+                },
+                {
+                    "time": "19/11/2026 10:07:37",
+                    "timestamp": 1795079257,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari mode layar penuh (Full Screen)",
+                    "count": 27
+                },
+                {
+                    "time": "19/11/2026 10:07:39",
+                    "timestamp": 1795079259,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 28
+                },
+                {
+                    "time": "19/11/2026 10:08:04",
+                    "timestamp": 1795079284,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 29
+                },
+                {
+                    "time": "19/11/2026 10:08:12",
+                    "timestamp": 1795079292,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 30
+                },
+                {
+                    "time": "19/11/2026 10:08:14",
+                    "timestamp": 1795079294,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 31
+                },
+                {
+                    "time": "19/11/2026 10:08:19",
+                    "timestamp": 1795079299,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 32
+                },
+                {
+                    "time": "19/11/2026 10:08:20",
+                    "timestamp": 1795079300,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari mode layar penuh (Full Screen)",
+                    "count": 33
+                }
+            ],
+            "finished": true,
+            "result_token": "be1c193f0c7c8c1223e249c0f562dee49882c27be8c8b44e802ecccbb6b7fe41",
+            "score": 80
+        },
+        "62743b3143c8b02776947d7ee77859f1c36fae26970a5b139483a145d5104009": {
+            "token": "411d82e8d11ed285762330401a4bc0ec93de43d4a65c6a7583e9ac4b6b77d6ed",
+            "token_hash": "62743b3143c8b02776947d7ee77859f1c36fae26970a5b139483a145d5104009",
+            "quiz_id": "quiz-1795077173322",
+            "quiz_title": "Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8",
+            "nis": "250051",
+            "name": "AHMAD WAHYU RAMADHANI",
+            "class": "VIII A (UNGGULAN MIPA)",
+            "question_order": [
+                38,
+                45,
+                14,
+                29,
+                43
+            ],
+            "option_order": {
+                "38": [
+                    0,
+                    1,
+                    3,
+                    2
+                ],
+                "45": [],
+                "14": [
+                    3,
+                    2,
+                    1,
+                    0,
+                    4
+                ],
+                "29": [],
+                "43": []
+            },
+            "answers": [
+                1,
+                [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "both_false",
+                [
+                    0,
+                    1,
+                    2,
+                    3
+                ]
+            ],
+            "started_at": 1795079461,
+            "ends_at": 1795083020,
+            "updated_at": 1795082754,
+            "violations_count": 32,
+            "last_violation_at": 1795082706,
+            "last_violation_type": "app_switch",
+            "violations_log": [
+                {
+                    "time": "19/11/2026 10:11:53",
+                    "timestamp": 1795079513,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 1
+                },
+                {
+                    "time": "19/11/2026 10:12:14",
+                    "timestamp": 1795079534,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 2
+                },
+                {
+                    "time": "19/11/2026 10:12:57",
+                    "timestamp": 1795079577,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 3
+                },
+                {
+                    "time": "19/11/2026 10:13:29",
+                    "timestamp": 1795079609,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 4
+                },
+                {
+                    "time": "19/11/2026 10:13:59",
+                    "timestamp": 1795079639,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 5
+                },
+                {
+                    "time": "19/11/2026 10:14:24",
+                    "timestamp": 1795079664,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 6
+                },
+                {
+                    "time": "19/11/2026 10:14:34",
+                    "timestamp": 1795079674,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari mode layar penuh (Full Screen)",
+                    "count": 7
+                },
+                {
+                    "time": "19/11/2026 10:14:39",
+                    "timestamp": 1795079679,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 8
+                },
+                {
+                    "time": "19/11/2026 10:14:41",
+                    "timestamp": 1795079681,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 9
+                },
+                {
+                    "time": "19/11/2026 10:14:49",
+                    "timestamp": 1795079689,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 10
+                },
+                {
+                    "time": "19/11/2026 10:14:51",
+                    "timestamp": 1795079691,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 11
+                },
+                {
+                    "time": "19/11/2026 10:15:07",
+                    "timestamp": 1795079707,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 12
+                },
+                {
+                    "time": "19/11/2026 10:15:15",
+                    "timestamp": 1795079715,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 13
+                },
+                {
+                    "time": "19/11/2026 10:15:27",
+                    "timestamp": 1795079727,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari mode layar penuh (Full Screen)",
+                    "count": 14
+                },
+                {
+                    "time": "19/11/2026 10:15:37",
+                    "timestamp": 1795079737,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari mode layar penuh (Full Screen)",
+                    "count": 15
+                },
+                {
+                    "time": "19/11/2026 10:15:41",
+                    "timestamp": 1795079741,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 16
+                },
+                {
+                    "time": "19/11/2026 10:15:46",
+                    "timestamp": 1795079746,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 17
+                },
+                {
+                    "time": "19/11/2026 10:17:40",
+                    "timestamp": 1795079860,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 18
+                },
+                {
+                    "time": "19/11/2026 10:18:23",
+                    "timestamp": 1795079903,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 19
+                },
+                {
+                    "time": "19/11/2026 10:18:52",
+                    "timestamp": 1795079932,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 20
+                },
+                {
+                    "time": "19/11/2026 10:19:26",
+                    "timestamp": 1795079966,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 21
+                },
+                {
+                    "time": "19/11/2026 10:21:00",
+                    "timestamp": 1795080060,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 22
+                },
+                {
+                    "time": "19/11/2026 10:21:18",
+                    "timestamp": 1795080078,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 23
+                },
+                {
+                    "time": "19/11/2026 10:21:28",
+                    "timestamp": 1795080088,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 24
+                },
+                {
+                    "time": "19/11/2026 10:21:30",
+                    "timestamp": 1795080090,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 25
+                },
+                {
+                    "time": "19/11/2026 10:21:37",
+                    "timestamp": 1795080097,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 26
+                },
+                {
+                    "time": "19/11/2026 10:22:28",
+                    "timestamp": 1795080148,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 27
+                },
+                {
+                    "time": "19/11/2026 10:22:31",
+                    "timestamp": 1795080151,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 28
+                },
+                {
+                    "time": "19/11/2026 10:22:55",
+                    "timestamp": 1795080175,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 29
+                },
+                {
+                    "time": "19/11/2026 10:23:59",
+                    "timestamp": 1795080239,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 30
+                },
+                {
+                    "time": "19/11/2026 11:05:02",
+                    "timestamp": 1795082702,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 31
+                },
+                {
+                    "time": "19/11/2026 11:05:06",
+                    "timestamp": 1795082706,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 32
+                }
+            ],
+            "finished": true,
+            "result_token": "9ee196063d990c8b105a98838f7e9bd3d8cc5c0019dd34eeaebe5666983efb6f",
+            "score": 100
+        }
+    },
+    "student_sessions": {
+        "250031": {
+            "nis": "250031",
+            "name": "AHMAD GHALI WARNA",
+            "class": "VIII A (UNGGULAN MIPA)",
+            "quiz_id": "quiz-1795077173322",
+            "quiz_title": "Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8",
+            "status": "FINISHED",
+            "ip": "::1",
+            "login_at": 1795077224,
+            "last_seen": 1795079300,
+            "attempt_token_hash": "4d70014432721da15a24f07c70346289512ba6675feaf4f0d0a47ef5ec560932",
+            "started_at": 1795077235,
+            "ends_at": 1795079266,
+            "violations_count": 33,
+            "last_violation_at": 1795079300,
+            "last_violation_type": "exit_fullscreen",
+            "violations_log": [
+                {
+                    "time": "19/11/2026 09:33:57",
+                    "timestamp": 1795077237,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 1
+                },
+                {
+                    "time": "19/11/2026 09:34:31",
+                    "timestamp": 1795077271,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 2
+                },
+                {
+                    "time": "19/11/2026 09:35:09",
+                    "timestamp": 1795077309,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 3
+                },
+                {
+                    "time": "19/11/2026 09:37:58",
+                    "timestamp": 1795077478,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 4
+                },
+                {
+                    "time": "19/11/2026 09:40:15",
+                    "timestamp": 1795077615,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 5
+                },
+                {
+                    "time": "19/11/2026 09:42:27",
+                    "timestamp": 1795077747,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 6
+                },
+                {
+                    "time": "19/11/2026 09:44:43",
+                    "timestamp": 1795077883,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 7
+                },
+                {
+                    "time": "19/11/2026 09:44:57",
+                    "timestamp": 1795077897,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 8
+                },
+                {
+                    "time": "19/11/2026 09:49:13",
+                    "timestamp": 1795078153,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 9
+                },
+                {
+                    "time": "19/11/2026 09:49:22",
+                    "timestamp": 1795078162,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 10
+                },
+                {
+                    "time": "19/11/2026 09:50:59",
+                    "timestamp": 1795078259,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 11
+                },
+                {
+                    "time": "19/11/2026 09:51:02",
+                    "timestamp": 1795078262,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 12
+                },
+                {
+                    "time": "19/11/2026 09:51:31",
+                    "timestamp": 1795078291,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 13
+                },
+                {
+                    "time": "19/11/2026 09:53:19",
+                    "timestamp": 1795078399,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 14
+                },
+                {
+                    "time": "19/11/2026 09:54:04",
+                    "timestamp": 1795078444,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 15
+                },
+                {
+                    "time": "19/11/2026 09:54:06",
+                    "timestamp": 1795078446,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 16
+                },
+                {
+                    "time": "19/11/2026 09:55:12",
+                    "timestamp": 1795078512,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 17
+                },
+                {
+                    "time": "19/11/2026 09:55:23",
+                    "timestamp": 1795078523,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 18
+                },
+                {
+                    "time": "19/11/2026 09:58:58",
+                    "timestamp": 1795078738,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 19
+                },
+                {
+                    "time": "19/11/2026 10:00:07",
+                    "timestamp": 1795078807,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 20
+                },
+                {
+                    "time": "19/11/2026 10:01:51",
+                    "timestamp": 1795078911,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 21
+                },
+                {
+                    "time": "19/11/2026 10:02:10",
+                    "timestamp": 1795078930,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 22
+                },
+                {
+                    "time": "19/11/2026 10:02:42",
+                    "timestamp": 1795078962,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 23
+                },
+                {
+                    "time": "19/11/2026 10:04:23",
+                    "timestamp": 1795079063,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 24
+                },
+                {
+                    "time": "19/11/2026 10:04:36",
+                    "timestamp": 1795079076,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 25
+                },
+                {
+                    "time": "19/11/2026 10:07:12",
+                    "timestamp": 1795079232,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari mode layar penuh (Full Screen)",
+                    "count": 26
+                },
+                {
+                    "time": "19/11/2026 10:07:37",
+                    "timestamp": 1795079257,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari mode layar penuh (Full Screen)",
+                    "count": 27
+                },
+                {
+                    "time": "19/11/2026 10:07:39",
+                    "timestamp": 1795079259,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 28
+                },
+                {
+                    "time": "19/11/2026 10:08:04",
+                    "timestamp": 1795079284,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 29
+                },
+                {
+                    "time": "19/11/2026 10:08:12",
+                    "timestamp": 1795079292,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 30
+                },
+                {
+                    "time": "19/11/2026 10:08:14",
+                    "timestamp": 1795079294,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 31
+                },
+                {
+                    "time": "19/11/2026 10:08:19",
+                    "timestamp": 1795079299,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 32
+                },
+                {
+                    "time": "19/11/2026 10:08:20",
+                    "timestamp": 1795079300,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari mode layar penuh (Full Screen)",
+                    "count": 33
+                }
+            ],
+            "finished_at": 1795079300,
+            "score": 80
+        },
+        "250051": {
+            "nis": "250051",
+            "name": "AHMAD WAHYU RAMADHANI",
+            "class": "VIII A (UNGGULAN MIPA)",
+            "quiz_id": "quiz-1795077173322",
+            "quiz_title": "Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8",
+            "status": "FINISHED",
+            "ip": "::1",
+            "login_at": 1795079440,
+            "last_seen": 1795082754,
+            "attempt_token_hash": "62743b3143c8b02776947d7ee77859f1c36fae26970a5b139483a145d5104009",
+            "started_at": 1795079461,
+            "ends_at": 1795083020,
+            "violations_count": 32,
+            "last_violation_at": 1795082706,
+            "last_violation_type": "app_switch",
+            "violations_log": [
+                {
+                    "time": "19/11/2026 10:11:53",
+                    "timestamp": 1795079513,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 1
+                },
+                {
+                    "time": "19/11/2026 10:12:14",
+                    "timestamp": 1795079534,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 2
+                },
+                {
+                    "time": "19/11/2026 10:12:57",
+                    "timestamp": 1795079577,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 3
+                },
+                {
+                    "time": "19/11/2026 10:13:29",
+                    "timestamp": 1795079609,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 4
+                },
+                {
+                    "time": "19/11/2026 10:13:59",
+                    "timestamp": 1795079639,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 5
+                },
+                {
+                    "time": "19/11/2026 10:14:24",
+                    "timestamp": 1795079664,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 6
+                },
+                {
+                    "time": "19/11/2026 10:14:34",
+                    "timestamp": 1795079674,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari mode layar penuh (Full Screen)",
+                    "count": 7
+                },
+                {
+                    "time": "19/11/2026 10:14:39",
+                    "timestamp": 1795079679,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 8
+                },
+                {
+                    "time": "19/11/2026 10:14:41",
+                    "timestamp": 1795079681,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 9
+                },
+                {
+                    "time": "19/11/2026 10:14:49",
+                    "timestamp": 1795079689,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 10
+                },
+                {
+                    "time": "19/11/2026 10:14:51",
+                    "timestamp": 1795079691,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 11
+                },
+                {
+                    "time": "19/11/2026 10:15:07",
+                    "timestamp": 1795079707,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 12
+                },
+                {
+                    "time": "19/11/2026 10:15:15",
+                    "timestamp": 1795079715,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 13
+                },
+                {
+                    "time": "19/11/2026 10:15:27",
+                    "timestamp": 1795079727,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari mode layar penuh (Full Screen)",
+                    "count": 14
+                },
+                {
+                    "time": "19/11/2026 10:15:37",
+                    "timestamp": 1795079737,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari mode layar penuh (Full Screen)",
+                    "count": 15
+                },
+                {
+                    "time": "19/11/2026 10:15:41",
+                    "timestamp": 1795079741,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 16
+                },
+                {
+                    "time": "19/11/2026 10:15:46",
+                    "timestamp": 1795079746,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 17
+                },
+                {
+                    "time": "19/11/2026 10:17:40",
+                    "timestamp": 1795079860,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 18
+                },
+                {
+                    "time": "19/11/2026 10:18:23",
+                    "timestamp": 1795079903,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 19
+                },
+                {
+                    "time": "19/11/2026 10:18:52",
+                    "timestamp": 1795079932,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 20
+                },
+                {
+                    "time": "19/11/2026 10:19:26",
+                    "timestamp": 1795079966,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 21
+                },
+                {
+                    "time": "19/11/2026 10:21:00",
+                    "timestamp": 1795080060,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 22
+                },
+                {
+                    "time": "19/11/2026 10:21:18",
+                    "timestamp": 1795080078,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 23
+                },
+                {
+                    "time": "19/11/2026 10:21:28",
+                    "timestamp": 1795080088,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 24
+                },
+                {
+                    "time": "19/11/2026 10:21:30",
+                    "timestamp": 1795080090,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 25
+                },
+                {
+                    "time": "19/11/2026 10:21:37",
+                    "timestamp": 1795080097,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 26
+                },
+                {
+                    "time": "19/11/2026 10:22:28",
+                    "timestamp": 1795080148,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 27
+                },
+                {
+                    "time": "19/11/2026 10:22:31",
+                    "timestamp": 1795080151,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 28
+                },
+                {
+                    "time": "19/11/2026 10:22:55",
+                    "timestamp": 1795080175,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 29
+                },
+                {
+                    "time": "19/11/2026 10:23:59",
+                    "timestamp": 1795080239,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 30
+                },
+                {
+                    "time": "19/11/2026 11:05:02",
+                    "timestamp": 1795082702,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 31
+                },
+                {
+                    "time": "19/11/2026 11:05:06",
+                    "timestamp": 1795082706,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 32
+                }
+            ],
+            "finished_at": 1795082754,
+            "score": 100
+        }
+    },
     "audit_logs": [
         {
             "time": "2026-11-17T10:12:57+01:00",
@@ -12873,6 +15394,608 @@
             "action": "Hapus sesi monitoring terpilih",
             "target": "7 pengerjaan/sesi siswa dihapus",
             "detail": ""
+        },
+        {
+            "time": "2026-11-19T09:17:34+01:00",
+            "user": "guru",
+            "action": "Simpan paket kuis",
+            "target": "",
+            "detail": "2 paket"
+        },
+        {
+            "time": "2026-11-19T09:18:15+01:00",
+            "user": "guru",
+            "action": "Simpan paket kuis",
+            "target": "",
+            "detail": "3 paket"
+        },
+        {
+            "time": "2026-11-19T09:32:16+01:00",
+            "user": "guru",
+            "action": "Simpan paket kuis",
+            "target": "",
+            "detail": "2 paket"
+        },
+        {
+            "time": "2026-11-19T09:32:26+01:00",
+            "user": "guru",
+            "action": "Simpan paket kuis",
+            "target": "",
+            "detail": "1 paket"
+        },
+        {
+            "time": "2026-11-19T09:32:53+01:00",
+            "user": "guru",
+            "action": "Simpan paket kuis",
+            "target": "",
+            "detail": "2 paket"
+        },
+        {
+            "time": "2026-11-19T09:32:53+01:00",
+            "user": "guru",
+            "action": "Import soal file (docx)",
+            "target": "Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8",
+            "detail": "50 soal ditambahkan"
+        },
+        {
+            "time": "2026-11-19T09:33:44+01:00",
+            "user": "guru",
+            "action": "Login siswa",
+            "target": "250031 - AHMAD GHALI WARNA",
+            "detail": "Kelas VIII A (UNGGULAN MIPA) (Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8)"
+        },
+        {
+            "time": "2026-11-19T09:33:55+01:00",
+            "user": "guru",
+            "action": "Mulai ujian",
+            "target": "250031 - AHMAD GHALI WARNA",
+            "detail": "Paket: Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8"
+        },
+        {
+            "time": "2026-11-19T09:33:57+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-1)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T09:34:31+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-2)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T09:35:09+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-3)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T09:37:58+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-4)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T09:40:15+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-5)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T09:42:27+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-6)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T09:44:43+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-7)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T09:44:57+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-8)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T09:49:12+01:00",
+            "user": "guru",
+            "action": "Minta perpanjangan waktu",
+            "target": "250031 / quiz-1795077173322",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T09:49:13+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-9)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T09:49:22+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-10)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T09:49:26+01:00",
+            "user": "guru",
+            "action": "Setujui perpanjangan waktu +5m",
+            "target": "250031",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T09:50:59+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-11)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T09:51:02+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-12)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T09:51:31+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-13)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T09:53:19+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-14)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T09:54:04+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-15)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T09:54:06+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-16)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T09:55:12+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-17)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T09:55:23+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-18)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T09:58:58+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-19)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:00:07+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-20)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:01:51+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-21)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:02:10+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-22)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:02:28+01:00",
+            "user": "guru",
+            "action": "Simpan paket kuis",
+            "target": "",
+            "detail": "2 paket"
+        },
+        {
+            "time": "2026-11-19T10:02:37+01:00",
+            "user": "guru",
+            "action": "Simpan paket kuis",
+            "target": "",
+            "detail": "2 paket"
+        },
+        {
+            "time": "2026-11-19T10:02:42+01:00",
+            "user": "guru",
+            "action": "Minta perpanjangan waktu",
+            "target": "250031 / quiz-1795077173322",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:02:42+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-23)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:02:46+01:00",
+            "user": "guru",
+            "action": "Setujui perpanjangan waktu +5m",
+            "target": "250031",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:04:23+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-24)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:04:36+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-25)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:06:31+01:00",
+            "user": "guru",
+            "action": "Simpan paket kuis",
+            "target": "",
+            "detail": "2 paket"
+        },
+        {
+            "time": "2026-11-19T10:07:12+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Keluar dari mode layar penuh (Full Screen) (ke-26)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:07:37+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Keluar dari mode layar penuh (Full Screen) (ke-27)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:07:39+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-28)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:08:04+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-29)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:08:12+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-30)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:08:14+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-31)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:08:19+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-32)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:08:20+01:00",
+            "user": "guru",
+            "action": "Selesai ujian",
+            "target": "250031 - AHMAD GHALI WARNA",
+            "detail": "Nilai: 80 (4 Benar, 1 Salah) - Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8"
+        },
+        {
+            "time": "2026-11-19T10:08:20+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD GHALI WARNA (NIS: 250031) terdeteksi: Keluar dari mode layar penuh (Full Screen) (ke-33)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:10:40+01:00",
+            "user": "guru",
+            "action": "Login siswa",
+            "target": "250051 - AHMAD WAHYU RAMADHANI",
+            "detail": "Kelas VIII A (UNGGULAN MIPA) (Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8)"
+        },
+        {
+            "time": "2026-11-19T10:11:01+01:00",
+            "user": "guru",
+            "action": "Mulai ujian",
+            "target": "250051 - AHMAD WAHYU RAMADHANI",
+            "detail": "Paket: Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8"
+        },
+        {
+            "time": "2026-11-19T10:11:53+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-1)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:12:14+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-2)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:12:57+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-3)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:13:29+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-4)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:13:59+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-5)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:14:24+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-6)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:14:34+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Keluar dari mode layar penuh (Full Screen) (ke-7)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:14:39+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-8)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:14:41+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-9)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:14:49+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-10)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:14:51+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-11)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:15:07+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-12)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:15:15+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-13)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:15:27+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Keluar dari mode layar penuh (Full Screen) (ke-14)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:15:37+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Keluar dari mode layar penuh (Full Screen) (ke-15)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:15:41+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-16)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:15:46+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-17)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:17:40+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-18)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:18:23+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-19)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:18:52+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-20)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:19:26+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-21)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:21:00+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-22)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:21:18+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-23)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:21:28+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-24)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:21:30+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-25)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:21:37+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-26)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:22:28+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-27)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:22:31+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-28)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:22:55+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-29)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T10:23:59+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-30)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T11:05:02+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-31)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T11:05:05+01:00",
+            "user": "guru",
+            "action": "Minta perpanjangan waktu",
+            "target": "250051 / quiz-1795077173322",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T11:05:06+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD WAHYU RAMADHANI (NIS: 250051) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-32)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T11:05:20+01:00",
+            "user": "guru",
+            "action": "Setujui perpanjangan waktu +5m",
+            "target": "250051",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T11:05:54+01:00",
+            "user": "guru",
+            "action": "Selesai ujian",
+            "target": "250051 - AHMAD WAHYU RAMADHANI",
+            "detail": "Nilai: 100 (5 Benar, 0 Salah) - Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8"
         }
     ],
     "backups": [
@@ -15086,6 +18209,34 @@
             "added_minutes": 5,
             "new_ends_at": 1795072589,
             "responded_at": 1795072289
+        },
+        {
+            "id": "req_935a82994fe4e212",
+            "token_hash": "4d70014432721da15a24f07c70346289512ba6675feaf4f0d0a47ef5ec560932",
+            "nis": "250031",
+            "name": "AHMAD GHALI WARNA",
+            "class": "VIII A (UNGGULAN MIPA)",
+            "quiz_id": "quiz-1795077173322",
+            "quiz_title": "Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8",
+            "requested_at": 1795078962,
+            "status": "APPROVED",
+            "added_minutes": 5,
+            "new_ends_at": 1795079266,
+            "responded_at": 1795078966
+        },
+        {
+            "id": "req_90f988ae1a2fed5d",
+            "token_hash": "62743b3143c8b02776947d7ee77859f1c36fae26970a5b139483a145d5104009",
+            "nis": "250051",
+            "name": "AHMAD WAHYU RAMADHANI",
+            "class": "VIII A (UNGGULAN MIPA)",
+            "quiz_id": "quiz-1795077173322",
+            "quiz_title": "Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8",
+            "requested_at": 1795082705,
+            "status": "APPROVED",
+            "added_minutes": 5,
+            "new_ends_at": 1795083020,
+            "responded_at": 1795082720
         }
     ],
     "settings": {
