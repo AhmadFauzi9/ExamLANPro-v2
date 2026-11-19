@@ -4,7 +4,7 @@
             "id": "quiz-1794921157572",
             "title": "UB Informatika Semester Ganjil 2026-2027",
             "duration": 6,
-            "max_questions": 6,
+            "max_questions": 0,
             "quiz_type": "mixed",
             "description": "Jaawablah soal dengan benar!",
             "subject": "Informatika",
@@ -12,10 +12,10 @@
             "start_at": "",
             "end_at": "",
             "status": "DRAFT",
-            "pin": "4LRVZM",
+            "pin": "7AH65Q",
             "pin_enabled": true,
             "pin_auto_refresh": true,
-            "pin_updated_at": 1795097619,
+            "pin_updated_at": 1795103630,
             "questions": [
                 {
                     "type": "mc",
@@ -900,10 +900,10 @@
             "start_at": "",
             "end_at": "",
             "status": "ACTIVE",
-            "pin": "R9G23M",
+            "pin": "E2YTZC",
             "pin_enabled": true,
             "pin_auto_refresh": true,
-            "pin_updated_at": 1795097760,
+            "pin_updated_at": 1795103815,
             "questions": [
                 {
                     "type": "mc",
@@ -1943,6 +1943,151 @@
     ],
     "results": [
         {
+            "id": "res_b6118f159983809cad11545edcf173ca",
+            "nis": "250053",
+            "name": "AHMAD ZIYAD ASSYAFIQ",
+            "class": "VIII A (UNGGULAN MIPA)",
+            "code": "quiz-1795077173322",
+            "title": "Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8",
+            "score": 40,
+            "correct": 2,
+            "wrong": 3,
+            "date": "19/11/2026 16:34:18",
+            "review_token": "0f997e0d406916246d042073d966e1e0568349782633cce5e8e151b37324d4e1",
+            "question_order": [
+                34,
+                21,
+                6,
+                33,
+                19
+            ],
+            "answers": [
+                1,
+                "both_correct_connected"
+            ],
+            "breakdowns": [
+                {
+                    "question": {
+                        "type": "case_analysis",
+                        "question": "Ikon berbentuk ember cat tumpah pada grup Paragraph seperti pada gambar tersebut bernama...",
+                        "options": [
+                            "Font Color",
+                            "Shading",
+                            "Bullets",
+                            "Line Spacing"
+                        ],
+                        "answer": 1,
+                        "answers": [],
+                        "explanation": "Ikon Shading (ember cat tumpah) di grup Paragraph berfungsi memberi warna latar belakang pada paragraf atau sel tabel.",
+                        "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_dba7c1.png",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": [],
+                        "passage": "Perhatikan gambar menu Shading berikut! Saat membuat judul kotak pengumuman kelas, Rizky ingin memberi warna latar belakang kuning muda di belakang baris judul tersebut agar tampak menonjol."
+                    },
+                    "studentAnswer": 1,
+                    "isCorrect": true,
+                    "studentAnswerText": "B. Shading",
+                    "correctAnswerText": "B. Shading"
+                },
+                {
+                    "question": {
+                        "type": "cause_effect",
+                        "question": "",
+                        "options": [],
+                        "answer": "both_correct_connected",
+                        "answers": [],
+                        "explanation": "Pernyataan BENAR, Alasan BENAR, dan saling berhubungan sesuai prinsip kerja Memory Device di modul.",
+                        "image": "",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": [],
+                        "statement": "Memori Internal seperti RAM dan ROM terletak di dalam komputer dan berdekatan dengan prosesor.",
+                        "reason": "Memori Internal dikontrol langsung oleh prosesor untuk membantu proses pengolahan data."
+                    },
+                    "studentAnswer": "both_correct_connected",
+                    "isCorrect": true,
+                    "studentAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)",
+                    "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
+                },
+                {
+                    "question": {
+                        "type": "mc",
+                        "question": "Perhatikan gambar ikon pada tab Insert di bawah ini! Ikon tersebut digunakan untuk...",
+                        "options": [
+                            "Menambahkan catatan di bagian bawah halaman",
+                            "Menambahkan judul berulang di bagian atas setiap halaman",
+                            "Membuat garis bingkai di pinggir kertas",
+                            "Menyisipkan gambar dari folder komputer"
+                        ],
+                        "answer": 1,
+                        "answers": [],
+                        "explanation": "Ikon Header berfungsi membuat teks atau judul berulang di bagian kepala (atas) setiap halaman dokumen.",
+                        "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_f4300a.png",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": []
+                    },
+                    "studentAnswer": null,
+                    "isCorrect": false,
+                    "studentAnswerText": "Tidak dijawab",
+                    "correctAnswerText": "B. Menambahkan judul berulang di bagian atas setiap halaman"
+                },
+                {
+                    "question": {
+                        "type": "case_analysis",
+                        "question": "Pilihan posisi Drop Cap manakah yang harus diklik oleh Nabila?",
+                        "options": [
+                            "None",
+                            "Dropped",
+                            "In margin",
+                            "Cancel"
+                        ],
+                        "answer": 1,
+                        "answers": [],
+                        "explanation": "Pilihan Dropped menempatkan huruf besar di dalam area paragraf, sedangkan In margin menempatkannya di luar batas margin kiri.",
+                        "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_1b36d5.png",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": [],
+                        "passage": "Perhatikan gambar menu Drop Cap berikut! Nabila sedang membuat artikel majalah dinding sekolah. Ia ingin huruf pertama di awal paragraf tampil besar dan masuk di dalam area teks paragraf (bukan di luar batas margin)."
+                    },
+                    "studentAnswer": null,
+                    "isCorrect": false,
+                    "studentAnswerText": "Tidak dijawab",
+                    "correctAnswerText": "B. Dropped"
+                },
+                {
+                    "question": {
+                        "type": "complex",
+                        "question": "Manakah pernyataan yang BENAR mengenai cara menyisipkan dan mengatur teks di dalam AutoShapes (Shapes)? (Pilih lebih dari satu)",
+                        "options": [
+                            "Klik kanan pada gambar AutoShape lalu pilih Add Text",
+                            "Memilih bentuk AutoShape dapat dilakukan melalui tab Insert -> Shapes",
+                            "Setelah memilih bentuk, kita seret (drag) mouse di lembar kerja",
+                            "AutoShape tidak bisa diberi tulisan sama sekali",
+                            "AutoShape hanya ada di program Microsoft Excel"
+                        ],
+                        "answer": 0,
+                        "answers": [
+                            0,
+                            1,
+                            2
+                        ],
+                        "explanation": "AutoShapes dibuat lewat Insert -> Shapes lalu drag di lembar kerja, dan bisa diisi teks lewat klik kanan -> Add Text.",
+                        "image": "",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": []
+                    },
+                    "studentAnswer": null,
+                    "isCorrect": false,
+                    "studentAnswerText": "Tidak dijawab",
+                    "correctAnswerText": "A. Klik kanan pada gambar AutoShape lalu pilih Add Text<br>B. Memilih bentuk AutoShape dapat dilakukan melalui tab Insert -> Shapes<br>C. Setelah memilih bentuk, kita seret (drag) mouse di lembar kerja"
+                }
+            ]
+        },
+        {
             "id": "res_5d2f55c7abf659957e7e89a8eeacc5d3",
             "nis": "250051",
             "name": "AHMAD WAHYU RAMADHANI",
@@ -2327,7 +2472,15 @@
         "quiz-1794921157572": false,
         "all": false
     },
-    "retake_permissions": [],
+    "retake_permissions": {
+        "250053_quiz-1795077173322": {
+            "remaining": 1,
+            "reason": "",
+            "expires_at": null,
+            "granted_by": "guru",
+            "granted_at": "2026-11-19T16:37:37+01:00"
+        }
+    },
     "students": [
         {
             "id": "std_4989c145e9b0",
@@ -11820,6 +11973,257 @@
             "finished": true,
             "result_token": "9ee196063d990c8b105a98838f7e9bd3d8cc5c0019dd34eeaebe5666983efb6f",
             "score": 100
+        },
+        "24d40220d24e694aa960f1271320b77cdd9c31468908170046d6f61e3e6873be": {
+            "token": "847437e253b37317e9ce2daf3dac23b356196f35cdc84521026c4902edf66cc1",
+            "token_hash": "24d40220d24e694aa960f1271320b77cdd9c31468908170046d6f61e3e6873be",
+            "quiz_id": "quiz-1795077173322",
+            "quiz_title": "Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8",
+            "nis": "250053",
+            "name": "AHMAD ZIYAD ASSYAFIQ",
+            "class": "VIII A (UNGGULAN MIPA)",
+            "question_order": [
+                34,
+                21,
+                6,
+                33,
+                19
+            ],
+            "option_order": {
+                "34": [
+                    3,
+                    2,
+                    0,
+                    1
+                ],
+                "21": [],
+                "6": [
+                    1,
+                    2,
+                    0,
+                    3
+                ],
+                "33": [
+                    1,
+                    0,
+                    2,
+                    3
+                ],
+                "19": [
+                    0,
+                    1,
+                    4,
+                    3,
+                    2
+                ]
+            },
+            "answers": [
+                3,
+                "both_correct_connected"
+            ],
+            "started_at": 1795099416,
+            "ends_at": 1795101953,
+            "updated_at": 1795102458,
+            "violations_count": 16,
+            "last_violation_at": 1795101957,
+            "last_violation_type": "app_switch",
+            "violations_log": [
+                {
+                    "time": "19/11/2026 15:43:43",
+                    "timestamp": 1795099423,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela Mode Kiosk",
+                    "count": 1
+                },
+                {
+                    "time": "19/11/2026 15:44:06",
+                    "timestamp": 1795099446,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 2
+                },
+                {
+                    "time": "19/11/2026 15:44:11",
+                    "timestamp": 1795099451,
+                    "type": "app_switch",
+                    "details": "Fokus jendela Mode Kiosk berpindah ke aplikasi lain",
+                    "count": 3
+                },
+                {
+                    "time": "19/11/2026 15:44:45",
+                    "timestamp": 1795099485,
+                    "type": "app_switch",
+                    "details": "Fokus jendela Mode Kiosk berpindah ke aplikasi lain",
+                    "count": 4
+                },
+                {
+                    "time": "19/11/2026 15:47:51",
+                    "timestamp": 1795099671,
+                    "type": "app_switch",
+                    "details": "Fokus jendela Mode Kiosk berpindah ke aplikasi lain",
+                    "count": 5
+                },
+                {
+                    "time": "19/11/2026 16:00:23",
+                    "timestamp": 1795100423,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela Mode Kiosk",
+                    "count": 6
+                },
+                {
+                    "time": "19/11/2026 16:00:32",
+                    "timestamp": 1795100432,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela Mode Kiosk",
+                    "count": 7
+                },
+                {
+                    "time": "19/11/2026 16:00:40",
+                    "timestamp": 1795100440,
+                    "type": "app_switch",
+                    "details": "Fokus jendela Mode Kiosk berpindah ke aplikasi lain",
+                    "count": 8
+                },
+                {
+                    "time": "19/11/2026 16:02:10",
+                    "timestamp": 1795100530,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela Mode Kiosk",
+                    "count": 9
+                },
+                {
+                    "time": "19/11/2026 16:02:14",
+                    "timestamp": 1795100534,
+                    "type": "app_switch",
+                    "details": "Fokus jendela Mode Kiosk berpindah ke aplikasi lain",
+                    "count": 10
+                },
+                {
+                    "time": "19/11/2026 16:15:13",
+                    "timestamp": 1795101313,
+                    "type": "app_switch",
+                    "details": "Fokus jendela Mode Kiosk berpindah ke aplikasi lain",
+                    "count": 11
+                },
+                {
+                    "time": "19/11/2026 16:15:24",
+                    "timestamp": 1795101324,
+                    "type": "app_switch",
+                    "details": "Fokus jendela Mode Kiosk berpindah ke aplikasi lain",
+                    "count": 12
+                },
+                {
+                    "time": "19/11/2026 16:22:49",
+                    "timestamp": 1795101769,
+                    "type": "app_switch",
+                    "details": "Fokus jendela Mode Kiosk berpindah ke aplikasi lain",
+                    "count": 13
+                },
+                {
+                    "time": "19/11/2026 16:23:21",
+                    "timestamp": 1795101801,
+                    "type": "app_switch",
+                    "details": "Fokus jendela Mode Kiosk berpindah ke aplikasi lain",
+                    "count": 14
+                },
+                {
+                    "time": "19/11/2026 16:23:29",
+                    "timestamp": 1795101809,
+                    "type": "app_switch",
+                    "details": "Fokus jendela Mode Kiosk berpindah ke aplikasi lain",
+                    "count": 15
+                },
+                {
+                    "time": "19/11/2026 16:25:57",
+                    "timestamp": 1795101957,
+                    "type": "app_switch",
+                    "details": "Fokus jendela Mode Kiosk berpindah ke aplikasi lain",
+                    "count": 16
+                }
+            ],
+            "finished": true,
+            "result_token": "0f997e0d406916246d042073d966e1e0568349782633cce5e8e151b37324d4e1",
+            "score": 40
+        },
+        "b6b82551d1ab41e0f940e13d6c8fa202bc5fc1ad97278d0f47bcd96c0cfa27f6": {
+            "token": "2e6a83b9e24940f0ea3556bacf4aec29acb7582f50f921065363a78440c83dda",
+            "token_hash": "b6b82551d1ab41e0f940e13d6c8fa202bc5fc1ad97278d0f47bcd96c0cfa27f6",
+            "quiz_id": "quiz-1795077173322",
+            "quiz_title": "Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8",
+            "nis": "250053",
+            "name": "AHMAD ZIYAD ASSYAFIQ",
+            "class": "VIII A (UNGGULAN MIPA)",
+            "question_order": [
+                9,
+                23,
+                2,
+                0,
+                6
+            ],
+            "option_order": {
+                "9": [
+                    3,
+                    0,
+                    1,
+                    2
+                ],
+                "23": [],
+                "2": [
+                    0,
+                    3,
+                    2,
+                    1
+                ],
+                "0": [
+                    3,
+                    0,
+                    2,
+                    1
+                ],
+                "6": [
+                    2,
+                    1,
+                    3,
+                    0
+                ]
+            },
+            "answers": [],
+            "started_at": 1795102765,
+            "ends_at": 1795103065,
+            "updated_at": 1795103065,
+            "violations_count": 4,
+            "last_violation_at": 1795102840,
+            "last_violation_type": "key_shortcut",
+            "violations_log": [
+                {
+                    "time": "19/11/2026 16:39:27",
+                    "timestamp": 1795102767,
+                    "type": "key_shortcut",
+                    "details": "Menekan tombol Windows (Start Menu)",
+                    "count": 1
+                },
+                {
+                    "time": "19/11/2026 16:40:30",
+                    "timestamp": 1795102830,
+                    "type": "key_shortcut",
+                    "details": "Menekan tombol Windows (Start Menu)",
+                    "count": 2
+                },
+                {
+                    "time": "19/11/2026 16:40:36",
+                    "timestamp": 1795102836,
+                    "type": "key_shortcut",
+                    "details": "Menekan tombol Windows (Start Menu)",
+                    "count": 3
+                },
+                {
+                    "time": "19/11/2026 16:40:40",
+                    "timestamp": 1795102840,
+                    "type": "key_shortcut",
+                    "details": "Menekan tombol Windows (Start Menu)",
+                    "count": 4
+                }
+            ]
         }
     },
     "student_sessions": {
@@ -12079,6 +12483,53 @@
             ],
             "finished_at": 1795082754,
             "score": 100
+        },
+        "250053": {
+            "nis": "250053",
+            "name": "AHMAD ZIYAD ASSYAFIQ",
+            "class": "VIII A (UNGGULAN MIPA)",
+            "quiz_id": "quiz-1795077173322",
+            "quiz_title": "Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8",
+            "status": "WORKING",
+            "ip": "::1",
+            "login_at": 1795099401,
+            "last_seen": 1795103065,
+            "attempt_token_hash": "b6b82551d1ab41e0f940e13d6c8fa202bc5fc1ad97278d0f47bcd96c0cfa27f6",
+            "started_at": 1795102765,
+            "ends_at": 1795103065,
+            "violations_count": 4,
+            "last_violation_at": 1795102840,
+            "last_violation_type": "key_shortcut",
+            "violations_log": [
+                {
+                    "time": "19/11/2026 16:39:27",
+                    "timestamp": 1795102767,
+                    "type": "key_shortcut",
+                    "details": "Menekan tombol Windows (Start Menu)",
+                    "count": 1
+                },
+                {
+                    "time": "19/11/2026 16:40:30",
+                    "timestamp": 1795102830,
+                    "type": "key_shortcut",
+                    "details": "Menekan tombol Windows (Start Menu)",
+                    "count": 2
+                },
+                {
+                    "time": "19/11/2026 16:40:36",
+                    "timestamp": 1795102836,
+                    "type": "key_shortcut",
+                    "details": "Menekan tombol Windows (Start Menu)",
+                    "count": 3
+                },
+                {
+                    "time": "19/11/2026 16:40:40",
+                    "timestamp": 1795102840,
+                    "type": "key_shortcut",
+                    "details": "Menekan tombol Windows (Start Menu)",
+                    "count": 4
+                }
+            ]
         }
     },
     "audit_logs": [
@@ -15763,6 +16214,209 @@
             "action": "Login siswa",
             "target": "250031 - AHMAD GHALI WARNA",
             "detail": "Kelas VIII A (UNGGULAN MIPA) (Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8)"
+        },
+        {
+            "time": "2026-11-19T15:43:21+01:00",
+            "user": "guru",
+            "action": "Login siswa",
+            "target": "250053 - AHMAD ZIYAD ASSYAFIQ",
+            "detail": "Kelas VIII A (UNGGULAN MIPA) (Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8)"
+        },
+        {
+            "time": "2026-11-19T15:43:36+01:00",
+            "user": "guru",
+            "action": "Mulai ujian",
+            "target": "250053 - AHMAD ZIYAD ASSYAFIQ",
+            "detail": "Paket: Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8"
+        },
+        {
+            "time": "2026-11-19T15:43:43+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela Mode Kiosk (ke-1)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T15:44:06+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Keluar dari Mode Kiosk Resmi (Layar Penuh) (ke-2)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T15:44:11+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Fokus jendela Mode Kiosk berpindah ke aplikasi lain (ke-3)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T15:44:45+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Fokus jendela Mode Kiosk berpindah ke aplikasi lain (ke-4)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T15:47:51+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Fokus jendela Mode Kiosk berpindah ke aplikasi lain (ke-5)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T16:00:23+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela Mode Kiosk (ke-6)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T16:00:32+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela Mode Kiosk (ke-7)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T16:00:40+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Fokus jendela Mode Kiosk berpindah ke aplikasi lain (ke-8)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T16:02:10+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela Mode Kiosk (ke-9)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T16:02:14+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Fokus jendela Mode Kiosk berpindah ke aplikasi lain (ke-10)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T16:15:13+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Fokus jendela Mode Kiosk berpindah ke aplikasi lain (ke-11)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T16:15:24+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Fokus jendela Mode Kiosk berpindah ke aplikasi lain (ke-12)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T16:20:01+01:00",
+            "user": "guru",
+            "action": "Minta perpanjangan waktu",
+            "target": "250053 / quiz-1795077173322",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T16:20:53+01:00",
+            "user": "guru",
+            "action": "Setujui perpanjangan waktu +5m",
+            "target": "250053",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T16:22:49+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Fokus jendela Mode Kiosk berpindah ke aplikasi lain (ke-13)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T16:23:21+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Fokus jendela Mode Kiosk berpindah ke aplikasi lain (ke-14)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T16:23:29+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Fokus jendela Mode Kiosk berpindah ke aplikasi lain (ke-15)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T16:25:57+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Fokus jendela Mode Kiosk berpindah ke aplikasi lain (ke-16)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T16:34:18+01:00",
+            "user": "guru",
+            "action": "Selesai ujian",
+            "target": "250053 - AHMAD ZIYAD ASSYAFIQ",
+            "detail": "Nilai: 40 (2 Benar, 3 Salah) - Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8"
+        },
+        {
+            "time": "2026-11-19T16:35:23+01:00",
+            "user": "guru",
+            "action": "Simpan paket kuis",
+            "target": "",
+            "detail": "2 paket"
+        },
+        {
+            "time": "2026-11-19T16:37:37+01:00",
+            "user": "guru",
+            "action": "Izin ujian ulang",
+            "target": "250053 / quiz-1795077173322",
+            "detail": "Kesempatan: 1"
+        },
+        {
+            "time": "2026-11-19T16:39:16+01:00",
+            "user": "guru",
+            "action": "Login siswa",
+            "target": "250053 - AHMAD ZIYAD ASSYAFIQ",
+            "detail": "Kelas VIII A (UNGGULAN MIPA) (Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8)"
+        },
+        {
+            "time": "2026-11-19T16:39:25+01:00",
+            "user": "guru",
+            "action": "Mulai ujian",
+            "target": "250053 - AHMAD ZIYAD ASSYAFIQ",
+            "detail": "Paket: Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8"
+        },
+        {
+            "time": "2026-11-19T16:39:27+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Menekan tombol Windows (Start Menu) (ke-1)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T16:40:30+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Menekan tombol Windows (Start Menu) (ke-2)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T16:40:36+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Menekan tombol Windows (Start Menu) (ke-3)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T16:40:40+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Menekan tombol Windows (Start Menu) (ke-4)",
+            "detail": ""
         }
     ],
     "backups": [
@@ -18004,6 +18658,20 @@
             "added_minutes": 5,
             "new_ends_at": 1795083020,
             "responded_at": 1795082720
+        },
+        {
+            "id": "req_a1a6176e7c9a965a",
+            "token_hash": "24d40220d24e694aa960f1271320b77cdd9c31468908170046d6f61e3e6873be",
+            "nis": "250053",
+            "name": "AHMAD ZIYAD ASSYAFIQ",
+            "class": "VIII A (UNGGULAN MIPA)",
+            "quiz_id": "quiz-1795077173322",
+            "quiz_title": "Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8",
+            "requested_at": 1795101601,
+            "status": "APPROVED",
+            "added_minutes": 5,
+            "new_ends_at": 1795101953,
+            "responded_at": 1795101653
         }
     ],
     "settings": {

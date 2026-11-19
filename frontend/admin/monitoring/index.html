@@ -229,6 +229,7 @@
                                     <th class="w-10 text-center">No</th>
                                     <th>NIS</th>
                                     <th class="min-w-[170px] whitespace-nowrap">Nama Siswa</th>
+                                    <th class="text-center whitespace-nowrap">Tipe Ujian</th>
                                     <th>Kelas</th>
                                     <th>Soal Ujian</th>
                                     <th class="text-center">Status Kehadiran</th>
@@ -241,7 +242,7 @@
                             </thead>
                             <tbody id="monitoring-tbody" class="divide-y divide-slate-100">
                                 <tr>
-                                    <td colspan="12" class="p-8 text-center text-slate-400">
+                                    <td colspan="13" class="p-8 text-center text-slate-400">
                                         <i class="fa-solid fa-spinner fa-spin mr-1"></i> Memuat data monitoring real-time...
                                     </td>
                                 </tr>
@@ -566,7 +567,7 @@
             } catch (e) {
                 if (!silent) {
                     document.getElementById('monitoring-tbody').innerHTML = `
-                        <tr><td colspan="12" class="p-6 text-center text-rose-500 font-medium">Gagal memuat data monitoring dari server. Pastikan server aktif.</td></tr>
+                        <tr><td colspan="13" class="p-6 text-center text-rose-500 font-medium">Gagal memuat data monitoring dari server. Pastikan server aktif.</td></tr>
                     `;
                 }
             }
@@ -693,7 +694,7 @@
             if (!filteredMonitoring.length) {
                 tbody.innerHTML = `
                     <tr>
-                        <td colspan="12" class="p-8 text-center text-slate-400">
+                        <td colspan="13" class="p-8 text-center text-slate-400">
                             <i class="fa-solid fa-mug-hot text-2xl mb-1 text-slate-300"></i>
                             <p class="text-xs">Tidak ada data peserta ujian yang sesuai filter.</p>
                         </td>
@@ -724,11 +725,11 @@
                 const isWorkingOrOffline = m.status === 'WORKING' || m.status === 'OFFLINE' || m.status === 'TIME_OVER';
                 const isSelected = selectedMonNis.has(rowKey);
 
-                let retakeBadge = '';
+                let attemptBadge = '';
                 if (m.is_retake || (m.attempt_number || 1) > 1) {
-                    retakeBadge = `<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200 shrink-0" title="Ujian Ulang / Remedial (Pengerjaan ke-${m.attempt_number || 2})"><i class="fa-solid fa-rotate-left text-[9px]"></i> Remedial (${m.attempt_number || 2})</span>`;
-                } else if ((m.total_attempts || 1) > 1) {
-                    retakeBadge = `<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600 border border-slate-200 shrink-0" title="Ujian Utama (Pengerjaan ke-1)"><i class="fa-solid fa-clock-rotate-left text-[9px]"></i> Utama</span>`;
+                    attemptBadge = `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200 shrink-0" title="Ujian Ulang / Remedial (Pengerjaan ke-${m.attempt_number || 2})"><i class="fa-solid fa-rotate-left text-[9px]"></i> Remedial (${m.attempt_number || 2})</span>`;
+                } else {
+                    attemptBadge = `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 text-slate-600 border border-slate-200 shrink-0" title="Ujian Pertama (Pengerjaan ke-1)"><i class="fa-solid fa-clock-rotate-left text-[9px]"></i> Pertama</span>`;
                 }
 
                 return `
@@ -739,11 +740,11 @@
                         <td class="p-3 text-center font-bold text-slate-400">${rowNum}</td>
                         <td class="p-3 font-mono font-bold text-brand-700">${escapeHtml(m.nis || '-')}</td>
                         <td class="p-3">
-                            <div class="flex items-center gap-1.5 flex-nowrap">
-                                <span class="font-bold text-slate-800 whitespace-nowrap">${escapeHtml(m.name || '-')}</span>
-                                ${retakeBadge}
-                            </div>
-                            ${m.ip ? `<span class="text-[10px] text-slate-400 font-mono block"><i class="fa-solid fa-desktop text-[9px] mr-0.5"></i>${escapeHtml(m.ip)}</span>` : ''}
+                            <span class="font-bold text-slate-800 whitespace-nowrap">${escapeHtml(m.name || '-')}</span>
+                            ${m.ip ? `<span class="text-[10px] text-slate-400 font-mono block" title="Alamat IP Komputer Siswa: ${escapeHtml(m.ip)}"><i class="fa-solid fa-desktop text-[9px] mr-0.5"></i>${escapeHtml(m.ip)}</span>` : ''}
+                        </td>
+                        <td class="p-3 text-center whitespace-nowrap">
+                            ${attemptBadge}
                         </td>
                         <td class="p-3 text-slate-600 whitespace-nowrap">${escapeHtml(m.class || '-')}</td>
                         <td class="p-3 font-medium text-slate-700 max-w-[190px] truncate" title="${escapeHtml(m.quiz_title || '-')}">${escapeHtml(m.quiz_title || '-')}</td>

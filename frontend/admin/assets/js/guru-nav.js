@@ -54,9 +54,9 @@
         // 2. Render Sidebar Navigation
         if (sidebarPlaceholder) {
             const menus = [
-                { key: 'hasil-ujian', title: 'Hasil Ujian', icon: 'fa-chart-line', url: `${GURU_BASE}hasil-ujian/` },
                 { key: 'bank-soal', title: 'Bank Soal', icon: 'fa-folder-plus', url: `${GURU_BASE}bank-soal/` },
                 { key: 'data-siswa', title: 'Data Siswa', icon: 'fa-users', url: `${GURU_BASE}data-siswa/` },
+                { key: 'hasil-ujian', title: 'Hasil Ujian', icon: 'fa-chart-line', url: `${GURU_BASE}hasil-ujian/` },
                 { key: 'monitoring', title: 'Monitoring Ujian', icon: 'fa-tower-broadcast', url: `${GURU_BASE}monitoring/` },
                 { key: 'notifikasi', title: 'Permintaan Waktu', icon: 'fa-clock-rotate-left', url: `${GURU_BASE}notifikasi/`, badgeId: 'sidebar-notif-badge' },
                 { key: 'audit-log', title: 'Audit Log', icon: 'fa-shield-halved', url: `${GURU_BASE}audit-log/` },

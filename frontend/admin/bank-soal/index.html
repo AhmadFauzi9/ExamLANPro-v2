@@ -550,11 +550,11 @@
                                     </div>
                                     <div class="min-w-0 flex-1">
                                         <div class="flex items-center gap-1.5 flex-wrap">
-                                            <span class="font-extrabold text-slate-800 text-xs">${activeCount} <span class="text-slate-400 font-normal">/</span> ${qCount} Soal Aktif</span>
+                                            <span class="font-extrabold text-slate-800 text-xs">${activeCount} <span class="text-slate-400 font-normal">/</span> ${qCount} Soal</span>
                                             ${isSubset ? '<span class="text-[9px] font-bold bg-indigo-50 text-indigo-600 border border-indigo-200 px-1.5 py-0.2 rounded-md">Acak</span>' : '<span class="text-[9px] font-bold bg-emerald-50 text-emerald-600 border border-emerald-200 px-1.5 py-0.2 rounded-md">Semua</span>'}
                                         </div>
                                         <p class="text-[10px] text-slate-500 mt-0.5 leading-tight truncate">
-                                            ${isSubset ? `${activeCount} soal acak dari total ${qCount} soal` : `Seluruh ${qCount} butir soal dikerjakan`}
+                                            ${isSubset ? `${activeCount} soal acak dari ${qCount} soal` : `${qCount} soal dikerjakan`}
                                         </p>
                                     </div>
                                 </div>
@@ -565,8 +565,8 @@
                                         <i class="fa-solid fa-clock text-[10px]"></i>
                                     </div>
                                     <div class="flex-1">
-                                        <span class="font-extrabold text-slate-800 text-xs">${q.duration || 60} m</span>
-                                        <p class="text-[10px] text-slate-500 mt-0.5 leading-tight truncate">Durasi</p>
+                                        <span class="font-extrabold text-slate-800 text-xs">${q.duration || 60} menit</span>
+                                        <p class="text-[10px] text-slate-500 mt-0.5 leading-tight truncate">Waktu pengerjaan</p>
                                     </div>
                                 </div>
                             </div>

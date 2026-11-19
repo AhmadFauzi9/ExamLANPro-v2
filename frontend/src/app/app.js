@@ -11,7 +11,11 @@ import { authApi } from '../api/authApi.js';
 import {
     initAntiCheat,
     resumeFullScreenAndExam,
-    activateFullScreenFromOverlay
+    activateFullScreenFromOverlay,
+    handleKioskShortcut,
+    closeKioskModalAndContinue,
+    exitKioskMode,
+    checkAndEnforceFullScreen
 } from '../hooks/useAntiCheat.js';
 import { initAutoSaveNetworkListener } from '../hooks/useAutoSave.js';
 import { initGlobalTooltipSystem } from '../hooks/useTooltip.js';
@@ -81,6 +85,9 @@ window.requestTimeExtension = requestTimeExtension;
 window.submitFinalTimeOut = submitFinalTimeOut;
 window.resumeFullScreenAndExam = resumeFullScreenAndExam;
 window.activateFullScreenFromOverlay = activateFullScreenFromOverlay;
+window.handleKioskShortcut = handleKioskShortcut;
+window.closeKioskModalAndContinue = closeKioskModalAndContinue;
+window.exitKioskMode = exitKioskMode;
 window.resetStudentView = resetStudentView;
 window.appAlert = appAlert;
 window.appConfirm = appConfirm;
@@ -176,6 +183,9 @@ export async function initApp() {
 
     // 6. Pulihkan pengerjaan aktif jika ada
     const attemptRestored = await restoreActiveAttemptAfterRefresh();
+    if (attemptRestored) {
+        checkAndEnforceFullScreen();
+    }
 
     // 7. Jika bukan hasil selesai dan bukan pengerjaan aktif, pulihkan status info / resume token
     if (!resultRestored && !attemptRestored && !ExamContext.currentStudentResult && !ExamContext.attemptToken) {

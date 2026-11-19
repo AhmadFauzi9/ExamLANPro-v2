@@ -191,7 +191,8 @@
                                     </th>
                                     <th class="w-12 text-center whitespace-nowrap">No</th>
                                     <th class="w-24 whitespace-nowrap">NIS</th>
-                                    <th class="min-w-[200px] whitespace-nowrap">Nama Siswa</th>
+                                    <th class="min-w-[180px] whitespace-nowrap">Nama Siswa</th>
+                                    <th class="text-center whitespace-nowrap">Tipe Ujian</th>
                                     <th class="whitespace-nowrap">Kelas</th>
                                     <th class="min-w-[150px] max-w-[220px]">Paket Kuis</th>
                                     <th class="w-16 text-center whitespace-nowrap">Benar</th>
@@ -204,7 +205,7 @@
                             </thead>
                             <tbody id="teacher-results-tbody" class="divide-y divide-slate-100">
                                 <tr>
-                                    <td colspan="12" class="p-8 text-center text-slate-400">
+                                    <td colspan="13" class="p-8 text-center text-slate-400">
                                         <i class="fa-solid fa-spinner fa-spin mr-1"></i> Memuat data hasil ujian...
                                     </td>
                                 </tr>
@@ -612,7 +613,7 @@
             if (total === 0) {
                 tbody.innerHTML = `
                     <tr>
-                        <td colspan="12" class="p-8 text-center text-slate-400">
+                        <td colspan="13" class="p-8 text-center text-slate-400">
                             <i class="fa-regular fa-folder-open text-2xl mb-1 text-slate-300"></i>
                             <p class="text-xs">Tidak ada data hasil ujian yang cocok dengan filter.</p>
                         </td>
@@ -630,15 +631,19 @@
 
                     const studentKey = (s.nis || '') + '_' + (s.code || s.quiz_id || '');
                     const recordsForStudent = studentExamCounts[studentKey] || [];
-                    let attemptBadge = '';
+                    let attemptNum = 1;
                     if (recordsForStudent.length > 1) {
                         const recIdx = recordsForStudent.indexOf(s);
-                        const attemptNum = recordsForStudent.length - (recIdx >= 0 ? recIdx : 0);
-                        if (attemptNum > 1 || isInProgress) {
-                            attemptBadge = `<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200 shrink-0" title="Ujian Ulang / Remedial (Percobaan ke-${attemptNum})"><i class="fa-solid fa-rotate-left text-[9px]"></i> Remedial (${attemptNum})</span>`;
-                        } else {
-                            attemptBadge = `<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600 border border-slate-200 shrink-0" title="Ujian Utama (Percobaan 1)"><i class="fa-solid fa-clock-rotate-left text-[9px]"></i> Ujian Utama</span>`;
-                        }
+                        attemptNum = recordsForStudent.length - (recIdx >= 0 ? recIdx : 0);
+                    } else if (s.attempt_number) {
+                        attemptNum = Number(s.attempt_number) || 1;
+                    }
+
+                    let attemptBadge = '';
+                    if (attemptNum > 1 || (recordsForStudent.length > 1 && isInProgress)) {
+                        attemptBadge = `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200 shrink-0" title="Ujian Ulang / Remedial (Percobaan ke-${attemptNum})"><i class="fa-solid fa-rotate-left text-[9px]"></i> Remedial (${attemptNum})</span>`;
+                    } else {
+                        attemptBadge = `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 text-slate-600 border border-slate-200 shrink-0" title="Ujian Pertama (Percobaan 1)"><i class="fa-solid fa-clock-rotate-left text-[9px]"></i> Pertama</span>`;
                     }
 
                     let scoreBadge = isPassed
@@ -664,11 +669,11 @@
                             </td>
                             <td class="p-3 text-center font-bold text-slate-400 whitespace-nowrap">${rowNumber}</td>
                             <td class="p-3 font-mono font-bold text-brand-700 whitespace-nowrap">${escapeHtml(s.nis || '-')}</td>
-                            <td class="p-3 whitespace-nowrap min-w-[200px]">
-                                <div class="flex items-center gap-1.5 flex-wrap">
-                                    <span class="font-bold text-slate-800">${escapeHtml(s.name || '-')}</span>
-                                    ${attemptBadge}
-                                </div>
+                            <td class="p-3 whitespace-nowrap min-w-[180px]">
+                                <span class="font-bold text-slate-800">${escapeHtml(s.name || '-')}</span>
+                            </td>
+                            <td class="p-3 text-center whitespace-nowrap">
+                                ${attemptBadge}
                             </td>
                             <td class="p-3 text-slate-600 whitespace-nowrap">${escapeHtml(s.class || '-')}</td>
                             <td class="p-3 font-medium text-slate-700 max-w-[180px] truncate" title="${escapeHtml(s.title || s.code || '-')}">${escapeHtml(s.title || s.code || '-')}</td>
@@ -1002,16 +1007,28 @@
             }
 
             let csvContent = "\uFEFF"; // UTF-8 BOM untuk Excel
-            csvContent += "No,NIS,Nama Siswa,Kelas,Paket Kuis,Benar,Salah,Nilai Akhir,Status KKM,Waktu Selesai\r\n";
+            csvContent += "No,NIS,Nama Siswa,Tipe Ujian,Kelas,Paket Kuis,Benar,Salah,Nilai Akhir,Status KKM,Waktu Selesai\r\n";
 
             filteredResults.forEach((s, idx) => {
                 const clean = (str) => `"${String(str || '').replace(/"/g, '""')}"`;
                 const score = Number(s.score ?? 0);
                 const kkmStatus = score >= 75 ? 'TUNTAS' : 'REMEDIAL';
+                const studentKey = (s.nis || '') + '_' + (s.code || s.quiz_id || '');
+                const recordsForStudent = studentExamCounts[studentKey] || [];
+                let attemptNum = 1;
+                if (recordsForStudent.length > 1) {
+                    const recIdx = recordsForStudent.indexOf(s);
+                    attemptNum = recordsForStudent.length - (recIdx >= 0 ? recIdx : 0);
+                } else if (s.attempt_number) {
+                    attemptNum = Number(s.attempt_number) || 1;
+                }
+                const tipeUjian = (attemptNum > 1 || (recordsForStudent.length > 1 && s.is_in_progress)) ? `Remedial (${attemptNum})` : 'Pertama';
+
                 const row = [
                     idx + 1,
                     clean(s.nis),
                     clean(s.name),
+                    clean(tipeUjian),
                     clean(s.class),
                     clean(s.title || s.code),
                     s.correct ?? 0,
@@ -1062,11 +1079,23 @@
             let rowsHtml = filteredResults.map((s, idx) => {
                 const score = Number(s.score ?? 0);
                 const isPassed = score >= 75;
+                const studentKey = (s.nis || '') + '_' + (s.code || s.quiz_id || '');
+                const recordsForStudent = studentExamCounts[studentKey] || [];
+                let attemptNum = 1;
+                if (recordsForStudent.length > 1) {
+                    const recIdx = recordsForStudent.indexOf(s);
+                    attemptNum = recordsForStudent.length - (recIdx >= 0 ? recIdx : 0);
+                } else if (s.attempt_number) {
+                    attemptNum = Number(s.attempt_number) || 1;
+                }
+                const tipeUjian = (attemptNum > 1 || (recordsForStudent.length > 1 && s.is_in_progress)) ? `Remedial (${attemptNum})` : 'Pertama';
+
                 return `
                     <tr>
                         <td style="text-align: center;">${idx + 1}</td>
                         <td style="font-family: monospace; text-align: center;">${escapeHtml(s.nis || '-')}</td>
                         <td><b>${escapeHtml(s.name || '-')}</b></td>
+                        <td style="text-align: center;">${tipeUjian}</td>
                         <td style="text-align: center;">${escapeHtml(s.class || '-')}</td>
                         <td>${escapeHtml(s.title || s.code || '-')}</td>
                         <td style="text-align: center; color: #047857;">${s.correct ?? 0}</td>
@@ -1155,6 +1184,7 @@
                                 <th style="width: 30px;">No</th>
                                 <th style="width: 80px;">NIS</th>
                                 <th>Nama Peserta Didik</th>
+                                <th style="width: 75px; text-align: center;">Tipe Ujian</th>
                                 <th style="width: 75px;">Kelas</th>
                                 <th>Paket Kuis</th>
                                 <th style="width: 45px;">Benar</th>

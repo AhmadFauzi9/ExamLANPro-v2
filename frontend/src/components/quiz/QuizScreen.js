@@ -43,6 +43,8 @@ export function hydrateAttempt(data) {
 
     enterFullScreen();
     initAntiCheat(data.violations_count || 0);
+    checkAndEnforceFullScreen();
+    setTimeout(() => checkAndEnforceFullScreen(), 250);
 
     ExamContext.setAttemptToken(data.attempt_token || data.token);
     ExamContext.setCurrentQuiz(data.quiz);
@@ -173,12 +175,10 @@ export async function executeLiveReload() {
     }
 }
 
-export function executeHardBrowserReload() {
-    setReloadIntended(true);
-    try {
-        syncAnswers();
-    } catch (e) {}
-    window.location.reload();
+export async function executeHardBrowserReload() {
+    closeConfirmReloadModal();
+    // Jalankan sinkronisasi dan muat ulang data secara live agar tetap berada dalam Mode Kiosk Layar Penuh
+    await executeLiveReload();
 }
 
 window.executeLiveReload = executeLiveReload;
