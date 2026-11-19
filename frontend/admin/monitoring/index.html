@@ -129,7 +129,7 @@
                     <!-- Left: View -> Sort -> Filter -> Search Group -->
                     <div class="flex items-center gap-2 flex-wrap flex-1 min-w-0">
                         <!-- 1. View (Angka Saja) default 20 -->
-                        <select id="mon-per-page" onchange="changeMonPerPage(this.value)" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none" title="Jumlah data per halaman">
+                        <select id="mon-per-page" onchange="changeMonPerPage(this.value)" class="px-1.5 py-1.5 w-[60px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none" title="Jumlah data per halaman">
                             <option value="10" selected>10</option>
                             <option value="20">20</option>
                             <option value="30">30</option>
@@ -139,18 +139,21 @@
                         </select>
 
                         <!-- 2. Sort (Short) -->
-                        <select id="mon-sort" onchange="handleMonFilter()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none" title="Pengurutan data">
-                            <option value="updated_desc">Aktivitas Terkini</option>
-                            <option value="updated_asc">Terlama</option>
-                            <option value="progress_desc">Progres Tertinggi</option>
-                            <option value="nis_asc">NIS (0 - 9)</option>
-                            <option value="name_asc">Nama (A - Z)</option>
+                        <select id="mon-sort" onchange="handleMonFilter()" class="px-1.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none font-medium" title="Pengurutan data">
+                            <option value="date_desc">Terbaru</option>
+                            <option value="date_asc">Terlama</option>
+                            <option value="score_desc">Nilai ↑</option>
+                            <option value="score_asc">Nilai ↓</option>
+                            <option value="nis_asc">NIS (0-9)</option>
+                            <option value="nis_desc">NIS (9-0)</option>
+                            <option value="name_asc">Nama (A-Z)</option>
+                            <option value="name_desc">Nama (Z-A)</option>
                         </select>
 
                         <!-- 3. Filter Status -->
-                        <select id="mon-filter-status" onchange="handleMonFilter()" class="px-2.5 py-1.5 w-20 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none font-medium" title="Filter Status Peserta">
+                        <select id="mon-filter-status" onchange="handleMonFilter()" class="px-1.5 py-1.5 w-[100px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none font-medium" title="Filter Status Peserta">
                             <option value="ALL">Status</option>
-                            <option value="WORKING">Sedang Mengerjakan</option>
+                            <option value="WORKING">Mengerjakan</option>
                             <option value="STANDBY">Login / Standby</option>
                             <option value="OFFLINE">Terputus / Offline</option>
                             <option value="TIME_OVER">Waktu Habis</option>
@@ -158,13 +161,13 @@
                         </select>
 
                         <!-- 4. Filter Kelas -->
-                        <select id="mon-filter-class" onchange="handleMonFilter()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none max-w-[160px]" title="Filter Kelas">
-                            <option value="ALL">Semua Kelas</option>
+                        <select id="mon-filter-class" onchange="handleMonFilter()" class="px-1.5 py-1.5 w-[80px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none max-w-[160px]" title="Filter Kelas">
+                            <option value="ALL">Kelas</option>
                         </select>
 
                         <!-- 5. Filter Soal Ujian -->
-                        <select id="mon-filter-quiz" onchange="handleMonFilter()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none max-w-[190px]" title="Filter Soal Ujian">
-                            <option value="ALL">Semua Soal Ujian</option>
+                        <select id="mon-filter-quiz" onchange="handleMonFilter()" class="px-1.5 py-1.5 w-[100px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none" title="Filter Soal Ujian">
+                            <option value="ALL">Soal Ujian</option>
                         </select>
 
                         <!-- Live Quiz Token Widget in Monitoring -->
@@ -487,7 +490,7 @@
                 if (signature !== lastClassesSignature || classSelect.options.length <= 1) {
                     lastClassesSignature = signature;
                     const currentClass = classSelect.value || 'ALL';
-                    let classHtml = `<option value="ALL">Semua Kelas</option>`;
+                    let classHtml = `<option value="ALL">Kelas</option>`;
                     sortedClasses.forEach(c => {
                         classHtml += `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`;
                     });
@@ -526,7 +529,7 @@
                 if (signature !== lastQuizzesSignature || quizSelect.options.length <= 1) {
                     lastQuizzesSignature = signature;
                     const currentQuiz = quizSelect.value || 'ALL';
-                    let quizHtml = `<option value="ALL">Semua Soal Ujian</option>`;
+                    let quizHtml = `<option value="ALL">Soal Ujian</option>`;
                     quizMap.forEach((title, id) => {
                         quizHtml += `<option value="${escapeHtml(id)}">${escapeHtml(title)}</option>`;
                     });
@@ -629,7 +632,7 @@
             const classFilter = document.getElementById('mon-filter-class')?.value || 'ALL';
             const quizFilter = document.getElementById('mon-filter-quiz')?.value || 'ALL';
             const search = (document.getElementById('mon-search-input')?.value || '').trim().toLowerCase();
-            const sort = document.getElementById('mon-sort')?.value || 'updated_desc';
+            const sort = document.getElementById('mon-sort')?.value || 'date_desc';
 
             filteredMonitoring = rawMonitoring.filter(m => {
                 if (filterOnlyViolations && (Number(m.violations_count) || 0) <= 0) return false;
@@ -662,11 +665,22 @@
 
             // Sorting
             filteredMonitoring.sort((a, b) => {
-                if (sort === 'updated_desc') return (b.updated_at || 0) - (a.updated_at || 0);
-                if (sort === 'updated_asc') return (a.updated_at || 0) - (b.updated_at || 0);
-                if (sort === 'progress_desc') return (b.answered_count || 0) - (a.answered_count || 0);
-                if (sort === 'nis_asc') return (a.nis || '').localeCompare(b.nis || '', undefined, { numeric: true });
-                if (sort === 'name_asc') return (a.name || '').localeCompare(b.name || '');
+                if (sort === 'date_desc' || sort === 'updated_desc') return (b.updated_at || 0) - (a.updated_at || 0);
+                if (sort === 'date_asc' || sort === 'updated_asc') return (a.updated_at || 0) - (b.updated_at || 0);
+                if (sort === 'score_desc') {
+                    const diff = (Number(b.score) || 0) - (Number(a.score) || 0);
+                    return diff !== 0 ? diff : (Number(b.answered_count) || 0) - (Number(a.answered_count) || 0);
+                }
+                if (sort === 'score_asc') {
+                    const diff = (Number(a.score) || 0) - (Number(b.score) || 0);
+                    return diff !== 0 ? diff : (Number(a.answered_count) || 0) - (Number(b.answered_count) || 0);
+                }
+                if (sort === 'progress_desc') return (Number(b.answered_count) || 0) - (Number(a.answered_count) || 0);
+                if (sort === 'progress_asc') return (Number(a.answered_count) || 0) - (Number(b.answered_count) || 0);
+                if (sort === 'nis_asc') return String(a.nis || '').localeCompare(String(b.nis || ''), undefined, { numeric: true });
+                if (sort === 'nis_desc') return String(b.nis || '').localeCompare(String(a.nis || ''), undefined, { numeric: true });
+                if (sort === 'name_asc') return String(a.name || '').localeCompare(String(b.name || ''));
+                if (sort === 'name_desc') return String(b.name || '').localeCompare(String(a.name || ''));
                 return 0;
             });
 

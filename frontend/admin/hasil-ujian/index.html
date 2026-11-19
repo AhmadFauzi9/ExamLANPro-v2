@@ -106,9 +106,9 @@
                     <!-- Left: View -> Sort -> Filter -> Search Group -->
                     <div class="flex items-center gap-2 flex-wrap flex-1 min-w-0">
                         <!-- 1. View (Angka Saja) default 20 -->
-                        <select id="results-per-page" onchange="changeResultsPerPage(this.value)" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none" title="Jumlah data per halaman">
-                            <option value="10">10</option>
-                            <option value="20" selected>20</option>
+                        <select id="results-per-page" onchange="changeResultsPerPage(this.value)" class="px-1.5 py-1.5 w-[60px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none" title="Jumlah data per halaman">
+                            <option value="10" selected>10</option>
+                            <option value="20">20</option>
                             <option value="30">30</option>
                             <option value="40">40</option>
                             <option value="50">50</option>
@@ -116,7 +116,7 @@
                         </select>
 
                         <!-- 2. Sort (Short) -->
-                        <select id="results-sort" onchange="handleResultsFilter()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none font-medium" title="Pengurutan data">
+                        <select id="results-sort" onchange="handleResultsFilter()" class="px-1.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none font-medium" title="Pengurutan data">
                             <option value="date_desc">Terbaru</option>
                             <option value="date_asc">Terlama</option>
                             <option value="score_desc">Nilai ↑</option>
@@ -128,17 +128,17 @@
                         </select>
 
                         <!-- 3. Filter: Soal Ujian -->
-                        <select id="teacher-quiz-filter" onchange="handleResultsFilter(); updateTeacherReviewControl();" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none w-[105px] truncate font-medium" title="Filter Soal Ujian">
+                        <select id="teacher-quiz-filter" onchange="handleResultsFilter(); updateTeacherReviewControl();" class="px-1.5 py-1.5 w-[100px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none truncate font-medium" title="Filter Soal Ujian">
                             <option value="all">Soal Ujian</option>
                         </select>
 
                         <!-- 4. Filter: Kelas -->
-                        <select id="results-filter-class" onchange="handleResultsFilter()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 w-[105px] outline-none" title="Filter Kelas">
+                        <select id="results-filter-class" onchange="handleResultsFilter()" class="px-1.5 py-1.5 w-[80px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none truncate font-medium" title="Filter Kelas">
                             <option value="all">Kelas</option>
                         </select>
 
                         <!-- 5. Filter: Ketuntasan KKM -->
-                        <select id="results-filter-kkm" onchange="handleResultsFilter()" class="px-2.5 py-1.5 w-[75px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none font-medium truncate" title="Filter Ketuntasan Nilai KKM">
+                        <select id="results-filter-kkm" onchange="handleResultsFilter()" class="px-1.5 py-1.5 w-[75px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none font-medium truncate" title="Filter Ketuntasan Nilai KKM">
                             <option value="all">Nilai</option>
                             <option value="pass">Tuntas (≥ 75)</option>
                             <option value="remedial">Remedial (< 75)</option>
