@@ -85,16 +85,15 @@ export async function confirmSubmitQuiz() {
 }
 
 export async function submitQuiz(forceSubmit = false) {
-    stopTimer();
-    stopAntiCheat();
-
     const attemptToken = ExamContext.attemptToken;
     const currentQuiz = ExamContext.currentQuiz;
     const activeStudent = StudentContext.activeStudent;
+    const answers = ExamContext.studentAnswers || {};
 
     const payload = {
         attempt_token: attemptToken,
-        force_submit: forceSubmit
+        force_submit: forceSubmit,
+        answers: answers
     };
 
     try {
@@ -105,6 +104,10 @@ export async function submitQuiz(forceSubmit = false) {
             appAlert(resJson?.message || 'Jawaban gagal dikirim ke server.');
             return;
         }
+
+        // Hentikan timer dan anti-cheat hanya jika pengiriman jawaban berhasil
+        stopTimer();
+        stopAntiCheat();
 
         const reviewToken = resJson.review_token || null;
         StudentContext.setReviewToken(reviewToken);

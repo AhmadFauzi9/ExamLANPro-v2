@@ -300,16 +300,28 @@ class ExamAttemptController {
             Response::error('Data ujian tidak valid.', 400);
         }
 
+        if (isset($input['answers']) && is_array($input['answers'])) {
+            $submittedAnswers = Utils::normalizeAnswers($input['answers']);
+            $attempt['answers'] = array_replace($attempt['answers'] ?? [], $submittedAnswers);
+            $db['active_attempts'][$attemptKey]['answers'] = $attempt['answers'];
+            $db['active_attempts'][$attemptKey]['updated_at'] = time();
+        }
+
         $questionOrder = $attempt['question_order'];
         $answers = Utils::normalizeAnswers($attempt['answers'] ?? []);
 
         foreach ($answers as $position => &$answer) {
             $qid = $questionOrder[(int)$position] ?? null;
+            $q = ($qid !== null && isset($quiz['questions'][$qid])) ? $quiz['questions'][$qid] : null;
+            $qType = $q['type'] ?? 'mc';
             $map = $attempt['option_order'][$qid] ?? [];
-            if (is_array($answer)) {
-                $answer = array_values(array_filter(array_map(fn($v) => $map[(int)$v] ?? null, $answer), fn($v) => $v !== null));
-            } elseif (is_numeric($answer) && isset($map[(int)$answer])) {
-                $answer = $map[(int)$answer];
+
+            if (!empty($map)) {
+                if ($qType === 'complex' && is_array($answer)) {
+                    $answer = array_values(array_filter(array_map(fn($v) => $map[(int)$v] ?? null, $answer), fn($v) => $v !== null));
+                } elseif (($qType === 'mc' || $qType === 'case_analysis' || is_numeric($answer)) && isset($map[(int)$answer])) {
+                    $answer = $map[(int)$answer];
+                }
             }
         }
         unset($answer);
@@ -317,7 +329,7 @@ class ExamAttemptController {
         $missing = [];
         foreach ($questionOrder as $pos => $_qid) {
             $v = $answers[$pos] ?? null;
-            if ($v === null || $v === '' || (is_array($v) && !$v)) {
+            if ($v === null || $v === '' || (is_array($v) && count($v) === 0)) {
                 $missing[] = $pos + 1;
             }
         }

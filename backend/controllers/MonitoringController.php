@@ -578,11 +578,15 @@ class MonitoringController {
         $answers = Utils::normalizeAnswers($matchedAttempt['answers'] ?? []);
         foreach ($answers as $position => &$answer) {
             $qid = $questionOrder[(int)$position] ?? null;
+            $q = ($qid !== null && isset($quiz['questions'][$qid])) ? $quiz['questions'][$qid] : null;
+            $qType = $q['type'] ?? 'mc';
             $map = $matchedAttempt['option_order'][$qid] ?? [];
-            if (is_array($answer)) {
-                $answer = array_values(array_filter(array_map(fn($v) => $map[(int)$v] ?? null, $answer), fn($v) => $v !== null));
-            } elseif (is_numeric($answer) && isset($map[(int)$answer])) {
-                $answer = $map[(int)$answer];
+            if (!empty($map)) {
+                if ($qType === 'complex' && is_array($answer)) {
+                    $answer = array_values(array_filter(array_map(fn($v) => $map[(int)$v] ?? null, $answer), fn($v) => $v !== null));
+                } elseif (($qType === 'mc' || $qType === 'case_analysis' || is_numeric($answer)) && isset($map[(int)$answer])) {
+                    $answer = $map[(int)$answer];
+                }
             }
         }
         unset($answer);

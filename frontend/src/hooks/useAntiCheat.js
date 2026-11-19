@@ -11,6 +11,7 @@ import { show, hide, setText } from '../utils/dom.js';
 let isInitialized = false;
 let lastViolationReportTime = 0;
 let isReloadingIntended = false;
+let isAntiCheatActive = true;
 
 export function setReloadIntended(val) {
     isReloadingIntended = !!val;
@@ -52,6 +53,7 @@ export function exitFullScreen() {
 }
 
 export function isExamActive() {
+    if (!isAntiCheatActive) return false;
     const quizScreen = document.getElementById('student-quiz-screen');
     return ExamContext.isExamActive() && quizScreen && !quizScreen.classList.contains('hidden');
 }
@@ -116,6 +118,7 @@ export function activateFullScreenFromOverlay() {
 }
 
 export function initAntiCheat(initialViolations = 0) {
+    isAntiCheatActive = true;
     ExamContext.setViolationCount(Number(initialViolations) || 0);
     if (isInitialized) return;
     isInitialized = true;
@@ -202,6 +205,7 @@ export function initAntiCheat(initialViolations = 0) {
 }
 
 export function stopAntiCheat() {
+    isAntiCheatActive = false;
     exitFullScreen();
     hide('#violation-overlay');
     hide('#fullscreen-restore-overlay');
