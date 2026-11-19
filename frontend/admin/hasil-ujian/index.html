@@ -691,6 +691,117 @@
             updateSelectionBar();
         }
 
+        // ================= FLOATING DROPDOWN ACTION MENU =================
+        let activeMenuIdx = null;
+
+        function closeActionMenu() {
+            const menu = document.getElementById('action-dropdown-menu');
+            if (menu) {
+                menu.classList.add('hidden');
+                menu.style.display = 'none';
+            }
+            activeMenuIdx = null;
+        }
+        window.closeActionMenu = closeActionMenu;
+
+        function runResultAction(action, globalIdx) {
+            closeActionMenu();
+            const s = filteredResults[globalIdx] || allResults[globalIdx];
+            if (!s) return;
+            if (action === 'detail') {
+                showStudentDetailModal(globalIdx);
+            } else if (action === 'retake') {
+                allowRetake(String(s.nis || ''), String(s.code || s.quiz_id || ''));
+            } else if (action === 'delete') {
+                deleteSingleResult(globalIdx);
+            }
+        }
+        window.runResultAction = runResultAction;
+
+        function toggleResultActionMenu(event, globalIdx) {
+            if (event) {
+                event.stopPropagation();
+                event.preventDefault();
+            }
+            const btn = (event && (event.currentTarget || (event.target && event.target.closest('button')))) || null;
+            if (!btn) return;
+
+            let menu = document.getElementById('action-dropdown-menu');
+            if (!menu) {
+                menu = document.createElement('div');
+                menu.id = 'action-dropdown-menu';
+                menu.className = 'fixed z-[999999] bg-white rounded-xl border border-slate-200 shadow-xl py-1 text-xs min-w-[175px] transition-all hidden';
+                document.body.appendChild(menu);
+            }
+
+            if (!menu.classList.contains('hidden') && activeMenuIdx === globalIdx) {
+                closeActionMenu();
+                return;
+            }
+
+            activeMenuIdx = globalIdx;
+            const s = filteredResults[globalIdx] || allResults[globalIdx];
+            if (!s) return;
+
+            const isInProgress = !!s.is_in_progress || (s.status === 'WORKING' || s.status === 'OFFLINE' || s.status === 'STANDBY');
+
+            let itemsHtml = '';
+            if (isInProgress) {
+                itemsHtml = `
+                    <a href="../monitoring/" onclick="closeActionMenu()" class="flex items-center gap-2.5 px-3.5 py-2 text-slate-700 hover:bg-brand-50 hover:text-brand-600 font-medium transition">
+                        <i class="fa-solid fa-tower-broadcast text-brand-600 w-4 text-center"></i>
+                        <span>Pantau Live</span>
+                    </a>
+                `;
+            } else {
+                itemsHtml = `
+                    <button type="button" onclick="runResultAction('detail', ${globalIdx})" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-left text-slate-700 hover:bg-sky-50 hover:text-sky-700 font-medium transition cursor-pointer">
+                        <i class="fa-solid fa-clipboard-check text-sky-600 w-4 text-center"></i>
+                        <span>Rincian Jawaban</span>
+                    </button>
+                    <button type="button" onclick="runResultAction('retake', ${globalIdx})" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-left text-slate-700 hover:bg-amber-50 hover:text-amber-700 font-medium transition cursor-pointer">
+                        <i class="fa-solid fa-rotate-left text-amber-600 w-4 text-center"></i>
+                        <span>Izinkan Ujian Ulang</span>
+                    </button>
+                    <div class="my-1 border-t border-slate-100"></div>
+                    <button type="button" onclick="runResultAction('delete', ${globalIdx})" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-left text-rose-600 hover:bg-rose-50 font-medium transition cursor-pointer">
+                        <i class="fa-solid fa-trash-can text-rose-600 w-4 text-center"></i>
+                        <span>Hapus Hasil Ujian</span>
+                    </button>
+                `;
+            }
+
+            menu.innerHTML = itemsHtml;
+            menu.classList.remove('hidden');
+            menu.style.display = 'block';
+
+            const rect = btn.getBoundingClientRect();
+            const menuWidth = 175;
+            let left = rect.right - menuWidth;
+            if (left < 10) left = 10;
+
+            const menuHeight = menu.offsetHeight || 120;
+            let top = rect.bottom + 4;
+            if (top + menuHeight > window.innerHeight - 10) {
+                top = rect.top - menuHeight - 4;
+            }
+
+            menu.style.left = `${left}px`;
+            menu.style.top = `${top}px`;
+        }
+        window.toggleResultActionMenu = toggleResultActionMenu;
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#action-dropdown-menu') && !e.target.closest('.action-menu-btn')) {
+                closeActionMenu();
+            }
+        });
+        window.addEventListener('scroll', closeActionMenu, true);
+        window.addEventListener('resize', closeActionMenu);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeActionMenu();
+        });
+
         // Pagination Controls
         function renderPaginationControls(total, totalPages, startIdx, endIdx) {
             const info = document.getElementById('results-pagination-info');

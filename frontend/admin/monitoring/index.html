@@ -714,6 +714,7 @@
             const pageData = filteredMonitoring.slice(startIdx, endIdx);
 
             tbody.innerHTML = pageData.map((m, idx) => {
+                const globalIdx = startIdx + idx;
                 const rowNum = startIdx + idx + 1;
                 const rowKey = m.attempt_id ? (m.nis + '::' + m.attempt_id) : m.nis;
                 const statusBadge = getStatusBadge(m);
@@ -763,7 +764,7 @@
                             </div>
                         </td>
                         <td class="p-3 text-center whitespace-nowrap">
-                            <button type="button" onclick="toggleMonActionMenu(event, '${escapeHtml(rowKey)}')" class="action-menu-btn w-7 h-7 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-900 transition inline-flex items-center justify-center shadow-2xs cursor-pointer" data-tooltip="Menu Aksi">
+                            <button type="button" onclick="toggleMonActionMenu(event, ${globalIdx})" class="action-menu-btn w-7 h-7 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-900 transition inline-flex items-center justify-center shadow-2xs cursor-pointer" data-tooltip="Menu Aksi">
                                 <i class="fa-solid fa-ellipsis-vertical text-xs pointer-events-none"></i>
                             </button>
                         </td>
@@ -774,6 +775,124 @@
             renderPagination(total);
             updateSelectedMonitoringToolbar();
         }
+
+        // ================= FLOATING DROPDOWN ACTION MENU =================
+        let activeMonMenuKey = null;
+
+        function closeMonActionMenu() {
+            const menu = document.getElementById('mon-action-dropdown-menu');
+            if (menu) {
+                menu.classList.add('hidden');
+                menu.style.display = 'none';
+            }
+            activeMonMenuKey = null;
+        }
+        window.closeMonActionMenu = closeMonActionMenu;
+
+        function runMonAction(action, globalIdx) {
+            closeMonActionMenu();
+            const m = filteredMonitoring[globalIdx];
+            if (!m) return;
+            const nis = String(m.nis || '');
+            const name = String(m.name || m.nis || '');
+            const attempt = String(m.attempt_id || '');
+            if (action === 'reset') confirmResetSession(nis, name, attempt);
+            else if (action === 'force_finish') confirmForceFinish(nis, name, attempt);
+            else if (action === 'delete') confirmDeleteSession(nis, name, attempt);
+        }
+        window.runMonAction = runMonAction;
+
+        function toggleMonActionMenu(event, targetIdxOrKey) {
+            if (event) {
+                event.stopPropagation();
+                event.preventDefault();
+            }
+            const btn = (event && (event.currentTarget || (event.target && event.target.closest('button')))) || null;
+            if (!btn) return;
+
+            let menu = document.getElementById('mon-action-dropdown-menu');
+            if (!menu) {
+                menu = document.createElement('div');
+                menu.id = 'mon-action-dropdown-menu';
+                menu.className = 'fixed z-[999999] bg-white rounded-xl border border-slate-200 shadow-xl py-1 text-xs min-w-[185px] transition-all hidden';
+                document.body.appendChild(menu);
+            }
+
+            if (!menu.classList.contains('hidden') && activeMonMenuKey === targetIdxOrKey) {
+                closeMonActionMenu();
+                return;
+            }
+
+            activeMonMenuKey = targetIdxOrKey;
+            let m = null;
+            let globalIdx = typeof targetIdxOrKey === 'number' ? targetIdxOrKey : -1;
+            if (typeof targetIdxOrKey === 'number') {
+                m = filteredMonitoring[targetIdxOrKey];
+            } else {
+                globalIdx = filteredMonitoring.findIndex(item => {
+                    const k = item.attempt_id ? (item.nis + '::' + item.attempt_id) : item.nis;
+                    return String(k) === String(targetIdxOrKey);
+                });
+                if (globalIdx !== -1) m = filteredMonitoring[globalIdx];
+            }
+            if (!m) return;
+
+            const isWorkingOrOffline = (m.status === 'WORKING' || m.status === 'OFFLINE' || m.status === 'TIME_OVER');
+
+            let itemsHtml = `
+                <button type="button" onclick="runMonAction('reset', ${globalIdx})" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-left text-slate-700 hover:bg-amber-50 hover:text-amber-700 font-medium transition cursor-pointer">
+                    <i class="fa-solid fa-arrow-rotate-left text-amber-600 w-4 text-center"></i>
+                    <span>Reset Sesi Peserta</span>
+                </button>
+            `;
+
+            if (isWorkingOrOffline) {
+                itemsHtml += `
+                    <button type="button" onclick="runMonAction('force_finish', ${globalIdx})" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-left text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 font-medium transition cursor-pointer">
+                        <i class="fa-solid fa-file-circle-check text-emerald-600 w-4 text-center"></i>
+                        <span>Kumpulkan Paksa Ujian</span>
+                    </button>
+                `;
+            }
+
+            itemsHtml += `
+                <div class="my-1 border-t border-slate-100"></div>
+                <button type="button" onclick="runMonAction('delete', ${globalIdx})" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-left text-rose-600 hover:bg-rose-50 font-medium transition cursor-pointer">
+                    <i class="fa-solid fa-trash-can text-rose-600 w-4 text-center"></i>
+                    <span>Hapus dari Monitoring</span>
+                </button>
+            `;
+
+            menu.innerHTML = itemsHtml;
+            menu.classList.remove('hidden');
+            menu.style.display = 'block';
+
+            const rect = btn.getBoundingClientRect();
+            const menuWidth = 185;
+            let left = rect.right - menuWidth;
+            if (left < 10) left = 10;
+
+            const menuHeight = menu.offsetHeight || 130;
+            let top = rect.bottom + 4;
+            if (top + menuHeight > window.innerHeight - 10) {
+                top = rect.top - menuHeight - 4;
+            }
+
+            menu.style.left = `${left}px`;
+            menu.style.top = `${top}px`;
+        }
+        window.toggleMonActionMenu = toggleMonActionMenu;
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#mon-action-dropdown-menu') && !e.target.closest('.action-menu-btn')) {
+                closeMonActionMenu();
+            }
+        });
+        window.addEventListener('scroll', closeMonActionMenu, true);
+        window.addEventListener('resize', closeMonActionMenu);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeMonActionMenu();
+        });
 
         function getProgressHtml(m) {
             const ansCount = m.answered_count ?? 0;
