@@ -154,6 +154,57 @@ function appConfirm(message, title = 'Konfirmasi', cancelText = 'Batal', okText 
     });
 }
 
+function appToast(message, type = 'success') {
+    let container = document.getElementById('core-app-toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'core-app-toast-container';
+        container.className = 'fixed bottom-5 right-5 z-[99999] flex flex-col gap-2 pointer-events-none max-w-sm w-full px-4';
+        document.body.appendChild(container);
+    }
+
+    const toast = document.createElement('div');
+    const bgClass =
+        type === 'danger' || type === 'error'
+            ? 'bg-rose-600 text-white'
+            : type === 'warning'
+            ? 'bg-amber-500 text-slate-900'
+            : type === 'info'
+            ? 'bg-sky-600 text-white'
+            : 'bg-emerald-600 text-white';
+
+    const icon =
+        type === 'danger' || type === 'error'
+            ? 'fa-circle-xmark'
+            : type === 'warning'
+            ? 'fa-triangle-exclamation'
+            : type === 'info'
+            ? 'fa-circle-info'
+            : 'fa-circle-check';
+
+    toast.className = `p-3.5 rounded-xl shadow-xl flex items-center gap-3 text-xs sm:text-sm font-semibold pointer-events-auto cursor-pointer transition-all duration-300 transform translate-y-2 opacity-0 ${bgClass}`;
+    toast.innerHTML = `<i class="fa-solid ${icon} text-base shrink-0"></i> <span class="flex-1 leading-snug">${escapeHtml(message)}</span>`;
+    toast.onclick = () => {
+        toast.classList.add('opacity-0', 'translate-x-full');
+        setTimeout(() => toast.remove(), 250);
+    };
+
+    container.appendChild(toast);
+
+    requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-2', 'opacity-0');
+    });
+
+    setTimeout(() => {
+        if (toast.parentNode) {
+            toast.classList.add('opacity-0', 'translate-x-full');
+            setTimeout(() => toast.remove(), 250);
+        }
+    }, 4000);
+}
+window.appToast = appToast;
+window.showToast = appToast;
+
 // ================= AUTHENTICATION & SESSION =================
 async function checkServerSession(onSuccessCallback = null) {
     try {

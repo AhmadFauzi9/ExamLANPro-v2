@@ -12,10 +12,10 @@
             "start_at": "",
             "end_at": "",
             "status": "ACTIVE",
-            "pin": "J5LTFH",
+            "pin": "V3X7S4",
             "pin_enabled": true,
             "pin_auto_refresh": true,
-            "pin_updated_at": 1795062719,
+            "pin_updated_at": 1795074046,
             "questions": [
                 {
                     "type": "mc",
@@ -889,1471 +889,7 @@
             ]
         }
     ],
-    "results": [
-        {
-            "id": "res_e64fc6ddfa32a1bcfbfaac470691ba5c",
-            "nis": "250053",
-            "name": "AHMAD ZIYAD ASSYAFIQ",
-            "class": "VIII A (UNGGULAN MIPA)",
-            "code": "quiz-1794921157572",
-            "title": "UB Informatika Semester Ganjil 2026-2027",
-            "score": 83,
-            "correct": 5,
-            "wrong": 1,
-            "date": "19/11/2026 05:38:30",
-            "review_token": "46671d1c174063e8ea3574462a9b45b8a469970455f64456d36e348925c19a95",
-            "question_order": [
-                29,
-                40,
-                43,
-                6,
-                37,
-                2
-            ],
-            "answers": [
-                [
-                    2,
-                    0,
-                    1
-                ],
-                2,
-                2,
-                "both_correct_connected",
-                [
-                    0
-                ],
-                "both_correct_connected"
-            ],
-            "breakdowns": [
-                {
-                    "question": {
-                        "type": "complex",
-                        "question": "Manakah yang termasuk dari pengaturan spasi baris (Line Spacing) yang biasa digunakan pada grup Paragraph?",
-                        "options": [
-                            "1.0 (Single)",
-                            "1.5 lines",
-                            "2.0 (Double)",
-                            "100%"
-                        ],
-                        "answer": 0,
-                        "answers": [
-                            0,
-                            1,
-                            2
-                        ],
-                        "explanation": "Line spacing dapat diatur ke Single, 1.5 lines, atau Double untuk menentukan jarak spasi antar baris.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": [
-                        2,
-                        0,
-                        1
-                    ],
-                    "isCorrect": true,
-                    "studentAnswerText": "C. 2.0 (Double)<br>A. 1.0 (Single)<br>B. 1.5 lines",
-                    "correctAnswerText": "A. 1.0 (Single)<br>B. 1.5 lines<br>C. 2.0 (Double)"
-                },
-                {
-                    "question": {
-                        "type": "mc",
-                        "question": "Pada saat menyimpan dokumen untuk pertama kalinya, format file standar (Save as type) MS Word 2007 adalah?",
-                        "options": [
-                            "PDF",
-                            "Excel Workbook",
-                            "Word Document",
-                            "JPEG"
-                        ],
-                        "answer": 2,
-                        "answers": [],
-                        "explanation": "MS Word 2007 menyimpan file ketikan secara otomatis ke dalam format Word Document.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": 2,
-                    "isCorrect": true,
-                    "studentAnswerText": "C. Word Document",
-                    "correctAnswerText": "C. Word Document"
-                },
-                {
-                    "question": {
-                        "type": "case_analysis",
-                        "question": "Nama garis mistar pembantu tersebut adalah?",
-                        "options": [
-                            "Scroll Bar",
-                            "Ribbon",
-                            "Ruler",
-                            "Status Bar"
-                        ],
-                        "answer": 2,
-                        "answers": [],
-                        "explanation": "Ruler (mistar) adalah elemen untuk mengetahui posisi kursor dan tabulasi batas margin.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "passage": "Saat membuka MS Word 2007, terlihat garis mistar berangka di bagian atas dan kiri layar putih untuk membantu mengukur batas margin."
-                    },
-                    "studentAnswer": 2,
-                    "isCorrect": true,
-                    "studentAnswerText": "C. Ruler",
-                    "correctAnswerText": "C. Ruler"
-                },
-                {
-                    "question": {
-                        "type": "cause_effect",
-                        "question": "",
-                        "options": [],
-                        "answer": "both_correct_connected",
-                        "answers": [],
-                        "explanation": "Kita bisa membuka file yang sudah disimpan (Open) melalui Office Button atau shortcut Ctrl + O.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "statement": "Saat mengetik, kita dapat membuka kembali dokumen yang sudah pernah disimpan sebelumnya.",
-                        "reason": "Perintah \"Open\" digunakan untuk menampilkan kotak dialog agar bisa mencari file lama untuk dibuka."
-                    },
-                    "studentAnswer": "both_correct_connected",
-                    "isCorrect": true,
-                    "studentAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)",
-                    "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
-                },
-                {
-                    "question": {
-                        "type": "complex",
-                        "question": "Fitur yang berfungsi memberi warna latar belakang pada baris teks tertentu (sering disebut efek stabilo) adalah?",
-                        "options": [
-                            "Text Highlight Color",
-                            "Font Color",
-                            "Shading",
-                            "Format Painter"
-                        ],
-                        "answer": 0,
-                        "answers": [
-                            0,
-                            2
-                        ],
-                        "explanation": "Text Highlight Color (warna sorot) atau Shading (warna latar di tab border) memberikan warna pada background tulisan/sel.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": [
-                        0
-                    ],
-                    "isCorrect": false,
-                    "studentAnswerText": "A. Text Highlight Color",
-                    "correctAnswerText": "A. Text Highlight Color<br>C. Shading"
-                },
-                {
-                    "question": {
-                        "type": "cause_effect",
-                        "question": "",
-                        "options": [],
-                        "answer": "both_correct_connected",
-                        "answers": [],
-                        "explanation": "Printer merupakan output device karena tugasnya mengeluarkan hasil pemrosesan ke atas kertas.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "statement": "Printer adalah peralatan keluaran (output device) pada sistem komputer.",
-                        "reason": "Printer berfungsi untuk mencetak hasil proses komputer berupa teks atau gambar pada media kertas."
-                    },
-                    "studentAnswer": "both_correct_connected",
-                    "isCorrect": true,
-                    "studentAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)",
-                    "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
-                }
-            ]
-        },
-        {
-            "nis": "250266",
-            "name": "M. RAQILLA AFFAN BUDIYANTO",
-            "class": "VIII A (UNGGULAN MIPA)",
-            "code": "quiz-1794921157572",
-            "title": "UB Informatika Semester Ganjil 2026-2027",
-            "score": 100,
-            "correct": 6,
-            "wrong": 0,
-            "date": "19/11/2026 04:20:32",
-            "review_token": "34471aa75151bb495e50c26416e3ce3f7e656ae39c0c18fad5dde0a2642490f5",
-            "question_order": [
-                26,
-                49,
-                12,
-                10,
-                23,
-                43
-            ],
-            "answers": [
-                "both_correct_connected",
-                2,
-                0,
-                "both_correct_connected",
-                1,
-                2
-            ],
-            "breakdowns": [
-                {
-                    "question": {
-                        "type": "cause_effect",
-                        "question": "",
-                        "options": [],
-                        "answer": "both_correct_connected",
-                        "answers": [],
-                        "explanation": "Equation adalah fasilitas di Word 2007 untuk menulis rumus (typesetting matematis).",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "statement": "Kita dapat menyisipkan rumus matematika yang rumit di Word menggunakan Equation.",
-                        "reason": "Ikon Equation berfungsi menyisipkan lambang persamaan/rumus dalam bidang matematika."
-                    },
-                    "studentAnswer": "both_correct_connected",
-                    "isCorrect": true,
-                    "studentAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)",
-                    "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
-                },
-                {
-                    "question": {
-                        "type": "mc",
-                        "question": "Bagian paling bawah (status bar) yang digunakan untuk memperbesar dan memperkecil tampilan lembar kerja adalah?",
-                        "options": [
-                            "View Buttons",
-                            "Horizontal scroll bar",
-                            "Zoom slider",
-                            "Ruler"
-                        ],
-                        "answer": 2,
-                        "answers": [],
-                        "explanation": "Zoom slider ada di bagian kanan bawah Status Bar untuk memperbesar/memperkecil tampilan dokumen.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": 2,
-                    "isCorrect": true,
-                    "studentAnswerText": "C. Zoom slider",
-                    "correctAnswerText": "C. Zoom slider"
-                },
-                {
-                    "question": {
-                        "type": "mc",
-                        "question": "Untuk menebalkan teks yang sudah diblok, ikon yang harus diklik adalah?",
-                        "options": [
-                            "Bold",
-                            "Italic",
-                            "Underline",
-                            "Drop Cap"
-                        ],
-                        "answer": 0,
-                        "answers": [],
-                        "explanation": "Ikon Bold atau shortcut Ctrl + B berfungsi untuk mencetak teks menjadi tebal.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": 0,
-                    "isCorrect": true,
-                    "studentAnswerText": "A. Bold",
-                    "correctAnswerText": "A. Bold"
-                },
-                {
-                    "question": {
-                        "type": "cause_effect",
-                        "question": "",
-                        "options": [],
-                        "answer": "both_correct_connected",
-                        "answers": [],
-                        "explanation": "Perintah Ctrl + U atau ikon Underline pada tab Home digunakan untuk memberi garis bawah pada teks.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "statement": "Teks pada MS Word 2007 dapat dibuat bergaris bawah dengan menekan Ctrl + U.",
-                        "reason": "Ikon Underline (U) berfungsi untuk memberikan efek cetak bergaris bawah pada huruf atau kata yang dipilih."
-                    },
-                    "studentAnswer": "both_correct_connected",
-                    "isCorrect": true,
-                    "studentAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)",
-                    "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
-                },
-                {
-                    "question": {
-                        "type": "case_analysis",
-                        "question": "Cara termudah bagi Doni untuk melebarkan kolom tersebut adalah?",
-                        "options": [
-                            "Menghapus tabel dan membuat baru",
-                            "Menggeser (drag) garis batas (margin) antar kolom dengan mouse",
-                            "Mengubah ukuran kertas menjadi Legal",
-                            "Menambah baris pada tabel"
-                        ],
-                        "answer": 1,
-                        "answers": [],
-                        "explanation": "Cara manual melebarkan kolom tabel adalah mendrag (menyeret) garis pembatas kolom dengan mouse.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "passage": "Setelah membuat tabel berisi jadwal piket kelas, Doni merasa kolom \"Nama Siswa\" kurang lebar untuk nama yang panjang."
-                    },
-                    "studentAnswer": 1,
-                    "isCorrect": true,
-                    "studentAnswerText": "B. Menggeser (drag) garis batas (margin) antar kolom dengan mouse",
-                    "correctAnswerText": "B. Menggeser (drag) garis batas (margin) antar kolom dengan mouse"
-                },
-                {
-                    "question": {
-                        "type": "case_analysis",
-                        "question": "Nama garis mistar pembantu tersebut adalah?",
-                        "options": [
-                            "Scroll Bar",
-                            "Ribbon",
-                            "Ruler",
-                            "Status Bar"
-                        ],
-                        "answer": 2,
-                        "answers": [],
-                        "explanation": "Ruler (mistar) adalah elemen untuk mengetahui posisi kursor dan tabulasi batas margin.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "passage": "Saat membuka MS Word 2007, terlihat garis mistar berangka di bagian atas dan kiri layar putih untuk membantu mengukur batas margin."
-                    },
-                    "studentAnswer": 2,
-                    "isCorrect": true,
-                    "studentAnswerText": "C. Ruler",
-                    "correctAnswerText": "C. Ruler"
-                }
-            ],
-            "id": "res_34471aa75151bb49"
-        },
-        {
-            "nis": "250262",
-            "name": "M. KHANNAN KAROMUL UMAM",
-            "class": "VIII A (UNGGULAN MIPA)",
-            "code": "quiz-1794921157572",
-            "title": "UB Informatika Semester Ganjil 2026-2027",
-            "score": 83,
-            "correct": 5,
-            "wrong": 1,
-            "date": "18/11/2026 15:04:19",
-            "review_token": "f7d4461f8ca6c230e6bce1938df26ffd9983f7f4f2c9b1921e6f36eeb1e47e06",
-            "question_order": [
-                8,
-                39,
-                7,
-                3,
-                10,
-                41
-            ],
-            "answers": [
-                1,
-                2,
-                2,
-                2,
-                "both_correct_connected"
-            ],
-            "breakdowns": [
-                {
-                    "question": {
-                        "type": "mc",
-                        "question": "Jika kita ingin mencetak kertas secara mendatar atau melebar, pilihan Orientation apa yang harus dipilih?",
-                        "options": [
-                            "Portrait",
-                            "Landscape",
-                            "Letter",
-                            "Legal"
-                        ],
-                        "answer": 1,
-                        "answers": [],
-                        "explanation": "Orientation Landscape digunakan untuk posisi kertas mendatar.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": 1,
-                    "isCorrect": true,
-                    "studentAnswerText": "B. Landscape",
-                    "correctAnswerText": "B. Landscape"
-                },
-                {
-                    "question": {
-                        "type": "case_analysis",
-                        "question": "Ikon apa di menu Insert yang dipilih untuk memasukkan gambar logo sekolah yang sudah ada di komputer?",
-                        "options": [
-                            "Shapes",
-                            "Clip Art",
-                            "Picture",
-                            "Table"
-                        ],
-                        "answer": 2,
-                        "answers": [],
-                        "explanation": "Picture digunakan untuk menyisipkan gambar/foto (termasuk logo) yang sudah tersimpan sebagai file di komputer.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "passage": "Pak Guru meminta murid menyisipkan logo sekolah di sudut kiri surat resmi (kop surat)."
-                    },
-                    "studentAnswer": 2,
-                    "isCorrect": true,
-                    "studentAnswerText": "C. Picture",
-                    "correctAnswerText": "C. Picture"
-                },
-                {
-                    "question": {
-                        "type": "case_analysis",
-                        "question": "Menu tab apakah yang harus Siti pilih untuk menemukan ikon Margin?",
-                        "options": [
-                            "Home",
-                            "Insert",
-                            "Page Layout",
-                            "View"
-                        ],
-                        "answer": 2,
-                        "answers": [],
-                        "explanation": "Tab Page Layout memuat grup Page Setup yang berisi ikon Margins untuk mengatur batas tepi kertas.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "passage": "Siti ingin mengatur ukuran batas tepi (margin) kertas pada tugas laporannya."
-                    },
-                    "studentAnswer": 2,
-                    "isCorrect": true,
-                    "studentAnswerText": "C. Page Layout",
-                    "correctAnswerText": "C. Page Layout"
-                },
-                {
-                    "question": {
-                        "type": "case_analysis",
-                        "question": "Program aplikasi apakah yang sedang digunakan oleh Ahmad?",
-                        "options": [
-                            "Microsoft Excel",
-                            "Microsoft PowerPoint",
-                            "Microsoft Word",
-                            "Microsoft Access"
-                        ],
-                        "answer": 2,
-                        "answers": [],
-                        "explanation": "Microsoft Word 2007 adalah program pengolah kata dari Microsoft Office untuk mengetik dokumen.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "passage": "Ahmad ingin mengetik tugas sekolah. Ia membuka sebuah program dari Microsoft Office yang memiliki logo huruf \"W\" berwarna biru."
-                    },
-                    "studentAnswer": 2,
-                    "isCorrect": true,
-                    "studentAnswerText": "C. Microsoft Word",
-                    "correctAnswerText": "C. Microsoft Word"
-                },
-                {
-                    "question": {
-                        "type": "cause_effect",
-                        "question": "",
-                        "options": [],
-                        "answer": "both_correct_connected",
-                        "answers": [],
-                        "explanation": "Perintah Ctrl + U atau ikon Underline pada tab Home digunakan untuk memberi garis bawah pada teks.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "statement": "Teks pada MS Word 2007 dapat dibuat bergaris bawah dengan menekan Ctrl + U.",
-                        "reason": "Ikon Underline (U) berfungsi untuk memberikan efek cetak bergaris bawah pada huruf atau kata yang dipilih."
-                    },
-                    "studentAnswer": "both_correct_connected",
-                    "isCorrect": true,
-                    "studentAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)",
-                    "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
-                },
-                {
-                    "question": {
-                        "type": "complex",
-                        "question": "Dalam penggunaan tetikus (Mouse), apa saja istilah standar untuk menjalankannya?",
-                        "options": [
-                            "Klik (Click)",
-                            "Klik ganda (Double click)",
-                            "Drag & Drop",
-                            "Enter"
-                        ],
-                        "answer": 0,
-                        "answers": [
-                            0,
-                            1,
-                            2
-                        ],
-                        "explanation": "Mouse dijalankan dengan perintah Klik, Double click (klik ganda), dan Drag & Drop (tahan dan geser). Enter adalah tombol pada keyboard.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "A. Klik (Click)<br>B. Klik ganda (Double click)<br>C. Drag & Drop"
-                }
-            ],
-            "id": "res_f7d4461f8ca6c230"
-        },
-        {
-            "nis": "250053",
-            "name": "AHMAD ZIYAD ASSYAFIQ",
-            "class": "VIII A (UNGGULAN MIPA)",
-            "code": "quiz-1794921157572",
-            "title": "UB Informatika Semester Ganjil 2026-2027",
-            "score": 40,
-            "correct": 4,
-            "wrong": 6,
-            "date": "17/11/2026 23:59:56",
-            "review_token": "2ac4a40ce5e9a2212a197957e33a736d6c1c4705e05714e644c2392977bdac9e",
-            "question_order": [
-                14,
-                7,
-                35,
-                44,
-                32,
-                34,
-                33,
-                41,
-                26,
-                21
-            ],
-            "answers": [
-                "statement_false_reason_true",
-                2,
-                2,
-                0
-            ],
-            "breakdowns": [
-                {
-                    "question": {
-                        "type": "cause_effect",
-                        "question": "",
-                        "options": [],
-                        "answer": "statement_false_reason_true",
-                        "answers": [],
-                        "explanation": "Ctrl + J adalah untuk Justify (rata kiri-kanan), sedangkan rata tengah adalah Center (Ctrl + E).",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "statement": "Tombol pintasan (shortcut) Ctrl + J digunakan untuk membuat teks rata tengah.",
-                        "reason": "Align Center digunakan agar posisi teks berada di tengah-tengah dokumen."
-                    },
-                    "studentAnswer": "statement_false_reason_true",
-                    "isCorrect": true,
-                    "studentAnswerText": "Pernyataan salah, alasan benar (D)",
-                    "correctAnswerText": "Pernyataan salah, alasan benar (D)"
-                },
-                {
-                    "question": {
-                        "type": "case_analysis",
-                        "question": "Menu tab apakah yang harus Siti pilih untuk menemukan ikon Margin?",
-                        "options": [
-                            "Home",
-                            "Insert",
-                            "Page Layout",
-                            "View"
-                        ],
-                        "answer": 2,
-                        "answers": [],
-                        "explanation": "Tab Page Layout memuat grup Page Setup yang berisi ikon Margins untuk mengatur batas tepi kertas.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "passage": "Siti ingin mengatur ukuran batas tepi (margin) kertas pada tugas laporannya."
-                    },
-                    "studentAnswer": 2,
-                    "isCorrect": true,
-                    "studentAnswerText": "C. Page Layout",
-                    "correctAnswerText": "C. Page Layout"
-                },
-                {
-                    "question": {
-                        "type": "case_analysis",
-                        "question": "Apa yang harus Rita isikan di kotak jendela Print?",
-                        "options": [
-                            "Pilih All",
-                            "Pilih Current page lalu ketik 5,7",
-                            "Pilih Pages lalu ketik 5-7",
-                            "Pilih Number of copies 5"
-                        ],
-                        "answer": 2,
-                        "answers": [],
-                        "explanation": "Untuk mencetak halaman tertentu, pilih Pages dan isi rentang halamannya (misal: 5-7).",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "passage": "Rita membuat makalah 10 halaman, namun ia hanya disuruh mengumpulkan halaman 5 sampai 7. Saat mau mencetak (Print), ia bingung memilih menunya."
-                    },
-                    "studentAnswer": 2,
-                    "isCorrect": true,
-                    "studentAnswerText": "C. Pilih Pages lalu ketik 5-7",
-                    "correctAnswerText": "C. Pilih Pages lalu ketik 5-7"
-                },
-                {
-                    "question": {
-                        "type": "mc",
-                        "question": "Menu berbentuk lingkaran dengan logo Windows/Office di pojok kiri atas MS Word 2007 yang menyimpan perintah dasar seperti New, Open, Save disebut?",
-                        "options": [
-                            "Office Button",
-                            "Start Button",
-                            "Title Bar",
-                            "Quick Access Toolbar"
-                        ],
-                        "answer": 0,
-                        "answers": [],
-                        "explanation": "Tombol Microsoft Office (Office Button) berisi menu utama dokumen seperti New, Open, Save, dan Print.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": 0,
-                    "isCorrect": true,
-                    "studentAnswerText": "A. Office Button",
-                    "correctAnswerText": "A. Office Button"
-                },
-                {
-                    "question": {
-                        "type": "mc",
-                        "question": "Setelah membuat naskah, langkah terakhir biasanya adalah mencetak dokumen ke kertas. Kombinasi tombol keyboard (shortcut) untuk mencetak adalah?",
-                        "options": [
-                            "Ctrl + S",
-                            "Ctrl + N",
-                            "Ctrl + P",
-                            "Ctrl + C"
-                        ],
-                        "answer": 2,
-                        "answers": [],
-                        "explanation": "Mencetak dokumen (Print) dapat dilakukan dari Office Button lalu klik Print atau dengan menekan tombol alternatif Ctrl + P.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "C. Ctrl + P"
-                },
-                {
-                    "question": {
-                        "type": "cause_effect",
-                        "question": "",
-                        "options": [],
-                        "answer": "both_false",
-                        "answers": [],
-                        "explanation": "\"Current page\" digunakan mencetak hanya pada halaman tempat kursor berada, sedangkan \"All\" untuk mencetak semua halaman dokumen.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "statement": "Opsi \"Current page\" pada menu cetak digunakan untuk mencetak seluruh halaman dokumen.",
-                        "reason": "Fungsi All pada jendela print adalah untuk mencetak hanya satu halaman tertentu."
-                    },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "Keduanya salah (E)"
-                },
-                {
-                    "question": {
-                        "type": "complex",
-                        "question": "Pada jendela Print, opsi apa saja yang tersedia di dalam bagian \"Page range\"?",
-                        "options": [
-                            "All",
-                            "Current page",
-                            "Number of copies",
-                            "Pages"
-                        ],
-                        "answer": 0,
-                        "answers": [
-                            0,
-                            1,
-                            3
-                        ],
-                        "explanation": "Di bagian Page range terdapat pilihan All, Current page, dan Pages. Number of copies berbeda bagian.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "A. All<br>B. Current page<br>D. Pages"
-                },
-                {
-                    "question": {
-                        "type": "complex",
-                        "question": "Dalam penggunaan tetikus (Mouse), apa saja istilah standar untuk menjalankannya?",
-                        "options": [
-                            "Klik (Click)",
-                            "Klik ganda (Double click)",
-                            "Drag & Drop",
-                            "Enter"
-                        ],
-                        "answer": 0,
-                        "answers": [
-                            0,
-                            1,
-                            2
-                        ],
-                        "explanation": "Mouse dijalankan dengan perintah Klik, Double click (klik ganda), dan Drag & Drop (tahan dan geser). Enter adalah tombol pada keyboard.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "A. Klik (Click)<br>B. Klik ganda (Double click)<br>C. Drag & Drop"
-                },
-                {
-                    "question": {
-                        "type": "cause_effect",
-                        "question": "",
-                        "options": [],
-                        "answer": "both_correct_connected",
-                        "answers": [],
-                        "explanation": "Equation adalah fasilitas di Word 2007 untuk menulis rumus (typesetting matematis).",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "statement": "Kita dapat menyisipkan rumus matematika yang rumit di Word menggunakan Equation.",
-                        "reason": "Ikon Equation berfungsi menyisipkan lambang persamaan/rumus dalam bidang matematika."
-                    },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
-                },
-                {
-                    "question": {
-                        "type": "complex",
-                        "question": "Manakah cara yang tepat untuk menambahkan tabel (Table) ke dalam lembar kerja Word?",
-                        "options": [
-                            "Klik tab Insert -> klik ikon Table",
-                            "Klik tab Home -> klik Paste",
-                            "Klik tab Insert -> klik Insert Table",
-                            "Klik tab Page Layout -> klik Margins"
-                        ],
-                        "answer": 0,
-                        "answers": [
-                            0,
-                            2
-                        ],
-                        "explanation": "Menyisipkan tabel dilakukan dari menu Insert, lalu ikon Table, kemudian Insert Table.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "A. Klik tab Insert -> klik ikon Table<br>C. Klik tab Insert -> klik Insert Table"
-                }
-            ],
-            "id": "res_2ac4a40ce5e9a221"
-        },
-        {
-            "nis": "250121",
-            "name": "AZZAM PUTRA PRAYOGA",
-            "class": "VIII A (UNGGULAN MIPA)",
-            "code": "quiz-1794921157572",
-            "title": "UB Informatika Semester Ganjil 2026-2027",
-            "score": 60,
-            "correct": 3,
-            "wrong": 2,
-            "date": "17/11/2026 23:53:04",
-            "review_token": "86b7793a368bbb26df3f37c40881a3484d55131bf8392e9f76130f9af06f6bd2",
-            "question_order": [
-                30,
-                45,
-                43,
-                23,
-                21
-            ],
-            "answers": [
-                "both_false",
-                [
-                    1
-                ],
-                2,
-                1,
-                [
-                    2
-                ]
-            ],
-            "breakdowns": [
-                {
-                    "question": {
-                        "type": "cause_effect",
-                        "question": "",
-                        "options": [],
-                        "answer": "both_false",
-                        "answers": [],
-                        "explanation": "Teks dalam tabel dapat diatur perataannya, misalnya rata kiri atas, tengah vertikal, atau kanan bawah.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "statement": "Kotak (sel) pada tabel tidak dapat diatur rata (alignment) teksnya.",
-                        "reason": "Perataan teks (alignment) hanya berlaku untuk teks paragraf biasa dan bukan di dalam tabel."
-                    },
-                    "studentAnswer": "both_false",
-                    "isCorrect": true,
-                    "studentAnswerText": "Keduanya salah (E)",
-                    "correctAnswerText": "Keduanya salah (E)"
-                },
-                {
-                    "question": {
-                        "type": "complex",
-                        "question": "Pada keyboard, jari telunjuk tangan kanan digunakan untuk menekan huruf apa saat posisi mengetik 10 jari dasar?",
-                        "options": [
-                            "U",
-                            "J",
-                            "Y",
-                            "K"
-                        ],
-                        "answer": 0,
-                        "answers": [
-                            0,
-                            1,
-                            2
-                        ],
-                        "explanation": "Telunjuk kanan pada posisi home row mengetik tombol J, U, Y, H, N, dan M.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": [
-                        1
-                    ],
-                    "isCorrect": false,
-                    "studentAnswerText": "B. J",
-                    "correctAnswerText": "A. U<br>B. J<br>C. Y"
-                },
-                {
-                    "question": {
-                        "type": "case_analysis",
-                        "question": "Nama garis mistar pembantu tersebut adalah?",
-                        "options": [
-                            "Scroll Bar",
-                            "Ribbon",
-                            "Ruler",
-                            "Status Bar"
-                        ],
-                        "answer": 2,
-                        "answers": [],
-                        "explanation": "Ruler (mistar) adalah elemen untuk mengetahui posisi kursor dan tabulasi batas margin.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "passage": "Saat membuka MS Word 2007, terlihat garis mistar berangka di bagian atas dan kiri layar putih untuk membantu mengukur batas margin."
-                    },
-                    "studentAnswer": 2,
-                    "isCorrect": true,
-                    "studentAnswerText": "C. Ruler",
-                    "correctAnswerText": "C. Ruler"
-                },
-                {
-                    "question": {
-                        "type": "case_analysis",
-                        "question": "Cara termudah bagi Doni untuk melebarkan kolom tersebut adalah?",
-                        "options": [
-                            "Menghapus tabel dan membuat baru",
-                            "Menggeser (drag) garis batas (margin) antar kolom dengan mouse",
-                            "Mengubah ukuran kertas menjadi Legal",
-                            "Menambah baris pada tabel"
-                        ],
-                        "answer": 1,
-                        "answers": [],
-                        "explanation": "Cara manual melebarkan kolom tabel adalah mendrag (menyeret) garis pembatas kolom dengan mouse.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "passage": "Setelah membuat tabel berisi jadwal piket kelas, Doni merasa kolom \"Nama Siswa\" kurang lebar untuk nama yang panjang."
-                    },
-                    "studentAnswer": 1,
-                    "isCorrect": true,
-                    "studentAnswerText": "B. Menggeser (drag) garis batas (margin) antar kolom dengan mouse",
-                    "correctAnswerText": "B. Menggeser (drag) garis batas (margin) antar kolom dengan mouse"
-                },
-                {
-                    "question": {
-                        "type": "complex",
-                        "question": "Manakah cara yang tepat untuk menambahkan tabel (Table) ke dalam lembar kerja Word?",
-                        "options": [
-                            "Klik tab Insert -> klik ikon Table",
-                            "Klik tab Home -> klik Paste",
-                            "Klik tab Insert -> klik Insert Table",
-                            "Klik tab Page Layout -> klik Margins"
-                        ],
-                        "answer": 0,
-                        "answers": [
-                            0,
-                            2
-                        ],
-                        "explanation": "Menyisipkan tabel dilakukan dari menu Insert, lalu ikon Table, kemudian Insert Table.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": [
-                        2
-                    ],
-                    "isCorrect": false,
-                    "studentAnswerText": "C. Klik tab Insert -> klik Insert Table",
-                    "correctAnswerText": "A. Klik tab Insert -> klik ikon Table<br>C. Klik tab Insert -> klik Insert Table"
-                }
-            ],
-            "id": "res_86b7793a368bbb26"
-        },
-        {
-            "nis": "250051",
-            "name": "AHMAD WAHYU RAMADHANI",
-            "class": "VIII A (UNGGULAN MIPA)",
-            "code": "quiz-1794921157572",
-            "title": "UB Informatika Semester Ganjil 2026-2027",
-            "score": 20,
-            "correct": 2,
-            "wrong": 8,
-            "date": "17/11/2026 15:42:35",
-            "review_token": "7d5dda2cf9b0fff68dd20c4403fb1b630052fea9c2aabccb1c2a6e081e62ae6c",
-            "question_order": [
-                3,
-                40,
-                38,
-                6,
-                8,
-                10,
-                39,
-                17,
-                49,
-                35
-            ],
-            "answers": [
-                2,
-                2,
-                "both_correct_connected"
-            ],
-            "breakdowns": [
-                {
-                    "question": {
-                        "type": "case_analysis",
-                        "question": "Program aplikasi apakah yang sedang digunakan oleh Ahmad?",
-                        "options": [
-                            "Microsoft Excel",
-                            "Microsoft PowerPoint",
-                            "Microsoft Word",
-                            "Microsoft Access"
-                        ],
-                        "answer": 2,
-                        "answers": [],
-                        "explanation": "Microsoft Word 2007 adalah program pengolah kata dari Microsoft Office untuk mengetik dokumen.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "passage": "Ahmad ingin mengetik tugas sekolah. Ia membuka sebuah program dari Microsoft Office yang memiliki logo huruf \"W\" berwarna biru."
-                    },
-                    "studentAnswer": 2,
-                    "isCorrect": true,
-                    "studentAnswerText": "C. Microsoft Word",
-                    "correctAnswerText": "C. Microsoft Word"
-                },
-                {
-                    "question": {
-                        "type": "mc",
-                        "question": "Pada saat menyimpan dokumen untuk pertama kalinya, format file standar (Save as type) MS Word 2007 adalah?",
-                        "options": [
-                            "PDF",
-                            "Excel Workbook",
-                            "Word Document",
-                            "JPEG"
-                        ],
-                        "answer": 2,
-                        "answers": [],
-                        "explanation": "MS Word 2007 menyimpan file ketikan secara otomatis ke dalam format Word Document.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": 2,
-                    "isCorrect": true,
-                    "studentAnswerText": "C. Word Document",
-                    "correctAnswerText": "C. Word Document"
-                },
-                {
-                    "question": {
-                        "type": "cause_effect",
-                        "question": "",
-                        "options": [],
-                        "answer": "statement_false_reason_true",
-                        "answers": [],
-                        "explanation": "Hanging Indent mengatur baris selain baris pertama agar menjorok (menggantung). First Line Indent memang untuk baris pertama.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "statement": "Hanging Indent berfungsi untuk memasukkan seluruh baris paragraf agar menjorok ke dalam.",
-                        "reason": "First Line Indent bertugas untuk memasukkan baris pertama saja pada paragraf."
-                    },
-                    "studentAnswer": "both_correct_connected",
-                    "isCorrect": false,
-                    "studentAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)",
-                    "correctAnswerText": "Pernyataan salah, alasan benar (D)"
-                },
-                {
-                    "question": {
-                        "type": "cause_effect",
-                        "question": "",
-                        "options": [],
-                        "answer": "both_correct_connected",
-                        "answers": [],
-                        "explanation": "Kita bisa membuka file yang sudah disimpan (Open) melalui Office Button atau shortcut Ctrl + O.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "statement": "Saat mengetik, kita dapat membuka kembali dokumen yang sudah pernah disimpan sebelumnya.",
-                        "reason": "Perintah \"Open\" digunakan untuk menampilkan kotak dialog agar bisa mencari file lama untuk dibuka."
-                    },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
-                },
-                {
-                    "question": {
-                        "type": "mc",
-                        "question": "Jika kita ingin mencetak kertas secara mendatar atau melebar, pilihan Orientation apa yang harus dipilih?",
-                        "options": [
-                            "Portrait",
-                            "Landscape",
-                            "Letter",
-                            "Legal"
-                        ],
-                        "answer": 1,
-                        "answers": [],
-                        "explanation": "Orientation Landscape digunakan untuk posisi kertas mendatar.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "B. Landscape"
-                },
-                {
-                    "question": {
-                        "type": "cause_effect",
-                        "question": "",
-                        "options": [],
-                        "answer": "both_correct_connected",
-                        "answers": [],
-                        "explanation": "Perintah Ctrl + U atau ikon Underline pada tab Home digunakan untuk memberi garis bawah pada teks.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "statement": "Teks pada MS Word 2007 dapat dibuat bergaris bawah dengan menekan Ctrl + U.",
-                        "reason": "Ikon Underline (U) berfungsi untuk memberikan efek cetak bergaris bawah pada huruf atau kata yang dipilih."
-                    },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
-                },
-                {
-                    "question": {
-                        "type": "case_analysis",
-                        "question": "Ikon apa di menu Insert yang dipilih untuk memasukkan gambar logo sekolah yang sudah ada di komputer?",
-                        "options": [
-                            "Shapes",
-                            "Clip Art",
-                            "Picture",
-                            "Table"
-                        ],
-                        "answer": 2,
-                        "answers": [],
-                        "explanation": "Picture digunakan untuk menyisipkan gambar/foto (termasuk logo) yang sudah tersimpan sebagai file di komputer.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "passage": "Pak Guru meminta murid menyisipkan logo sekolah di sudut kiri surat resmi (kop surat)."
-                    },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "C. Picture"
-                },
-                {
-                    "question": {
-                        "type": "complex",
-                        "question": "Manakah dari pilihan berikut yang dapat diatur di dalam kotak dialog Drop Cap Options?",
-                        "options": [
-                            "Font (Jenis huruf)",
-                            "Lines to drop (Jumlah baris tinggi teks)",
-                            "Page margins (Batas kertas)",
-                            "Distance from text (Jarak dengan teks)"
-                        ],
-                        "answer": 0,
-                        "answers": [
-                            0,
-                            1,
-                            3
-                        ],
-                        "explanation": "Pada Drop Cap Options, kita bisa mengatur Font, Lines to drop, dan Distance from text.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "A. Font (Jenis huruf)<br>B. Lines to drop (Jumlah baris tinggi teks)<br>D. Distance from text (Jarak dengan teks)"
-                },
-                {
-                    "question": {
-                        "type": "mc",
-                        "question": "Bagian paling bawah (status bar) yang digunakan untuk memperbesar dan memperkecil tampilan lembar kerja adalah?",
-                        "options": [
-                            "View Buttons",
-                            "Horizontal scroll bar",
-                            "Zoom slider",
-                            "Ruler"
-                        ],
-                        "answer": 2,
-                        "answers": [],
-                        "explanation": "Zoom slider ada di bagian kanan bawah Status Bar untuk memperbesar/memperkecil tampilan dokumen.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "C. Zoom slider"
-                },
-                {
-                    "question": {
-                        "type": "case_analysis",
-                        "question": "Apa yang harus Rita isikan di kotak jendela Print?",
-                        "options": [
-                            "Pilih All",
-                            "Pilih Current page lalu ketik 5,7",
-                            "Pilih Pages lalu ketik 5-7",
-                            "Pilih Number of copies 5"
-                        ],
-                        "answer": 2,
-                        "answers": [],
-                        "explanation": "Untuk mencetak halaman tertentu, pilih Pages dan isi rentang halamannya (misal: 5-7).",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "passage": "Rita membuat makalah 10 halaman, namun ia hanya disuruh mengumpulkan halaman 5 sampai 7. Saat mau mencetak (Print), ia bingung memilih menunya."
-                    },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "C. Pilih Pages lalu ketik 5-7"
-                }
-            ],
-            "id": "res_7d5dda2cf9b0fff6"
-        },
-        {
-            "nis": "250031",
-            "name": "AHMAD GHALI WARNA",
-            "class": "VIII A (UNGGULAN MIPA)",
-            "code": "quiz-1794921157572",
-            "title": "UB Informatika Semester Ganjil 2026-2027",
-            "score": 30,
-            "correct": 3,
-            "wrong": 7,
-            "date": "17/11/2026 14:56:45",
-            "review_token": "dc3847c6a95a25830ec00fe4561e1741213f655392912c9a55c3a4e27b028e56",
-            "question_order": [
-                14,
-                12,
-                34,
-                36,
-                47,
-                6,
-                49,
-                3,
-                16,
-                27
-            ],
-            "answers": [
-                "both_false",
-                0,
-                "statement_false_reason_true",
-                0,
-                1
-            ],
-            "breakdowns": [
-                {
-                    "question": {
-                        "type": "cause_effect",
-                        "question": "",
-                        "options": [],
-                        "answer": "statement_false_reason_true",
-                        "answers": [],
-                        "explanation": "Ctrl + J adalah untuk Justify (rata kiri-kanan), sedangkan rata tengah adalah Center (Ctrl + E).",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "statement": "Tombol pintasan (shortcut) Ctrl + J digunakan untuk membuat teks rata tengah.",
-                        "reason": "Align Center digunakan agar posisi teks berada di tengah-tengah dokumen."
-                    },
-                    "studentAnswer": "both_false",
-                    "isCorrect": false,
-                    "studentAnswerText": "Keduanya salah (E)",
-                    "correctAnswerText": "Pernyataan salah, alasan benar (D)"
-                },
-                {
-                    "question": {
-                        "type": "mc",
-                        "question": "Untuk menebalkan teks yang sudah diblok, ikon yang harus diklik adalah?",
-                        "options": [
-                            "Bold",
-                            "Italic",
-                            "Underline",
-                            "Drop Cap"
-                        ],
-                        "answer": 0,
-                        "answers": [],
-                        "explanation": "Ikon Bold atau shortcut Ctrl + B berfungsi untuk mencetak teks menjadi tebal.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": 0,
-                    "isCorrect": true,
-                    "studentAnswerText": "A. Bold",
-                    "correctAnswerText": "A. Bold"
-                },
-                {
-                    "question": {
-                        "type": "cause_effect",
-                        "question": "",
-                        "options": [],
-                        "answer": "both_false",
-                        "answers": [],
-                        "explanation": "\"Current page\" digunakan mencetak hanya pada halaman tempat kursor berada, sedangkan \"All\" untuk mencetak semua halaman dokumen.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "statement": "Opsi \"Current page\" pada menu cetak digunakan untuk mencetak seluruh halaman dokumen.",
-                        "reason": "Fungsi All pada jendela print adalah untuk mencetak hanya satu halaman tertentu."
-                    },
-                    "studentAnswer": "statement_false_reason_true",
-                    "isCorrect": false,
-                    "studentAnswerText": "Pernyataan salah, alasan benar (D)",
-                    "correctAnswerText": "Keduanya salah (E)"
-                },
-                {
-                    "question": {
-                        "type": "mc",
-                        "question": "Ikon Text Box digunakan untuk apa?",
-                        "options": [
-                            "Menyisipkan kotak yang dapat diisi dengan teks",
-                            "Menghapus teks pada kotak",
-                            "Memutar halaman kertas",
-                            "Mewarnai huruf dengan stabilo"
-                        ],
-                        "answer": 0,
-                        "answers": [],
-                        "explanation": "Text Box berguna untuk menyisipkan kotak di mana kita bebas mengisi teks di dalamnya.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": 0,
-                    "isCorrect": true,
-                    "studentAnswerText": "A. Menyisipkan kotak yang dapat diisi dengan teks",
-                    "correctAnswerText": "A. Menyisipkan kotak yang dapat diisi dengan teks"
-                },
-                {
-                    "question": {
-                        "type": "case_analysis",
-                        "question": "Ikon perintah dasar apa pada Quick Access Toolbar yang harus diklik agar tulisan kembali?",
-                        "options": [
-                            "Save",
-                            "Undo",
-                            "Redo",
-                            "Paste"
-                        ],
-                        "answer": 1,
-                        "answers": [],
-                        "explanation": "Undo adalah fitur untuk membatalkan perintah terakhir atau memunculkan kembali teks yang tidak sengaja terhapus.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "passage": "Dani mengetik surat undangan. Tiba-tiba semua huruf yang dia ketik tidak sengaja terhapus, lalu dia ingin mengembalikan tampilan file yang hilang itu."
-                    },
-                    "studentAnswer": 1,
-                    "isCorrect": true,
-                    "studentAnswerText": "B. Undo",
-                    "correctAnswerText": "B. Undo"
-                },
-                {
-                    "question": {
-                        "type": "cause_effect",
-                        "question": "",
-                        "options": [],
-                        "answer": "both_correct_connected",
-                        "answers": [],
-                        "explanation": "Kita bisa membuka file yang sudah disimpan (Open) melalui Office Button atau shortcut Ctrl + O.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "statement": "Saat mengetik, kita dapat membuka kembali dokumen yang sudah pernah disimpan sebelumnya.",
-                        "reason": "Perintah \"Open\" digunakan untuk menampilkan kotak dialog agar bisa mencari file lama untuk dibuka."
-                    },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
-                },
-                {
-                    "question": {
-                        "type": "mc",
-                        "question": "Bagian paling bawah (status bar) yang digunakan untuk memperbesar dan memperkecil tampilan lembar kerja adalah?",
-                        "options": [
-                            "View Buttons",
-                            "Horizontal scroll bar",
-                            "Zoom slider",
-                            "Ruler"
-                        ],
-                        "answer": 2,
-                        "answers": [],
-                        "explanation": "Zoom slider ada di bagian kanan bawah Status Bar untuk memperbesar/memperkecil tampilan dokumen.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "C. Zoom slider"
-                },
-                {
-                    "question": {
-                        "type": "case_analysis",
-                        "question": "Program aplikasi apakah yang sedang digunakan oleh Ahmad?",
-                        "options": [
-                            "Microsoft Excel",
-                            "Microsoft PowerPoint",
-                            "Microsoft Word",
-                            "Microsoft Access"
-                        ],
-                        "answer": 2,
-                        "answers": [],
-                        "explanation": "Microsoft Word 2007 adalah program pengolah kata dari Microsoft Office untuk mengetik dokumen.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "passage": "Ahmad ingin mengetik tugas sekolah. Ia membuka sebuah program dari Microsoft Office yang memiliki logo huruf \"W\" berwarna biru."
-                    },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "C. Microsoft Word"
-                },
-                {
-                    "question": {
-                        "type": "mc",
-                        "question": "Fitur untuk membuat huruf berukuran besar di awal kalimat, memakan beberapa baris ke bawah disebut?",
-                        "options": [
-                            "Superscript",
-                            "Columns",
-                            "Drop Cap",
-                            "Word Art"
-                        ],
-                        "answer": 2,
-                        "answers": [],
-                        "explanation": "Drop Cap berada di menu Insert dan berfungsi membuat huruf kapital besar di awal paragraf.",
-                        "image": "uploads/soal/img_soal_quiz-1794921157572_1794921157_940e5b.png",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": []
-                    },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "C. Drop Cap"
-                },
-                {
-                    "question": {
-                        "type": "case_analysis",
-                        "question": "Ikon manakah yang harus dipilih Rina untuk membuat bentuk-bentuk tersebut?",
-                        "options": [
-                            "Clip Art",
-                            "Table",
-                            "Shapes",
-                            "Symbol"
-                        ],
-                        "answer": 2,
-                        "answers": [],
-                        "explanation": "Shapes berguna menyisipkan berbagai bentuk seperti kotak, panah (Block Arrows), garis, dan lingkaran.",
-                        "image": "",
-                        "premises": [],
-                        "targets": [],
-                        "pairs": [],
-                        "passage": "Rina ingin membuat bagan organisasi OSIS. Ia perlu menggambar kotak-kotak dan anak panah penunjuk."
-                    },
-                    "studentAnswer": null,
-                    "isCorrect": false,
-                    "studentAnswerText": "Tidak dijawab",
-                    "correctAnswerText": "C. Shapes"
-                }
-            ],
-            "id": "res_dc3847c6a95a2583"
-        }
-    ],
+    "results": [],
     "review_settings": {
         "quiz-1794921157572": false,
         "all": false
@@ -11263,87 +9799,6 @@
         }
     ],
     "active_attempts": {
-        "b5f31a32a2928b34e01058f462c382b45f2f324ebbceaf942c0bf916d0257ab5": {
-            "token": "1c2882c08ca0b5d07bcc46bd9d4d527c2a8e27575aef5d37c7a7647e299c817a",
-            "token_hash": "b5f31a32a2928b34e01058f462c382b45f2f324ebbceaf942c0bf916d0257ab5",
-            "quiz_id": "quiz-1794921157572",
-            "quiz_title": "UB Informatika Semester Ganjil 2026-2027",
-            "nis": "250031",
-            "name": "AHMAD GHALI WARNA",
-            "class": "VIII A (UNGGULAN MIPA)",
-            "question_order": [
-                14,
-                12,
-                34,
-                36,
-                47,
-                6,
-                49,
-                3,
-                16,
-                27
-            ],
-            "option_order": {
-                "3": [
-                    1,
-                    2,
-                    3,
-                    0
-                ],
-                "6": [],
-                "12": [
-                    3,
-                    2,
-                    0,
-                    1
-                ],
-                "14": [],
-                "16": [
-                    2,
-                    3,
-                    1,
-                    0
-                ],
-                "27": [
-                    0,
-                    1,
-                    3,
-                    2
-                ],
-                "34": [],
-                "36": [
-                    1,
-                    3,
-                    0,
-                    2
-                ],
-                "47": [
-                    3,
-                    1,
-                    0,
-                    2
-                ],
-                "49": [
-                    1,
-                    3,
-                    0,
-                    2
-                ]
-            },
-            "answers": [
-                "both_false",
-                2,
-                "statement_false_reason_true",
-                2,
-                1
-            ],
-            "started_at": 1794921228,
-            "ends_at": 1794921849,
-            "updated_at": 1794921839,
-            "finished": true,
-            "result_token": "dc3847c6a95a25830ec00fe4561e1741213f655392912c9a55c3a4e27b028e56",
-            "score": 30
-        },
         "e715046aa75bb359d5119cb5082c5ef1b4c63cdc852b468642a60462e50960af": {
             "token": "94b7bc84b28558c760dad2674a2676b7f168d0761f536257388959e01cb6266c",
             "token_hash": "e715046aa75bb359d5119cb5082c5ef1b4c63cdc852b468642a60462e50960af",
@@ -11930,57 +10385,6 @@
             "result_token": "f7d4461f8ca6c230e6bce1938df26ffd9983f7f4f2c9b1921e6f36eeb1e47e06",
             "score": 83
         },
-        "d5d9fde8138e8bff639a3b12c3e974db7d6c582de95f23903cdf18ff292c22ef": {
-            "token": "c74fbb0102bfb55812c9905eb49e8e48a14a1817c8ec941263c795893b786283",
-            "token_hash": "d5d9fde8138e8bff639a3b12c3e974db7d6c582de95f23903cdf18ff292c22ef",
-            "quiz_id": "quiz-1794921157572",
-            "quiz_title": "UB Informatika Semester Ganjil 2026-2027",
-            "nis": "250266",
-            "name": "M. RAQILLA AFFAN BUDIYANTO",
-            "class": "VIII A (UNGGULAN MIPA)",
-            "question_order": [
-                45,
-                22,
-                48,
-                23,
-                38,
-                6
-            ],
-            "option_order": {
-                "45": [
-                    2,
-                    0,
-                    1,
-                    3
-                ],
-                "22": [],
-                "48": [
-                    2,
-                    0,
-                    3,
-                    1
-                ],
-                "23": [
-                    0,
-                    1,
-                    3,
-                    2
-                ],
-                "38": [],
-                "6": []
-            },
-            "answers": [],
-            "started_at": 1795012806,
-            "ends_at": 1795015574,
-            "updated_at": 1795015558,
-            "violations_count": 0,
-            "last_violation_at": 1795040796,
-            "last_violation_type": "exit_fullscreen",
-            "violations_log": [],
-            "finished": true,
-            "result_token": "27ee7c314179966c7870fbc2ee7f646d03225466884e4daa85544d8d9fd89780",
-            "score": 0
-        },
         "3df36b2fdcd85e0655a99a03fd18eecc54ea94546d5ebb6ba9ddea7638c54ddc": {
             "token": "eebb158f229be5e05f2bd780052d7da4e2a167125767484bbea6171e77596d5e",
             "token_hash": "3df36b2fdcd85e0655a99a03fd18eecc54ea94546d5ebb6ba9ddea7638c54ddc",
@@ -12022,14 +10426,18 @@
             },
             "answers": [
                 "statement_false_reason_true",
-                "both_false"
+                "both_false",
+                3,
+                "both_correct_connected",
+                2,
+                1
             ],
             "started_at": 1795045163,
-            "ends_at": 1795045523,
-            "updated_at": 1795045486,
-            "violations_count": 6,
-            "last_violation_at": 1795045406,
-            "last_violation_type": "tab_switch",
+            "ends_at": 1795072589,
+            "updated_at": 1795072448,
+            "violations_count": 14,
+            "last_violation_at": 1795072450,
+            "last_violation_type": "exit_fullscreen",
             "violations_log": [
                 {
                     "time": "19/11/2026 00:41:04",
@@ -12072,92 +10480,66 @@
                     "type": "tab_switch",
                     "details": "Pindah tab atau meminimalkan jendela browser",
                     "count": 6
-                }
-            ]
-        },
-        "8412e712b0d92337c546a965152eda3eef1125b7c139489a2c0c8a3e747bcd1b": {
-            "token": "5db385d5a3ab3f7ff99136a20cde3662d22fe8d9341e2c35872a57bdbbd5bc19",
-            "token_hash": "8412e712b0d92337c546a965152eda3eef1125b7c139489a2c0c8a3e747bcd1b",
-            "quiz_id": "quiz-1794921157572",
-            "quiz_title": "UB Informatika Semester Ganjil 2026-2027",
-            "nis": "250266",
-            "name": "M. RAQILLA AFFAN BUDIYANTO",
-            "class": "VIII A (UNGGULAN MIPA)",
-            "question_order": [
-                26,
-                49,
-                12,
-                10,
-                23,
-                43
-            ],
-            "option_order": {
-                "26": [],
-                "49": [
-                    2,
-                    1,
-                    0,
-                    3
-                ],
-                "12": [
-                    3,
-                    2,
-                    0,
-                    1
-                ],
-                "10": [],
-                "23": [
-                    3,
-                    2,
-                    1,
-                    0
-                ],
-                "43": [
-                    1,
-                    2,
-                    0,
-                    3
-                ]
-            },
-            "answers": [
-                "both_correct_connected",
-                0,
-                2,
-                "both_correct_connected",
-                2,
-                1
-            ],
-            "started_at": 1795058260,
-            "ends_at": 1795058620,
-            "updated_at": 1795058429,
-            "violations_count": 3,
-            "last_violation_at": 1795058432,
-            "last_violation_type": "exit_fullscreen",
-            "violations_log": [
-                {
-                    "time": "19/11/2026 04:17:59",
-                    "timestamp": 1795058279,
-                    "type": "app_switch",
-                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
-                    "count": 1
                 },
                 {
-                    "time": "19/11/2026 04:19:37",
-                    "timestamp": 1795058377,
+                    "time": "19/11/2026 08:10:32",
+                    "timestamp": 1795072232,
                     "type": "tab_switch",
                     "details": "Pindah tab atau meminimalkan jendela browser",
-                    "count": 2
+                    "count": 7
                 },
                 {
-                    "time": "19/11/2026 04:20:32",
-                    "timestamp": 1795058432,
+                    "time": "19/11/2026 08:11:16",
+                    "timestamp": 1795072276,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 8
+                },
+                {
+                    "time": "19/11/2026 08:11:25",
+                    "timestamp": 1795072285,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 9
+                },
+                {
+                    "time": "19/11/2026 08:12:22",
+                    "timestamp": 1795072342,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 10
+                },
+                {
+                    "time": "19/11/2026 08:12:43",
+                    "timestamp": 1795072363,
+                    "type": "app_switch",
+                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
+                    "count": 11
+                },
+                {
+                    "time": "19/11/2026 08:12:47",
+                    "timestamp": 1795072367,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 12
+                },
+                {
+                    "time": "19/11/2026 08:13:32",
+                    "timestamp": 1795072412,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela browser",
+                    "count": 13
+                },
+                {
+                    "time": "19/11/2026 08:14:10",
+                    "timestamp": 1795072450,
                     "type": "exit_fullscreen",
                     "details": "Keluar dari mode layar penuh (Full Screen)",
-                    "count": 3
+                    "count": 14
                 }
             ],
             "finished": true,
-            "result_token": "34471aa75151bb495e50c26416e3ce3f7e656ae39c0c18fad5dde0a2642490f5",
+            "result_token": "777bbff7d9153b877e2c1acc88d2e60b0d9f6a8dacf7105fb4fa5372557a27ed",
             "score": 100
         },
         "5cae27f49b9e96a7988c9fb766e151ac110525fbe616af349a32303776413add": {
@@ -12694,15 +11076,6 @@
         }
     },
     "student_sessions": {
-        "250031": {
-            "nis": "250031",
-            "name": "AHMAD GHALI WARNA",
-            "class": "7A",
-            "quiz_id": "quiz-1794921157572",
-            "status": "WORKING",
-            "violations_count": 0,
-            "last_seen": 1794927379
-        },
         "250051": {
             "nis": "250051",
             "name": "AHMAD WAHYU RAMADHANI",
@@ -13423,48 +11796,6 @@
             ],
             "finished_at": 1795010659,
             "score": 83
-        },
-        "250266": {
-            "nis": "250266",
-            "name": "M. RAQILLA AFFAN BUDIYANTO",
-            "class": "VIII A (UNGGULAN MIPA)",
-            "quiz_id": "quiz-1794921157572",
-            "quiz_title": "UB Informatika Semester Ganjil 2026-2027",
-            "status": "FINISHED",
-            "ip": "::1",
-            "login_at": 1795012783,
-            "last_seen": 1795058432,
-            "attempt_token_hash": "8412e712b0d92337c546a965152eda3eef1125b7c139489a2c0c8a3e747bcd1b",
-            "started_at": 1795058260,
-            "ends_at": 1795058620,
-            "violations_count": 3,
-            "last_violation_at": 1795058432,
-            "last_violation_type": "exit_fullscreen",
-            "violations_log": [
-                {
-                    "time": "19/11/2026 04:17:59",
-                    "timestamp": 1795058279,
-                    "type": "app_switch",
-                    "details": "Fokus layar berpindah ke aplikasi lain atau jendela browser lain",
-                    "count": 1
-                },
-                {
-                    "time": "19/11/2026 04:19:37",
-                    "timestamp": 1795058377,
-                    "type": "tab_switch",
-                    "details": "Pindah tab atau meminimalkan jendela browser",
-                    "count": 2
-                },
-                {
-                    "time": "19/11/2026 04:20:32",
-                    "timestamp": 1795058432,
-                    "type": "exit_fullscreen",
-                    "details": "Keluar dari mode layar penuh (Full Screen)",
-                    "count": 3
-                }
-            ],
-            "finished_at": 1795058432,
-            "score": 100
         }
     },
     "audit_logs": [
@@ -16393,6 +14724,139 @@
             "action": "Selesai ujian",
             "target": "250053 - AHMAD ZIYAD ASSYAFIQ",
             "detail": "Nilai: 83 (5 Benar, 1 Salah) - UB Informatika Semester Ganjil 2026-2027"
+        },
+        {
+            "time": "2026-11-19T08:10:32+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa M. RAQILLA AFFAN BUDIYANTO (NIS: 250266) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-7)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T08:10:45+01:00",
+            "user": "guru",
+            "action": "Login guru",
+            "target": "::1",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T08:11:16+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa M. RAQILLA AFFAN BUDIYANTO (NIS: 250266) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-8)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T08:11:23+01:00",
+            "user": "guru",
+            "action": "Minta perpanjangan waktu",
+            "target": "250266 / quiz-1794921157572",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T08:11:25+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa M. RAQILLA AFFAN BUDIYANTO (NIS: 250266) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-9)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T08:11:29+01:00",
+            "user": "guru",
+            "action": "Setujui perpanjangan waktu +5m",
+            "target": "250266",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T08:12:22+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa M. RAQILLA AFFAN BUDIYANTO (NIS: 250266) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-10)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T08:12:43+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa M. RAQILLA AFFAN BUDIYANTO (NIS: 250266) terdeteksi: Fokus layar berpindah ke aplikasi lain atau jendela browser lain (ke-11)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T08:12:47+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa M. RAQILLA AFFAN BUDIYANTO (NIS: 250266) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-12)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T08:13:32+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa M. RAQILLA AFFAN BUDIYANTO (NIS: 250266) terdeteksi: Pindah tab atau meminimalkan jendela browser (ke-13)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T08:14:10+01:00",
+            "user": "guru",
+            "action": "Selesai ujian",
+            "target": "250266 - M. RAQILLA AFFAN BUDIYANTO",
+            "detail": "Nilai: 100 (6 Benar, 0 Salah) - UB Informatika Semester Ganjil 2026-2027"
+        },
+        {
+            "time": "2026-11-19T08:14:10+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa M. RAQILLA AFFAN BUDIYANTO (NIS: 250266) terdeteksi: Keluar dari mode layar penuh (Full Screen) (ke-14)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T08:20:37+01:00",
+            "user": "guru",
+            "action": "Hapus hasil ujian",
+            "target": "250266 / quiz-1794921157572 [19/11/2026 08:14:10] Nilai: 100",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T08:20:55+01:00",
+            "user": "guru",
+            "action": "Hapus sesi attempt monitoring",
+            "target": "250266 - M. RAQILLA AFFAN BUDIYANTO",
+            "detail": "Attempt 8412e712b0d92337c546a965152eda3eef1125b7c139489a2c0c8a3e747bcd1b dihapus dari monitoring"
+        },
+        {
+            "time": "2026-11-19T08:21:56+01:00",
+            "user": "guru",
+            "action": "Hapus sesi attempt monitoring",
+            "target": "250266 - M. RAQILLA AFFAN BUDIYANTO",
+            "detail": "Attempt d5d9fde8138e8bff639a3b12c3e974db7d6c582de95f23903cdf18ff292c22ef dihapus dari monitoring"
+        },
+        {
+            "time": "2026-11-19T08:30:41+01:00",
+            "user": "guru",
+            "action": "Hapus sesi monitoring",
+            "target": "250031 - AHMAD GHALI WARNA",
+            "detail": "Dihapus dari layar monitoring"
+        },
+        {
+            "time": "2026-11-19T08:31:24+01:00",
+            "user": "guru",
+            "action": "Hapus hasil ujian",
+            "target": "250031 / quiz-1794921157572 [17/11/2026 14:56:45] Nilai: 30",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T08:31:32+01:00",
+            "user": "guru",
+            "action": "Hapus hasil terpilih",
+            "target": "6 rekaman nilai dihapus",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T08:34:40+01:00",
+            "user": "guru",
+            "action": "Hapus sesi monitoring",
+            "target": "260001",
+            "detail": "Dihapus dari layar monitoring"
         }
     ],
     "backups": [
@@ -16876,6 +15340,1631 @@
                         "correctAnswerText": "Pernyataan benar, alasan salah (C)"
                     }
                 ]
+            },
+            {
+                "id": "res_9d776ef3491ee928c896fbaf6eca1139",
+                "nis": "250266",
+                "name": "M. RAQILLA AFFAN BUDIYANTO",
+                "class": "VIII A (UNGGULAN MIPA)",
+                "code": "quiz-1794921157572",
+                "title": "UB Informatika Semester Ganjil 2026-2027",
+                "score": 100,
+                "correct": 6,
+                "wrong": 0,
+                "date": "19/11/2026 08:14:10",
+                "review_token": "777bbff7d9153b877e2c1acc88d2e60b0d9f6a8dacf7105fb4fa5372557a27ed",
+                "question_order": [
+                    14,
+                    34,
+                    39,
+                    18,
+                    7,
+                    49
+                ],
+                "answers": [
+                    "statement_false_reason_true",
+                    "both_false",
+                    2,
+                    "both_correct_connected",
+                    2,
+                    2
+                ],
+                "breakdowns": [
+                    {
+                        "question": {
+                            "type": "cause_effect",
+                            "question": "",
+                            "options": [],
+                            "answer": "statement_false_reason_true",
+                            "answers": [],
+                            "explanation": "Ctrl + J adalah untuk Justify (rata kiri-kanan), sedangkan rata tengah adalah Center (Ctrl + E).",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "statement": "Tombol pintasan (shortcut) Ctrl + J digunakan untuk membuat teks rata tengah.",
+                            "reason": "Align Center digunakan agar posisi teks berada di tengah-tengah dokumen."
+                        },
+                        "studentAnswer": "statement_false_reason_true",
+                        "isCorrect": true,
+                        "studentAnswerText": "Pernyataan salah, alasan benar (D)",
+                        "correctAnswerText": "Pernyataan salah, alasan benar (D)"
+                    },
+                    {
+                        "question": {
+                            "type": "cause_effect",
+                            "question": "",
+                            "options": [],
+                            "answer": "both_false",
+                            "answers": [],
+                            "explanation": "\"Current page\" digunakan mencetak hanya pada halaman tempat kursor berada, sedangkan \"All\" untuk mencetak semua halaman dokumen.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "statement": "Opsi \"Current page\" pada menu cetak digunakan untuk mencetak seluruh halaman dokumen.",
+                            "reason": "Fungsi All pada jendela print adalah untuk mencetak hanya satu halaman tertentu."
+                        },
+                        "studentAnswer": "both_false",
+                        "isCorrect": true,
+                        "studentAnswerText": "Keduanya salah (E)",
+                        "correctAnswerText": "Keduanya salah (E)"
+                    },
+                    {
+                        "question": {
+                            "type": "case_analysis",
+                            "question": "Ikon apa di menu Insert yang dipilih untuk memasukkan gambar logo sekolah yang sudah ada di komputer?",
+                            "options": [
+                                "Shapes",
+                                "Clip Art",
+                                "Picture",
+                                "Table"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "Picture digunakan untuk menyisipkan gambar/foto (termasuk logo) yang sudah tersimpan sebagai file di komputer.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "passage": "Pak Guru meminta murid menyisipkan logo sekolah di sudut kiri surat resmi (kop surat)."
+                        },
+                        "studentAnswer": 2,
+                        "isCorrect": true,
+                        "studentAnswerText": "C. Picture",
+                        "correctAnswerText": "C. Picture"
+                    },
+                    {
+                        "question": {
+                            "type": "cause_effect",
+                            "question": "",
+                            "options": [],
+                            "answer": "both_correct_connected",
+                            "answers": [],
+                            "explanation": "Kolom (Columns) ada di tab Page Layout, berfungsi untuk membagi teks menjadi beberapa lajur.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "statement": "Fasilitas Columns digunakan untuk membagi lembar kerja menjadi beberapa lajur seperti pada koran.",
+                            "reason": "Columns terdapat pada tab Page Layout."
+                        },
+                        "studentAnswer": "both_correct_connected",
+                        "isCorrect": true,
+                        "studentAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)",
+                        "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
+                    },
+                    {
+                        "question": {
+                            "type": "case_analysis",
+                            "question": "Menu tab apakah yang harus Siti pilih untuk menemukan ikon Margin?",
+                            "options": [
+                                "Home",
+                                "Insert",
+                                "Page Layout",
+                                "View"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "Tab Page Layout memuat grup Page Setup yang berisi ikon Margins untuk mengatur batas tepi kertas.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "passage": "Siti ingin mengatur ukuran batas tepi (margin) kertas pada tugas laporannya."
+                        },
+                        "studentAnswer": 2,
+                        "isCorrect": true,
+                        "studentAnswerText": "C. Page Layout",
+                        "correctAnswerText": "C. Page Layout"
+                    },
+                    {
+                        "question": {
+                            "type": "mc",
+                            "question": "Bagian paling bawah (status bar) yang digunakan untuk memperbesar dan memperkecil tampilan lembar kerja adalah?",
+                            "options": [
+                                "View Buttons",
+                                "Horizontal scroll bar",
+                                "Zoom slider",
+                                "Ruler"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "Zoom slider ada di bagian kanan bawah Status Bar untuk memperbesar/memperkecil tampilan dokumen.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": 2,
+                        "isCorrect": true,
+                        "studentAnswerText": "C. Zoom slider",
+                        "correctAnswerText": "C. Zoom slider"
+                    }
+                ]
+            },
+            {
+                "nis": "250031",
+                "name": "AHMAD GHALI WARNA",
+                "class": "VIII A (UNGGULAN MIPA)",
+                "code": "quiz-1794921157572",
+                "title": "UB Informatika Semester Ganjil 2026-2027",
+                "score": 30,
+                "correct": 3,
+                "wrong": 7,
+                "date": "17/11/2026 14:56:45",
+                "review_token": "dc3847c6a95a25830ec00fe4561e1741213f655392912c9a55c3a4e27b028e56",
+                "question_order": [
+                    14,
+                    12,
+                    34,
+                    36,
+                    47,
+                    6,
+                    49,
+                    3,
+                    16,
+                    27
+                ],
+                "answers": [
+                    "both_false",
+                    0,
+                    "statement_false_reason_true",
+                    0,
+                    1
+                ],
+                "breakdowns": [
+                    {
+                        "question": {
+                            "type": "cause_effect",
+                            "question": "",
+                            "options": [],
+                            "answer": "statement_false_reason_true",
+                            "answers": [],
+                            "explanation": "Ctrl + J adalah untuk Justify (rata kiri-kanan), sedangkan rata tengah adalah Center (Ctrl + E).",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "statement": "Tombol pintasan (shortcut) Ctrl + J digunakan untuk membuat teks rata tengah.",
+                            "reason": "Align Center digunakan agar posisi teks berada di tengah-tengah dokumen."
+                        },
+                        "studentAnswer": "both_false",
+                        "isCorrect": false,
+                        "studentAnswerText": "Keduanya salah (E)",
+                        "correctAnswerText": "Pernyataan salah, alasan benar (D)"
+                    },
+                    {
+                        "question": {
+                            "type": "mc",
+                            "question": "Untuk menebalkan teks yang sudah diblok, ikon yang harus diklik adalah?",
+                            "options": [
+                                "Bold",
+                                "Italic",
+                                "Underline",
+                                "Drop Cap"
+                            ],
+                            "answer": 0,
+                            "answers": [],
+                            "explanation": "Ikon Bold atau shortcut Ctrl + B berfungsi untuk mencetak teks menjadi tebal.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": 0,
+                        "isCorrect": true,
+                        "studentAnswerText": "A. Bold",
+                        "correctAnswerText": "A. Bold"
+                    },
+                    {
+                        "question": {
+                            "type": "cause_effect",
+                            "question": "",
+                            "options": [],
+                            "answer": "both_false",
+                            "answers": [],
+                            "explanation": "\"Current page\" digunakan mencetak hanya pada halaman tempat kursor berada, sedangkan \"All\" untuk mencetak semua halaman dokumen.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "statement": "Opsi \"Current page\" pada menu cetak digunakan untuk mencetak seluruh halaman dokumen.",
+                            "reason": "Fungsi All pada jendela print adalah untuk mencetak hanya satu halaman tertentu."
+                        },
+                        "studentAnswer": "statement_false_reason_true",
+                        "isCorrect": false,
+                        "studentAnswerText": "Pernyataan salah, alasan benar (D)",
+                        "correctAnswerText": "Keduanya salah (E)"
+                    },
+                    {
+                        "question": {
+                            "type": "mc",
+                            "question": "Ikon Text Box digunakan untuk apa?",
+                            "options": [
+                                "Menyisipkan kotak yang dapat diisi dengan teks",
+                                "Menghapus teks pada kotak",
+                                "Memutar halaman kertas",
+                                "Mewarnai huruf dengan stabilo"
+                            ],
+                            "answer": 0,
+                            "answers": [],
+                            "explanation": "Text Box berguna untuk menyisipkan kotak di mana kita bebas mengisi teks di dalamnya.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": 0,
+                        "isCorrect": true,
+                        "studentAnswerText": "A. Menyisipkan kotak yang dapat diisi dengan teks",
+                        "correctAnswerText": "A. Menyisipkan kotak yang dapat diisi dengan teks"
+                    },
+                    {
+                        "question": {
+                            "type": "case_analysis",
+                            "question": "Ikon perintah dasar apa pada Quick Access Toolbar yang harus diklik agar tulisan kembali?",
+                            "options": [
+                                "Save",
+                                "Undo",
+                                "Redo",
+                                "Paste"
+                            ],
+                            "answer": 1,
+                            "answers": [],
+                            "explanation": "Undo adalah fitur untuk membatalkan perintah terakhir atau memunculkan kembali teks yang tidak sengaja terhapus.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "passage": "Dani mengetik surat undangan. Tiba-tiba semua huruf yang dia ketik tidak sengaja terhapus, lalu dia ingin mengembalikan tampilan file yang hilang itu."
+                        },
+                        "studentAnswer": 1,
+                        "isCorrect": true,
+                        "studentAnswerText": "B. Undo",
+                        "correctAnswerText": "B. Undo"
+                    },
+                    {
+                        "question": {
+                            "type": "cause_effect",
+                            "question": "",
+                            "options": [],
+                            "answer": "both_correct_connected",
+                            "answers": [],
+                            "explanation": "Kita bisa membuka file yang sudah disimpan (Open) melalui Office Button atau shortcut Ctrl + O.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "statement": "Saat mengetik, kita dapat membuka kembali dokumen yang sudah pernah disimpan sebelumnya.",
+                            "reason": "Perintah \"Open\" digunakan untuk menampilkan kotak dialog agar bisa mencari file lama untuk dibuka."
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
+                    },
+                    {
+                        "question": {
+                            "type": "mc",
+                            "question": "Bagian paling bawah (status bar) yang digunakan untuk memperbesar dan memperkecil tampilan lembar kerja adalah?",
+                            "options": [
+                                "View Buttons",
+                                "Horizontal scroll bar",
+                                "Zoom slider",
+                                "Ruler"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "Zoom slider ada di bagian kanan bawah Status Bar untuk memperbesar/memperkecil tampilan dokumen.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "C. Zoom slider"
+                    },
+                    {
+                        "question": {
+                            "type": "case_analysis",
+                            "question": "Program aplikasi apakah yang sedang digunakan oleh Ahmad?",
+                            "options": [
+                                "Microsoft Excel",
+                                "Microsoft PowerPoint",
+                                "Microsoft Word",
+                                "Microsoft Access"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "Microsoft Word 2007 adalah program pengolah kata dari Microsoft Office untuk mengetik dokumen.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "passage": "Ahmad ingin mengetik tugas sekolah. Ia membuka sebuah program dari Microsoft Office yang memiliki logo huruf \"W\" berwarna biru."
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "C. Microsoft Word"
+                    },
+                    {
+                        "question": {
+                            "type": "mc",
+                            "question": "Fitur untuk membuat huruf berukuran besar di awal kalimat, memakan beberapa baris ke bawah disebut?",
+                            "options": [
+                                "Superscript",
+                                "Columns",
+                                "Drop Cap",
+                                "Word Art"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "Drop Cap berada di menu Insert dan berfungsi membuat huruf kapital besar di awal paragraf.",
+                            "image": "uploads/soal/img_soal_quiz-1794921157572_1794921157_940e5b.png",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "C. Drop Cap"
+                    },
+                    {
+                        "question": {
+                            "type": "case_analysis",
+                            "question": "Ikon manakah yang harus dipilih Rina untuk membuat bentuk-bentuk tersebut?",
+                            "options": [
+                                "Clip Art",
+                                "Table",
+                                "Shapes",
+                                "Symbol"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "Shapes berguna menyisipkan berbagai bentuk seperti kotak, panah (Block Arrows), garis, dan lingkaran.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "passage": "Rina ingin membuat bagan organisasi OSIS. Ia perlu menggambar kotak-kotak dan anak panah penunjuk."
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "C. Shapes"
+                    }
+                ],
+                "id": "res_dc3847c6a95a2583"
+            },
+            {
+                "id": "res_e64fc6ddfa32a1bcfbfaac470691ba5c",
+                "nis": "250053",
+                "name": "AHMAD ZIYAD ASSYAFIQ",
+                "class": "VIII A (UNGGULAN MIPA)",
+                "code": "quiz-1794921157572",
+                "title": "UB Informatika Semester Ganjil 2026-2027",
+                "score": 83,
+                "correct": 5,
+                "wrong": 1,
+                "date": "19/11/2026 05:38:30",
+                "review_token": "46671d1c174063e8ea3574462a9b45b8a469970455f64456d36e348925c19a95",
+                "question_order": [
+                    29,
+                    40,
+                    43,
+                    6,
+                    37,
+                    2
+                ],
+                "answers": [
+                    [
+                        2,
+                        0,
+                        1
+                    ],
+                    2,
+                    2,
+                    "both_correct_connected",
+                    [
+                        0
+                    ],
+                    "both_correct_connected"
+                ],
+                "breakdowns": [
+                    {
+                        "question": {
+                            "type": "complex",
+                            "question": "Manakah yang termasuk dari pengaturan spasi baris (Line Spacing) yang biasa digunakan pada grup Paragraph?",
+                            "options": [
+                                "1.0 (Single)",
+                                "1.5 lines",
+                                "2.0 (Double)",
+                                "100%"
+                            ],
+                            "answer": 0,
+                            "answers": [
+                                0,
+                                1,
+                                2
+                            ],
+                            "explanation": "Line spacing dapat diatur ke Single, 1.5 lines, atau Double untuk menentukan jarak spasi antar baris.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": [
+                            2,
+                            0,
+                            1
+                        ],
+                        "isCorrect": true,
+                        "studentAnswerText": "C. 2.0 (Double)<br>A. 1.0 (Single)<br>B. 1.5 lines",
+                        "correctAnswerText": "A. 1.0 (Single)<br>B. 1.5 lines<br>C. 2.0 (Double)"
+                    },
+                    {
+                        "question": {
+                            "type": "mc",
+                            "question": "Pada saat menyimpan dokumen untuk pertama kalinya, format file standar (Save as type) MS Word 2007 adalah?",
+                            "options": [
+                                "PDF",
+                                "Excel Workbook",
+                                "Word Document",
+                                "JPEG"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "MS Word 2007 menyimpan file ketikan secara otomatis ke dalam format Word Document.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": 2,
+                        "isCorrect": true,
+                        "studentAnswerText": "C. Word Document",
+                        "correctAnswerText": "C. Word Document"
+                    },
+                    {
+                        "question": {
+                            "type": "case_analysis",
+                            "question": "Nama garis mistar pembantu tersebut adalah?",
+                            "options": [
+                                "Scroll Bar",
+                                "Ribbon",
+                                "Ruler",
+                                "Status Bar"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "Ruler (mistar) adalah elemen untuk mengetahui posisi kursor dan tabulasi batas margin.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "passage": "Saat membuka MS Word 2007, terlihat garis mistar berangka di bagian atas dan kiri layar putih untuk membantu mengukur batas margin."
+                        },
+                        "studentAnswer": 2,
+                        "isCorrect": true,
+                        "studentAnswerText": "C. Ruler",
+                        "correctAnswerText": "C. Ruler"
+                    },
+                    {
+                        "question": {
+                            "type": "cause_effect",
+                            "question": "",
+                            "options": [],
+                            "answer": "both_correct_connected",
+                            "answers": [],
+                            "explanation": "Kita bisa membuka file yang sudah disimpan (Open) melalui Office Button atau shortcut Ctrl + O.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "statement": "Saat mengetik, kita dapat membuka kembali dokumen yang sudah pernah disimpan sebelumnya.",
+                            "reason": "Perintah \"Open\" digunakan untuk menampilkan kotak dialog agar bisa mencari file lama untuk dibuka."
+                        },
+                        "studentAnswer": "both_correct_connected",
+                        "isCorrect": true,
+                        "studentAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)",
+                        "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
+                    },
+                    {
+                        "question": {
+                            "type": "complex",
+                            "question": "Fitur yang berfungsi memberi warna latar belakang pada baris teks tertentu (sering disebut efek stabilo) adalah?",
+                            "options": [
+                                "Text Highlight Color",
+                                "Font Color",
+                                "Shading",
+                                "Format Painter"
+                            ],
+                            "answer": 0,
+                            "answers": [
+                                0,
+                                2
+                            ],
+                            "explanation": "Text Highlight Color (warna sorot) atau Shading (warna latar di tab border) memberikan warna pada background tulisan/sel.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": [
+                            0
+                        ],
+                        "isCorrect": false,
+                        "studentAnswerText": "A. Text Highlight Color",
+                        "correctAnswerText": "A. Text Highlight Color<br>C. Shading"
+                    },
+                    {
+                        "question": {
+                            "type": "cause_effect",
+                            "question": "",
+                            "options": [],
+                            "answer": "both_correct_connected",
+                            "answers": [],
+                            "explanation": "Printer merupakan output device karena tugasnya mengeluarkan hasil pemrosesan ke atas kertas.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "statement": "Printer adalah peralatan keluaran (output device) pada sistem komputer.",
+                            "reason": "Printer berfungsi untuk mencetak hasil proses komputer berupa teks atau gambar pada media kertas."
+                        },
+                        "studentAnswer": "both_correct_connected",
+                        "isCorrect": true,
+                        "studentAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)",
+                        "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
+                    }
+                ]
+            },
+            {
+                "nis": "250266",
+                "name": "M. RAQILLA AFFAN BUDIYANTO",
+                "class": "VIII A (UNGGULAN MIPA)",
+                "code": "quiz-1794921157572",
+                "title": "UB Informatika Semester Ganjil 2026-2027",
+                "score": 100,
+                "correct": 6,
+                "wrong": 0,
+                "date": "19/11/2026 04:20:32",
+                "review_token": "34471aa75151bb495e50c26416e3ce3f7e656ae39c0c18fad5dde0a2642490f5",
+                "question_order": [
+                    26,
+                    49,
+                    12,
+                    10,
+                    23,
+                    43
+                ],
+                "answers": [
+                    "both_correct_connected",
+                    2,
+                    0,
+                    "both_correct_connected",
+                    1,
+                    2
+                ],
+                "breakdowns": [
+                    {
+                        "question": {
+                            "type": "cause_effect",
+                            "question": "",
+                            "options": [],
+                            "answer": "both_correct_connected",
+                            "answers": [],
+                            "explanation": "Equation adalah fasilitas di Word 2007 untuk menulis rumus (typesetting matematis).",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "statement": "Kita dapat menyisipkan rumus matematika yang rumit di Word menggunakan Equation.",
+                            "reason": "Ikon Equation berfungsi menyisipkan lambang persamaan/rumus dalam bidang matematika."
+                        },
+                        "studentAnswer": "both_correct_connected",
+                        "isCorrect": true,
+                        "studentAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)",
+                        "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
+                    },
+                    {
+                        "question": {
+                            "type": "mc",
+                            "question": "Bagian paling bawah (status bar) yang digunakan untuk memperbesar dan memperkecil tampilan lembar kerja adalah?",
+                            "options": [
+                                "View Buttons",
+                                "Horizontal scroll bar",
+                                "Zoom slider",
+                                "Ruler"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "Zoom slider ada di bagian kanan bawah Status Bar untuk memperbesar/memperkecil tampilan dokumen.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": 2,
+                        "isCorrect": true,
+                        "studentAnswerText": "C. Zoom slider",
+                        "correctAnswerText": "C. Zoom slider"
+                    },
+                    {
+                        "question": {
+                            "type": "mc",
+                            "question": "Untuk menebalkan teks yang sudah diblok, ikon yang harus diklik adalah?",
+                            "options": [
+                                "Bold",
+                                "Italic",
+                                "Underline",
+                                "Drop Cap"
+                            ],
+                            "answer": 0,
+                            "answers": [],
+                            "explanation": "Ikon Bold atau shortcut Ctrl + B berfungsi untuk mencetak teks menjadi tebal.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": 0,
+                        "isCorrect": true,
+                        "studentAnswerText": "A. Bold",
+                        "correctAnswerText": "A. Bold"
+                    },
+                    {
+                        "question": {
+                            "type": "cause_effect",
+                            "question": "",
+                            "options": [],
+                            "answer": "both_correct_connected",
+                            "answers": [],
+                            "explanation": "Perintah Ctrl + U atau ikon Underline pada tab Home digunakan untuk memberi garis bawah pada teks.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "statement": "Teks pada MS Word 2007 dapat dibuat bergaris bawah dengan menekan Ctrl + U.",
+                            "reason": "Ikon Underline (U) berfungsi untuk memberikan efek cetak bergaris bawah pada huruf atau kata yang dipilih."
+                        },
+                        "studentAnswer": "both_correct_connected",
+                        "isCorrect": true,
+                        "studentAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)",
+                        "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
+                    },
+                    {
+                        "question": {
+                            "type": "case_analysis",
+                            "question": "Cara termudah bagi Doni untuk melebarkan kolom tersebut adalah?",
+                            "options": [
+                                "Menghapus tabel dan membuat baru",
+                                "Menggeser (drag) garis batas (margin) antar kolom dengan mouse",
+                                "Mengubah ukuran kertas menjadi Legal",
+                                "Menambah baris pada tabel"
+                            ],
+                            "answer": 1,
+                            "answers": [],
+                            "explanation": "Cara manual melebarkan kolom tabel adalah mendrag (menyeret) garis pembatas kolom dengan mouse.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "passage": "Setelah membuat tabel berisi jadwal piket kelas, Doni merasa kolom \"Nama Siswa\" kurang lebar untuk nama yang panjang."
+                        },
+                        "studentAnswer": 1,
+                        "isCorrect": true,
+                        "studentAnswerText": "B. Menggeser (drag) garis batas (margin) antar kolom dengan mouse",
+                        "correctAnswerText": "B. Menggeser (drag) garis batas (margin) antar kolom dengan mouse"
+                    },
+                    {
+                        "question": {
+                            "type": "case_analysis",
+                            "question": "Nama garis mistar pembantu tersebut adalah?",
+                            "options": [
+                                "Scroll Bar",
+                                "Ribbon",
+                                "Ruler",
+                                "Status Bar"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "Ruler (mistar) adalah elemen untuk mengetahui posisi kursor dan tabulasi batas margin.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "passage": "Saat membuka MS Word 2007, terlihat garis mistar berangka di bagian atas dan kiri layar putih untuk membantu mengukur batas margin."
+                        },
+                        "studentAnswer": 2,
+                        "isCorrect": true,
+                        "studentAnswerText": "C. Ruler",
+                        "correctAnswerText": "C. Ruler"
+                    }
+                ],
+                "id": "res_34471aa75151bb49"
+            },
+            {
+                "nis": "250262",
+                "name": "M. KHANNAN KAROMUL UMAM",
+                "class": "VIII A (UNGGULAN MIPA)",
+                "code": "quiz-1794921157572",
+                "title": "UB Informatika Semester Ganjil 2026-2027",
+                "score": 83,
+                "correct": 5,
+                "wrong": 1,
+                "date": "18/11/2026 15:04:19",
+                "review_token": "f7d4461f8ca6c230e6bce1938df26ffd9983f7f4f2c9b1921e6f36eeb1e47e06",
+                "question_order": [
+                    8,
+                    39,
+                    7,
+                    3,
+                    10,
+                    41
+                ],
+                "answers": [
+                    1,
+                    2,
+                    2,
+                    2,
+                    "both_correct_connected"
+                ],
+                "breakdowns": [
+                    {
+                        "question": {
+                            "type": "mc",
+                            "question": "Jika kita ingin mencetak kertas secara mendatar atau melebar, pilihan Orientation apa yang harus dipilih?",
+                            "options": [
+                                "Portrait",
+                                "Landscape",
+                                "Letter",
+                                "Legal"
+                            ],
+                            "answer": 1,
+                            "answers": [],
+                            "explanation": "Orientation Landscape digunakan untuk posisi kertas mendatar.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": 1,
+                        "isCorrect": true,
+                        "studentAnswerText": "B. Landscape",
+                        "correctAnswerText": "B. Landscape"
+                    },
+                    {
+                        "question": {
+                            "type": "case_analysis",
+                            "question": "Ikon apa di menu Insert yang dipilih untuk memasukkan gambar logo sekolah yang sudah ada di komputer?",
+                            "options": [
+                                "Shapes",
+                                "Clip Art",
+                                "Picture",
+                                "Table"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "Picture digunakan untuk menyisipkan gambar/foto (termasuk logo) yang sudah tersimpan sebagai file di komputer.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "passage": "Pak Guru meminta murid menyisipkan logo sekolah di sudut kiri surat resmi (kop surat)."
+                        },
+                        "studentAnswer": 2,
+                        "isCorrect": true,
+                        "studentAnswerText": "C. Picture",
+                        "correctAnswerText": "C. Picture"
+                    },
+                    {
+                        "question": {
+                            "type": "case_analysis",
+                            "question": "Menu tab apakah yang harus Siti pilih untuk menemukan ikon Margin?",
+                            "options": [
+                                "Home",
+                                "Insert",
+                                "Page Layout",
+                                "View"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "Tab Page Layout memuat grup Page Setup yang berisi ikon Margins untuk mengatur batas tepi kertas.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "passage": "Siti ingin mengatur ukuran batas tepi (margin) kertas pada tugas laporannya."
+                        },
+                        "studentAnswer": 2,
+                        "isCorrect": true,
+                        "studentAnswerText": "C. Page Layout",
+                        "correctAnswerText": "C. Page Layout"
+                    },
+                    {
+                        "question": {
+                            "type": "case_analysis",
+                            "question": "Program aplikasi apakah yang sedang digunakan oleh Ahmad?",
+                            "options": [
+                                "Microsoft Excel",
+                                "Microsoft PowerPoint",
+                                "Microsoft Word",
+                                "Microsoft Access"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "Microsoft Word 2007 adalah program pengolah kata dari Microsoft Office untuk mengetik dokumen.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "passage": "Ahmad ingin mengetik tugas sekolah. Ia membuka sebuah program dari Microsoft Office yang memiliki logo huruf \"W\" berwarna biru."
+                        },
+                        "studentAnswer": 2,
+                        "isCorrect": true,
+                        "studentAnswerText": "C. Microsoft Word",
+                        "correctAnswerText": "C. Microsoft Word"
+                    },
+                    {
+                        "question": {
+                            "type": "cause_effect",
+                            "question": "",
+                            "options": [],
+                            "answer": "both_correct_connected",
+                            "answers": [],
+                            "explanation": "Perintah Ctrl + U atau ikon Underline pada tab Home digunakan untuk memberi garis bawah pada teks.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "statement": "Teks pada MS Word 2007 dapat dibuat bergaris bawah dengan menekan Ctrl + U.",
+                            "reason": "Ikon Underline (U) berfungsi untuk memberikan efek cetak bergaris bawah pada huruf atau kata yang dipilih."
+                        },
+                        "studentAnswer": "both_correct_connected",
+                        "isCorrect": true,
+                        "studentAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)",
+                        "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
+                    },
+                    {
+                        "question": {
+                            "type": "complex",
+                            "question": "Dalam penggunaan tetikus (Mouse), apa saja istilah standar untuk menjalankannya?",
+                            "options": [
+                                "Klik (Click)",
+                                "Klik ganda (Double click)",
+                                "Drag & Drop",
+                                "Enter"
+                            ],
+                            "answer": 0,
+                            "answers": [
+                                0,
+                                1,
+                                2
+                            ],
+                            "explanation": "Mouse dijalankan dengan perintah Klik, Double click (klik ganda), dan Drag & Drop (tahan dan geser). Enter adalah tombol pada keyboard.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "A. Klik (Click)<br>B. Klik ganda (Double click)<br>C. Drag & Drop"
+                    }
+                ],
+                "id": "res_f7d4461f8ca6c230"
+            },
+            {
+                "nis": "250053",
+                "name": "AHMAD ZIYAD ASSYAFIQ",
+                "class": "VIII A (UNGGULAN MIPA)",
+                "code": "quiz-1794921157572",
+                "title": "UB Informatika Semester Ganjil 2026-2027",
+                "score": 40,
+                "correct": 4,
+                "wrong": 6,
+                "date": "17/11/2026 23:59:56",
+                "review_token": "2ac4a40ce5e9a2212a197957e33a736d6c1c4705e05714e644c2392977bdac9e",
+                "question_order": [
+                    14,
+                    7,
+                    35,
+                    44,
+                    32,
+                    34,
+                    33,
+                    41,
+                    26,
+                    21
+                ],
+                "answers": [
+                    "statement_false_reason_true",
+                    2,
+                    2,
+                    0
+                ],
+                "breakdowns": [
+                    {
+                        "question": {
+                            "type": "cause_effect",
+                            "question": "",
+                            "options": [],
+                            "answer": "statement_false_reason_true",
+                            "answers": [],
+                            "explanation": "Ctrl + J adalah untuk Justify (rata kiri-kanan), sedangkan rata tengah adalah Center (Ctrl + E).",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "statement": "Tombol pintasan (shortcut) Ctrl + J digunakan untuk membuat teks rata tengah.",
+                            "reason": "Align Center digunakan agar posisi teks berada di tengah-tengah dokumen."
+                        },
+                        "studentAnswer": "statement_false_reason_true",
+                        "isCorrect": true,
+                        "studentAnswerText": "Pernyataan salah, alasan benar (D)",
+                        "correctAnswerText": "Pernyataan salah, alasan benar (D)"
+                    },
+                    {
+                        "question": {
+                            "type": "case_analysis",
+                            "question": "Menu tab apakah yang harus Siti pilih untuk menemukan ikon Margin?",
+                            "options": [
+                                "Home",
+                                "Insert",
+                                "Page Layout",
+                                "View"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "Tab Page Layout memuat grup Page Setup yang berisi ikon Margins untuk mengatur batas tepi kertas.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "passage": "Siti ingin mengatur ukuran batas tepi (margin) kertas pada tugas laporannya."
+                        },
+                        "studentAnswer": 2,
+                        "isCorrect": true,
+                        "studentAnswerText": "C. Page Layout",
+                        "correctAnswerText": "C. Page Layout"
+                    },
+                    {
+                        "question": {
+                            "type": "case_analysis",
+                            "question": "Apa yang harus Rita isikan di kotak jendela Print?",
+                            "options": [
+                                "Pilih All",
+                                "Pilih Current page lalu ketik 5,7",
+                                "Pilih Pages lalu ketik 5-7",
+                                "Pilih Number of copies 5"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "Untuk mencetak halaman tertentu, pilih Pages dan isi rentang halamannya (misal: 5-7).",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "passage": "Rita membuat makalah 10 halaman, namun ia hanya disuruh mengumpulkan halaman 5 sampai 7. Saat mau mencetak (Print), ia bingung memilih menunya."
+                        },
+                        "studentAnswer": 2,
+                        "isCorrect": true,
+                        "studentAnswerText": "C. Pilih Pages lalu ketik 5-7",
+                        "correctAnswerText": "C. Pilih Pages lalu ketik 5-7"
+                    },
+                    {
+                        "question": {
+                            "type": "mc",
+                            "question": "Menu berbentuk lingkaran dengan logo Windows/Office di pojok kiri atas MS Word 2007 yang menyimpan perintah dasar seperti New, Open, Save disebut?",
+                            "options": [
+                                "Office Button",
+                                "Start Button",
+                                "Title Bar",
+                                "Quick Access Toolbar"
+                            ],
+                            "answer": 0,
+                            "answers": [],
+                            "explanation": "Tombol Microsoft Office (Office Button) berisi menu utama dokumen seperti New, Open, Save, dan Print.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": 0,
+                        "isCorrect": true,
+                        "studentAnswerText": "A. Office Button",
+                        "correctAnswerText": "A. Office Button"
+                    },
+                    {
+                        "question": {
+                            "type": "mc",
+                            "question": "Setelah membuat naskah, langkah terakhir biasanya adalah mencetak dokumen ke kertas. Kombinasi tombol keyboard (shortcut) untuk mencetak adalah?",
+                            "options": [
+                                "Ctrl + S",
+                                "Ctrl + N",
+                                "Ctrl + P",
+                                "Ctrl + C"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "Mencetak dokumen (Print) dapat dilakukan dari Office Button lalu klik Print atau dengan menekan tombol alternatif Ctrl + P.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "C. Ctrl + P"
+                    },
+                    {
+                        "question": {
+                            "type": "cause_effect",
+                            "question": "",
+                            "options": [],
+                            "answer": "both_false",
+                            "answers": [],
+                            "explanation": "\"Current page\" digunakan mencetak hanya pada halaman tempat kursor berada, sedangkan \"All\" untuk mencetak semua halaman dokumen.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "statement": "Opsi \"Current page\" pada menu cetak digunakan untuk mencetak seluruh halaman dokumen.",
+                            "reason": "Fungsi All pada jendela print adalah untuk mencetak hanya satu halaman tertentu."
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "Keduanya salah (E)"
+                    },
+                    {
+                        "question": {
+                            "type": "complex",
+                            "question": "Pada jendela Print, opsi apa saja yang tersedia di dalam bagian \"Page range\"?",
+                            "options": [
+                                "All",
+                                "Current page",
+                                "Number of copies",
+                                "Pages"
+                            ],
+                            "answer": 0,
+                            "answers": [
+                                0,
+                                1,
+                                3
+                            ],
+                            "explanation": "Di bagian Page range terdapat pilihan All, Current page, dan Pages. Number of copies berbeda bagian.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "A. All<br>B. Current page<br>D. Pages"
+                    },
+                    {
+                        "question": {
+                            "type": "complex",
+                            "question": "Dalam penggunaan tetikus (Mouse), apa saja istilah standar untuk menjalankannya?",
+                            "options": [
+                                "Klik (Click)",
+                                "Klik ganda (Double click)",
+                                "Drag & Drop",
+                                "Enter"
+                            ],
+                            "answer": 0,
+                            "answers": [
+                                0,
+                                1,
+                                2
+                            ],
+                            "explanation": "Mouse dijalankan dengan perintah Klik, Double click (klik ganda), dan Drag & Drop (tahan dan geser). Enter adalah tombol pada keyboard.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "A. Klik (Click)<br>B. Klik ganda (Double click)<br>C. Drag & Drop"
+                    },
+                    {
+                        "question": {
+                            "type": "cause_effect",
+                            "question": "",
+                            "options": [],
+                            "answer": "both_correct_connected",
+                            "answers": [],
+                            "explanation": "Equation adalah fasilitas di Word 2007 untuk menulis rumus (typesetting matematis).",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "statement": "Kita dapat menyisipkan rumus matematika yang rumit di Word menggunakan Equation.",
+                            "reason": "Ikon Equation berfungsi menyisipkan lambang persamaan/rumus dalam bidang matematika."
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
+                    },
+                    {
+                        "question": {
+                            "type": "complex",
+                            "question": "Manakah cara yang tepat untuk menambahkan tabel (Table) ke dalam lembar kerja Word?",
+                            "options": [
+                                "Klik tab Insert -> klik ikon Table",
+                                "Klik tab Home -> klik Paste",
+                                "Klik tab Insert -> klik Insert Table",
+                                "Klik tab Page Layout -> klik Margins"
+                            ],
+                            "answer": 0,
+                            "answers": [
+                                0,
+                                2
+                            ],
+                            "explanation": "Menyisipkan tabel dilakukan dari menu Insert, lalu ikon Table, kemudian Insert Table.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "A. Klik tab Insert -> klik ikon Table<br>C. Klik tab Insert -> klik Insert Table"
+                    }
+                ],
+                "id": "res_2ac4a40ce5e9a221"
+            },
+            {
+                "nis": "250121",
+                "name": "AZZAM PUTRA PRAYOGA",
+                "class": "VIII A (UNGGULAN MIPA)",
+                "code": "quiz-1794921157572",
+                "title": "UB Informatika Semester Ganjil 2026-2027",
+                "score": 60,
+                "correct": 3,
+                "wrong": 2,
+                "date": "17/11/2026 23:53:04",
+                "review_token": "86b7793a368bbb26df3f37c40881a3484d55131bf8392e9f76130f9af06f6bd2",
+                "question_order": [
+                    30,
+                    45,
+                    43,
+                    23,
+                    21
+                ],
+                "answers": [
+                    "both_false",
+                    [
+                        1
+                    ],
+                    2,
+                    1,
+                    [
+                        2
+                    ]
+                ],
+                "breakdowns": [
+                    {
+                        "question": {
+                            "type": "cause_effect",
+                            "question": "",
+                            "options": [],
+                            "answer": "both_false",
+                            "answers": [],
+                            "explanation": "Teks dalam tabel dapat diatur perataannya, misalnya rata kiri atas, tengah vertikal, atau kanan bawah.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "statement": "Kotak (sel) pada tabel tidak dapat diatur rata (alignment) teksnya.",
+                            "reason": "Perataan teks (alignment) hanya berlaku untuk teks paragraf biasa dan bukan di dalam tabel."
+                        },
+                        "studentAnswer": "both_false",
+                        "isCorrect": true,
+                        "studentAnswerText": "Keduanya salah (E)",
+                        "correctAnswerText": "Keduanya salah (E)"
+                    },
+                    {
+                        "question": {
+                            "type": "complex",
+                            "question": "Pada keyboard, jari telunjuk tangan kanan digunakan untuk menekan huruf apa saat posisi mengetik 10 jari dasar?",
+                            "options": [
+                                "U",
+                                "J",
+                                "Y",
+                                "K"
+                            ],
+                            "answer": 0,
+                            "answers": [
+                                0,
+                                1,
+                                2
+                            ],
+                            "explanation": "Telunjuk kanan pada posisi home row mengetik tombol J, U, Y, H, N, dan M.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": [
+                            1
+                        ],
+                        "isCorrect": false,
+                        "studentAnswerText": "B. J",
+                        "correctAnswerText": "A. U<br>B. J<br>C. Y"
+                    },
+                    {
+                        "question": {
+                            "type": "case_analysis",
+                            "question": "Nama garis mistar pembantu tersebut adalah?",
+                            "options": [
+                                "Scroll Bar",
+                                "Ribbon",
+                                "Ruler",
+                                "Status Bar"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "Ruler (mistar) adalah elemen untuk mengetahui posisi kursor dan tabulasi batas margin.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "passage": "Saat membuka MS Word 2007, terlihat garis mistar berangka di bagian atas dan kiri layar putih untuk membantu mengukur batas margin."
+                        },
+                        "studentAnswer": 2,
+                        "isCorrect": true,
+                        "studentAnswerText": "C. Ruler",
+                        "correctAnswerText": "C. Ruler"
+                    },
+                    {
+                        "question": {
+                            "type": "case_analysis",
+                            "question": "Cara termudah bagi Doni untuk melebarkan kolom tersebut adalah?",
+                            "options": [
+                                "Menghapus tabel dan membuat baru",
+                                "Menggeser (drag) garis batas (margin) antar kolom dengan mouse",
+                                "Mengubah ukuran kertas menjadi Legal",
+                                "Menambah baris pada tabel"
+                            ],
+                            "answer": 1,
+                            "answers": [],
+                            "explanation": "Cara manual melebarkan kolom tabel adalah mendrag (menyeret) garis pembatas kolom dengan mouse.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "passage": "Setelah membuat tabel berisi jadwal piket kelas, Doni merasa kolom \"Nama Siswa\" kurang lebar untuk nama yang panjang."
+                        },
+                        "studentAnswer": 1,
+                        "isCorrect": true,
+                        "studentAnswerText": "B. Menggeser (drag) garis batas (margin) antar kolom dengan mouse",
+                        "correctAnswerText": "B. Menggeser (drag) garis batas (margin) antar kolom dengan mouse"
+                    },
+                    {
+                        "question": {
+                            "type": "complex",
+                            "question": "Manakah cara yang tepat untuk menambahkan tabel (Table) ke dalam lembar kerja Word?",
+                            "options": [
+                                "Klik tab Insert -> klik ikon Table",
+                                "Klik tab Home -> klik Paste",
+                                "Klik tab Insert -> klik Insert Table",
+                                "Klik tab Page Layout -> klik Margins"
+                            ],
+                            "answer": 0,
+                            "answers": [
+                                0,
+                                2
+                            ],
+                            "explanation": "Menyisipkan tabel dilakukan dari menu Insert, lalu ikon Table, kemudian Insert Table.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": [
+                            2
+                        ],
+                        "isCorrect": false,
+                        "studentAnswerText": "C. Klik tab Insert -> klik Insert Table",
+                        "correctAnswerText": "A. Klik tab Insert -> klik ikon Table<br>C. Klik tab Insert -> klik Insert Table"
+                    }
+                ],
+                "id": "res_86b7793a368bbb26"
+            },
+            {
+                "nis": "250051",
+                "name": "AHMAD WAHYU RAMADHANI",
+                "class": "VIII A (UNGGULAN MIPA)",
+                "code": "quiz-1794921157572",
+                "title": "UB Informatika Semester Ganjil 2026-2027",
+                "score": 20,
+                "correct": 2,
+                "wrong": 8,
+                "date": "17/11/2026 15:42:35",
+                "review_token": "7d5dda2cf9b0fff68dd20c4403fb1b630052fea9c2aabccb1c2a6e081e62ae6c",
+                "question_order": [
+                    3,
+                    40,
+                    38,
+                    6,
+                    8,
+                    10,
+                    39,
+                    17,
+                    49,
+                    35
+                ],
+                "answers": [
+                    2,
+                    2,
+                    "both_correct_connected"
+                ],
+                "breakdowns": [
+                    {
+                        "question": {
+                            "type": "case_analysis",
+                            "question": "Program aplikasi apakah yang sedang digunakan oleh Ahmad?",
+                            "options": [
+                                "Microsoft Excel",
+                                "Microsoft PowerPoint",
+                                "Microsoft Word",
+                                "Microsoft Access"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "Microsoft Word 2007 adalah program pengolah kata dari Microsoft Office untuk mengetik dokumen.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "passage": "Ahmad ingin mengetik tugas sekolah. Ia membuka sebuah program dari Microsoft Office yang memiliki logo huruf \"W\" berwarna biru."
+                        },
+                        "studentAnswer": 2,
+                        "isCorrect": true,
+                        "studentAnswerText": "C. Microsoft Word",
+                        "correctAnswerText": "C. Microsoft Word"
+                    },
+                    {
+                        "question": {
+                            "type": "mc",
+                            "question": "Pada saat menyimpan dokumen untuk pertama kalinya, format file standar (Save as type) MS Word 2007 adalah?",
+                            "options": [
+                                "PDF",
+                                "Excel Workbook",
+                                "Word Document",
+                                "JPEG"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "MS Word 2007 menyimpan file ketikan secara otomatis ke dalam format Word Document.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": 2,
+                        "isCorrect": true,
+                        "studentAnswerText": "C. Word Document",
+                        "correctAnswerText": "C. Word Document"
+                    },
+                    {
+                        "question": {
+                            "type": "cause_effect",
+                            "question": "",
+                            "options": [],
+                            "answer": "statement_false_reason_true",
+                            "answers": [],
+                            "explanation": "Hanging Indent mengatur baris selain baris pertama agar menjorok (menggantung). First Line Indent memang untuk baris pertama.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "statement": "Hanging Indent berfungsi untuk memasukkan seluruh baris paragraf agar menjorok ke dalam.",
+                            "reason": "First Line Indent bertugas untuk memasukkan baris pertama saja pada paragraf."
+                        },
+                        "studentAnswer": "both_correct_connected",
+                        "isCorrect": false,
+                        "studentAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)",
+                        "correctAnswerText": "Pernyataan salah, alasan benar (D)"
+                    },
+                    {
+                        "question": {
+                            "type": "cause_effect",
+                            "question": "",
+                            "options": [],
+                            "answer": "both_correct_connected",
+                            "answers": [],
+                            "explanation": "Kita bisa membuka file yang sudah disimpan (Open) melalui Office Button atau shortcut Ctrl + O.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "statement": "Saat mengetik, kita dapat membuka kembali dokumen yang sudah pernah disimpan sebelumnya.",
+                            "reason": "Perintah \"Open\" digunakan untuk menampilkan kotak dialog agar bisa mencari file lama untuk dibuka."
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
+                    },
+                    {
+                        "question": {
+                            "type": "mc",
+                            "question": "Jika kita ingin mencetak kertas secara mendatar atau melebar, pilihan Orientation apa yang harus dipilih?",
+                            "options": [
+                                "Portrait",
+                                "Landscape",
+                                "Letter",
+                                "Legal"
+                            ],
+                            "answer": 1,
+                            "answers": [],
+                            "explanation": "Orientation Landscape digunakan untuk posisi kertas mendatar.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "B. Landscape"
+                    },
+                    {
+                        "question": {
+                            "type": "cause_effect",
+                            "question": "",
+                            "options": [],
+                            "answer": "both_correct_connected",
+                            "answers": [],
+                            "explanation": "Perintah Ctrl + U atau ikon Underline pada tab Home digunakan untuk memberi garis bawah pada teks.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "statement": "Teks pada MS Word 2007 dapat dibuat bergaris bawah dengan menekan Ctrl + U.",
+                            "reason": "Ikon Underline (U) berfungsi untuk memberikan efek cetak bergaris bawah pada huruf atau kata yang dipilih."
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
+                    },
+                    {
+                        "question": {
+                            "type": "case_analysis",
+                            "question": "Ikon apa di menu Insert yang dipilih untuk memasukkan gambar logo sekolah yang sudah ada di komputer?",
+                            "options": [
+                                "Shapes",
+                                "Clip Art",
+                                "Picture",
+                                "Table"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "Picture digunakan untuk menyisipkan gambar/foto (termasuk logo) yang sudah tersimpan sebagai file di komputer.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "passage": "Pak Guru meminta murid menyisipkan logo sekolah di sudut kiri surat resmi (kop surat)."
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "C. Picture"
+                    },
+                    {
+                        "question": {
+                            "type": "complex",
+                            "question": "Manakah dari pilihan berikut yang dapat diatur di dalam kotak dialog Drop Cap Options?",
+                            "options": [
+                                "Font (Jenis huruf)",
+                                "Lines to drop (Jumlah baris tinggi teks)",
+                                "Page margins (Batas kertas)",
+                                "Distance from text (Jarak dengan teks)"
+                            ],
+                            "answer": 0,
+                            "answers": [
+                                0,
+                                1,
+                                3
+                            ],
+                            "explanation": "Pada Drop Cap Options, kita bisa mengatur Font, Lines to drop, dan Distance from text.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "A. Font (Jenis huruf)<br>B. Lines to drop (Jumlah baris tinggi teks)<br>D. Distance from text (Jarak dengan teks)"
+                    },
+                    {
+                        "question": {
+                            "type": "mc",
+                            "question": "Bagian paling bawah (status bar) yang digunakan untuk memperbesar dan memperkecil tampilan lembar kerja adalah?",
+                            "options": [
+                                "View Buttons",
+                                "Horizontal scroll bar",
+                                "Zoom slider",
+                                "Ruler"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "Zoom slider ada di bagian kanan bawah Status Bar untuk memperbesar/memperkecil tampilan dokumen.",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": []
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "C. Zoom slider"
+                    },
+                    {
+                        "question": {
+                            "type": "case_analysis",
+                            "question": "Apa yang harus Rita isikan di kotak jendela Print?",
+                            "options": [
+                                "Pilih All",
+                                "Pilih Current page lalu ketik 5,7",
+                                "Pilih Pages lalu ketik 5-7",
+                                "Pilih Number of copies 5"
+                            ],
+                            "answer": 2,
+                            "answers": [],
+                            "explanation": "Untuk mencetak halaman tertentu, pilih Pages dan isi rentang halamannya (misal: 5-7).",
+                            "image": "",
+                            "premises": [],
+                            "targets": [],
+                            "pairs": [],
+                            "passage": "Rita membuat makalah 10 halaman, namun ia hanya disuruh mengumpulkan halaman 5 sampai 7. Saat mau mencetak (Print), ia bingung memilih menunya."
+                        },
+                        "studentAnswer": null,
+                        "isCorrect": false,
+                        "studentAnswerText": "Tidak dijawab",
+                        "correctAnswerText": "C. Pilih Pages lalu ketik 5-7"
+                    }
+                ],
+                "id": "res_7d5dda2cf9b0fff6"
             }
         ],
         "students": [],
@@ -16967,6 +17056,20 @@
             "added_minutes": 5,
             "new_ends_at": 1795063323,
             "responded_at": 1795063023
+        },
+        {
+            "id": "req_0f383cb1a59adabc",
+            "token_hash": "3df36b2fdcd85e0655a99a03fd18eecc54ea94546d5ebb6ba9ddea7638c54ddc",
+            "nis": "250266",
+            "name": "M. RAQILLA AFFAN BUDIYANTO",
+            "class": "VIII A (UNGGULAN MIPA)",
+            "quiz_id": "quiz-1794921157572",
+            "quiz_title": "UB Informatika Semester Ganjil 2026-2027",
+            "requested_at": 1795072283,
+            "status": "APPROVED",
+            "added_minutes": 5,
+            "new_ends_at": 1795072589,
+            "responded_at": 1795072289
         }
     ],
     "settings": {
