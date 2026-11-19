@@ -51,11 +51,6 @@
                                 <i class="fa-solid fa-circle-question text-xs"></i>
                                 <span class="hidden sm:inline">Info LAN</span>
                             </button>
-
-                            <button type="button" onclick="handleLogout()" class="px-2.5 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
-                                <i class="fa-solid fa-right-from-bracket text-xs"></i>
-                                <span class="hidden sm:inline">Keluar</span>
-                            </button>
                         </div>
                     </div>
                 </header>
