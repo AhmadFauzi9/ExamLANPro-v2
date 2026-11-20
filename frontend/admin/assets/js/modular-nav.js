@@ -222,6 +222,17 @@
                             ${portalUrl}
                         </div>
                         <p class="text-[11px] text-slate-500">Pastikan perangkat server dan komputer siswa terhubung ke Switch/Access Point yang sama.</p>
+                        <div class="p-2.5 bg-sky-50 rounded-xl border border-sky-200 text-sky-900 space-y-1.5 mt-2">
+                            <p class="font-bold text-[11px] flex items-center gap-1.5">
+                                <i class="fa-solid fa-shield-halved text-sky-600"></i> Mode Kiosk 100% Terkunci (Tanpa Tombol X & Anti-ESC):
+                            </p>
+                            <p class="text-[10px] text-slate-600 leading-relaxed">
+                                Jalankan ujian di PC lab menggunakan parameter Kiosk resmi agar tombol X atas hilang total dan penekanan/penahanan tombol ESC tidak dapat keluar dari ujian:
+                            </p>
+                            <button type="button" onclick="window.AdminNav ? window.AdminNav.downloadKioskLauncher() : null" class="w-full py-2 px-3 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs">
+                                <i class="fa-solid fa-download"></i> Unduh Launcher Kiosk Siswa (.bat)
+                            </button>
+                        </div>
                     </div>
                     <div class="flex justify-end pt-2 border-t">
                         <button type="button" onclick="window.AdminNav ? window.AdminNav.closeLanGuide() : null" class="px-4 py-1.5 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-bold transition cursor-pointer">Tutup</button>
@@ -283,6 +294,34 @@
         closeLanGuide() {
             const modal = document.getElementById('lan-guide-modal');
             if (modal) modal.classList.add('hidden');
+        },
+
+        downloadKioskLauncher() {
+            const portalUrl = `http://${window.location.hostname || 'localhost'}${getAppRoot()}`;
+            const batContent = `@echo off\r\n` +
+                `title ExamLAN Pro - Mode Kiosk Resmi CBT\r\n` +
+                `echo ====================================================\r\n` +
+                `echo Membuka ExamLAN Pro dalam Mode Kiosk Resmi CBT...\r\n` +
+                `echo ====================================================\r\n` +
+                `where msedge >nul 2>&1\r\n` +
+                `if %ERRORLEVEL% equ 0 (\r\n` +
+                `    start "" msedge --kiosk "${portalUrl}" --edge-kiosk-type=fullscreen --no-first-run\r\n` +
+                `    exit\r\n` +
+                `)\r\n` +
+                `where chrome >nul 2>&1\r\n` +
+                `if %ERRORLEVEL% equ 0 (\r\n` +
+                `    start "" chrome --kiosk "${portalUrl}" --no-first-run\r\n` +
+                `    exit\r\n` +
+                `)\r\n` +
+                `start "${portalUrl}"\r\n` +
+                `exit\r\n`;
+            const blob = new Blob([batContent], { type: 'application/x-bat' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = "Buka-Ujian-Siswa-Kiosk.bat";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         },
 
         handleLogout() {

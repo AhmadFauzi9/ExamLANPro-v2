@@ -5,6 +5,7 @@
 import { ExamContext } from '../../context/ExamContext.js';
 import { queueAnswerSave } from '../../hooks/useAutoSave.js';
 import { renderBullets } from './QuestionPalette.js';
+import { escapeHtml } from '../../utils/dom.js';
 
 export function saveStudentAnswer(val) {
     ExamContext.setAnswer(ExamContext.currentQuestionIdx, val);
@@ -103,11 +104,16 @@ export function renderQuestionOptions(q, currentAnswer) {
             </div>
         `;
     } else if (q.type === 'essay') {
-        const currentVal = currentAnswer !== undefined ? currentAnswer : '';
+        const currentVal = currentAnswer !== undefined && currentAnswer !== null ? currentAnswer : '';
+        const charLen = String(currentVal).length;
         contentHtml += `
             <div class="space-y-2 pt-1">
-                <label class="block text-xs font-semibold text-slate-700">Tuliskan Jawaban Uraian / Esai:</label>
-                <textarea rows="5" oninput="saveStudentAnswer(this.value)" placeholder="Ketikkan jawaban uraian lengkap Anda di sini..." class="w-full p-4 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-brand-500 font-medium leading-relaxed outline-none bg-white">${currentVal}</textarea>
+                <div class="flex items-center justify-between">
+                    <label class="block text-xs font-semibold text-slate-700">Tuliskan Jawaban Uraian / Esai:</label>
+                    <span id="essay-char-counter" class="text-[11px] text-slate-400 font-mono">${charLen} karakter</span>
+                </div>
+                <textarea rows="6" oninput="saveStudentAnswer(this.value); const c = document.getElementById('essay-char-counter'); if (c) c.textContent = this.value.length + ' karakter';" placeholder="Ketikkan jawaban uraian lengkap Anda di sini..." class="w-full p-4 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-brand-500 font-medium leading-relaxed outline-none bg-white transition">${escapeHtml(currentVal)}</textarea>
+                <p class="text-[11px] text-slate-400 italic"><i class="fa-solid fa-cloud-arrow-up mr-1 text-brand-500"></i> Jawaban tersimpan otomatis secara real-time saat Anda mengetik.</p>
             </div>
         `;
     } else if (q.type === 'cause_effect') {

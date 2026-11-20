@@ -159,16 +159,22 @@
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-2">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-3">
                             <div class="flex items-center gap-2 text-slate-800 font-bold">
                                 <i class="fa-solid fa-lock text-brand-600"></i>
                                 <span>Proteksi Mode Kiosk Klien:</span>
                             </div>
                             <ul class="text-[11px] text-slate-600 space-y-1.5 list-disc list-inside leading-relaxed">
-                                <li>Layar terkunci dalam mode layar penuh (Full Screen) saat siswa memulai ujian.</li>
-                                <li>Tombol fungsi & pintasan (ESC, F11, F12, Ctrl+W/T/N/U) diblokir dari browser.</li>
-                                <li>Pindah tab, membuka jendela lain, atau beralih aplikasi otomatis mengunci layar siswa.</li>
+                                <li>Layar terkunci otomatis dalam mode layar penuh (Full Screen) saat siswa memulai ujian.</li>
+                                <li>Jika siswa keluar layar penuh (tekan X atau tahan ESC), layar ujian <b>langsung terkunci seketika</b> dan pelanggaran dicatat ke server pengawas.</li>
+                                <li>Pindah tab, membuka jendela lain, atau tombol Windows otomatis mengunci layar ujian.</li>
                             </ul>
+                            <div class="pt-2 border-t border-slate-200">
+                                <p class="text-[10px] text-slate-500 mb-2">Agar tombol X atas hilang total dan tombol ESC tahan mati sepenuhnya (standar ANBK), buka komputer siswa melalui Launcher Kiosk:</p>
+                                <button type="button" onclick="window.AdminNav ? window.AdminNav.downloadKioskLauncher() : null" class="w-full py-2 px-3 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 cursor-pointer shadow-2xs">
+                                    <i class="fa-solid fa-download"></i> Unduh Launcher Kiosk Siswa (.bat)
+                                </button>
+                            </div>
                         </div>
 
                         <div class="bg-amber-50/70 p-4 rounded-xl border border-amber-200/80 space-y-2.5">

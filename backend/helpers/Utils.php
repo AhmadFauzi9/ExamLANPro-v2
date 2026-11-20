@@ -145,7 +145,10 @@ class Utils {
         }
 
         if ($type === 'essay') {
-            return ($answer !== null && $answer !== '') ? nl2br(htmlspecialchars((string)$answer)) : 'Tidak dijawab';
+            if ($answer !== null && $answer !== '') {
+                return nl2br(htmlspecialchars((string)$answer));
+            }
+            return $correct ? '<span class="text-slate-400 italic">Rubrik penilaian oleh guru</span>' : 'Tidak dijawab';
         }
 
         if ($type === 'cause_effect') {

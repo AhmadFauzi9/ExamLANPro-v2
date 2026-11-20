@@ -139,7 +139,8 @@
                                 <option value="cause_effect">3. Sebab Akibat (cause_effect)</option>
                                 <option value="case_analysis">4. Analisis Kasus (case_analysis)</option>
                                 <option value="matching">5. Menjodohkan (matching)</option>
-                                <option value="mixed">Campuran (5 Bentuk Soal)</option>
+                                <option value="essay">6. Uraian / Esai (essay)</option>
+                                <option value="mixed">Campuran (Kombinasi Soal)</option>
                             </select>
                         </div>
                         <div>
@@ -277,9 +278,9 @@
                             <option value="cause_effect">3. Sebab Akibat (cause_effect)</option>
                             <option value="case_analysis">4. Analisis Kasus (case_analysis)</option>
                             <option value="matching">5. Menjodohkan (matching)</option>
-                            <option value="short_answer">Isian Singkat</option>
-                            <option value="essay">Uraian / Esai</option>
-                            <option value="scaled">Skala Likert</option>
+                            <option value="essay">6. Uraian / Esai (essay)</option>
+                            <option value="short_answer">7. Isian Singkat (short_answer)</option>
+                            <option value="scaled">8. Skala Likert (scaled)</option>
                         </select>
                     </div>
                     <div>
@@ -356,7 +357,7 @@
                 <div class="text-[11px] text-slate-600 space-y-1.5 pt-2 border-t border-slate-200/80">
                     <p class="font-bold text-slate-700 flex items-center gap-1"><i class="fa-solid fa-circle-info text-brand-600"></i> Ketentuan Format Penulisan:</p>
                     <ul class="list-disc list-inside space-y-1 text-slate-500 text-[11px] pl-1">
-                        <li>Mendukung 5 jenis soal resmi: Pilihan Ganda (mc), Pilihan Ganda Kompleks (complex), Sebab Akibat (cause_effect), Analisis Kasus (case_analysis), dan Menjodohkan (matching).</li>
+                        <li>Mendukung seluruh bentuk soal: Pilihan Ganda (mc), Pilihan Ganda Kompleks (complex), Sebab Akibat (cause_effect), Analisis Kasus (case_analysis), Menjodohkan (matching), dan Uraian / Esai (essay).</li>
                         <li>Gambar dapat langsung disisipkan (paste) di dalam dokumen Word/Excel dan otomatis disimpan ke server.</li>
                         <li>Pada dokumen Word, pisahkan setiap butir soal menggunakan tiga tanda strip (<code>---</code>).</li>
                     </ul>
@@ -490,7 +491,8 @@
                     'cause_effect': 'Sebab Akibat',
                     'case_analysis': 'Analisis Kasus',
                     'matching': 'Menjodohkan',
-                    'mixed': 'Campuran 5 Bentuk'
+                    'essay': 'Uraian / Esai',
+                    'mixed': 'Campuran'
                 };
                 const typeName = typeNames[q.quiz_type] || 'Campuran';
 
@@ -566,7 +568,7 @@
                                     </div>
                                     <div class="flex-1">
                                         <span class="font-extrabold text-slate-800 text-xs">${q.duration || 60} menit</span>
-                                        <p class="text-[10px] text-slate-500 mt-0.5 leading-tight truncate">Waktu pengerjaan</p>
+                                        <p class="text-[10px] text-slate-500 mt-0.5 leading-tight truncate">Durasi</p>
                                     </div>
                                 </div>
                             </div>
@@ -846,6 +848,30 @@
             }
         }
 
+        // Helper: Badge Tipe Soal
+        function getQuestionTypeBadge(type) {
+            switch (type) {
+                case 'mc':
+                    return '<span class="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-bold border border-blue-200">Pilihan Ganda</span>';
+                case 'complex':
+                    return '<span class="text-[10px] bg-purple-100 text-purple-800 px-2 py-0.5 rounded font-bold border border-purple-200">Ganda Kompleks</span>';
+                case 'cause_effect':
+                    return '<span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold border border-amber-200">Sebab Akibat</span>';
+                case 'case_analysis':
+                    return '<span class="text-[10px] bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded font-bold border border-indigo-200">Analisis Kasus</span>';
+                case 'matching':
+                    return '<span class="text-[10px] bg-teal-100 text-teal-800 px-2 py-0.5 rounded font-bold border border-teal-200">Menjodohkan</span>';
+                case 'essay':
+                    return '<span class="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold border border-emerald-200"><i class="fa-solid fa-pen-nib mr-0.5"></i> Uraian / Esai</span>';
+                case 'short_answer':
+                    return '<span class="text-[10px] bg-orange-100 text-orange-800 px-2 py-0.5 rounded font-bold border border-orange-200">Isian Singkat</span>';
+                case 'scaled':
+                    return '<span class="text-[10px] bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-bold border border-rose-200">Skala Likert</span>';
+                default:
+                    return `<span class="text-[10px] bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded font-mono uppercase">${escapeHtml(type || 'mc')}</span>`;
+            }
+        }
+
         // Helper: Build Question List HTML (DRY)
         function buildQuestionsListHtml(quiz) {
             if (!quiz || !Array.isArray(quiz.questions) || !quiz.questions.length) {
@@ -856,7 +882,7 @@
                     <div class="space-y-1 min-w-0">
                         <div class="flex items-center gap-1.5 flex-wrap">
                             <span class="font-bold text-slate-800">Soal ${idx + 1}</span>
-                            <span class="text-[10px] bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded font-mono uppercase">${escapeHtml(q.type || 'mc')}</span>
+                            ${getQuestionTypeBadge(q.type || 'mc')}
                             ${q.image ? '<span class="inline-flex items-center gap-1 text-[10px] bg-sky-50 text-sky-700 px-1.5 py-0.5 rounded-full border border-sky-200 font-medium"><i class="fa-solid fa-image"></i> Gambar</span>' : ''}
                         </div>
                         <p class="text-slate-600 line-clamp-1 truncate">${escapeHtml(q.question || q.statement || 'Analisis Kasus')}</p>
@@ -1003,6 +1029,7 @@
             if (qTextInput) {
                 if (type === 'cause_effect') qTextInput.placeholder = "Pengantar / petunjuk soal (opsional untuk Sebab-Akibat)...";
                 else if (type === 'case_analysis') qTextInput.placeholder = "Tuliskan pertanyaan spesifik terkait kasus di bawah...";
+                else if (type === 'essay') qTextInput.placeholder = "Tuliskan pertanyaan uraian / instruksi esai untuk siswa...";
                 else qTextInput.placeholder = "Tuliskan teks pertanyaan...";
             }
 
@@ -1068,8 +1095,9 @@
                 const ans = existingData ? (existingData.answer || '') : '';
                 html += `
                     <div class="space-y-1.5">
-                        <label class="block font-semibold text-slate-700">Pedoman / Rubrik Penilaian (Opsional)</label>
-                        <textarea id="q-essay-guideline" rows="3" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs outline-none focus:ring-2 focus:ring-brand-500 bg-white" placeholder="Poin jawaban yang diharapkan atau pedoman penskoran...">${escapeHtml(ans)}</textarea>
+                        <label class="block font-semibold text-slate-700">Pedoman Jawaban / Rubrik Penilaian Guru (Opsional)</label>
+                        <textarea id="q-essay-guideline" rows="3" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs outline-none focus:ring-2 focus:ring-brand-500 bg-white" placeholder="Tuliskan poin-poin jawaban yang diharapkan atau pedoman penskoran...">${escapeHtml(ans)}</textarea>
+                        <p class="text-[10px] text-slate-500">Siswa akan menjawab soal ini dalam bentuk paragraf teks uraian bebas.</p>
                     </div>
                 `;
             } else if (type === 'cause_effect') {
@@ -1380,20 +1408,21 @@
                 ["complex", "Manakah yang tergolong perangkat masukan (input device)? (Pilih beberapa)", "", "", "", "Keyboard", "Monitor Layar", "Mouse Optik", "Speaker", "Scanner Dokumen", "A,C,E", "", "Keyboard, Mouse, dan Scanner merupakan perangkat masukan data pengguna."],
                 ["cause_effect", "Tentukan kebenaran pernyataan, alasan, dan keterkaitan sebab-akibat berikut:", "", "Peningkatan emisi gas rumah kaca dapat mempercepat pemanasan global.", "Gas rumah kaca seperti karbon dioksida memerangkap radiasi panas matahari di atmosfer bumi.", "", "", "", "", "", "A", "", "Pernyataan BENAR, Alasan BENAR, dan keduanya menunjukkan hubungan sebab akibat."],
                 ["case_analysis", "Berdasarkan studi kasus di atas, apa tindakan mitigasi awal yang paling tepat untuk menormalkan sistem?", "Sebuah laboratorium komputer sekolah mengalami gangguan jaringan lokal (LAN) saat pelaksanaan ujian berlangsung akibat adanya indikasi broadcast storm dari port salah satu switch.", "", "", "Merestart server ujian secara tiba-tiba tanpa backup", "Mengisolasi segmen kabel atau port switch yang bermasalah untuk memutus loop", "Mengganti seluruh kabel jaringan di laboratorium sekaligus", "Mematikan sambungan listrik utama laboratorium", "", "B", "", "Mengisolasi port/segmen bermasalah langsung memutus broadcast storm tanpa mematikan server utama."],
-                ["matching", "Jodohkan perangkat keras komputer berikut dengan fungsinya yang sesuai:", "", "", "", "", "", "", "", "", "0=0, 1=1, 2=2, 3=3", "Monitor=Menampilkan visual antarmuka|Keyboard=Memasukkan data teks dan perintah|SSD=Menyimpan berkas secara permanen|CPU=Memproses instruksi komputasi", "Pasangkan perangkat keras sesuai fungsi utamanya."]
+                ["matching", "Jodohkan perangkat keras komputer berikut dengan fungsinya yang sesuai:", "", "", "", "", "", "", "", "", "0=0, 1=1, 2=2, 3=3", "Monitor=Menampilkan visual antarmuka|Keyboard=Memasukkan data teks dan perintah|SSD=Menyimpan berkas secara permanen|CPU=Memproses instruksi komputasi", "Pasangkan perangkat keras sesuai fungsi utamanya."],
+                ["essay", "Jelaskan perbedaan mendasar antara memori utama (RAM) dan penyimpanan sekunder (SSD/Harddisk) pada sistem komputer!", "", "", "", "", "", "", "", "", "RAM bersifat volatile (data hilang saat listrik padam) untuk pemrosesan sementara yang cepat, sedangkan SSD/Harddisk bersifat non-volatile untuk menyimpan berkas secara permanen.", "", "Rubrik: Poin 1 sifat volatile vs non-volatile, Poin 2 fungsi dan kecepatan operasional komputer."]
             ];
 
             const ws = XLSX.utils.aoa_to_sheet(templateData);
             const wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, ws, "Template_5_Jenis_Soal");
-            XLSX.writeFile(wb, "Template_Import_Soal_5_Jenis.xlsx");
+            XLSX.utils.book_append_sheet(wb, ws, "Template_Soal_ExamLAN");
+            XLSX.writeFile(wb, "Template_Import_Soal_Lengkap.xlsx");
         }
 
         function downloadWordTextTemplate() {
             const wordTemplate = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
 <head>
     <meta charset="utf-8">
-    <title>Template Import Soal Resmi (5 Jenis Soal)</title>
+    <title>Template Import Soal Resmi (Lengkap)</title>
     <style>
         body { font-family: 'Calibri', 'Segoe UI', Arial, sans-serif; font-size: 11pt; line-height: 1.45; color: #1e293b; padding: 20px; }
         h1 { font-size: 15pt; color: #1e40af; border-bottom: 2px solid #2563eb; padding-bottom: 5px; margin-bottom: 10px; }
@@ -1405,10 +1434,10 @@
     </style>
 </head>
 <body>
-    <h1>TEMPLATE IMPORT SOAL - 5 JENIS SOAL (WORD / DOC)</h1>
+    <h1>TEMPLATE IMPORT SOAL - FORMAT LENGKAP (WORD / DOC)</h1>
     <div class="notice">
         <p><b>PETUNJUK PENGISIAN FORMAT SOAL:</b></p>
-        <p>1. Template ini mendukung <b>5 Jenis Soal</b>: Pilihan Ganda (mc), Pilihan Ganda Kompleks (complex), Sebab Akibat (cause_effect), Analisis Kasus (case_analysis), dan Menjodohkan (matching).</p>
+        <p>1. Template ini mendukung <b>Format Soal Lengkap</b>: Pilihan Ganda (mc), Pilihan Ganda Kompleks (complex), Sebab Akibat (cause_effect), Analisis Kasus (case_analysis), Menjodohkan (matching), dan Uraian / Esai (essay).</p>
         <p>2. <b>DUKUNGAN GAMBAR:</b> Anda dapat menyisipkan/paste gambar secara langsung di bawah pertanyaan atau teks soal! Gambar akan otomatis tersimpan ke server.</p>
         <p>3. <b>PENTING:</b> Pisahkan setiap butir soal dengan tanda tiga strip (<b>---</b>).</p>
         <p>4. Simpan file ini dalam format <b>.docx</b> atau <b>.doc</b>, lalu unggah saat membuat paket kuis.</p>
@@ -1469,13 +1498,20 @@
     <p>CPU = Memproses instruksi logika dan aritmatika komputasi</p>
     <p><b>KUNCI:</b> 0=0, 1=1, 2=2, 3=3</p>
     <p><b>PEMBAHASAN:</b> Pasangkan setiap peranti keras komputer sesuai klasifikasi fungsinya.</p>
+
+    <p class="separator">---</p>
+    <p><span class="badge">6. URAIAN / ESAI (essay)</span></p>
+    <p><b>TIPE:</b> essay</p>
+    <p><b>PERTANYAAN:</b> Jelaskan perbedaan mendasar antara memori utama (RAM) dan media penyimpanan sekunder (SSD/Harddisk) pada sistem komputer!</p>
+    <p><b>RUBRIK:</b> RAM bersifat volatile (data hilang saat listrik padam) untuk pemrosesan sementara yang cepat, sedangkan SSD/Harddisk bersifat non-volatile untuk menyimpan berkas secara permanen.</p>
+    <p><b>PEMBAHASAN:</b> Penilaian menekankan ketepatan pemahaman sifat volatile vs non-volatile dan fungsi operasional komputer.</p>
 </body>
 </html>`;
 
             const blob = new Blob(['\ufeff' + wordTemplate], { type: 'application/msword' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = "Template_Import_Soal_5_Jenis.doc";
+            link.download = "Template_Import_Soal_Lengkap.doc";
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);

@@ -12,10 +12,10 @@
             "start_at": "",
             "end_at": "",
             "status": "DRAFT",
-            "pin": "MAZJEK",
+            "pin": "HJ4FQ8",
             "pin_enabled": true,
             "pin_auto_refresh": true,
-            "pin_updated_at": 1795154662,
+            "pin_updated_at": 1795159542,
             "questions": [
                 {
                     "type": "mc",
@@ -892,7 +892,7 @@
             "id": "quiz-1795077173322",
             "title": "Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8",
             "duration": 5,
-            "max_questions": 5,
+            "max_questions": 0,
             "quiz_type": "mixed",
             "description": "Jawablah soal dengan benar!",
             "subject": "Informatika",
@@ -900,10 +900,10 @@
             "start_at": "",
             "end_at": "",
             "status": "ACTIVE",
-            "pin": "P7T5JS",
+            "pin": "CNTFB5",
             "pin_enabled": true,
             "pin_auto_refresh": true,
-            "pin_updated_at": 1795154662,
+            "pin_updated_at": 1795159542,
             "questions": [
                 {
                     "type": "mc",
@@ -1937,6 +1937,18 @@
                         2,
                         3
                     ]
+                },
+                {
+                    "type": "essay",
+                    "question": "Jelaskan secara ringkas perbedaan mendasar antara memori utama (RAM) dan media penyimpanan sekunder (SSD/Harddisk) pada sistem komputer beserta fungsinya masing-masing!",
+                    "options": [],
+                    "answer": "RAM bersifat volatile (data hilang saat listrik mati) dengan kecepatan sangat tinggi untuk instruksi aktif, sedangkan penyimpanan sekunder bersifat non-volatile untuk menyimpan berkas secara permanen.",
+                    "answers": [],
+                    "explanation": "Penilaian esai ditekankan pada pemahaman konsep sifat volatile vs non-volatile dan fungsi operasional komputer.",
+                    "image": "",
+                    "premises": [],
+                    "targets": [],
+                    "pairs": []
                 }
             ]
         }
@@ -11534,14 +11546,6 @@
                 28
             ],
             "option_order": {
-                "43": [],
-                "17": [
-                    2,
-                    1,
-                    4,
-                    0,
-                    3
-                ],
                 "4": [
                     1,
                     3,
@@ -11554,7 +11558,15 @@
                     1,
                     2
                 ],
-                "28": []
+                "17": [
+                    2,
+                    1,
+                    4,
+                    0,
+                    3
+                ],
+                "28": [],
+                "43": []
             },
             "answers": [
                 [
@@ -11832,13 +11844,6 @@
                 43
             ],
             "option_order": {
-                "38": [
-                    0,
-                    1,
-                    3,
-                    2
-                ],
-                "45": [],
                 "14": [
                     3,
                     2,
@@ -11847,7 +11852,14 @@
                     4
                 ],
                 "29": [],
-                "43": []
+                "38": [
+                    0,
+                    1,
+                    3,
+                    2
+                ],
+                "43": [],
+                "45": []
             },
             "answers": [
                 1,
@@ -12123,23 +12135,10 @@
                 19
             ],
             "option_order": {
-                "34": [
-                    3,
-                    2,
-                    0,
-                    1
-                ],
-                "21": [],
                 "6": [
                     1,
                     2,
                     0,
-                    3
-                ],
-                "33": [
-                    1,
-                    0,
-                    2,
                     3
                 ],
                 "19": [
@@ -12148,6 +12147,19 @@
                     4,
                     3,
                     2
+                ],
+                "21": [],
+                "33": [
+                    1,
+                    0,
+                    2,
+                    3
+                ],
+                "34": [
+                    3,
+                    2,
+                    0,
+                    1
                 ]
             },
             "answers": [
@@ -12294,22 +12306,15 @@
                 6
             ],
             "option_order": {
-                "9": [
-                    3,
-                    0,
-                    1,
-                    2
-                ],
-                "23": [],
-                "2": [
-                    0,
-                    3,
-                    2,
-                    1
-                ],
                 "0": [
                     3,
                     0,
+                    2,
+                    1
+                ],
+                "2": [
+                    0,
+                    3,
                     2,
                     1
                 ],
@@ -12318,7 +12323,14 @@
                     1,
                     3,
                     0
-                ]
+                ],
+                "9": [
+                    3,
+                    0,
+                    1,
+                    2
+                ],
+                "23": []
             },
             "answers": [
                 2,
@@ -12387,6 +12399,480 @@
             "finished": true,
             "result_token": "ead25a5fb6be1e46ed73a2835c87c99a352766fadd63956e7766e0000048c43a",
             "score": 100
+        },
+        "a44fecc83fee743122e37e3c7a44b671fead52844f5af70d2054aa06b7b119c5": {
+            "token": "153b692fe7a8b1efa5f5c069d71aa6ae8843576eda1915b912da704b7a423885",
+            "token_hash": "a44fecc83fee743122e37e3c7a44b671fead52844f5af70d2054aa06b7b119c5",
+            "quiz_id": "quiz-1795077173322",
+            "quiz_title": "Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8",
+            "nis": "250121",
+            "name": "AZZAM PUTRA PRAYOGA",
+            "class": "VIII A (UNGGULAN MIPA)",
+            "question_order": [
+                40,
+                45,
+                36,
+                1,
+                4,
+                44,
+                43,
+                3,
+                27,
+                49,
+                11,
+                10,
+                5,
+                16,
+                7,
+                39,
+                9,
+                0,
+                24,
+                21,
+                42,
+                33,
+                18,
+                41,
+                6,
+                12,
+                17,
+                2,
+                19,
+                30,
+                48,
+                15,
+                46,
+                23,
+                28,
+                8,
+                34,
+                20,
+                22,
+                14,
+                29,
+                13,
+                38,
+                25,
+                26,
+                32,
+                37,
+                47,
+                31,
+                35,
+                50
+            ],
+            "option_order": {
+                "40": [],
+                "45": [],
+                "36": [
+                    3,
+                    1,
+                    0,
+                    2
+                ],
+                "1": [
+                    0,
+                    1,
+                    3,
+                    2
+                ],
+                "4": [
+                    3,
+                    1,
+                    2,
+                    0
+                ],
+                "44": [],
+                "43": [],
+                "3": [
+                    1,
+                    0,
+                    2,
+                    3
+                ],
+                "27": [],
+                "49": [],
+                "11": [
+                    3,
+                    4,
+                    2,
+                    1,
+                    0
+                ],
+                "10": [
+                    1,
+                    4,
+                    0,
+                    2,
+                    3
+                ],
+                "5": [
+                    0,
+                    2,
+                    1,
+                    3
+                ],
+                "16": [
+                    4,
+                    2,
+                    3,
+                    1,
+                    0
+                ],
+                "7": [
+                    1,
+                    2,
+                    3,
+                    0
+                ],
+                "39": [
+                    0,
+                    2,
+                    1,
+                    3
+                ],
+                "9": [
+                    0,
+                    3,
+                    2,
+                    1
+                ],
+                "0": [
+                    3,
+                    2,
+                    0,
+                    1
+                ],
+                "24": [],
+                "21": [],
+                "42": [],
+                "33": [
+                    1,
+                    0,
+                    2,
+                    3
+                ],
+                "18": [
+                    2,
+                    4,
+                    0,
+                    3,
+                    1
+                ],
+                "41": [],
+                "6": [
+                    2,
+                    0,
+                    3,
+                    1
+                ],
+                "12": [
+                    3,
+                    4,
+                    2,
+                    0,
+                    1
+                ],
+                "17": [
+                    4,
+                    2,
+                    0,
+                    3,
+                    1
+                ],
+                "2": [
+                    2,
+                    1,
+                    0,
+                    3
+                ],
+                "19": [
+                    4,
+                    2,
+                    1,
+                    3,
+                    0
+                ],
+                "30": [
+                    2,
+                    1,
+                    0,
+                    3
+                ],
+                "48": [],
+                "15": [
+                    0,
+                    3,
+                    1,
+                    2,
+                    4
+                ],
+                "46": [],
+                "23": [],
+                "28": [],
+                "8": [
+                    0,
+                    2,
+                    1,
+                    3
+                ],
+                "34": [
+                    2,
+                    1,
+                    3,
+                    0
+                ],
+                "20": [],
+                "22": [],
+                "14": [
+                    0,
+                    2,
+                    3,
+                    4,
+                    1
+                ],
+                "29": [],
+                "13": [
+                    2,
+                    1,
+                    3,
+                    0,
+                    4
+                ],
+                "38": [
+                    2,
+                    0,
+                    3,
+                    1
+                ],
+                "25": [],
+                "26": [],
+                "32": [
+                    1,
+                    3,
+                    2,
+                    0
+                ],
+                "37": [
+                    3,
+                    2,
+                    0,
+                    1
+                ],
+                "47": [],
+                "31": [
+                    1,
+                    2,
+                    3,
+                    0
+                ],
+                "35": [
+                    2,
+                    3,
+                    0,
+                    1
+                ],
+                "50": []
+            },
+            "answers": [
+                [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                "RAM bersifat volatile (data hilang saat listrik mati) dengan kecepatan sangat tinggi untuk instruksi aktif, sedangkan penyimpanan sekunder bersifat non-volatile untuk menyimpan berkas secara permanen."
+            ],
+            "started_at": 1795156715,
+            "ends_at": 1795159587,
+            "updated_at": 1795159582,
+            "violations_count": 19,
+            "last_violation_at": 1795159296,
+            "last_violation_type": "exit_fullscreen",
+            "violations_log": [
+                {
+                    "time": "20/11/2026 07:38:52",
+                    "timestamp": 1795156732,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 1
+                },
+                {
+                    "time": "20/11/2026 07:39:02",
+                    "timestamp": 1795156742,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 2
+                },
+                {
+                    "time": "20/11/2026 07:39:18",
+                    "timestamp": 1795156758,
+                    "type": "key_shortcut",
+                    "details": "Menekan tombol Windows (Start Menu)",
+                    "count": 3
+                },
+                {
+                    "time": "20/11/2026 07:39:21",
+                    "timestamp": 1795156761,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 4
+                },
+                {
+                    "time": "20/11/2026 07:39:48",
+                    "timestamp": 1795156788,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 5
+                },
+                {
+                    "time": "20/11/2026 07:39:57",
+                    "timestamp": 1795156797,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 6
+                },
+                {
+                    "time": "20/11/2026 07:40:07",
+                    "timestamp": 1795156807,
+                    "type": "key_shortcut",
+                    "details": "Menekan tombol Windows (Start Menu)",
+                    "count": 7
+                },
+                {
+                    "time": "20/11/2026 07:40:11",
+                    "timestamp": 1795156811,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 8
+                },
+                {
+                    "time": "20/11/2026 07:47:31",
+                    "timestamp": 1795157251,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 9
+                },
+                {
+                    "time": "20/11/2026 07:47:45",
+                    "timestamp": 1795157265,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 10
+                },
+                {
+                    "time": "20/11/2026 07:48:15",
+                    "timestamp": 1795157295,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 11
+                },
+                {
+                    "time": "20/11/2026 07:48:27",
+                    "timestamp": 1795157307,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 12
+                },
+                {
+                    "time": "20/11/2026 07:53:27",
+                    "timestamp": 1795157607,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 13
+                },
+                {
+                    "time": "20/11/2026 07:53:40",
+                    "timestamp": 1795157620,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 14
+                },
+                {
+                    "time": "20/11/2026 07:53:53",
+                    "timestamp": 1795157633,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 15
+                },
+                {
+                    "time": "20/11/2026 07:54:24",
+                    "timestamp": 1795157664,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 16
+                },
+                {
+                    "time": "20/11/2026 07:55:13",
+                    "timestamp": 1795157713,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 17
+                },
+                {
+                    "time": "20/11/2026 08:21:08",
+                    "timestamp": 1795159268,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 18
+                },
+                {
+                    "time": "20/11/2026 08:21:36",
+                    "timestamp": 1795159296,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 19
+                }
+            ]
         }
     },
     "student_sessions": {
@@ -12716,6 +13202,158 @@
             ],
             "finished_at": 1795136570,
             "score": 100
+        },
+        "250121": {
+            "nis": "250121",
+            "name": "AZZAM PUTRA PRAYOGA",
+            "class": "VIII A (UNGGULAN MIPA)",
+            "quiz_id": "quiz-1795077173322",
+            "quiz_title": "Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8",
+            "status": "WORKING",
+            "ip": "::1",
+            "login_at": 1795156712,
+            "last_seen": 1795159582,
+            "attempt_token_hash": "a44fecc83fee743122e37e3c7a44b671fead52844f5af70d2054aa06b7b119c5",
+            "started_at": 1795156715,
+            "ends_at": 1795159587,
+            "violations_count": 19,
+            "last_violation_at": 1795159296,
+            "last_violation_type": "exit_fullscreen",
+            "violations_log": [
+                {
+                    "time": "20/11/2026 07:38:52",
+                    "timestamp": 1795156732,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 1
+                },
+                {
+                    "time": "20/11/2026 07:39:02",
+                    "timestamp": 1795156742,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 2
+                },
+                {
+                    "time": "20/11/2026 07:39:18",
+                    "timestamp": 1795156758,
+                    "type": "key_shortcut",
+                    "details": "Menekan tombol Windows (Start Menu)",
+                    "count": 3
+                },
+                {
+                    "time": "20/11/2026 07:39:21",
+                    "timestamp": 1795156761,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 4
+                },
+                {
+                    "time": "20/11/2026 07:39:48",
+                    "timestamp": 1795156788,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 5
+                },
+                {
+                    "time": "20/11/2026 07:39:57",
+                    "timestamp": 1795156797,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 6
+                },
+                {
+                    "time": "20/11/2026 07:40:07",
+                    "timestamp": 1795156807,
+                    "type": "key_shortcut",
+                    "details": "Menekan tombol Windows (Start Menu)",
+                    "count": 7
+                },
+                {
+                    "time": "20/11/2026 07:40:11",
+                    "timestamp": 1795156811,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 8
+                },
+                {
+                    "time": "20/11/2026 07:47:31",
+                    "timestamp": 1795157251,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 9
+                },
+                {
+                    "time": "20/11/2026 07:47:45",
+                    "timestamp": 1795157265,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 10
+                },
+                {
+                    "time": "20/11/2026 07:48:15",
+                    "timestamp": 1795157295,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 11
+                },
+                {
+                    "time": "20/11/2026 07:48:27",
+                    "timestamp": 1795157307,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 12
+                },
+                {
+                    "time": "20/11/2026 07:53:27",
+                    "timestamp": 1795157607,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 13
+                },
+                {
+                    "time": "20/11/2026 07:53:40",
+                    "timestamp": 1795157620,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 14
+                },
+                {
+                    "time": "20/11/2026 07:53:53",
+                    "timestamp": 1795157633,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 15
+                },
+                {
+                    "time": "20/11/2026 07:54:24",
+                    "timestamp": 1795157664,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 16
+                },
+                {
+                    "time": "20/11/2026 07:55:13",
+                    "timestamp": 1795157713,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 17
+                },
+                {
+                    "time": "20/11/2026 08:21:08",
+                    "timestamp": 1795159268,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 18
+                },
+                {
+                    "time": "20/11/2026 08:21:36",
+                    "timestamp": 1795159296,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 19
+                }
+            ]
         }
     },
     "audit_logs": [
@@ -16659,6 +17297,202 @@
             "action": "Login guru",
             "target": "::1",
             "detail": ""
+        },
+        {
+            "time": "2026-11-20T07:38:25+01:00",
+            "user": "guru",
+            "action": "Simpan paket kuis",
+            "target": "",
+            "detail": "2 paket"
+        },
+        {
+            "time": "2026-11-20T07:38:32+01:00",
+            "user": "guru",
+            "action": "Login siswa",
+            "target": "250121 - AZZAM PUTRA PRAYOGA",
+            "detail": "Kelas VIII A (UNGGULAN MIPA) (Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8)"
+        },
+        {
+            "time": "2026-11-20T07:38:35+01:00",
+            "user": "guru",
+            "action": "Mulai ujian",
+            "target": "250121 - AZZAM PUTRA PRAYOGA",
+            "detail": "Paket: Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8"
+        },
+        {
+            "time": "2026-11-20T07:38:52+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AZZAM PUTRA PRAYOGA (NIS: 250121) terdeteksi: Keluar dari Mode Kiosk Resmi (Layar Penuh) (ke-1)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T07:39:02+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AZZAM PUTRA PRAYOGA (NIS: 250121) terdeteksi: Keluar dari Mode Kiosk Resmi (Layar Penuh) (ke-2)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T07:39:18+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AZZAM PUTRA PRAYOGA (NIS: 250121) terdeteksi: Menekan tombol Windows (Start Menu) (ke-3)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T07:39:21+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AZZAM PUTRA PRAYOGA (NIS: 250121) terdeteksi: Keluar dari Mode Kiosk Resmi (Layar Penuh) (ke-4)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T07:39:48+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AZZAM PUTRA PRAYOGA (NIS: 250121) terdeteksi: Keluar dari Mode Kiosk Resmi (Layar Penuh) (ke-5)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T07:39:57+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AZZAM PUTRA PRAYOGA (NIS: 250121) terdeteksi: Keluar dari Mode Kiosk Resmi (Layar Penuh) (ke-6)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T07:40:07+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AZZAM PUTRA PRAYOGA (NIS: 250121) terdeteksi: Menekan tombol Windows (Start Menu) (ke-7)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T07:40:11+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AZZAM PUTRA PRAYOGA (NIS: 250121) terdeteksi: Keluar dari Mode Kiosk Resmi (Layar Penuh) (ke-8)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T07:46:04+01:00",
+            "user": "guru",
+            "action": "Minta perpanjangan waktu",
+            "target": "250121 / quiz-1795077173322",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T07:46:23+01:00",
+            "user": "guru",
+            "action": "Setujui perpanjangan waktu +5m",
+            "target": "250121",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T07:47:31+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AZZAM PUTRA PRAYOGA (NIS: 250121) terdeteksi: Keluar dari Mode Kiosk Resmi (Layar Penuh) (ke-9)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T07:47:45+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AZZAM PUTRA PRAYOGA (NIS: 250121) terdeteksi: Keluar dari Mode Kiosk Resmi (Layar Penuh) (ke-10)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T07:48:15+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AZZAM PUTRA PRAYOGA (NIS: 250121) terdeteksi: Keluar dari Mode Kiosk Resmi (Layar Penuh) (ke-11)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T07:48:27+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AZZAM PUTRA PRAYOGA (NIS: 250121) terdeteksi: Keluar dari Mode Kiosk Resmi (Layar Penuh) (ke-12)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T07:53:27+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AZZAM PUTRA PRAYOGA (NIS: 250121) terdeteksi: Keluar dari Mode Kiosk Resmi (Layar Penuh) (ke-13)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T07:53:38+01:00",
+            "user": "guru",
+            "action": "Minta perpanjangan waktu",
+            "target": "250121 / quiz-1795077173322",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T07:53:40+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AZZAM PUTRA PRAYOGA (NIS: 250121) terdeteksi: Keluar dari Mode Kiosk Resmi (Layar Penuh) (ke-14)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T07:53:44+01:00",
+            "user": "guru",
+            "action": "Setujui perpanjangan waktu +5m",
+            "target": "250121",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T07:53:53+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AZZAM PUTRA PRAYOGA (NIS: 250121) terdeteksi: Keluar dari Mode Kiosk Resmi (Layar Penuh) (ke-15)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T07:54:24+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AZZAM PUTRA PRAYOGA (NIS: 250121) terdeteksi: Keluar dari Mode Kiosk Resmi (Layar Penuh) (ke-16)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T07:55:13+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AZZAM PUTRA PRAYOGA (NIS: 250121) terdeteksi: Keluar dari Mode Kiosk Resmi (Layar Penuh) (ke-17)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T08:21:05+01:00",
+            "user": "guru",
+            "action": "Minta perpanjangan waktu",
+            "target": "250121 / quiz-1795077173322",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T08:21:08+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AZZAM PUTRA PRAYOGA (NIS: 250121) terdeteksi: Keluar dari Mode Kiosk Resmi (Layar Penuh) (ke-18)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T08:21:27+01:00",
+            "user": "guru",
+            "action": "Setujui perpanjangan waktu +5m",
+            "target": "250121",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T08:21:36+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AZZAM PUTRA PRAYOGA (NIS: 250121) terdeteksi: Keluar dari Mode Kiosk Resmi (Layar Penuh) (ke-19)",
+            "detail": ""
         }
     ],
     "backups": [
@@ -18928,6 +19762,20 @@
             "added_minutes": 5,
             "new_ends_at": 1795136804,
             "responded_at": 1795136504
+        },
+        {
+            "id": "req_95be2235d9601b43",
+            "token_hash": "a44fecc83fee743122e37e3c7a44b671fead52844f5af70d2054aa06b7b119c5",
+            "nis": "250121",
+            "name": "AZZAM PUTRA PRAYOGA",
+            "class": "VIII A (UNGGULAN MIPA)",
+            "quiz_id": "quiz-1795077173322",
+            "quiz_title": "Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8",
+            "requested_at": 1795159265,
+            "status": "APPROVED",
+            "added_minutes": 5,
+            "new_ends_at": 1795159587,
+            "responded_at": 1795159287
         }
     ],
     "settings": {

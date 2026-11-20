@@ -350,11 +350,38 @@
         // Inisialisasi Halaman
         document.addEventListener('DOMContentLoaded', async () => {
             const ok = await checkServerSession(loadResultsData);
-            if (ok) await loadResultsData();
+            if (ok) {
+                await loadResultsData();
+                startResultsAutoRefresh();
+            }
         });
 
+        // Polling Auto-Refresh Hasil Ujian (Setiap 5 detik, sinkron dengan monitoring lab)
+        let resultsAutoRefreshTimer = null;
+        function startResultsAutoRefresh() {
+            clearInterval(resultsAutoRefreshTimer);
+            resultsAutoRefreshTimer = setInterval(async () => {
+                // Hindari re-render jika guru sedang membuka modal detail atau dropdown aksi
+                const modalDetail = document.getElementById('modal-student-detail');
+                if (modalDetail && !modalDetail.classList.contains('hidden')) return;
+                const actionMenu = document.getElementById('action-dropdown-menu');
+                if (actionMenu && !actionMenu.classList.contains('hidden') && actionMenu.style.display !== 'none') return;
+
+                await loadResultsData(true);
+            }, 5000);
+        }
+
+        // Helper deteksi jawaban terisi (konsisten untuk string/esai, array/kompleks, object/menjodohkan, nomor/pg)
+        function isAnswerFilled(val) {
+            if (val === undefined || val === null) return false;
+            if (typeof val === 'string') return val.trim().length > 0;
+            if (Array.isArray(val)) return val.length > 0;
+            if (typeof val === 'object') return Object.keys(val).length > 0;
+            return true;
+        }
+
         // Load Data dari API
-        async function loadResultsData() {
+        async function loadResultsData(silent = false) {
             await fetchDataFromAPI();
             allResults = [...(dbData.results || [])];
             
@@ -369,22 +396,37 @@
                 const answers = att.answers || {};
                 let correctCount = 0;
                 let wrongCount = 0;
+
+                // Hitung total butir soal
+                const totalQ = qOrder.length || (quiz?.questions?.length || 1);
+
+                // Hitung answeredCount secara sinkron dan identik dengan backend MonitoringController
                 let answeredCount = 0;
+                if (Array.isArray(answers)) {
+                    answers.forEach(val => {
+                        if (isAnswerFilled(val)) answeredCount++;
+                    });
+                } else if (typeof answers === 'object' && answers !== null) {
+                    Object.values(answers).forEach(val => {
+                        if (isAnswerFilled(val)) answeredCount++;
+                    });
+                }
 
                 if (quiz && Array.isArray(quiz.questions)) {
                     qOrder.forEach((originalIdx, pos) => {
                         const q = quiz.questions[originalIdx];
                         if (!q) return;
-                        const userAns = answers[pos];
-                        if (userAns === undefined || userAns === null || userAns === '' || (Array.isArray(userAns) && userAns.length === 0)) {
+                        const userAns = answers[pos] !== undefined ? answers[pos] : answers[String(pos)];
+                        if (!isAnswerFilled(userAns)) {
                             return;
                         }
-                        answeredCount++;
+
                         const optMap = (att.option_order && att.option_order[originalIdx]) ? att.option_order[originalIdx] : null;
                         let mappedAns = userAns;
                         if (optMap && typeof userAns === 'number' && optMap[userAns] !== undefined) {
                             mappedAns = optMap[userAns];
                         }
+
                         if (q.type === 'mc' || q.type === 'case_analysis') {
                             const studentNorm = (typeof mappedAns === 'number') ? mappedAns : (typeof mappedAns === 'string' && mappedAns ? (mappedAns.toUpperCase().charCodeAt(0) - 65) : -1);
                             const keyNorm = (typeof q.answer === 'number') ? q.answer : (typeof q.answer === 'string' && q.answer ? (q.answer.toUpperCase().charCodeAt(0) - 65) : -1);
@@ -414,11 +456,14 @@
                         } else if (q.type === 'short_answer') {
                             if (String(userAns).trim().toLowerCase() === String(q.answer || '').trim().toLowerCase()) correctCount++;
                             else wrongCount++;
+                        } else if (q.type === 'essay') {
+                            // Penilaian uraian/esai (selaras dengan ScoringEngine), jawaban terisi diberi poin sementara
+                            if (typeof userAns === 'string' && userAns.trim().length > 0) correctCount++;
+                            else wrongCount++;
                         }
                     });
                 }
 
-                const totalQ = qOrder.length || (quiz?.questions?.length || 1);
                 const tempScore = totalQ > 0 ? Math.round((correctCount / totalQ) * 100) : 0;
 
                 allResults.unshift({
@@ -433,13 +478,16 @@
                     date: 'Sedang Mengerjakan',
                     is_in_progress: true,
                     total_questions: totalQ,
-                    answered_count: answeredCount
+                    answered_count: answeredCount,
+                    updated_at: att.updated_at || att.started_at || Date.now()
                 });
             });
             
-            // Populate Quiz & Class Filters
-            populateQuizFilter();
-            populateClassFilter();
+            // Populate Quiz & Class Filters (hanya saat inisialisasi / manual refresh)
+            if (!silent) {
+                populateQuizFilter();
+                populateClassFilter();
+            }
             
             // Update Summary Cards
             updateSummaryCards();
@@ -447,8 +495,8 @@
             // Load Review States
             await loadReviewStates();
 
-            // Render Table
-            handleResultsFilter();
+            // Render Table (pertahankan nomor halaman saat silent polling)
+            handleResultsFilter(!silent);
         }
 
         // Summary Cards
@@ -529,8 +577,18 @@
             `).join('');
         }
 
+        // Helper konversi tanggal hasil ujian ke timestamp (menghindari bug NaN pada status 'Sedang Mengerjakan')
+        function getResultSortTime(r) {
+            if (r.is_in_progress) return Infinity;
+            if (!r.date) return 0;
+            const m = String(r.date).match(/(\d{2})\/(\d{2})\/(\d{4})(?:\s+(\d{2}):(\d{2})(?::(\d{2}))?)?/);
+            if (!m) return 0;
+            const t = new Date(Number(m[3]), Number(m[2]) - 1, Number(m[1]), Number(m[4] || 0), Number(m[5] || 0), Number(m[6] || 0)).getTime();
+            return isNaN(t) ? 0 : t;
+        }
+
         // Filter Logic & Sorting
-        function handleResultsFilter() {
+        function handleResultsFilter(resetPage = true) {
             const filterQuiz = document.getElementById('teacher-quiz-filter')?.value || 'all';
             const filterClass = document.getElementById('results-filter-class')?.value || 'all';
             const filterKkm = document.getElementById('results-filter-kkm')?.value || 'all';
@@ -568,18 +626,21 @@
                 } else if (sortMode === 'score_asc') {
                     return (Number(a.score) || 0) - (Number(b.score) || 0);
                 } else if (sortMode === 'date_asc') {
-                    const dateA = a.date ? new Date(a.date.replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$3-$2-$1')).getTime() : 0;
-                    const dateB = b.date ? new Date(b.date.replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$3-$2-$1')).getTime() : 0;
-                    return dateA - dateB;
+                    const timeA = getResultSortTime(a);
+                    const timeB = getResultSortTime(b);
+                    return timeA - timeB;
                 } else {
-                    // date_desc (default / Terbaru)
-                    const dateA = a.date ? new Date(a.date.replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$3-$2-$1')).getTime() : 0;
-                    const dateB = b.date ? new Date(b.date.replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$3-$2-$1')).getTime() : 0;
-                    return dateB - dateA;
+                    // date_desc (default / Terbaru) - Sesi aktif selalu di urutan paling atas
+                    if (a.is_in_progress && b.is_in_progress) {
+                        return (Number(b.updated_at) || 0) - (Number(a.updated_at) || 0);
+                    }
+                    const timeA = getResultSortTime(a);
+                    const timeB = getResultSortTime(b);
+                    return timeB - timeA;
                 }
             });
 
-            currentPage = 1;
+            if (resetPage) currentPage = 1;
             renderResultsTable();
         }
 
@@ -1285,15 +1346,29 @@
                     const explanation = qObj.explanation || b.explanation || '';
                     const qImage = qObj.image || '';
 
+                    const isEssay = qObj.type === 'essay';
+                    let badgeText = isCorrect ? '<i class="fa-solid fa-check mr-1"></i> Jawaban Benar' : '<i class="fa-solid fa-xmark mr-1"></i> Jawaban Salah';
+                    let badgeClass = isCorrect ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800';
+                    let cardClass = isCorrect ? 'bg-emerald-50/40 border-emerald-200' : 'bg-rose-50/40 border-rose-200';
+                    let numClass = isCorrect ? 'bg-emerald-600 text-white' : 'bg-rose-600 text-white';
+
+                    if (isEssay) {
+                        const hasAns = studentAns !== 'Tidak dijawab' && studentAns !== '';
+                        badgeText = hasAns ? '<i class="fa-solid fa-pen-nib mr-1"></i> Soal Uraian (Terjawab)' : '<i class="fa-solid fa-xmark mr-1"></i> Soal Uraian (Kosong)';
+                        badgeClass = hasAns ? 'bg-sky-100 text-sky-800' : 'bg-rose-100 text-rose-800';
+                        cardClass = hasAns ? 'bg-sky-50/40 border-sky-200' : 'bg-rose-50/40 border-rose-200';
+                        numClass = hasAns ? 'bg-sky-600 text-white' : 'bg-rose-600 text-white';
+                    }
+
                     return `
-                        <div class="p-3.5 rounded-xl border ${isCorrect ? 'bg-emerald-50/40 border-emerald-200' : 'bg-rose-50/40 border-rose-200'} space-y-2">
+                        <div class="p-3.5 rounded-xl border ${cardClass} space-y-2">
                             <div class="flex items-start justify-between gap-2">
                                 <div class="flex items-center gap-2">
-                                    <span class="w-6 h-6 rounded-lg ${isCorrect ? 'bg-emerald-600 text-white' : 'bg-rose-600 text-white'} flex items-center justify-center font-bold text-xs shrink-0">
+                                    <span class="w-6 h-6 rounded-lg ${numClass} flex items-center justify-center font-bold text-xs shrink-0">
                                         ${i + 1}
                                     </span>
-                                    <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md ${isCorrect ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">
-                                        ${isCorrect ? '<i class="fa-solid fa-check mr-1"></i> Jawaban Benar' : '<i class="fa-solid fa-xmark mr-1"></i> Jawaban Salah'}
+                                    <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md ${badgeClass}">
+                                        ${badgeText}
                                     </span>
                                 </div>
                             </div>
@@ -1311,13 +1386,13 @@
                             <div class="pl-8 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1">
                                 <div class="p-2 rounded-lg bg-white border border-slate-200">
                                     <p class="text-[10px] text-slate-400 font-bold uppercase">Jawaban Siswa:</p>
-                                    <div class="font-bold ${isCorrect ? 'text-emerald-700' : 'text-rose-700'} mt-0.5">
+                                    <div class="font-bold ${isCorrect ? 'text-emerald-700' : (isEssay ? 'text-slate-800' : 'text-rose-700')} mt-0.5 whitespace-pre-line leading-relaxed">
                                         ${studentAns}
                                     </div>
                                 </div>
                                 <div class="p-2 rounded-lg bg-white border border-slate-200">
-                                    <p class="text-[10px] text-slate-400 font-bold uppercase">Kunci Jawaban Resmi:</p>
-                                    <div class="font-bold text-emerald-700 mt-0.5">
+                                    <p class="text-[10px] text-slate-400 font-bold uppercase">${isEssay ? 'Pedoman / Rubrik Penilaian:' : 'Kunci Jawaban Resmi:'}</p>
+                                    <div class="font-bold text-emerald-700 mt-0.5 whitespace-pre-line leading-relaxed">
                                         ${correctAns}
                                     </div>
                                 </div>

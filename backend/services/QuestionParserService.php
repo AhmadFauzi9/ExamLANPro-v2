@@ -62,8 +62,8 @@ class QuestionParserService {
                 } elseif (preg_match('/^([A-E])\s*[:\.]\s*(.+)$/i', $line, $m)) {
                     $letter = strtoupper($m[1]);
                     $optMap[$letter] = trim($m[2]);
-                } elseif (preg_match('/^KUNCI(\s*JAWABAN)?\s*[:=]\s*(.+)$/i', $line, $m)) {
-                    $qData['key_raw'] = trim($m[2]);
+                } elseif (preg_match('/^(KUNCI(\s*JAWABAN)?|RUBRIK|PEDOMAN)\s*[:=]\s*(.+)$/i', $line, $m)) {
+                    $qData['key_raw'] = trim($m[3]);
                     $hasExplicitKey = true;
                 } elseif (preg_match('/^PEMBAHASAN\s*[:=]\s*(.+)$/i', $line, $m)) {
                     $qData['explanation'] = trim($m[1]);
@@ -517,7 +517,7 @@ class QuestionParserService {
                 if (!empty($matchVal)) {
                     $lines[] = 'PASANGAN: ' . $matchVal;
                 }
-                $keyVal = $namedRow['kunci_jawaban'] ?? ($namedRow['kunci'] ?? ($namedRow['jawaban'] ?? ''));
+                $keyVal = $namedRow['kunci_jawaban'] ?? ($namedRow['kunci'] ?? ($namedRow['jawaban'] ?? ($namedRow['rubrik'] ?? ($namedRow['pedoman'] ?? ''))));
                 if (!empty($keyVal)) $lines[] = 'KUNCI: ' . $keyVal;
                 if (!empty($namedRow['pembahasan'])) $lines[] = 'PEMBAHASAN: ' . $namedRow['pembahasan'];
 

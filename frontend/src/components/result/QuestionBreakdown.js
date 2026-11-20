@@ -57,12 +57,24 @@ export function renderSecureBreakdowns(breakdowns) {
     listContainer.dataset.loaded = '1';
     listContainer.innerHTML = breakdowns.map((item, idx) => {
         const q = item.question || {};
-        const statusBadge = item.isCorrect ?
+        const isEssay = q.type === 'essay';
+        let statusBadge = item.isCorrect ?
             `<span class="bg-emerald-100 text-emerald-800 border border-emerald-300 text-[10px] font-bold px-2.5 py-1 rounded-full"><i class="fa-solid fa-check mr-1"></i> Benar</span>` :
             `<span class="bg-rose-100 text-rose-800 border border-rose-300 text-[10px] font-bold px-2.5 py-1 rounded-full"><i class="fa-solid fa-xmark mr-1"></i> Salah / Belum Tepat</span>`;
 
+        if (isEssay) {
+            const hasAns = item.studentAnswer !== null && item.studentAnswer !== undefined && String(item.studentAnswer).trim() !== '';
+            statusBadge = hasAns ?
+                `<span class="bg-emerald-100 text-emerald-800 border border-emerald-300 text-[10px] font-bold px-2.5 py-1 rounded-full"><i class="fa-solid fa-pen-nib mr-1"></i> Uraian Terjawab</span>` :
+                `<span class="bg-rose-100 text-rose-800 border border-rose-300 text-[10px] font-bold px-2.5 py-1 rounded-full"><i class="fa-solid fa-xmark mr-1"></i> Tidak Dijawab</span>`;
+        }
+
+        const borderClass = isEssay 
+            ? 'border-brand-200 bg-brand-50/20' 
+            : (item.isCorrect ? 'border-emerald-200 bg-emerald-50/20' : 'border-rose-200 bg-rose-50/20');
+
         return `
-            <div class="p-4 sm:p-5 rounded-xl border ${item.isCorrect ? 'border-emerald-200 bg-emerald-50/20' : 'border-rose-200 bg-rose-50/20'} space-y-3">
+            <div class="p-4 sm:p-5 rounded-xl border ${borderClass} space-y-3">
                 <div class="flex justify-between items-start gap-2">
                     <h4 class="font-bold text-slate-800 text-xs sm:text-sm">Soal ${idx + 1}. ${q.question || 'Analisis Pernyataan & Kasus'}</h4>
                     ${statusBadge}
@@ -71,11 +83,11 @@ export function renderSecureBreakdowns(breakdowns) {
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1">
                     <div class="bg-white p-3 rounded-lg border border-slate-200">
                         <span class="font-bold text-slate-500 block mb-1">Jawaban Anda:</span>
-                        <div class="text-slate-800 font-medium">${item.studentAnswerText || 'Tidak dijawab'}</div>
+                        <div class="text-slate-800 font-medium whitespace-pre-line leading-relaxed">${item.studentAnswerText || 'Tidak dijawab'}</div>
                     </div>
                     <div class="bg-white p-3 rounded-lg border border-slate-200">
-                        <span class="font-bold text-emerald-700 block mb-1">Kunci / Jawaban Tepat:</span>
-                        <div class="text-slate-800 font-medium">${item.correctAnswerText || '-'}</div>
+                        <span class="font-bold text-emerald-700 block mb-1">${isEssay ? 'Pedoman / Rubrik Penilaian:' : 'Kunci / Jawaban Tepat:'}</span>
+                        <div class="text-slate-800 font-medium whitespace-pre-line leading-relaxed">${item.correctAnswerText || '-'}</div>
                     </div>
                 </div>
                 ${q.explanation ? `
