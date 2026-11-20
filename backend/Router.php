@@ -91,6 +91,8 @@ class Router {
         'restore_trash'               => [SystemController::class, 'restoreTrash'],
         'create_backup'               => [SystemController::class, 'createBackup'],
         'delete_backup'               => [SystemController::class, 'deleteBackup'],
+        'restore_backup'              => [SystemController::class, 'restoreBackup'],
+        'download_backup'             => [SystemController::class, 'downloadBackup'],
     ];
 
     /**

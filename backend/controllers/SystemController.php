@@ -154,4 +154,126 @@ class SystemController {
             'deleted_count' => count($files)
         ]);
     }
+
+    public static function restoreBackup() {
+        AuthMiddleware::teacherOnly();
+        $input = Utils::getJsonInput();
+        $fileName = '';
+        $rawContent = null;
+
+        // 1. Cek jika file dikirim via upload berkas (multipart/form-data)
+        if (isset($_FILES['backup_file']) && $_FILES['backup_file']['error'] === UPLOAD_ERR_OK) {
+            $tmpPath = $_FILES['backup_file']['tmp_name'];
+            $fileName = basename($_FILES['backup_file']['name']);
+            $rawContent = @file_get_contents($tmpPath);
+        } else {
+            // 2. Cek jika nama file berasal dari riwayat backup server
+            $fileParam = trim((string)($input['file'] ?? $_POST['file'] ?? ''));
+            if ($fileParam !== '') {
+                $fileName = basename($fileParam);
+                $filePath = EXAMLAN_BACKUP_DIR . '/' . $fileName;
+                if (!file_exists($filePath) || !is_file($filePath)) {
+                    Response::error('Berkas cadangan tidak ditemukan di server.', 404);
+                }
+                $rawContent = @file_get_contents($filePath);
+            }
+        }
+
+        if ($rawContent === null || $rawContent === '') {
+            Response::error('Berkas cadangan tidak valid atau belum dipilih.', 400);
+        }
+
+        $restoredDb = @json_decode($rawContent, true);
+        if (!is_array($restoredDb)) {
+            Response::error('Format berkas cadangan rusak atau bukan JSON yang valid.', 400);
+        }
+
+        // Validasi struktur minimal database ExamLAN Pro
+        $hasQuestions = isset($restoredDb['questions']) && is_array($restoredDb['questions']);
+        $hasStudents = isset($restoredDb['students']) && is_array($restoredDb['students']);
+        $hasResults = isset($restoredDb['results']) && is_array($restoredDb['results']);
+
+        if (!$hasQuestions && !$hasStudents && !$hasResults) {
+            Response::error('Berkas ini bukan berkas cadangan database ExamLAN Pro yang valid.', 400);
+        }
+
+        // Buat cadangan penyelamat kondisi database saat ini sebelum ditimpa (Auto Safety Backup)
+        $currentDb = Database::load();
+        $safetyPrefix = 'before-restore-' . preg_replace('/[^a-z0-9_-]/i', '-', pathinfo($fileName, PATHINFO_FILENAME));
+        BackupService::createBackup($safetyPrefix);
+
+        // Pertahankan dan gabungkan daftar riwayat backup agar tidak hilang
+        $existingBackups = $currentDb['backups'] ?? [];
+        if (!empty($restoredDb['backups']) && is_array($restoredDb['backups'])) {
+            $knownFiles = [];
+            foreach ($existingBackups as $b) {
+                $f = $b['file'] ?? $b['name'] ?? '';
+                if ($f) $knownFiles[$f] = true;
+            }
+            foreach ($restoredDb['backups'] as $b) {
+                $f = $b['file'] ?? $b['name'] ?? '';
+                if ($f && empty($knownFiles[$f])) {
+                    $existingBackups[] = $b;
+                    $knownFiles[$f] = true;
+                }
+            }
+        }
+        $restoredDb['backups'] = $existingBackups;
+
+        // Normalisasi struktur kunci penting
+        $restoredDb['questions'] = $restoredDb['questions'] ?? [];
+        $restoredDb['students'] = $restoredDb['students'] ?? [];
+        $restoredDb['results'] = $restoredDb['results'] ?? [];
+        $restoredDb['active_attempts'] = $restoredDb['active_attempts'] ?? [];
+        $restoredDb['student_sessions'] = $restoredDb['student_sessions'] ?? [];
+        $restoredDb['settings'] = $restoredDb['settings'] ?? ($currentDb['settings'] ?? ['require_student_password' => true]);
+        $restoredDb['trash'] = $restoredDb['trash'] ?? ['quizzes' => [], 'students' => [], 'results' => []];
+        $restoredDb['audit_logs'] = $restoredDb['audit_logs'] ?? ($restoredDb['audit'] ?? []);
+
+        AuditService::log($restoredDb, 'Restore database', "Dari berkas: {$fileName}");
+        Database::save($restoredDb);
+
+        // Jika upload berkas dari luar, simpan juga salinannya di folder backups server agar tercatat
+        if (isset($_FILES['backup_file']) && $fileName !== '') {
+            $destBackupPath = EXAMLAN_BACKUP_DIR . '/' . $fileName;
+            if (!file_exists($destBackupPath)) {
+                @file_put_contents($destBackupPath, $rawContent);
+                $restoredDb['backups'][] = [
+                    'file' => $fileName,
+                    'time' => date('c'),
+                    'reason' => 'uploaded-restore'
+                ];
+                Database::save($restoredDb);
+            }
+        }
+
+        // Muat data terbaru setelah disimpan
+        $finalDb = Database::load();
+
+        Response::json([
+            'status' => 'success',
+            'message' => "Database berhasil dipulihkan dari berkas '{$fileName}'. Cadangan otomatis sebelum pemulihan telah disimpan.",
+            'backups' => $finalDb['backups'] ?? []
+        ]);
+    }
+
+    public static function downloadBackup() {
+        AuthMiddleware::teacherOnly();
+        $fileParam = trim((string)($_GET['file'] ?? ''));
+        if ($fileParam === '') {
+            Response::error('Nama berkas cadangan tidak valid.', 400);
+        }
+        $fileName = basename($fileParam);
+        $filePath = EXAMLAN_BACKUP_DIR . '/' . $fileName;
+        if (!file_exists($filePath) || !is_file($filePath)) {
+            Response::notFound('Berkas cadangan tidak ditemukan.');
+        }
+
+        header('Content-Type: application/json');
+        header('Content-Disposition: attachment; filename="' . $fileName . '"');
+        header('Content-Length: ' . filesize($filePath));
+        header('Cache-Control: no-cache, must-revalidate');
+        readfile($filePath);
+        exit;
+    }
 }

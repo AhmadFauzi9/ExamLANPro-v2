@@ -263,6 +263,17 @@ class MonitoringController {
             'status' => 'success',
             'monitoring' => $monitoring,
             'counts' => $counts,
+            'quizzes' => array_values(array_map(function($q) {
+                return [
+                    'id' => (string)($q['id'] ?? ''),
+                    'title' => (string)($q['title'] ?? ''),
+                    'pin' => (string)($q['pin'] ?? ''),
+                    'pin_enabled' => !empty($q['pin_enabled']),
+                    'pin_auto_refresh' => ($q['pin_auto_refresh'] ?? true),
+                    'pin_updated_at' => (int)($q['pin_updated_at'] ?? 0),
+                    'status' => (string)($q['status'] ?? 'ACTIVE')
+                ];
+            }, $db['questions'] ?? [])),
             'audit_logs' => array_slice(array_reverse($db['audit_logs']), 0, 200),
             'summary' => [
                 'students' => count($db['students']),

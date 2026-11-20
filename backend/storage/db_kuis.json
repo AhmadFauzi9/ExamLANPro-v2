@@ -4,7 +4,7 @@
             "id": "quiz-1794921157572",
             "title": "UB Informatika Semester Ganjil 2026-2027",
             "duration": 6,
-            "max_questions": 0,
+            "max_questions": 5,
             "quiz_type": "mixed",
             "description": "Jaawablah soal dengan benar!",
             "subject": "Informatika",
@@ -12,10 +12,10 @@
             "start_at": "",
             "end_at": "",
             "status": "DRAFT",
-            "pin": "HJ4FQ8",
+            "pin": "FDW4A3",
             "pin_enabled": true,
             "pin_auto_refresh": true,
-            "pin_updated_at": 1795159542,
+            "pin_updated_at": 1795172817,
             "questions": [
                 {
                     "type": "mc",
@@ -900,10 +900,10 @@
             "start_at": "",
             "end_at": "",
             "status": "ACTIVE",
-            "pin": "CNTFB5",
+            "pin": "M82PVF",
             "pin_enabled": true,
             "pin_auto_refresh": true,
-            "pin_updated_at": 1795159542,
+            "pin_updated_at": 1795172817,
             "questions": [
                 {
                     "type": "mc",
@@ -17493,6 +17493,13 @@
             "action": "Peringatan Kecurangan",
             "target": "Siswa AZZAM PUTRA PRAYOGA (NIS: 250121) terdeteksi: Keluar dari Mode Kiosk Resmi (Layar Penuh) (ke-19)",
             "detail": ""
+        },
+        {
+            "time": "2026-11-20T12:08:33+01:00",
+            "user": "guru",
+            "action": "Simpan paket kuis",
+            "target": "",
+            "detail": "2 paket"
         }
     ],
     "backups": [

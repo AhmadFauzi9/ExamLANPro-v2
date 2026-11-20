@@ -112,15 +112,23 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-2">
-                        <button type="button" onclick="toggleModal('modal-mon-guide', true)" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 transition flex items-center gap-1.5 shadow-2xs">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <button type="button" onclick="toggleModal('modal-mon-guide', true)" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 transition flex items-center gap-1.5 shadow-2xs shrink-0">
                             <i class="fa-solid fa-circle-question text-sky-600"></i>
                             <span>Panduan Pengawas Lab</span>
                         </button>
-                        <span id="active-count-badge" class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1.5 rounded-xl border border-emerald-200 flex items-center gap-1.5 shadow-2xs">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                            0 aktif mengerjakan
-                        </span>
+                        <!-- Live Quiz Token Widget in Header (Menggantikan 0 aktif mengerjakan) -->
+                        <div id="mon-quiz-token-widget" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-50 text-blue-800 border border-blue-200 text-xs font-mono font-bold shadow-2xs transition shrink-0" title="Token Akses Siswa untuk Paket Ujian yang Sedang Dimonitoring">
+                            <i class="fa-solid fa-key text-[11px] text-blue-600"></i>
+                            <span id="mon-token-val" class="tracking-widest font-black text-xs sm:text-sm select-all">------</span>
+                            <button type="button" onclick="copyMonToken(this)" class="p-0.5 text-blue-600 hover:text-blue-900 transition focus:outline-none cursor-pointer" title="Salin Token">
+                                <i class="fa-regular fa-copy text-xs"></i>
+                            </button>
+                            <span id="mon-token-timer-box" class="ml-1 pl-1.5 border-l border-blue-200 text-[10px] sm:text-[11px] font-semibold text-blue-600 flex items-center gap-1 font-sans shrink-0" title="Sisa waktu sebelum token otomatis berganti">
+                                <i class="fa-regular fa-clock text-[10px]"></i>
+                                <span id="mon-token-countdown" class="font-bold">10:00</span>
+                            </span>
+                        </div>
                     </div>
                 </div>
 
@@ -169,19 +177,6 @@
                         <select id="mon-filter-quiz" onchange="handleMonFilter()" class="px-1.5 py-1.5 w-[100px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none" title="Filter Soal Ujian">
                             <option value="ALL">Soal Ujian</option>
                         </select>
-
-                        <!-- Live Quiz Token Widget in Monitoring -->
-                        <div id="mon-quiz-token-widget" class="hidden items-center gap-1.5 px-2.5 py-1 rounded-xl bg-blue-50 text-blue-800 border border-blue-200 text-xs font-mono font-bold shrink-0" title="Token Akses Ujian (Otomatis ganti tiap 10 menit)">
-                            <i class="fa-solid fa-key text-[10px] text-blue-600"></i>
-                            <span id="mon-token-val" class="tracking-widest font-black">------</span>
-                            <button type="button" onclick="copyMonToken(this)" class="p-0.5 text-blue-600 hover:text-blue-900 transition" title="Salin Token Ujian">
-                                <i class="fa-regular fa-copy text-xs"></i>
-                            </button>
-                            <span id="mon-token-timer-box" class="ml-1 pl-1.5 border-l border-blue-200 text-[10px] font-semibold text-blue-600 flex items-center gap-1 font-sans" title="Sisa waktu token aktif">
-                                <i class="fa-regular fa-clock text-[9px]"></i>
-                                <span id="mon-token-countdown">10:00</span>
-                            </span>
-                        </div>
 
                         <!-- 6. Search Input -->
                         <div class="relative min-w-[160px] sm:min-w-[200px] flex-1">
@@ -439,6 +434,7 @@
     <script>
         let rawMonitoring = [];
         let filteredMonitoring = [];
+        let monQuizzes = [];
         let selectedMonNis = new Set();
         let monPerPage = 20;
         let monCurrentPage = 1;
@@ -561,8 +557,12 @@
                 const d = await res.json();
 
                 rawMonitoring = d.monitoring || [];
+                if (Array.isArray(d.quizzes)) {
+                    monQuizzes = d.quizzes;
+                }
                 updateSummaryCounts(d.counts || {});
                 populateFilterDropdowns();
+                updateMonitoringTokenWidget();
                 handleMonFilter();
             } catch (e) {
                 if (!silent) {
@@ -590,11 +590,6 @@
             document.getElementById('sum-offline').innerText = offline;
             const violEl = document.getElementById('sum-violations');
             if (violEl) violEl.innerText = violations;
-
-            const badge = document.getElementById('active-count-badge');
-            if (badge) {
-                badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500 ${working > 0 ? 'animate-pulse' : ''}"></span> ${working} aktif mengerjakan`;
-            }
         }
 
         function filterByViolations() {
@@ -1254,54 +1249,100 @@
             clearInterval(monTokenCountdownInterval);
 
             const activeDb = window.dbData || (typeof dbData !== 'undefined' ? dbData : null);
-            if (quizFilter === 'ALL' || !activeDb || !Array.isArray(activeDb.questions)) {
-                widget.classList.add('hidden');
-                widget.classList.remove('inline-flex');
+            const quizzes = (monQuizzes && monQuizzes.length) ? monQuizzes : ((activeDb && Array.isArray(activeDb.questions)) ? activeDb.questions : []);
+
+            if (!quizzes.length) {
+                widget.className = "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 text-slate-500 border border-slate-200 text-xs font-sans font-medium shadow-2xs shrink-0";
+                widget.title = "Belum ada paket kuis di database";
+                widget.innerHTML = `<i class="fa-solid fa-lock-open text-xs"></i><span>Tanpa Kuis</span>`;
                 return;
             }
 
-            const q = activeDb.questions.find(x => String(x.id).trim() === quizFilter.trim() || String(x.title || '').trim().toLowerCase() === quizFilter.trim().toLowerCase());
-            if (!q || !q.pin) {
-                widget.classList.add('hidden');
-                widget.classList.remove('inline-flex');
-                return;
+            // 1. Tentukan paket kuis yang sedang dimonitoring
+            let targetQuiz = null;
+
+            // Jika guru memilih paket kuis spesifik di dropdown filter
+            if (quizFilter !== 'ALL') {
+                targetQuiz = quizzes.find(x => String(x.id).trim() === quizFilter.trim() || String(x.title || '').trim().toLowerCase() === quizFilter.trim().toLowerCase());
             }
 
-            widget.classList.remove('hidden');
-            widget.classList.add('inline-flex');
-            const valSpan = document.getElementById('mon-token-val');
-            if (valSpan) valSpan.innerText = q.pin;
-
-            const isAuto = (q.pin_auto_refresh !== false);
-            const timerBox = document.getElementById('mon-token-timer-box');
-            if (timerBox) {
-                if (isAuto) {
-                    timerBox.style.display = 'inline-flex';
-                    const updateCountdown = () => {
-                        const now = Math.floor(Date.now() / 1000);
-                        const updatedAt = parseInt(q.pin_updated_at) || now;
-                        const elapsed = now - updatedAt;
-                        const remaining = Math.max(0, 600 - elapsed);
-                        const mins = Math.floor(remaining / 60);
-                        const secs = remaining % 60;
-                        const cdSpan = document.getElementById('mon-token-countdown');
-                        if (cdSpan) cdSpan.innerText = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-                    };
-                    updateCountdown();
-                    monTokenCountdownInterval = setInterval(updateCountdown, 1000);
-                } else {
-                    timerBox.style.display = 'none';
+            // Jika filter = ALL, prioritaskan kuis yang sedang dikerjakan siswa di lab
+            if (!targetQuiz) {
+                if (Array.isArray(rawMonitoring) && rawMonitoring.length) {
+                    const activeItem = rawMonitoring.find(m => m.status === 'WORKING' && m.quiz_id) || rawMonitoring.find(m => m.quiz_id);
+                    if (activeItem && activeItem.quiz_id) {
+                        targetQuiz = quizzes.find(x => String(x.id).trim() === String(activeItem.quiz_id).trim());
+                    }
                 }
+            }
+
+            // Fallback: kuis pertama yang berstatus ACTIVE atau kuis pertama di daftar
+            if (!targetQuiz) {
+                targetQuiz = quizzes.find(x => x.status === 'ACTIVE') || quizzes[0];
+            }
+
+            if (!targetQuiz) return;
+
+            const pin = String(targetQuiz.pin || '').trim();
+            const quizTitle = targetQuiz.title || targetQuiz.id || 'Paket Ujian';
+            const isAuto = (pin !== '' && targetQuiz.pin_auto_refresh !== false);
+
+            if (!pin) {
+                widget.className = "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 border border-slate-200 text-xs font-sans font-medium shadow-2xs shrink-0";
+                widget.title = `Paket '${escapeHtml(quizTitle)}' tidak menggunakan token`;
+                widget.innerHTML = `<i class="fa-solid fa-lock-open text-xs text-slate-500"></i><span>Tanpa Token</span>`;
+                return;
+            }
+
+            widget.className = "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-50 text-blue-800 border border-blue-200 text-xs font-mono font-bold shadow-2xs transition shrink-0";
+            widget.title = `Token Akses Siswa untuk Paket: ${escapeHtml(quizTitle)} ${isAuto ? '(Berganti otomatis tiap 10 menit)' : ''}`;
+            widget.innerHTML = `
+                <i class="fa-solid fa-key text-[11px] text-blue-600"></i>
+                <span id="mon-token-val" class="tracking-widest font-black text-xs sm:text-sm select-all">${escapeHtml(pin)}</span>
+                <button type="button" onclick="copyMonToken(this)" class="p-0.5 text-blue-600 hover:text-blue-900 transition focus:outline-none cursor-pointer" title="Salin Token">
+                    <i class="fa-regular fa-copy text-xs"></i>
+                </button>
+                ${isAuto ? `
+                    <span id="mon-token-timer-box" class="ml-1 pl-1.5 border-l border-blue-200 text-[10px] sm:text-[11px] font-semibold text-blue-600 flex items-center gap-1 font-sans shrink-0" title="Sisa waktu sebelum token otomatis berubah">
+                        <i class="fa-regular fa-clock text-[10px]"></i>
+                        <span id="mon-token-countdown" class="font-bold">10:00</span>
+                    </span>
+                ` : ''}
+            `;
+
+            if (isAuto) {
+                const updateCountdown = () => {
+                    const now = Math.floor(Date.now() / 1000);
+                    const updatedAt = parseInt(targetQuiz.pin_updated_at) || now;
+                    const elapsed = now - updatedAt;
+                    const remaining = Math.max(0, 600 - elapsed);
+                    const mins = Math.floor(remaining / 60);
+                    const secs = remaining % 60;
+                    const cdSpan = document.getElementById('mon-token-countdown');
+                    if (cdSpan) cdSpan.innerText = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+                    if (remaining <= 0 && !window._monTokenReloading) {
+                        window._monTokenReloading = true;
+                        setTimeout(async () => {
+                            await loadMonitoringData(true);
+                            window._monTokenReloading = false;
+                        }, 1500);
+                    }
+                };
+                updateCountdown();
+                monTokenCountdownInterval = setInterval(updateCountdown, 1000);
             }
         }
 
         function copyMonToken(btn) {
             const valSpan = document.getElementById('mon-token-val');
             if (!valSpan) return;
-            const token = valSpan.innerText;
+            const token = valSpan.innerText.trim();
             const originalHtml = btn.innerHTML;
             const feedback = () => {
-                btn.innerHTML = '<i class="fa-solid fa-check text-emerald-600"></i>';
+                btn.innerHTML = '<i class="fa-solid fa-check text-emerald-600 text-xs"></i>';
+                if (typeof showToast === 'function') {
+                    showToast(`Token ${token} disalin ke clipboard`);
+                }
                 setTimeout(() => { btn.innerHTML = originalHtml; }, 1500);
             };
             if (navigator.clipboard && navigator.clipboard.writeText) {
