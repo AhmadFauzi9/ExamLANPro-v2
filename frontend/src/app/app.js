@@ -140,22 +140,25 @@ window.fetchDataFromAPI = fetchDataFromAPI;
  * Main application initialization
  */
 export async function initApp() {
-    // 1. Bersihkan sisa data legacy localStorage dari komputer lab demi keamanan
-    Storage.purgeLegacyLocalStorage();
-
-    // 2. Inisialisasi sub-sistem
+    // 1. Inisialisasi sub-sistem
     initHeader();
     initGlobalTooltipSystem();
     initAutoSaveNetworkListener();
     initViolationOverlay();
 
-    // 3. Sembunyikan login card lebih awal jika siswa sedang di layar ujian atau resume
+    // 2. Sembunyikan login card lebih awal jika siswa memiliki sesi aktif (pengerjaan kuis / informasi ujian)
     try {
+        const activeAttempt = Storage.getActiveAttempt();
         const pendingInfo = Storage.getPendingExamInfo();
         const pendingResume = Storage.getPendingResumeInfo();
-        const activeAttempt = Storage.getActiveAttempt();
 
-        if (pendingInfo) {
+        if (activeAttempt) {
+            document.getElementById('student-login-card')?.classList.add('hidden');
+            document.getElementById('student-quiz-screen')?.classList.remove('hidden');
+            if (activeAttempt.name || activeAttempt.nis) {
+                updateNavbarStudentProfile(activeAttempt.name, activeAttempt.nis, activeAttempt.classId);
+            }
+        } else if (pendingInfo) {
             document.getElementById('student-login-card')?.classList.add('hidden');
             document.getElementById('student-exam-info-screen')?.classList.remove('hidden');
             if (pendingInfo.name || pendingInfo.nis) {
@@ -167,10 +170,6 @@ export async function initApp() {
             const student = pendingResume.student || pendingResume;
             if (student.name || student.nis) {
                 updateNavbarStudentProfile(student.name, student.nis, student.class || student.classId);
-            }
-        } else if (activeAttempt) {
-            if (activeAttempt.name || activeAttempt.nis) {
-                updateNavbarStudentProfile(activeAttempt.name, activeAttempt.nis, activeAttempt.classId);
             }
         }
     } catch (e) {}

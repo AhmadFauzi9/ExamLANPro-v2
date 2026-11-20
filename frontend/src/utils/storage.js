@@ -1,32 +1,29 @@
 /**
- * ExamLAN Pro - Secure Session Storage Utility
+ * ExamLAN Pro - Multi-Tab Synchronized Storage Utility
  * 
- * PENTING UNTUK KEAMANAN:
- * Aplikasi sengaja TIDAK menggunakan window.localStorage untuk menjaga keamanan data ujian
- * di lingkungan laboratorium komputer bersama. Data di localStorage akan bertahan selamanya
- * dan dapat diakses siswa berikutnya.
- * 
- * Seluruh data pengerjaan, sesi siswa, dan token ujian disimpan di sessionStorage
- * (yang otomatis musnah ketika tab atau jendela browser ditutup).
+ * Mendukung sinkronisasi antar-tab browser (menggunakan localStorage & sessionStorage)
+ * sehingga ketika siswa membuka tab baru, sesi aktif (informasi ujian atau pengerjaan soal)
+ * otomatis dipulihkan langsung ke halaman yang sedang aktif tanpa harus login ulang.
  */
 
 const memoryStore = new Map();
 
-/**
- * Cek apakah sessionStorage didukung dan dapat diakses
- */
-function isSessionStorageAvailable() {
+function isStorageSupported(type) {
     try {
+        if (typeof window === 'undefined') return false;
+        const s = window[type];
+        if (!s) return false;
         const testKey = '__examlan_test__';
-        window.sessionStorage.setItem(testKey, testKey);
-        window.sessionStorage.removeItem(testKey);
+        s.setItem(testKey, testKey);
+        s.removeItem(testKey);
         return true;
     } catch (e) {
         return false;
     }
 }
 
-const hasSessionStorage = typeof window !== 'undefined' && isSessionStorageAvailable();
+const hasSessionStorage = isStorageSupported('sessionStorage');
+const hasLocalStorage = isStorageSupported('localStorage');
 
 export const Storage = {
     KEYS: {
@@ -38,36 +35,30 @@ export const Storage = {
     },
 
     /**
-     * Bersihkan sisa data legacy localStorage dari komputer lab jika ada
+     * Helper legacy (dibiarkan aman tanpa menghapus sesi aktif antar-tab)
      */
     purgeLegacyLocalStorage() {
-        try {
-            if (typeof window !== 'undefined' && window.localStorage) {
-                const keysToRemove = [];
-                for (let i = 0; i < window.localStorage.length; i++) {
-                    const k = window.localStorage.key(i);
-                    if (k && k.startsWith('examlan_')) {
-                        keysToRemove.push(k);
-                    }
-                }
-                keysToRemove.forEach(k => {
-                    try { window.localStorage.removeItem(k); } catch (e) {}
-                });
-            }
-        } catch (e) {
-            console.warn('Gagal membersihkan legacy localStorage:', e);
-        }
+        // Jangan hapus sesi aktif agar tab baru dapat membaca sesi yang sedang berjalan
     },
 
     get(key) {
         try {
+            let item = null;
             if (hasSessionStorage) {
-                const item = window.sessionStorage.getItem(key);
-                return item ? JSON.parse(item) : null;
+                item = window.sessionStorage.getItem(key);
+            }
+            if (!item && hasLocalStorage) {
+                item = window.localStorage.getItem(key);
+                if (item && hasSessionStorage) {
+                    try { window.sessionStorage.setItem(key, item); } catch (e) {}
+                }
+            }
+            if (item) {
+                return JSON.parse(item);
             }
             return memoryStore.get(key) || null;
         } catch (e) {
-            console.warn(`Gagal membaca key ${key} dari sessionStorage:`, e);
+            console.warn(`Gagal membaca key ${key} dari storage:`, e);
             return null;
         }
     },
@@ -78,9 +69,12 @@ export const Storage = {
             if (hasSessionStorage) {
                 window.sessionStorage.setItem(key, serialized);
             }
+            if (hasLocalStorage) {
+                window.localStorage.setItem(key, serialized);
+            }
             memoryStore.set(key, value);
         } catch (e) {
-            console.warn(`Gagal menyimpan key ${key} ke sessionStorage:`, e);
+            console.warn(`Gagal menyimpan key ${key} ke storage:`, e);
             memoryStore.set(key, value);
         }
     },
@@ -89,6 +83,9 @@ export const Storage = {
         try {
             if (hasSessionStorage) {
                 window.sessionStorage.removeItem(key);
+            }
+            if (hasLocalStorage) {
+                window.localStorage.removeItem(key);
             }
             memoryStore.delete(key);
         } catch (e) {}
@@ -180,6 +177,3 @@ export const Storage = {
         Object.values(this.KEYS).forEach(k => this.remove(k));
     }
 };
-
-// Segera bersihkan legacy localStorage saat modul dimuat
-Storage.purgeLegacyLocalStorage();

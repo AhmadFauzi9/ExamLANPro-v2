@@ -34,10 +34,10 @@
         }
     </script>
     <script>
-        // Mencegah kedip (flicker) form login saat reload jika siswa memiliki sesi aktif
-        // Menggunakan sessionStorage (BUKAN localStorage demi keamanan & kerahasiaan data siswa di komputer lab)
+        // Mencegah kedip (flicker) form login saat reload / buka tab baru jika siswa memiliki sesi aktif
         try {
-            if (sessionStorage.getItem('examlan_active_attempt') || sessionStorage.getItem('examlan_pending_exam_info') || sessionStorage.getItem('examlan_student_session')) {
+            const hasSess = (k) => sessionStorage.getItem(k) || localStorage.getItem(k);
+            if (hasSess('examlan_active_attempt') || hasSess('examlan_pending_exam_info') || hasSess('examlan_student_session') || hasSess('examlan_pending_resume_info')) {
                 document.documentElement.classList.add('has-active-session');
             }
         } catch (e) {}
@@ -50,37 +50,8 @@
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col m-0 p-0 overflow-x-hidden">
 
-    <!-- NAVBAR -->
-    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-30">
-        <div class="w-full px-4 sm:px-6 lg:px-8 py-2.5 flex justify-between items-center gap-3">
-            <div class="flex items-center space-x-2 shrink-0">
-                <div class="bg-brand-600 p-2 px-2.5 rounded-lg text-white">
-                    <i class="fa-solid fa-network-wired text-xl"></i>
-                </div>
-                <div>
-                    <h1 class="font-bold text-base sm:text-lg leading-tight flex items-center gap-2">
-                        ExamLAN Pro <span class="bg-amber-500/20 text-amber-300 text-[10px] px-2 py-0.3 rounded-full border border-amber-500/30">v2.0</span>
-                    </h1>
-                    <p class="text-xs text-slate-400">Sistem Evaluasi Lab Komputer Terintegrasi</p>
-                </div>
-            </div>
-
-            <!-- Profil Peserta di Kanan Navbar (NIS, Kelas, Nama) -->
-            <div id="navbar-student-profile" class="hidden items-center gap-2.5 bg-slate-800/80 border border-slate-700/80 px-3 py-1.5 rounded-xl">
-                <div class="w-8 h-8 rounded-lg bg-brand-600/30 border border-brand-500/40 text-brand-300 flex items-center justify-center font-bold text-xs shrink-0">
-                    <i class="fa-solid fa-user-graduate"></i>
-                </div>
-                <div class="text-left leading-tight min-w-0">
-                    <div id="nav-student-name" class="font-bold text-xs sm:text-sm text-white truncate max-w-[130px] sm:max-w-[220px]">-</div>
-                    <div class="text-[10px] sm:text-[11px] text-slate-400 flex items-center justify-end gap-1.5 mt-0.5 font-mono">
-                        <span id="nav-student-nis" class="text-brand-300 font-semibold">-</span>
-                        <span class="text-slate-600">•</span>
-                        <span id="nav-student-class" class="text-slate-300 truncate max-w-[80px] sm:max-w-none">-</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    <!-- Modular Navbar Component -->
+    <div id="navbar-placeholder" data-mode="student"></div>
 
     <main class="flex-1 w-full px-4 sm:px-6 lg:px-8 py-4 flex flex-col">
 
@@ -505,6 +476,8 @@
     <!-- TOAST CONTAINER -->
     <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-2 max-w-sm pointer-events-none"></div>
 
+    <!-- Modular Navigation System -->
+    <script src="frontend/admin/assets/js/modular-nav.js"></script>
     <!-- Application ES Module Entry Point -->
     <script type="module" src="frontend/src/app/app.js"></script>
 </body>

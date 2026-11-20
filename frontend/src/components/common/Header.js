@@ -27,6 +27,9 @@ export function updateNavbarStudentProfile(name = '', nis = '', classId = '') {
 }
 
 export function initHeader() {
+    if (typeof window !== 'undefined' && window.ModularNav && typeof window.ModularNav.init === 'function') {
+        window.ModularNav.init();
+    }
     StudentContext.subscribe((ctx) => {
         const student = ctx.activeStudent;
         updateNavbarStudentProfile(student.name, student.nis, student.classId);

@@ -12,10 +12,10 @@
             "start_at": "",
             "end_at": "",
             "status": "DRAFT",
-            "pin": "7AH65Q",
+            "pin": "MAZJEK",
             "pin_enabled": true,
             "pin_auto_refresh": true,
-            "pin_updated_at": 1795103630,
+            "pin_updated_at": 1795154662,
             "questions": [
                 {
                     "type": "mc",
@@ -900,10 +900,10 @@
             "start_at": "",
             "end_at": "",
             "status": "ACTIVE",
-            "pin": "E2YTZC",
+            "pin": "P7T5JS",
             "pin_enabled": true,
             "pin_auto_refresh": true,
-            "pin_updated_at": 1795103815,
+            "pin_updated_at": 1795154662,
             "questions": [
                 {
                     "type": "mc",
@@ -1943,6 +1943,147 @@
     ],
     "results": [
         {
+            "id": "res_c00bfc942395224d55f74f748fdb2ae2",
+            "nis": "250053",
+            "name": "AHMAD ZIYAD ASSYAFIQ",
+            "class": "VIII A (UNGGULAN MIPA)",
+            "code": "quiz-1795077173322",
+            "title": "Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8",
+            "score": 100,
+            "correct": 5,
+            "wrong": 0,
+            "date": "20/11/2026 02:02:50",
+            "review_token": "ead25a5fb6be1e46ed73a2835c87c99a352766fadd63956e7766e0000048c43a",
+            "question_order": [
+                9,
+                23,
+                2,
+                0,
+                6
+            ],
+            "answers": [
+                1,
+                "both_correct_connected",
+                1,
+                1,
+                1
+            ],
+            "breakdowns": [
+                {
+                    "question": {
+                        "type": "mc",
+                        "question": "Di dalam sebuah tabel pada Microsoft Word 2007, setiap satu kotak kecil hasil pertemuan antara kolom dan baris disebut...",
+                        "options": [
+                            "Range",
+                            "Sel (Cell)",
+                            "Margin",
+                            "Ruler"
+                        ],
+                        "answer": 1,
+                        "answers": [],
+                        "explanation": "Pada tabel MS Word, setiap kotak tunggal disebut sel (cell), sedangkan gabungan dari beberapa sel disebut range.",
+                        "image": "",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": []
+                    },
+                    "studentAnswer": 1,
+                    "isCorrect": true,
+                    "studentAnswerText": "B. Sel (Cell)",
+                    "correctAnswerText": "B. Sel (Cell)"
+                },
+                {
+                    "question": {
+                        "type": "cause_effect",
+                        "question": "",
+                        "options": [],
+                        "answer": "both_correct_connected",
+                        "answers": [],
+                        "explanation": "Pernyataan BENAR, Alasan BENAR, dan keduanya berhubungan langsung.",
+                        "image": "",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": [],
+                        "statement": "Ketika kita ingin menyimpan dokumen yang sudah pernah disimpan sebelumnya dengan nama file yang baru (berbeda), kita sebaiknya memilih Save As.",
+                        "reason": "Perintah Save As akan membuka kotak dialog agar kita bisa mengganti nama file atau folder tujuan tanpa menimpa file lama."
+                    },
+                    "studentAnswer": "both_correct_connected",
+                    "isCorrect": true,
+                    "studentAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)",
+                    "correctAnswerText": "Pernyataan & alasan benar, berhubungan sebab akibat (A)"
+                },
+                {
+                    "question": {
+                        "type": "mc",
+                        "question": "Perhatikan gambar ikon pada Microsoft Word 2007 di bawah ini! Jika kita mengeklik ikon tersebut setelah memblok sebuah kalimat, apa yang akan terjadi pada kalimat itu?",
+                        "options": [
+                            "Kalimat akan disalin dan tetap ada di tempat semula",
+                            "Kalimat akan dipotong (digunting) untuk dipindahkan ke tempat lain",
+                            "Kalimat akan diberi garis bawah",
+                            "Kalimat akan dicetak ke kertas"
+                        ],
+                        "answer": 1,
+                        "answers": [],
+                        "explanation": "Ikon bergambar gunting adalah Cut, yang berfungsi memotong teks terpilih agar bisa dipindahkan ke lokasi lain.",
+                        "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_84241a.png",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": []
+                    },
+                    "studentAnswer": 1,
+                    "isCorrect": true,
+                    "studentAnswerText": "B. Kalimat akan dipotong (digunting) untuk dipindahkan ke tempat lain",
+                    "correctAnswerText": "B. Kalimat akan dipotong (digunting) untuk dipindahkan ke tempat lain"
+                },
+                {
+                    "question": {
+                        "type": "mc",
+                        "question": "Perhatikan gambar perangkat keras di bawah ini! Perangkat tersebut berfungsi untuk menyimpan data dan program di dalam casing komputer dengan kapasitas besar. Apa nama perangkat tersebut?",
+                        "options": [
+                            "RAM",
+                            "Harddisk",
+                            "CD-ROM",
+                            "Flashdisk"
+                        ],
+                        "answer": 1,
+                        "answers": [],
+                        "explanation": "Harddisk (fixed disk) adalah media penyimpanan data utama di dalam casing komputer yang berkapasitas besar.",
+                        "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_fac65b.png",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": []
+                    },
+                    "studentAnswer": 1,
+                    "isCorrect": true,
+                    "studentAnswerText": "B. Harddisk",
+                    "correctAnswerText": "B. Harddisk"
+                },
+                {
+                    "question": {
+                        "type": "mc",
+                        "question": "Perhatikan gambar ikon pada tab Insert di bawah ini! Ikon tersebut digunakan untuk...",
+                        "options": [
+                            "Menambahkan catatan di bagian bawah halaman",
+                            "Menambahkan judul berulang di bagian atas setiap halaman",
+                            "Membuat garis bingkai di pinggir kertas",
+                            "Menyisipkan gambar dari folder komputer"
+                        ],
+                        "answer": 1,
+                        "answers": [],
+                        "explanation": "Ikon Header berfungsi membuat teks atau judul berulang di bagian kepala (atas) setiap halaman dokumen.",
+                        "image": "uploads/soal/img_soal_quiz-1795077173322_1795077173_f4300a.png",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": []
+                    },
+                    "studentAnswer": 1,
+                    "isCorrect": true,
+                    "studentAnswerText": "B. Menambahkan judul berulang di bagian atas setiap halaman",
+                    "correctAnswerText": "B. Menambahkan judul berulang di bagian atas setiap halaman"
+                }
+            ]
+        },
+        {
             "id": "res_b6118f159983809cad11545edcf173ca",
             "nis": "250053",
             "name": "AHMAD ZIYAD ASSYAFIQ",
@@ -2472,15 +2613,7 @@
         "quiz-1794921157572": false,
         "all": false
     },
-    "retake_permissions": {
-        "250053_quiz-1795077173322": {
-            "remaining": 1,
-            "reason": "",
-            "expires_at": null,
-            "granted_by": "guru",
-            "granted_at": "2026-11-19T16:37:37+01:00"
-        }
-    },
+    "retake_permissions": [],
     "students": [
         {
             "id": "std_4989c145e9b0",
@@ -12187,13 +12320,19 @@
                     0
                 ]
             },
-            "answers": [],
+            "answers": [
+                2,
+                "both_correct_connected",
+                3,
+                3,
+                1
+            ],
             "started_at": 1795102765,
-            "ends_at": 1795103065,
-            "updated_at": 1795103065,
-            "violations_count": 4,
-            "last_violation_at": 1795102840,
-            "last_violation_type": "key_shortcut",
+            "ends_at": 1795136804,
+            "updated_at": 1795136570,
+            "violations_count": 7,
+            "last_violation_at": 1795136467,
+            "last_violation_type": "exit_fullscreen",
             "violations_log": [
                 {
                     "time": "19/11/2026 16:39:27",
@@ -12222,8 +12361,32 @@
                     "type": "key_shortcut",
                     "details": "Menekan tombol Windows (Start Menu)",
                     "count": 4
+                },
+                {
+                    "time": "19/11/2026 17:15:35",
+                    "timestamp": 1795104935,
+                    "type": "app_switch",
+                    "details": "Fokus jendela Mode Kiosk berpindah ke aplikasi lain",
+                    "count": 5
+                },
+                {
+                    "time": "19/11/2026 17:15:48",
+                    "timestamp": 1795104948,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela Mode Kiosk",
+                    "count": 6
+                },
+                {
+                    "time": "20/11/2026 02:01:07",
+                    "timestamp": 1795136467,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 7
                 }
-            ]
+            ],
+            "finished": true,
+            "result_token": "ead25a5fb6be1e46ed73a2835c87c99a352766fadd63956e7766e0000048c43a",
+            "score": 100
         }
     },
     "student_sessions": {
@@ -12490,16 +12653,16 @@
             "class": "VIII A (UNGGULAN MIPA)",
             "quiz_id": "quiz-1795077173322",
             "quiz_title": "Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8",
-            "status": "WORKING",
+            "status": "FINISHED",
             "ip": "::1",
             "login_at": 1795099401,
-            "last_seen": 1795103065,
+            "last_seen": 1795136570,
             "attempt_token_hash": "b6b82551d1ab41e0f940e13d6c8fa202bc5fc1ad97278d0f47bcd96c0cfa27f6",
             "started_at": 1795102765,
-            "ends_at": 1795103065,
-            "violations_count": 4,
-            "last_violation_at": 1795102840,
-            "last_violation_type": "key_shortcut",
+            "ends_at": 1795136804,
+            "violations_count": 7,
+            "last_violation_at": 1795136467,
+            "last_violation_type": "exit_fullscreen",
             "violations_log": [
                 {
                     "time": "19/11/2026 16:39:27",
@@ -12528,8 +12691,31 @@
                     "type": "key_shortcut",
                     "details": "Menekan tombol Windows (Start Menu)",
                     "count": 4
+                },
+                {
+                    "time": "19/11/2026 17:15:35",
+                    "timestamp": 1795104935,
+                    "type": "app_switch",
+                    "details": "Fokus jendela Mode Kiosk berpindah ke aplikasi lain",
+                    "count": 5
+                },
+                {
+                    "time": "19/11/2026 17:15:48",
+                    "timestamp": 1795104948,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela Mode Kiosk",
+                    "count": 6
+                },
+                {
+                    "time": "20/11/2026 02:01:07",
+                    "timestamp": 1795136467,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 7
                 }
-            ]
+            ],
+            "finished_at": 1795136570,
+            "score": 100
         }
     },
     "audit_logs": [
@@ -16417,6 +16603,62 @@
             "action": "Peringatan Kecurangan",
             "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Menekan tombol Windows (Start Menu) (ke-4)",
             "detail": ""
+        },
+        {
+            "time": "2026-11-19T17:15:35+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Fokus jendela Mode Kiosk berpindah ke aplikasi lain (ke-5)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-19T17:15:48+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Pindah tab atau meminimalkan jendela Mode Kiosk (ke-6)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T02:01:07+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ZIYAD ASSYAFIQ (NIS: 250053) terdeteksi: Keluar dari Mode Kiosk Resmi (Layar Penuh) (ke-7)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T02:01:15+01:00",
+            "user": "guru",
+            "action": "Minta perpanjangan waktu",
+            "target": "250053 / quiz-1795077173322",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T02:01:32+01:00",
+            "user": "guru",
+            "action": "Login guru",
+            "target": "::1",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T02:01:44+01:00",
+            "user": "guru",
+            "action": "Setujui perpanjangan waktu +5m",
+            "target": "250053",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-20T02:02:50+01:00",
+            "user": "guru",
+            "action": "Selesai ujian",
+            "target": "250053 - AHMAD ZIYAD ASSYAFIQ",
+            "detail": "Nilai: 100 (5 Benar, 0 Salah) - Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8"
+        },
+        {
+            "time": "2026-11-20T07:04:22+01:00",
+            "user": "guru",
+            "action": "Login guru",
+            "target": "::1",
+            "detail": ""
         }
     ],
     "backups": [
@@ -18672,6 +18914,20 @@
             "added_minutes": 5,
             "new_ends_at": 1795101953,
             "responded_at": 1795101653
+        },
+        {
+            "id": "req_c81b4e9f51215fd5",
+            "token_hash": "b6b82551d1ab41e0f940e13d6c8fa202bc5fc1ad97278d0f47bcd96c0cfa27f6",
+            "nis": "250053",
+            "name": "AHMAD ZIYAD ASSYAFIQ",
+            "class": "VIII A (UNGGULAN MIPA)",
+            "quiz_id": "quiz-1795077173322",
+            "quiz_title": "Ulangan Bersama Akhir Semester (UBAS) Ganjil - Informatika 8",
+            "requested_at": 1795136475,
+            "status": "APPROVED",
+            "added_minutes": 5,
+            "new_ends_at": 1795136804,
+            "responded_at": 1795136504
         }
     ],
     "settings": {
