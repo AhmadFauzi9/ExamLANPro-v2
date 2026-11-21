@@ -1505,18 +1505,9 @@
 
             // 1. Konfirmasi jika belum memilih kelas tertentu (misal masih "Semua Kelas" atau belum pilih bagian)
             if (!hasClassFilter || fClass === 'all' || fSection === 'all') {
-                const promptDesc = (!hasClassFilter)
-                    ? 'Anda saat ini belum memilih kelas atau bagian tertentu (Filter: <strong>Semua Kelas</strong>).'
-                    : `Anda baru memilih ${fClass !== 'all' ? 'Tingkat ' + fClass : 'Bagian ' + fSection}, belum memilih rombel kelas secara spesifik.`;
-
                 const ok = await appConfirm(
-                    `${promptDesc}<br><br>
-                    <div class="text-xs text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-200 text-left space-y-1.5">
-                      <p>• <strong>Saran:</strong> Pilih <strong>Kelas</strong> (misal <em>VIII</em>) dan <strong>Bagian</strong> (misal <em>M</em>) agar baris nilai tersusun rapi 100% sesuai urutan nomor absen/buku leger kelas dan siswa yang belum ujian tampak bernilai kosong.</p>
-                      <p>• Jika melanjutkan, sistem akan mengekspor seluruh data yang tampil saat ini.</p>
-                    </div><br>
-                    Apakah Anda ingin memilih kelas terlebih dahulu, atau melanjutkan ekspor?`,
-                    'Konfirmasi Kelas Ekspor Nilai',
+                    'Silakan pilih kelas dan bagian terlebih dahulu.',
+                    'Konfirmasi Ekspor Nilai',
                     'Pilih Kelas Dulu',
                     'Lanjutkan Ekspor'
                 );

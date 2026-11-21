@@ -11,6 +11,26 @@ import { renderExamInfoScreen } from './ExamInfoCard.js';
 import { showResumeTokenScreen } from './ResumeTokenModal.js';
 import { hydrateAttempt } from '../quiz/QuizScreen.js';
 
+function normalizeName(str) {
+    return String(str || '')
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, ' ');
+}
+
+function escapeHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[m]);
+}
+
+let lastAlertTime = 0;
+export function showNotRegisteredAlert() {
+    const now = Date.now();
+    if (now - lastAlertTime < 1500) return;
+    lastAlertTime = now;
+    appAlert('Data belum terdaftar di server, harap hubungi guru untuk mendaftarkan data anda.', 'Data Belum Terdaftar');
+}
+
 export function handleNisInput(input) {
     if (!input) return;
     input.value = input.value.replace(/[^0-9]/g, '').slice(0, 6);
@@ -29,14 +49,108 @@ export function handleNisInput(input) {
         classInput.readOnly = true;
         nameInput.classList.add('bg-slate-100', 'cursor-not-allowed');
         classInput.classList.add('bg-slate-100', 'cursor-not-allowed');
+        input.readOnly = false;
+        input.classList.remove('bg-slate-100', 'cursor-not-allowed');
     } else {
-        nameInput.value = '';
-        classInput.value = '';
-        nameInput.readOnly = false;
-        classInput.readOnly = false;
-        nameInput.classList.remove('bg-slate-100', 'cursor-not-allowed');
-        classInput.classList.remove('bg-slate-100', 'cursor-not-allowed');
+        if (nameInput.readOnly) {
+            nameInput.value = '';
+            classInput.value = '';
+            nameInput.readOnly = false;
+            classInput.readOnly = false;
+            nameInput.classList.remove('bg-slate-100', 'cursor-not-allowed');
+            classInput.classList.remove('bg-slate-100', 'cursor-not-allowed');
+        }
+        if (nis.length === 6) {
+            showNotRegisteredAlert();
+        }
     }
+}
+
+export function handleNisBlur(input) {
+    if (!input) return;
+    const nis = input.value.trim();
+    if (!nis) return;
+    const students = StudentContext.registeredStudents || [];
+    const matched = students.find(s => String(s.nis).trim() === nis);
+    if (!matched) {
+        showNotRegisteredAlert();
+    }
+}
+
+export function handleNameInput(input) {
+    if (!input) return;
+    const norm = normalizeName(input.value);
+    const nisInput = document.getElementById('student-nis');
+    const classInput = document.getElementById('student-class');
+    if (!nisInput || !classInput) return;
+
+    if (!norm) {
+        if (nisInput.readOnly) {
+            nisInput.value = '';
+            classInput.value = '';
+            nisInput.readOnly = false;
+            classInput.readOnly = false;
+            nisInput.classList.remove('bg-slate-100', 'cursor-not-allowed');
+            classInput.classList.remove('bg-slate-100', 'cursor-not-allowed');
+        }
+        return;
+    }
+
+    const students = StudentContext.registeredStudents || [];
+    const matched = students.find(s => normalizeName(s.name) === norm);
+
+    if (matched) {
+        nisInput.value = matched.nis || '';
+        classInput.value = matched.class || '';
+        nisInput.readOnly = true;
+        classInput.readOnly = true;
+        nisInput.classList.add('bg-slate-100', 'cursor-not-allowed');
+        classInput.classList.add('bg-slate-100', 'cursor-not-allowed');
+        input.readOnly = false;
+        input.classList.remove('bg-slate-100', 'cursor-not-allowed');
+    } else {
+        if (nisInput.readOnly) {
+            nisInput.value = '';
+            classInput.value = '';
+            nisInput.readOnly = false;
+            classInput.readOnly = false;
+            nisInput.classList.remove('bg-slate-100', 'cursor-not-allowed');
+            classInput.classList.remove('bg-slate-100', 'cursor-not-allowed');
+        }
+    }
+}
+
+export function handleNameBlur(input) {
+    if (!input) return;
+    const norm = normalizeName(input.value);
+    if (!norm || norm.length < 3) return;
+    const nisInput = document.getElementById('student-nis');
+    const nis = nisInput ? nisInput.value.trim() : '';
+
+    const students = StudentContext.registeredStudents || [];
+    if (nis && students.some(s => String(s.nis).trim() === nis)) {
+        return;
+    }
+
+    const matched = students.find(s => normalizeName(s.name) === norm);
+    if (!matched) {
+        showNotRegisteredAlert();
+    }
+}
+
+export function populateStudentDatalist() {
+    let datalist = document.getElementById('student-name-list');
+    if (!datalist) {
+        datalist = document.createElement('datalist');
+        datalist.id = 'student-name-list';
+        document.body.appendChild(datalist);
+    }
+    const nameInput = document.getElementById('student-name');
+    if (nameInput) {
+        nameInput.setAttribute('list', 'student-name-list');
+    }
+    const students = StudentContext.registeredStudents || [];
+    datalist.innerHTML = students.map(s => `<option value="${escapeHtml(s.name)}">${escapeHtml(s.class || '')}</option>`).join('');
 }
 
 export function populateQuizDropdowns() {
@@ -76,7 +190,27 @@ export async function handleStudentLogin(e) {
         appAlert("NIS maksimal terdiri dari 6 digit angka!");
         return;
     }
-    if (!nis || !name || !classId) {
+
+    // Validasi apakah siswa terdaftar di server
+    const students = StudentContext.registeredStudents || [];
+    let matched = null;
+    if (nis) {
+        matched = students.find(s => String(s.nis).trim() === nis);
+    }
+    if (!matched && name) {
+        matched = students.find(s => normalizeName(s.name) === normalizeName(name));
+    }
+
+    if (!matched) {
+        showNotRegisteredAlert();
+        return;
+    }
+
+    const finalNis = matched.nis || nis;
+    const finalName = matched.name || name;
+    const finalClass = matched.class || classId;
+
+    if (!finalNis || !finalName || !finalClass) {
         appAlert("Harap lengkapi semua data identitas peserta!");
         return;
     }
@@ -103,7 +237,7 @@ export async function handleStudentLogin(e) {
     }
 
     try {
-        const res = await authApi.studentLogin({ nis, password, quiz_id: quizId, name, class: classId });
+        const res = await authApi.studentLogin({ nis: finalNis, password, quiz_id: quizId, name: finalName, class: finalClass });
         const data = res.data;
 
         if (!res.ok || data?.status !== 'success') {
@@ -115,7 +249,9 @@ export async function handleStudentLogin(e) {
                 passInput.value = password;
                 passInput.select();
             }
-            appAlert(data?.message || 'Login gagal. Periksa kembali NIS dan Kode Sandi.', 'Autentikasi Gagal');
+            const errMsg = data?.message || 'Login gagal. Periksa kembali NIS dan Kode Sandi.';
+            const errTitle = errMsg.toLowerCase().includes('terdaftar') ? 'Data Belum Terdaftar' : 'Autentikasi Gagal';
+            appAlert(errMsg, errTitle);
             return;
         }
 
@@ -127,7 +263,7 @@ export async function handleStudentLogin(e) {
         // Skenario Pemulihan Sesi jika token aktif diperlukan oleh pengawas
         if (data.needs_resume_token) {
             showResumeTokenScreen({
-                nis,
+                nis: finalNis,
                 password,
                 student: data.student,
                 quiz: data.quiz
@@ -149,9 +285,9 @@ export async function handleStudentLogin(e) {
         };
         renderExamInfoScreen({
             quizId,
-            nis,
-            name: data.student?.name || name,
-            classId: data.student?.class || classId,
+            nis: finalNis,
+            name: data.student?.name || finalName,
+            classId: data.student?.class || finalClass,
             password: password,
             quiz: mergedQuiz
         });

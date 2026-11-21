@@ -29,9 +29,13 @@ import { showToast } from '../components/common/Toast.js';
 import { initViolationOverlay } from '../components/common/ViolationOverlay.js';
 import {
     handleNisInput,
+    handleNisBlur,
+    handleNameInput,
+    handleNameBlur,
     handleStudentLogin,
     toggleStudentLoginPassword,
-    populateQuizDropdowns
+    populateQuizDropdowns,
+    populateStudentDatalist
 } from '../components/auth/LoginCard.js';
 import {
     renderExamInfoScreen,
@@ -66,6 +70,9 @@ import {
 
 // Expose functions globally for backward-compatibility with inline HTML attributes
 window.handleNisInput = handleNisInput;
+window.handleNisBlur = handleNisBlur;
+window.handleNameInput = handleNameInput;
+window.handleNameBlur = handleNameBlur;
 window.handleStudentLogin = handleStudentLogin;
 window.toggleStudentLoginPassword = toggleStudentLoginPassword;
 window.backToStudentLogin = backToStudentLogin;
@@ -178,6 +185,7 @@ export async function fetchDataFromAPI() {
         }
 
         populateQuizDropdowns();
+        populateStudentDatalist();
     } catch (error) {
         console.error('Gagal mengambil data ujian:', error);
     }

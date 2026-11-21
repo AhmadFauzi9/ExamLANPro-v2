@@ -33,8 +33,14 @@ export function appAlert(message, title = 'Informasi') {
     const iconEl = document.getElementById('app-modal-icon');
 
     if (iconEl) {
-        iconEl.className = 'w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center shrink-0';
-        iconEl.innerHTML = '<i class="fa-solid fa-circle-info"></i>';
+        const lowerTitle = String(title || '').toLowerCase();
+        if (lowerTitle.includes('belum terdaftar') || lowerTitle.includes('peringatan') || lowerTitle.includes('gagal') || lowerTitle.includes('salah')) {
+            iconEl.className = 'w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 text-base';
+            iconEl.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
+        } else {
+            iconEl.className = 'w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center shrink-0';
+            iconEl.innerHTML = '<i class="fa-solid fa-circle-info"></i>';
+        }
     }
     if (titleEl) titleEl.textContent = title;
     if (msgEl) msgEl.textContent = String(message);

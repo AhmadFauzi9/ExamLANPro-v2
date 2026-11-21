@@ -12,8 +12,10 @@ class StudentAuthController {
         $db = Database::load();
         $requirePassword = (bool)($db['settings']['require_student_password'] ?? true);
 
-        if ($nis === '') {
-            Response::error('Nomor Induk Siswa (NIS) wajib diisi.', 400);
+        $inputName = strtoupper(trim((string)($input['name'] ?? '')));
+
+        if ($nis === '' && $inputName === '') {
+            Response::error('Nomor Induk Siswa (NIS) atau Nama Siswa wajib diisi.', 400);
         }
 
         if ($requirePassword && $password === '') {
@@ -21,24 +23,28 @@ class StudentAuthController {
         }
 
         $matched = null;
-        foreach ($db['students'] as $st) {
-            if (trim((string)($st['nis'] ?? '')) === $nis) {
-                $matched = $st;
-                break;
+        if ($nis !== '') {
+            foreach ($db['students'] as $st) {
+                if (trim((string)($st['nis'] ?? '')) === $nis) {
+                    $matched = $st;
+                    break;
+                }
+            }
+        }
+
+        if (!$matched && $inputName !== '') {
+            foreach ($db['students'] as $st) {
+                $stName = strtoupper(trim((string)($st['name'] ?? '')));
+                if ($stName === $inputName) {
+                    $matched = $st;
+                    $nis = trim((string)($st['nis'] ?? ''));
+                    break;
+                }
             }
         }
 
         if (!$matched) {
-            if (!$requirePassword && !empty($input['name']) && !empty($input['class'])) {
-                $matched = [
-                    'nis' => $nis,
-                    'name' => trim((string)$input['name']),
-                    'class' => trim((string)$input['class']),
-                    'tahun_ajaran' => trim((string)($input['tahun_ajaran'] ?? ''))
-                ];
-            } else {
-                Response::error("NIS '{$nis}' tidak ditemukan dalam database siswa. Pastikan NIS benar atau hubungi guru.", 404);
-            }
+            Response::error('Data belum terdaftar di server, harap hubungi guru untuk mendaftarkan data anda.', 404);
         }
 
         if ($requirePassword) {
