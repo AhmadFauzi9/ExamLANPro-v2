@@ -11,10 +11,25 @@ class TimeExtensionController {
 
     public static function request() {
         $input = Utils::getJsonInput();
-        $token = (string)($input['attempt_token'] ?? '');
+        $token = trim((string)($input['attempt_token'] ?? $input['token'] ?? ''));
         $db = Database::load();
+        $db['time_extension_requests'] = $db['time_extension_requests'] ?? [];
+
         $key = Utils::attemptKey($token);
-        $attempt = $db['active_attempts'][$key] ?? null;
+        $attempt = $db['active_attempts'][$key] ?? ($db['active_attempts'][$token] ?? null);
+        if ($attempt && !isset($db['active_attempts'][$key]) && isset($db['active_attempts'][$token])) {
+            $key = $token;
+        }
+
+        if (!$attempt) {
+            foreach ($db['active_attempts'] as $ak => $cand) {
+                if (($cand['token'] ?? '') === $token || $ak === $token || $ak === $key) {
+                    $attempt = $cand;
+                    $key = $ak;
+                    break;
+                }
+            }
+        }
 
         if (!$attempt || !empty($attempt['finished'])) {
             Response::notFound('Sesi ujian tidak aktif atau tidak ditemukan.');
@@ -22,7 +37,8 @@ class TimeExtensionController {
 
         $found = false;
         foreach ($db['time_extension_requests'] as &$req) {
-            if (($req['token_hash'] ?? '') === $key) {
+            if (($req['token_hash'] ?? '') === $key || (($req['nis'] ?? '') === (string)$attempt['nis'] && ($req['quiz_id'] ?? '') === (string)$attempt['quiz_id'])) {
+                $req['token_hash'] = $key;
                 $req['status'] = 'PENDING';
                 $req['requested_at'] = time();
                 $found = true;

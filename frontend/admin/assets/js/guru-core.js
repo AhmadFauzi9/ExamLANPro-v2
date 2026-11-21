@@ -3,22 +3,35 @@
  */
 const APP_ROOT = (function() {
     const p = window.location.pathname;
-    const idx = p.indexOf('/admin');
+    const idx = p.indexOf('/frontend');
     if (idx !== -1) {
         return p.substring(0, idx) + '/';
     }
-    const idx2 = p.indexOf('/guru');
+    const idx2 = p.indexOf('/admin');
     if (idx2 !== -1) {
         return p.substring(0, idx2) + '/';
+    }
+    const idx3 = p.indexOf('/guru');
+    if (idx3 !== -1) {
+        return p.substring(0, idx3) + '/';
+    }
+    const lastSlash = p.lastIndexOf('/');
+    if (lastSlash > 0) {
+        return p.substring(0, lastSlash + 1);
     }
     return '/';
 })();
 
 const GURU_BASE = (function() {
     const p = window.location.pathname;
-    const idx = p.indexOf('/admin');
+    const idx = p.indexOf('/frontend');
     if (idx !== -1) {
-        return p.substring(0, idx + 6) + '/';
+        const adminIdx = p.indexOf('/admin');
+        if (adminIdx !== -1) return p.substring(0, adminIdx + 6) + '/';
+    }
+    const idx2 = p.indexOf('/admin');
+    if (idx2 !== -1) {
+        return p.substring(0, idx2 + 6) + '/';
     }
     return APP_ROOT + 'admin/';
 })();
@@ -363,7 +376,19 @@ async function fetchExtensionRequests() {
 
         renderExtensionDropdownItems();
 
-        // 3. Callback jika berada di halaman Notifikasi / Permintaan Waktu
+        // 3. Update Alert Banner Permintaan Waktu (di Monitoring, Hasil Ujian, dsb jika ada)
+        const banner = document.getElementById('mon-extension-alert-banner') || document.getElementById('extension-alert-banner');
+        const text = document.getElementById('mon-extension-alert-text') || document.getElementById('extension-alert-text');
+        if (banner) {
+            if (count > 0) {
+                if (text) text.textContent = `Ada ${count} siswa meminta perpanjangan waktu!`;
+                banner.classList.remove('hidden');
+            } else {
+                banner.classList.add('hidden');
+            }
+        }
+
+        // 4. Callback jika berada di halaman Notifikasi / Permintaan Waktu
         if (typeof window.onExtensionRequestsUpdated === 'function') {
             window.onExtensionRequestsUpdated(data);
         }

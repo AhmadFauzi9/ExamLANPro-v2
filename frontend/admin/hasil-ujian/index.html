@@ -40,6 +40,23 @@
             <!-- Content Area: HASIL UJIAN -->
             <div class="space-y-4 min-w-0">
                 
+                <!-- Alert Banner for Time Extension Requests -->
+                <div id="mon-extension-alert-banner" class="hidden bg-rose-50 border border-rose-200 text-rose-800 p-3 rounded-2xl flex items-center justify-between gap-3 shadow-2xs">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-xl bg-rose-600 text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-xs animate-pulse">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-xs" id="mon-extension-alert-text">Ada siswa meminta perpanjangan waktu!</p>
+                            <p class="text-[11px] text-rose-600">Siswa butuh tambahan waktu ujian karena kendala teknis.</p>
+                        </div>
+                    </div>
+                    <a href="../notifikasi/" class="px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center gap-1.5 shrink-0">
+                        <span>Kelola Permintaan</span>
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </a>
+                </div>
+
                 <!-- Summary Cards Grid (5 Cards: Status Peserta, Status Pengerjaan, Rata-rata, Max/Min, KKM) -->
                 <div id="dashboard-summary" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
                     <!-- 1. Status Peserta Ujian -->

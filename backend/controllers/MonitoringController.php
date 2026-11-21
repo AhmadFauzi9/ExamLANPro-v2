@@ -65,6 +65,18 @@ class MonitoringController {
 
         $db['student_sessions'] = $db['student_sessions'] ?? [];
         $db['active_attempts'] = $db['active_attempts'] ?? [];
+        $db['time_extension_requests'] = $db['time_extension_requests'] ?? [];
+
+        // Peta permintaan perpanjangan waktu yang sedang PENDING
+        $pendingExtensionMap = [];
+        foreach ($db['time_extension_requests'] as $req) {
+            if (($req['status'] ?? '') === 'PENDING') {
+                $th = (string)($req['token_hash'] ?? '');
+                $rn = (string)($req['nis'] ?? '');
+                if ($th !== '') $pendingExtensionMap[$th] = true;
+                if ($rn !== '') $pendingExtensionMap[$rn] = true;
+            }
+        }
 
         // Hitung urutan attempt per siswa & per kuis (untuk mendeteksi pengerjaan remedial / attempt ke-2 dst)
         $attemptsByStudentQuiz = [];
@@ -166,6 +178,7 @@ class MonitoringController {
                 'login_at' => (int)($sess['login_at'] ?? $aStart),
                 'finished_at' => !empty($a['finished']) ? $aUpdated : 0,
                 'time_remaining' => ($status === 'WORKING' && $endsAt > time()) ? ($endsAt - time()) : 0,
+                'has_extension_request' => !empty($pendingExtensionMap[$attKey]) || !empty($pendingExtensionMap[$aNis]),
                 'violations_count' => $violationsCount,
                 'ip' => $ip
             ];
@@ -230,6 +243,7 @@ class MonitoringController {
                 'login_at' => (int)($sess['login_at'] ?? $startedAt),
                 'finished_at' => (int)($sess['finished_at'] ?? 0),
                 'time_remaining' => 0,
+                'has_extension_request' => !empty($pendingExtensionMap[$sNis]),
                 'ip' => (string)($sess['ip'] ?? ''),
                 'violations_count' => (int)($sess['violations_count'] ?? 0)
             ];

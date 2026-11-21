@@ -116,7 +116,7 @@
                     <!-- Admin Extension Bell (Permintaan Waktu Siswa) -->
                     <a id="admin-bell-btn" href="${adminBase}notifikasi/" class="relative p-2 px-2.5 sm:px-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 transition focus:outline-none" title="Permintaan Waktu Siswa">
                         <i class="fa-solid fa-bell text-sm sm:text-base"></i>
-                        <span id="admin-bell-dot" class="hidden absolute top-1 right-1 w-2.5 h-2.5 bg-rose-500 rounded-full ring-2 ring-slate-900 animate-pulse"></span>
+                        <span id="admin-bell-dot" class="${(global.pendingExtensionRequests && global.pendingExtensionRequests.length > 0) ? '' : 'hidden'} absolute top-1 right-1 w-2.5 h-2.5 bg-rose-500 rounded-full ring-2 ring-slate-900 animate-pulse"></span>
                     </a>
 
                     <!-- Panduan Jaringan LAN -->
@@ -169,7 +169,7 @@
                                 <i class="fa-solid ${m.icon} w-4 text-center text-sm ${iconColor}"></i>
                                 <span class="whitespace-nowrap">${m.title}</span>
                             </div>
-                            ${m.badgeId ? `<span id="${m.badgeId}" class="hidden ml-auto bg-rose-600 text-white text-[10px] font-black px-1.5 py-0.2 rounded-full animate-pulse shadow-sm">0</span>` : ''}
+                            ${m.badgeId ? `<span id="${m.badgeId}" class="${(global.pendingExtensionRequests && global.pendingExtensionRequests.length > 0) ? '' : 'hidden'} ml-auto bg-rose-600 text-white text-[10px] font-black px-1.5 py-0.2 rounded-full animate-pulse shadow-sm">${(global.pendingExtensionRequests && global.pendingExtensionRequests.length) || 0}</span>` : ''}
                         </a>
                     `;
                 }).join('')}

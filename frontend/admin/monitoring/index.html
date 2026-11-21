@@ -1096,33 +1096,37 @@
         }
 
         function getStatusBadge(m) {
+            let badgeHtml = '';
             const st = m.status;
             if (st === 'WORKING') {
-                return `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                badgeHtml = `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Mengerjakan
                 </span>`;
-            }
-            if (st === 'STANDBY') {
-                return `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-sky-50 text-sky-700 border border-sky-200">
+            } else if (st === 'STANDBY') {
+                badgeHtml = `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-sky-50 text-sky-700 border border-sky-200">
                     <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span> Standby
                 </span>`;
-            }
-            if (st === 'FINISHED') {
-                return `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-purple-50 text-purple-700 border border-purple-200">
+            } else if (st === 'FINISHED') {
+                badgeHtml = `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-purple-50 text-purple-700 border border-purple-200">
                     <i class="fa-solid fa-circle-check text-[10px]"></i> Selesai
                 </span>`;
-            }
-            if (st === 'TIME_OVER') {
-                return `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-50 text-amber-700 border border-amber-200">
+            } else if (st === 'TIME_OVER') {
+                badgeHtml = `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-50 text-amber-700 border border-amber-200">
                     <i class="fa-solid fa-clock text-[10px]"></i> Waktu Habis
                 </span>`;
-            }
-            if (st === 'OFFLINE') {
-                return `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-rose-50 text-rose-700 border border-rose-200 animate-pulse">
+            } else if (st === 'OFFLINE') {
+                badgeHtml = `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-rose-50 text-rose-700 border border-rose-200 animate-pulse">
                     <i class="fa-solid fa-plug-circle-xmark text-[10px]"></i> Terputus
                 </span>`;
+            } else {
+                badgeHtml = `<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-slate-100 text-slate-600">${escapeHtml(m.status_label || st)}</span>`;
             }
-            return `<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-slate-100 text-slate-600">${escapeHtml(m.status_label || st)}</span>`;
+
+            if (m.has_extension_request) {
+                badgeHtml += ` <a href="../notifikasi/" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-black bg-rose-600 hover:bg-rose-700 text-white shadow-xs animate-pulse ml-1 transition" title="Siswa ini meminta tambahan waktu! Klik untuk mengelola"><i class="fa-solid fa-clock-rotate-left"></i> Minta Waktu</a>`;
+            }
+
+            return badgeHtml;
         }
 
         function getRemainingTimeHtml(m) {
