@@ -104,13 +104,18 @@
                             <option value="class_asc">Kelas</option>
                         </select>
 
-                        <!-- 3. Filter: Kelas -->
-                        <select id="student-filter-class" onchange="handleSearchFilter()" class="px-1.5 py-1.5 w-[80px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none" title="Filter Kelas">
+                        <!-- 3. Filter: Kelas / Tingkat -->
+                        <select id="student-filter-class" onchange="onClassFilterChange()" class="px-1.5 py-1.5 w-[80px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none cursor-pointer" title="Filter Kelas / Tingkat (7, 8, 9, VII, dsb.)">
                             <option value="all">Kelas</option>
                         </select>
 
-                        <!-- 3. Filter: Tahun -->
-                        <select id="student-filter-year" onchange="handleSearchFilter()" class="px-1.5 py-1.5 w-[80px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none" title="Filter Tahun">
+                        <!-- 4. Filter: Bagian -->
+                        <select id="student-filter-section" onchange="handleSearchFilter()" class="px-1.5 py-1.5 w-[80px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none cursor-pointer" title="Filter Bagian / Rombel (A, B, C, dsb.)">
+                            <option value="all">Bagian</option>
+                        </select>
+
+                        <!-- 5. Filter: Tahun -->
+                        <select id="student-filter-year" onchange="handleSearchFilter()" class="px-1.5 py-1.5 w-[80px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none cursor-pointer" title="Filter Tahun">
                             <option value="all">Tahun</option>
                         </select>
 
@@ -354,36 +359,102 @@
             }
         }
 
+        function sortClassLevels(a, b) {
+            const romanMap = { 'I': 1, 'II': 2, 'III': 3, 'IV': 4, 'V': 5, 'VI': 6, 'VII': 7, 'VIII': 8, 'IX': 9, 'X': 10, 'XI': 11, 'XII': 12 };
+            const valA = romanMap[a] || parseInt(a) || 999;
+            const valB = romanMap[b] || parseInt(b) || 999;
+            if (valA !== valB) return valA - valB;
+            return a.localeCompare(b);
+        }
+
+        function parseStudentClass(rawClass) {
+            if (!rawClass) return { level: '', section: '', raw: '' };
+            const str = String(rawClass).trim();
+            const clean = str.replace(/^(?:kelas|kls)\s+/i, '');
+
+            const match = clean.match(/^((?:XII|XI|IX|X|VIII|VII|VI|V|IV|III|II|I|\d+))(?:\s*[-_./\s]?\s*(.+))?$/i);
+            if (match) {
+                const level = match[1].toUpperCase();
+                let rem = (match[2] || '').trim();
+                let section = '';
+                if (rem) {
+                    const secMatch = rem.match(/^([A-Za-z0-9]+)(?:\s*\(.*\))?$/);
+                    if (secMatch) {
+                        section = secMatch[1].trim().toUpperCase();
+                    } else {
+                        section = rem.replace(/\s*\(.*\)$/, '').trim().toUpperCase();
+                    }
+                }
+                return { level, section, raw: str };
+            }
+            return { level: clean, section: '', raw: str };
+        }
+
         function populateClassAndYearFilters() {
             const classSelect = document.getElementById('student-filter-class');
+            const sectionSelect = document.getElementById('student-filter-section');
             const yearSelect = document.getElementById('student-filter-year');
             if (!classSelect || !yearSelect) return;
 
             const currentClass = classSelect.value || 'all';
+            const currentSection = sectionSelect ? (sectionSelect.value || 'all') : 'all';
             const currentYear = yearSelect.value || 'all';
 
-            const classes = Array.from(new Set(rawStudents.map(s => (s.class || '').trim()).filter(Boolean))).sort();
+            const rawClasses = Array.from(new Set(rawStudents.map(s => (s.class || '').trim()).filter(Boolean)));
+            const parsedList = rawStudents.map(s => parseStudentClass(s.class));
+
+            // Tingkatan unik (7, 8, 9 / VII, VIII, IX, dll.)
+            const levels = Array.from(new Set(parsedList.map(p => p.level).filter(Boolean))).sort(sortClassLevels);
+
+            // Bagian unik (A, B, C, dll.)
+            // Jika filter kelas/tingkat sedang aktif, tampilkan bagian yang ada pada tingkat tersebut
+            const availableSections = Array.from(new Set(
+                parsedList
+                    .filter(p => currentClass === 'all' || p.level === currentClass)
+                    .map(p => p.section)
+                    .filter(Boolean)
+            )).sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+
             const years = Array.from(new Set(rawStudents.map(s => (s.tahun_ajaran || '').trim()).filter(Boolean))).sort();
 
-            classSelect.innerHTML = '<option value="all">Kelas</option>' + classes.map(c => `<option value="${c}" ${c === currentClass ? 'selected' : ''}>${c}</option>`).join('');
+            classSelect.innerHTML = '<option value="all">Kelas</option>' + levels.map(c => `<option value="${c}" ${c === currentClass ? 'selected' : ''}>${c}</option>`).join('');
+
+            if (sectionSelect) {
+                const sectionValid = availableSections.includes(currentSection);
+                sectionSelect.innerHTML = '<option value="all">Bagian</option>' + availableSections.map(s => `<option value="${s}" ${s === currentSection && sectionValid ? 'selected' : ''}>${s}</option>`).join('');
+                if (!sectionValid && currentSection !== 'all') {
+                    sectionSelect.value = 'all';
+                }
+            }
+
             yearSelect.innerHTML = '<option value="all">Tahun</option>' + years.map(y => `<option value="${y}" ${y === currentYear ? 'selected' : ''}>${y}</option>`).join('');
 
             const classDatalist = document.getElementById('class-datalist');
             if (classDatalist) {
-                classDatalist.innerHTML = classes.map(c => `<option value="${c}">`).join('');
+                classDatalist.innerHTML = rawClasses.sort().map(c => `<option value="${c}">`).join('');
             }
+        }
+
+        function onClassFilterChange() {
+            populateClassAndYearFilters();
+            handleSearchFilter();
         }
 
         function handleSearchFilter() {
             const q = (document.getElementById('student-search-input')?.value || '').toLowerCase().trim();
             const fClass = document.getElementById('student-filter-class')?.value || 'all';
+            const fSection = document.getElementById('student-filter-section')?.value || 'all';
             const fYear = document.getElementById('student-filter-year')?.value || 'all';
 
             filteredStudents = rawStudents.filter(st => {
                 const matchQ = !q || (st.name || '').toLowerCase().includes(q) || (st.nis || '').toLowerCase().includes(q);
-                const matchClass = fClass === 'all' || (st.class || '').trim() === fClass;
+                
+                const parsed = parseStudentClass(st.class);
+                const matchClass = fClass === 'all' || parsed.level === fClass;
+                const matchSection = fSection === 'all' || parsed.section === fSection;
                 const matchYear = fYear === 'all' || (st.tahun_ajaran || '').trim() === fYear;
-                return matchQ && matchClass && matchYear;
+
+                return matchQ && matchClass && matchSection && matchYear;
             });
 
             const sortMode = document.getElementById('student-sort')?.value || 'default';
