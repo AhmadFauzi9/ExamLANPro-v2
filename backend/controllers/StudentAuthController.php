@@ -73,11 +73,9 @@ class StudentAuthController {
         $db['active_attempts'] = $db['active_attempts'] ?? [];
         foreach ($db['active_attempts'] as $ak => $cand) {
             if ((string)($cand['nis'] ?? '') === $nis && empty($cand['finished'])) {
-                if ((int)($cand['ends_at'] ?? 0) > time()) {
-                    $activeAttempt = $cand;
-                    $activeAttemptKey = $ak;
-                    break;
-                }
+                $activeAttempt = $cand;
+                $activeAttemptKey = $ak;
+                break;
             }
         }
 

@@ -446,6 +446,36 @@ async function handleExtensionDecision(tokenHash, approve, minutes = 15) {
     }
 }
 
+async function quickGrantExtension(tokenHash, nis, minutes = 15) {
+    if (await appConfirm(`Berikan tambahan waktu ${minutes} menit untuk siswa ini?`, 'Konfirmasi Perpanjangan Waktu', 'Batal', `Beri +${minutes} Menit`)) {
+        try {
+            const res = await fetch(`${API_URL}?action=approve_extension`, {
+                method: 'POST',
+                credentials: 'same-origin',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ token_hash: tokenHash || '', nis: nis || '', minutes: parseInt(minutes) || 15 })
+            });
+            const data = await res.json();
+            if (res.ok && data.status === 'success') {
+                appAlert(data.message || `Perpanjangan waktu ${minutes} menit berhasil diberikan.`, 'Berhasil');
+                await fetchExtensionRequests();
+                if (typeof window.onExtensionRequestsUpdated === 'function') {
+                    window.onExtensionRequestsUpdated();
+                } else if (typeof loadMonitoringData === 'function') {
+                    loadMonitoringData(true);
+                }
+            } else {
+                appAlert(data.message || 'Gagal memberikan perpanjangan waktu.', 'Perhatian');
+            }
+        } catch (e) {
+            appAlert('Gagal memproses perpanjangan waktu. Periksa koneksi server.', 'Error');
+        }
+    }
+}
+
+window.handleExtensionDecision = handleExtensionDecision;
+window.quickGrantExtension = quickGrantExtension;
+
 // ================= UNIVERSAL CUSTOM TOOLTIP SYSTEM =================
 // Menghilangkan tooltip default browser (alt/title bawaan) saat elemen disorot,
 // dan menggantikannya dengan floating custom tooltip yang modern, cepat, dan rapi.

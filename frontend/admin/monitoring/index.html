@@ -743,6 +743,35 @@
                 populateFilterDropdowns();
                 updateMonitoringTokenWidget();
                 handleMonFilter();
+
+                // Sinkronkan badge & banner permintaan waktu secara instan
+                if (d.pending_extension_count !== undefined) {
+                    const count = d.pending_extension_count;
+                    const banner = document.getElementById('mon-extension-alert-banner');
+                    const text = document.getElementById('mon-extension-alert-text');
+                    if (banner) {
+                        if (count > 0) {
+                            if (text) text.textContent = `Ada ${count} siswa meminta perpanjangan waktu!`;
+                            banner.classList.remove('hidden');
+                        } else {
+                            banner.classList.add('hidden');
+                        }
+                    }
+                    const sidebarBadge = document.getElementById('sidebar-notif-badge');
+                    if (sidebarBadge) {
+                        if (count > 0) {
+                            sidebarBadge.innerText = count;
+                            sidebarBadge.classList.remove('hidden');
+                        } else {
+                            sidebarBadge.classList.add('hidden');
+                        }
+                    }
+                    const dot = document.getElementById('admin-bell-dot');
+                    if (dot) {
+                        if (count > 0) dot.classList.remove('hidden');
+                        else dot.classList.add('hidden');
+                    }
+                }
             } catch (e) {
                 if (!silent) {
                     document.getElementById('monitoring-tbody').innerHTML = `
@@ -769,10 +798,10 @@
             }
 
             const total = relevantMonitoring.length;
-            const working = relevantMonitoring.filter(m => m.status === 'WORKING').length;
+            const working = relevantMonitoring.filter(m => m.status === 'WORKING' || m.status === 'TIME_OVER').length;
             const standby = relevantMonitoring.filter(m => m.status === 'STANDBY').length;
             const finished = relevantMonitoring.filter(m => m.status === 'FINISHED').length;
-            const offline = relevantMonitoring.filter(m => m.status === 'OFFLINE' || m.status === 'TIME_OVER').length;
+            const offline = relevantMonitoring.filter(m => m.status === 'OFFLINE').length;
             const violations = relevantMonitoring.reduce((sum, m) => sum + (Number(m.violations_count) || 0), 0);
 
             document.getElementById('sum-total').innerText = total;
@@ -826,8 +855,10 @@
             filteredMonitoring = rawMonitoring.filter(m => {
                 if (filterOnlyViolations && (Number(m.violations_count) || 0) <= 0) return false;
                 if (statusFilter !== 'ALL') {
-                    if (statusFilter === 'OFFLINE') {
-                        if (m.status !== 'OFFLINE' && m.status !== 'TIME_OVER') return false;
+                    if (statusFilter === 'WORKING') {
+                        if (m.status !== 'WORKING' && m.status !== 'TIME_OVER') return false;
+                    } else if (statusFilter === 'OFFLINE') {
+                        if (m.status !== 'OFFLINE') return false;
                     } else if (m.status !== statusFilter) {
                         return false;
                     }
@@ -1033,6 +1064,10 @@
 
             if (isWorkingOrOffline) {
                 itemsHtml += `
+                    <button type="button" onclick="quickGrantExtension('${escapeHtml(attempt)}', '${escapeHtml(nis)}', 15)" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-left text-brand-700 hover:bg-brand-50 font-medium transition cursor-pointer">
+                        <i class="fa-solid fa-clock-rotate-left text-brand-600 w-4 text-center"></i>
+                        <span>Beri +15 Menit Waktu</span>
+                    </button>
                     <button type="button" onclick="runMonAction('force_finish', ${globalIdx})" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-left text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 font-medium transition cursor-pointer">
                         <i class="fa-solid fa-file-circle-check text-emerald-600 w-4 text-center"></i>
                         <span>Kumpulkan Paksa Ujian</span>
@@ -1133,11 +1168,14 @@
             if (m.status === 'FINISHED') {
                 return `<span class="text-purple-700 font-bold font-mono text-[11px] flex items-center gap-1"><i class="fa-solid fa-check-double text-[10px]"></i> Selesai</span>`;
             }
+            if (m.status === 'TIME_OVER') {
+                return `<span class="text-amber-700 font-bold font-mono text-[11px] flex items-center gap-1"><i class="fa-solid fa-hourglass-end text-[10px]"></i> Waktu Habis</span>`;
+            }
             if (m.status === 'WORKING' || m.status === 'OFFLINE') {
                 const now = Math.floor(Date.now() / 1000);
                 const remain = Math.max(0, (m.ends_at || 0) - now);
                 if (remain <= 0) {
-                    return `<span class="text-amber-700 font-bold font-mono text-[11px]">Waktu Habis</span>`;
+                    return `<span class="text-amber-700 font-bold font-mono text-[11px] flex items-center gap-1"><i class="fa-solid fa-hourglass-end text-[10px]"></i> Waktu Habis</span>`;
                 }
                 const mins = Math.floor(remain / 60);
                 const secs = remain % 60;
@@ -1764,14 +1802,16 @@
         window.onExtensionRequestsUpdated = function(data) {
             const banner = document.getElementById('mon-extension-alert-banner');
             const text = document.getElementById('mon-extension-alert-text');
-            if (!banner) return;
-            const count = data?.pending_count || 0;
-            if (count > 0) {
-                if (text) text.textContent = `Ada ${count} siswa meminta perpanjangan waktu!`;
-                banner.classList.remove('hidden');
-            } else {
-                banner.classList.add('hidden');
+            if (banner) {
+                const count = data?.pending_count || 0;
+                if (count > 0) {
+                    if (text) text.textContent = `Ada ${count} siswa meminta perpanjangan waktu!`;
+                    banner.classList.remove('hidden');
+                } else {
+                    banner.classList.add('hidden');
+                }
             }
+            loadMonitoringData(true);
         };
     </script>
 </body>

@@ -76,8 +76,7 @@ class ExamAttemptController {
             if (
                 (string)($existingAttempt['nis'] ?? '') === $nis &&
                 (string)($existingAttempt['quiz_id'] ?? '') === $quizId &&
-                empty($existingAttempt['finished']) &&
-                (int)($existingAttempt['ends_at'] ?? 0) > time()
+                empty($existingAttempt['finished'])
             ) {
                 $tokenToSend = $existingAttempt['token'] ?? '';
                 if ($tokenToSend === '') {
@@ -287,10 +286,8 @@ class ExamAttemptController {
                 return;
             }
 
-            if (time() > (int)$attempt['ends_at']) {
-                return;
-            }
-
+            // Tetap izinkan penyimpanan jawaban akhir dan pembaruan timestamp
+            // meskipun waktu countdown siswa telah habis (sebelum submit resmi)
             $answers = Utils::normalizeAnswers($input['answers'] ?? []);
             $allowed = count($attempt['question_order'] ?? []);
             foreach ($answers as $position => $answer) {
@@ -307,7 +304,9 @@ class ExamAttemptController {
                 $db['student_sessions'] = $db['student_sessions'] ?? [];
                 if (isset($db['student_sessions'][$nis])) {
                     $db['student_sessions'][$nis]['last_seen'] = time();
-                    $db['student_sessions'][$nis]['status'] = 'WORKING';
+                    if (empty($db['student_sessions'][$nis]['status']) || $db['student_sessions'][$nis]['status'] !== 'FINISHED') {
+                        $db['student_sessions'][$nis]['status'] = 'WORKING';
+                    }
                 }
             }
             $saved = true;
@@ -318,9 +317,6 @@ class ExamAttemptController {
             $attempt = $db['active_attempts'][$key] ?? null;
             if (!$attempt || !empty($attempt['finished'])) {
                 Response::notFound('Sesi ujian tidak aktif.');
-            }
-            if (time() > (int)$attempt['ends_at']) {
-                Response::forbidden('Waktu ujian telah berakhir.');
             }
         }
 

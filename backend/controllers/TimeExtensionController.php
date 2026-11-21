@@ -12,18 +12,33 @@ class TimeExtensionController {
     public static function request() {
         $input = Utils::getJsonInput();
         $token = trim((string)($input['attempt_token'] ?? $input['token'] ?? ''));
+        $inputNis = trim((string)($input['nis'] ?? ''));
         $db = Database::load();
         $db['time_extension_requests'] = $db['time_extension_requests'] ?? [];
 
-        $key = Utils::attemptKey($token);
-        $attempt = $db['active_attempts'][$key] ?? ($db['active_attempts'][$token] ?? null);
-        if ($attempt && !isset($db['active_attempts'][$key]) && isset($db['active_attempts'][$token])) {
+        $key = $token !== '' ? Utils::attemptKey($token) : '';
+        $attempt = null;
+        if ($key !== '' && isset($db['active_attempts'][$key])) {
+            $attempt = $db['active_attempts'][$key];
+        } elseif ($token !== '' && isset($db['active_attempts'][$token])) {
+            $attempt = $db['active_attempts'][$token];
             $key = $token;
         }
 
-        if (!$attempt) {
+        if (!$attempt && $token !== '') {
             foreach ($db['active_attempts'] as $ak => $cand) {
                 if (($cand['token'] ?? '') === $token || $ak === $token || $ak === $key) {
+                    $attempt = $cand;
+                    $key = $ak;
+                    break;
+                }
+            }
+        }
+
+        // Fallback pencocokan menggunakan NIS siswa jika token lokal terputus / belum terhidrasi
+        if (!$attempt && $inputNis !== '') {
+            foreach ($db['active_attempts'] as $ak => $cand) {
+                if ((string)($cand['nis'] ?? '') === $inputNis && empty($cand['finished'])) {
                     $attempt = $cand;
                     $key = $ak;
                     break;
@@ -228,24 +243,49 @@ class TimeExtensionController {
     }
 
     public static function checkStatus() {
-        $token = (string)($_GET['token'] ?? '');
+        $token = trim((string)($_GET['token'] ?? ''));
+        $nis = trim((string)($_GET['nis'] ?? ''));
         $db = Database::load();
-        $key = Utils::attemptKey($token);
-        $attempt = $db['active_attempts'][$key] ?? null;
+        $key = $token !== '' ? Utils::attemptKey($token) : '';
+
+        $attempt = null;
+        if ($key !== '' && isset($db['active_attempts'][$key])) {
+            $attempt = $db['active_attempts'][$key];
+        } elseif ($token !== '' && isset($db['active_attempts'][$token])) {
+            $attempt = $db['active_attempts'][$token];
+            $key = $token;
+        }
+
+        if (!$attempt && $nis !== '') {
+            foreach ($db['active_attempts'] as $ak => $cand) {
+                if ((string)($cand['nis'] ?? '') === $nis && empty($cand['finished'])) {
+                    $attempt = $cand;
+                    $key = $ak;
+                    break;
+                }
+            }
+        }
+
         $targetReq = null;
         foreach ($db['time_extension_requests'] ?? [] as $req) {
-            if (($req['token_hash'] ?? '') === $key) {
+            if (
+                ($key !== '' && ($req['token_hash'] ?? '') === $key) ||
+                ($token !== '' && ($req['token_hash'] ?? '') === $token) ||
+                ($nis !== '' && ($req['nis'] ?? '') === $nis)
+            ) {
                 $targetReq = $req;
                 break;
             }
         }
+
         if (!$targetReq) {
             Response::json(['status' => 'success', 'extension_status' => 'NONE']);
         }
+
         Response::json([
             'status' => 'success',
             'extension_status' => $targetReq['status'],
-            'ends_at' => $attempt ? (int)$attempt['ends_at'] : 0,
+            'ends_at' => $attempt ? (int)$attempt['ends_at'] : (int)($targetReq['new_ends_at'] ?? 0),
             'server_now' => time()
         ]);
     }

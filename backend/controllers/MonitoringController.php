@@ -184,7 +184,7 @@ class MonitoringController {
             ];
 
             $trackedAttemptKeys[$attKey] = true;
-            if ($status === 'WORKING' || $status === 'OFFLINE') {
+            if ($status === 'WORKING' || $status === 'OFFLINE' || $status === 'TIME_OVER') {
                 $studentsWithAttempt[$aNis] = true;
             }
         }
@@ -272,11 +272,15 @@ class MonitoringController {
             elseif ($st === 'TIME_OVER') $counts['time_over']++;
         }
 
+        $pendingRequests = array_values(array_filter($db['time_extension_requests'] ?? [], fn($r) => ($r['status'] ?? '') === 'PENDING'));
+
         $scores = array_map(fn($r)=>(int)($r['score']??0), $db['results']);
         Response::json([
             'status' => 'success',
             'monitoring' => $monitoring,
             'counts' => $counts,
+            'pending_extension_count' => count($pendingRequests),
+            'pending_extension_requests' => $pendingRequests,
             'quizzes' => array_values(array_map(function($q) {
                 return [
                     'id' => (string)($q['id'] ?? ''),

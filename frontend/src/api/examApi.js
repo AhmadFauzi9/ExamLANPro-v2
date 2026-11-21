@@ -72,19 +72,25 @@ export const examApi = {
     /**
      * Mengajukan permintaan perpanjangan waktu ke guru pengawas
      */
-    async requestExtension(attemptToken) {
+    async requestExtension(attemptToken, nis = '') {
         return apiRequest('request_extension', {
             method: 'POST',
-            data: { attempt_token: attemptToken }
+            data: {
+                attempt_token: attemptToken,
+                nis: nis
+            }
         });
     },
 
     /**
      * Mengecek status persetujuan perpanjangan waktu
      */
-    async checkExtensionStatus(attemptToken) {
+    async checkExtensionStatus(attemptToken, nis = '') {
         return apiRequest('check_extension_status', {
-            data: { token: attemptToken }
+            data: {
+                token: attemptToken,
+                nis: nis
+            }
         });
     }
 };

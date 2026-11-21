@@ -541,6 +541,7 @@
                 }
 
                 const tempScore = totalQ > 0 ? Math.round((correctCount / totalQ) * 100) : 0;
+                const isTimedOut = (att.ends_at && Number(att.ends_at) > 0 && Math.floor(Date.now() / 1000) > Number(att.ends_at));
 
                 allResults.unshift({
                     nis: att.nis,
@@ -551,8 +552,9 @@
                     score: tempScore,
                     correct: correctCount,
                     wrong: wrongCount,
-                    date: 'Sedang Mengerjakan',
+                    date: isTimedOut ? 'Waktu Habis' : 'Sedang Mengerjakan',
                     is_in_progress: true,
+                    is_time_over: isTimedOut,
                     total_questions: totalQ,
                     answered_count: answeredCount,
                     updated_at: att.updated_at || att.started_at || Date.now()
@@ -1208,8 +1210,12 @@
 
                     if (isInProgress) {
                         scoreBadge = `<span class="inline-block px-2.5 py-0.5 rounded-lg text-xs font-black bg-sky-100 text-sky-800 border border-sky-300" title="Skor sementara">${score}*</span>`;
-                        kkmBadge = `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-sky-50 text-sky-700 border border-sky-200 animate-pulse"><i class="fa-solid fa-spinner fa-spin text-[9px]"></i> SEMENTARA</span>`;
-                        dateDisplay = `<span class="inline-flex items-center gap-1 text-[11px] font-bold text-sky-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Mengerjakan (${s.answered_count || 0}/${s.total_questions || 0})</span>`;
+                        kkmBadge = s.is_time_over
+                            ? `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200"><i class="fa-solid fa-clock text-[9px]"></i> WAKTU HABIS</span>`
+                            : `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-sky-50 text-sky-700 border border-sky-200 animate-pulse"><i class="fa-solid fa-spinner fa-spin text-[9px]"></i> SEMENTARA</span>`;
+                        dateDisplay = s.is_time_over
+                            ? `<span class="inline-flex items-center gap-1 text-[11px] font-bold text-amber-700"><i class="fa-solid fa-hourglass-end text-[10px]"></i> Waktu Habis (${s.answered_count || 0}/${s.total_questions || 0})</span>`
+                            : `<span class="inline-flex items-center gap-1 text-[11px] font-bold text-sky-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Mengerjakan (${s.answered_count || 0}/${s.total_questions || 0})</span>`;
                     }
 
                     return `
@@ -2312,6 +2318,22 @@
                 appAlert('Gagal memberikan izin ujian ulang.');
             }
         }
+
+        // Sinkronisasi real-time banner permintaan perpanjangan waktu
+        window.onExtensionRequestsUpdated = function(data) {
+            const banner = document.getElementById('mon-extension-alert-banner');
+            const text = document.getElementById('mon-extension-alert-text');
+            if (banner) {
+                const count = data?.pending_count || 0;
+                if (count > 0) {
+                    if (text) text.textContent = `Ada ${count} siswa meminta perpanjangan waktu!`;
+                    banner.classList.remove('hidden');
+                } else {
+                    banner.classList.add('hidden');
+                }
+            }
+            loadResultsData(true);
+        };
     </script>
 </body>
 </html>

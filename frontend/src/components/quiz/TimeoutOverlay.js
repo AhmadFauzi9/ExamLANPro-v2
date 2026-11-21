@@ -3,6 +3,8 @@
  */
 
 import { ExamContext } from '../../context/ExamContext.js';
+import { StudentContext } from '../../context/StudentContext.js';
+import { Storage } from '../../utils/storage.js';
 import { examApi } from '../../api/examApi.js';
 import { startTimer } from '../../hooks/useTimer.js';
 import { setSaveStatus } from '../../hooks/useAutoSave.js';
@@ -39,26 +41,36 @@ export async function requestTimeExtension() {
     }
 
     try {
-        const res = await examApi.requestExtension(ExamContext.attemptToken);
+        const attemptToken = ExamContext.attemptToken || Storage.getActiveAttempt()?.token || '';
+        const studentNis = StudentContext.activeStudent?.nis || Storage.getActiveAttempt()?.nis || '';
+        const res = await examApi.requestExtension(attemptToken, studentNis);
         const data = res.data;
 
         if (!res.ok || data?.status !== 'success') {
             if (msg) msg.textContent = data?.message || 'Gagal mengajukan perpanjangan.';
-            if (btn) btn.disabled = false;
+            if (btn) {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-clock-rotate-left"></i> <span>Coba Minta Waktu Lagi</span>';
+            }
             return;
         }
 
         clearInterval(pollExtensionInterval);
-        pollExtensionInterval = setInterval(checkExtensionStatusPoll, 5000);
+        pollExtensionInterval = setInterval(checkExtensionStatusPoll, 3000);
     } catch (err) {
         if (msg) msg.textContent = 'Gagal menghubungi server. Periksa jaringan LAN.';
-        if (btn) btn.disabled = false;
+        if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fa-solid fa-clock-rotate-left"></i> <span>Coba Minta Waktu Lagi</span>';
+        }
     }
 }
 
 export async function checkExtensionStatusPoll() {
     try {
-        const res = await examApi.checkExtensionStatus(ExamContext.attemptToken);
+        const attemptToken = ExamContext.attemptToken || Storage.getActiveAttempt()?.token || '';
+        const studentNis = StudentContext.activeStudent?.nis || Storage.getActiveAttempt()?.nis || '';
+        const res = await examApi.checkExtensionStatus(attemptToken, studentNis);
         const data = res.data;
         if (!res.ok || !data) return;
 
