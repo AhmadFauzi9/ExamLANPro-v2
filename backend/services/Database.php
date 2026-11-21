@@ -4,6 +4,8 @@
  * Robust, Concurrency-Safe, Atomic File-Backed Storage with Anti-Wipeout Protection
  */
 
+require_once __DIR__ . '/BackupService.php';
+
 class Database {
     private static ?array $cachedDb = null;
     private static $lockHandle = null;
@@ -203,7 +205,7 @@ class Database {
         $db['active_attempts'] = $db['active_attempts'] ?? [];
         $db['student_sessions'] = $db['student_sessions'] ?? [];
         $db['audit_logs'] = $db['audit_logs'] ?? [];
-        $db['backups'] = $db['backups'] ?? [];
+        $db['backups'] = BackupService::getBackupsList($db);
         $db['time_extension_requests'] = $db['time_extension_requests'] ?? [];
         $db['settings'] = $db['settings'] ?? [];
 

@@ -36,6 +36,7 @@ export function renderExamInfoScreen(info) {
     const classEl = document.getElementById('info-student-class');
     const titleEl = document.getElementById('info-quiz-title');
     const questionsEl = document.getElementById('info-quiz-questions');
+    const kkmEl = document.getElementById('info-quiz-kkm');
     const typesEl = document.getElementById('info-quiz-types');
     const dateEl = document.getElementById('info-exam-date');
 
@@ -54,6 +55,9 @@ export function renderExamInfoScreen(info) {
                 questionsEl.innerText = `${totalQ} Soal (${selectedQuiz.duration} Menit)`;
             }
         }
+
+        const kkmVal = (selectedQuiz.kkm !== undefined && selectedQuiz.kkm !== null && !isNaN(Number(selectedQuiz.kkm))) ? Number(selectedQuiz.kkm) : 75;
+        if (kkmEl) kkmEl.innerText = `KKM: ${kkmVal}`;
 
         const uniqueTypes = Array.from(new Set((selectedQuiz.questions || []).map(q => q.type || 'mc')));
         if (typesEl) {

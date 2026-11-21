@@ -407,13 +407,31 @@
         }
 
         async function createBackup() {
+            const btn = document.querySelector('button[onclick="createBackup()"]');
+            const originalHtml = btn ? btn.innerHTML : '';
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin text-xs"></i> <span>Mencadangkan...</span>';
+            }
+
             try {
                 const res = await fetch(`${API_URL}?action=create_backup`, {
                     method: 'POST',
                     credentials: 'same-origin'
                 });
+                if (res.status === 403) {
+                    lockTeacherServer();
+                    return;
+                }
                 const d = await res.json();
-                if (d.backups) dbData.backups = d.backups;
+                if (!res.ok || d.status !== 'success') {
+                    throw new Error(d.message || 'Gagal membuat backup');
+                }
+                if (d.backups) {
+                    dbData.backups = d.backups;
+                } else {
+                    await fetchDataFromAPI();
+                }
                 renderBackupList();
                 if (typeof showToast === 'function') {
                     showToast(d.message || 'Backup database berhasil dibuat.');
@@ -421,7 +439,12 @@
                     appAlert(d.message || 'Backup database berhasil dibuat.', 'Cadangan Dibuat');
                 }
             } catch (e) {
-                appAlert('Gagal membuat backup database.');
+                appAlert(e.message || 'Gagal membuat backup database.');
+            } finally {
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerHTML = originalHtml;
+                }
             }
         }
 

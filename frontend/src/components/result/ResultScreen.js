@@ -29,6 +29,27 @@ export function renderResultScreen(sub) {
     setText('#res-incorrect', sub.wrong || 0);
     setText('#res-percentage', `${sub.score || 0}%`);
 
+    // Evaluasi Status Kelulusan KKM
+    const currentQuiz = ExamContext.currentQuiz;
+    const kkmVal = (currentQuiz && currentQuiz.kkm !== undefined && currentQuiz.kkm !== null && !isNaN(Number(currentQuiz.kkm))) ? Number(currentQuiz.kkm) : 75;
+    const scoreVal = Number(sub.score || 0);
+    const isPassed = scoreVal >= kkmVal;
+
+    const bannerEl = document.getElementById('res-kkm-status-banner');
+    const iconEl = document.getElementById('res-kkm-status-icon');
+    const textEl = document.getElementById('res-kkm-status-text');
+    if (bannerEl && textEl && iconEl) {
+        if (isPassed) {
+            bannerEl.className = 'max-w-md mx-auto py-2.5 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 border bg-emerald-50 text-emerald-800 border-emerald-200 shadow-2xs';
+            iconEl.className = 'fa-solid fa-circle-check text-emerald-600';
+            textEl.innerText = `TUNTAS KKM (Batas KKM: ${kkmVal})`;
+        } else {
+            bannerEl.className = 'max-w-md mx-auto py-2.5 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 border bg-amber-50 text-amber-800 border-amber-200 shadow-2xs';
+            iconEl.className = 'fa-solid fa-triangle-exclamation text-amber-600';
+            textEl.innerText = `REMEDIAL / BELUM TUNTAS KKM (Batas KKM: ${kkmVal})`;
+        }
+    }
+
     const listContainer = document.getElementById('breakdown-list');
     const reviewStatus = document.getElementById('answer-review-status');
     ExamContext.setAnswerReviewVisible(false);

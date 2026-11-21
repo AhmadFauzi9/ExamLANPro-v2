@@ -148,10 +148,14 @@
                         <div id="info-quiz-title" class="font-bold text-brand-700 text-sm sm:text-base mt-0.5">-</div>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2 border-t border-slate-200/60">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2 border-t border-slate-200/60">
                         <div class="flex flex-col">
                             <span class="text-slate-500 text-[11px] font-semibold uppercase tracking-wider">Jumlah Soal & Durasi</span>
                             <span id="info-quiz-questions" class="font-semibold text-slate-800 mt-0.5">-</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-slate-500 text-[11px] font-semibold uppercase tracking-wider">Standar Kelulusan</span>
+                            <span id="info-quiz-kkm" class="font-bold text-indigo-700 mt-0.5">KKM: 75</span>
                         </div>
                         <div class="flex flex-col">
                             <span class="text-slate-500 text-[11px] font-semibold uppercase tracking-wider">Bentuk / Jenis Soal</span>
@@ -407,6 +411,11 @@
                             <p class="text-xs text-slate-500 font-medium">Akurasi</p>
                             <p id="res-percentage" class="text-3xl font-extrabold text-slate-700 mt-1">0%</p>
                         </div>
+                    </div>
+
+                    <div id="res-kkm-status-banner" class="max-w-md mx-auto py-2.5 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 border bg-emerald-50 text-emerald-800 border-emerald-200 shadow-2xs">
+                        <i id="res-kkm-status-icon" class="fa-solid fa-circle-check text-emerald-600"></i>
+                        <span id="res-kkm-status-text">TUNTAS KKM (Batas KKM: 75)</span>
                     </div>
 
                     <div class="pt-4 flex justify-center gap-3">

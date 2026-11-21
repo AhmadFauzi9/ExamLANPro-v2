@@ -152,7 +152,7 @@
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                         <div>
                             <label class="block font-semibold text-slate-700 mb-1" title="Berapa banyak soal yang dikerjakan siswa dari total soal di bank">Soal Dikerjakan</label>
                             <input type="number" id="quiz-max-questions-input" min="0" placeholder="0 = Semua Soal" class="w-full px-3 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none text-xs" title="Jumlah soal yang akan dikerjakan siswa (misal 25 dari 50 soal). Kosongkan atau isi 0 untuk mengerjakan seluruh soal.">
@@ -160,6 +160,10 @@
                         <div>
                             <label class="block font-semibold text-slate-700 mb-1">Durasi (Menit) <span class="text-rose-500">*</span></label>
                             <input type="number" id="quiz-duration-input" required min="1" max="360" value="60" class="w-full px-3 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none text-xs">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1" title="Kriteria Ketuntasan Minimal untuk kelulusan kuis">Standar KKM <span class="text-rose-500">*</span></label>
+                            <input type="number" id="quiz-kkm-input" required min="0" max="100" value="75" placeholder="75" class="w-full px-3 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none text-xs" title="Nilai batas kelulusan siswa (KKM)">
                         </div>
                     </div>
 
@@ -573,12 +577,14 @@
                                 </div>
                             </div>
 
-                            <!-- Token Akses -->
+                            <!-- Token Akses & KKM -->
                             <div class="pt-2 border-t border-slate-200/60 flex items-center justify-between gap-1 flex-wrap">
                                 <span class="text-[10px] font-semibold text-slate-500 flex items-center gap-1">
-                                    <i class="fa-solid fa-shield-halved text-[10px] text-slate-400"></i> Token Siswa:
+                                    <i class="fa-solid fa-shield-halved text-[10px] text-slate-400"></i> Token: ${tokenBadge}
                                 </span>
-                                ${tokenBadge}
+                                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 shadow-2xs" title="Standar KKM Kelulusan">
+                                    <i class="fa-solid fa-bullseye text-[9px] text-indigo-600"></i> KKM: ${q.kkm !== undefined && q.kkm !== null ? q.kkm : 75}
+                                </span>
                             </div>
                         </div>
 
@@ -679,6 +685,7 @@
                     document.getElementById('quiz-title-input').value = q.title || '';
                     document.getElementById('quiz-duration-input').value = q.duration || 60;
                     document.getElementById('quiz-max-questions-input').value = (q.max_questions && q.max_questions > 0) ? q.max_questions : '';
+                    document.getElementById('quiz-kkm-input').value = (q.kkm !== undefined && q.kkm !== null && q.kkm !== '') ? q.kkm : 75;
                     document.getElementById('quiz-type-input').value = q.quiz_type || 'mc';
                     document.getElementById('quiz-desc-input').value = q.description || '';
                     document.getElementById('quiz-subject-input').value = q.subject || '';
@@ -694,6 +701,7 @@
             } else {
                 document.getElementById('edit-quiz-id').value = '';
                 document.getElementById('quiz-max-questions-input').value = '';
+                document.getElementById('quiz-kkm-input').value = 75;
                 document.getElementById('quiz-type-input').value = 'mc';
                 document.getElementById('quiz-modal-title').innerText = "Buat Paket Kuis Baru";
                 const pinAuto = document.getElementById('quiz-pin-auto-refresh-input');
@@ -736,6 +744,8 @@
             const title = document.getElementById('quiz-title-input').value.trim();
             const duration = parseInt(document.getElementById('quiz-duration-input').value) || 60;
             const maxQuestions = parseInt(document.getElementById('quiz-max-questions-input').value) || 0;
+            const kkmRaw = parseInt(document.getElementById('quiz-kkm-input').value);
+            const kkm = isNaN(kkmRaw) ? 75 : Math.max(0, Math.min(100, kkmRaw));
             const quizType = document.getElementById('quiz-type-input').value;
             const desc = document.getElementById('quiz-desc-input').value.trim();
             const subject = document.getElementById('quiz-subject-input').value.trim();
@@ -755,6 +765,7 @@
                     target.title = title;
                     target.duration = duration;
                     target.max_questions = maxQuestions;
+                    target.kkm = kkm;
                     target.quiz_type = quizType;
                     target.description = desc;
                     Object.assign(target, {
@@ -770,6 +781,7 @@
                     title: title,
                     duration: duration,
                     max_questions: maxQuestions,
+                    kkm: kkm,
                     quiz_type: quizType,
                     description: desc,
                     subject, class: className, start_at, end_at, status, pin,

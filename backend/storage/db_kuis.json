@@ -12,10 +12,10 @@
             "start_at": "",
             "end_at": "",
             "status": "DRAFT",
-            "pin": "",
-            "pin_enabled": false,
+            "pin": "62NLYX",
+            "pin_enabled": true,
             "pin_auto_refresh": false,
-            "pin_updated_at": 1795226352,
+            "pin_updated_at": 1795240076,
             "questions": [
                 {
                     "type": "mc",
@@ -442,7 +442,8 @@
                     "targets": [],
                     "pairs": []
                 }
-            ]
+            ],
+            "kkm": 70
         },
         {
             "id": "quiz-1795226428170",
@@ -886,7 +887,8 @@
                     "targets": [],
                     "pairs": []
                 }
-            ]
+            ],
+            "kkm": 70
         }
     ],
     "students": [
@@ -29975,9 +29977,220 @@
             "action": "Selesai ujian",
             "target": "250136 - CEYSHA ROSMALA SANI",
             "detail": "Nilai: 80 (8 Benar, 2 Salah) - Ulangan Bersama TIK Kelas 8 Semester Ganjil 2026-2027"
+        },
+        {
+            "time": "2026-11-21T05:35:49+01:00",
+            "user": "guru",
+            "action": "Backup manual",
+            "target": "",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-21T06:33:06+01:00",
+            "user": "guru",
+            "action": "Simpan paket kuis",
+            "target": "",
+            "detail": "2 paket"
+        },
+        {
+            "time": "2026-11-21T06:33:17+01:00",
+            "user": "guru",
+            "action": "Simpan paket kuis",
+            "target": "",
+            "detail": "2 paket"
+        },
+        {
+            "time": "2026-11-21T06:47:40+01:00",
+            "user": "guru",
+            "action": "Simpan paket kuis",
+            "target": "",
+            "detail": "2 paket"
+        },
+        {
+            "time": "2026-11-21T06:47:49+01:00",
+            "user": "guru",
+            "action": "Simpan paket kuis",
+            "target": "",
+            "detail": "2 paket"
+        },
+        {
+            "time": "2026-11-21T06:47:56+01:00",
+            "user": "guru",
+            "action": "Simpan paket kuis",
+            "target": "",
+            "detail": "2 paket"
+        },
+        {
+            "time": "2026-11-21T06:48:02+01:00",
+            "user": "guru",
+            "action": "Simpan paket kuis",
+            "target": "",
+            "detail": "2 paket"
         }
     ],
-    "backups": [],
+    "backups": [
+        {
+            "file": "examlan-20261121-013444-before-save-quizzes.json",
+            "name": "examlan-20261121-013444-before-save-quizzes.json",
+            "time": "2026-11-21T01:34:44+01:00",
+            "size": 748010,
+            "reason": "before save quizzes"
+        },
+        {
+            "file": "examlan-20261121-013703-before-save-quizzes.json",
+            "name": "examlan-20261121-013703-before-save-quizzes.json",
+            "time": "2026-11-21T01:37:03+01:00",
+            "size": 769073,
+            "reason": "before save quizzes"
+        },
+        {
+            "file": "examlan-20261121-014504-before-save-quizzes.json",
+            "name": "examlan-20261121-014504-before-save-quizzes.json",
+            "time": "2026-11-21T01:45:04+01:00",
+            "size": 770429,
+            "reason": "before save quizzes"
+        },
+        {
+            "file": "examlan-20261121-015051-before-save-quizzes.json",
+            "name": "examlan-20261121-015051-before-save-quizzes.json",
+            "time": "2026-11-21T01:50:51+01:00",
+            "size": 770909,
+            "reason": "before save quizzes"
+        },
+        {
+            "file": "examlan-20261121-020915-before-save-quizzes.json",
+            "name": "examlan-20261121-020915-before-save-quizzes.json",
+            "time": "2026-11-21T02:09:15+01:00",
+            "size": 539,
+            "reason": "before save quizzes"
+        },
+        {
+            "file": "examlan-20261121-022006-before-save-quizzes.json",
+            "name": "examlan-20261121-022006-before-save-quizzes.json",
+            "time": "2026-11-21T02:20:06+01:00",
+            "size": 21576,
+            "reason": "before save quizzes"
+        },
+        {
+            "file": "examlan-20261121-022056-before-save-quizzes.json",
+            "name": "examlan-20261121-022056-before-save-quizzes.json",
+            "time": "2026-11-21T02:20:56+01:00",
+            "size": 1211,
+            "reason": "before save quizzes"
+        },
+        {
+            "file": "examlan-20261121-024550-before-save-quizzes.json",
+            "name": "examlan-20261121-024550-before-save-quizzes.json",
+            "time": "2026-11-21T02:45:50+01:00",
+            "size": 150625,
+            "reason": "before save quizzes"
+        },
+        {
+            "file": "examlan-20261121-030028-before-save-quizzes.json",
+            "name": "examlan-20261121-030028-before-save-quizzes.json",
+            "time": "2026-11-21T03:00:28+01:00",
+            "size": 152315,
+            "reason": "before save quizzes"
+        },
+        {
+            "file": "examlan-20261121-034241-before-save-quizzes.json",
+            "name": "examlan-20261121-034241-before-save-quizzes.json",
+            "time": "2026-11-21T03:42:41+01:00",
+            "size": 326045,
+            "reason": "before save quizzes"
+        },
+        {
+            "file": "examlan-20261121-034259-before-save-quizzes.json",
+            "name": "examlan-20261121-034259-before-save-quizzes.json",
+            "time": "2026-11-21T03:42:59+01:00",
+            "size": 326248,
+            "reason": "before save quizzes"
+        },
+        {
+            "file": "examlan-20261121-034452-before-save-quizzes.json",
+            "name": "examlan-20261121-034452-before-save-quizzes.json",
+            "time": "2026-11-21T03:44:52+01:00",
+            "size": 331890,
+            "reason": "before save quizzes"
+        },
+        {
+            "file": "examlan-20261121-034500-before-save-quizzes.json",
+            "name": "examlan-20261121-034500-before-save-quizzes.json",
+            "time": "2026-11-21T03:45:00+01:00",
+            "size": 332085,
+            "reason": "before save quizzes"
+        },
+        {
+            "file": "examlan-20261121-035513-before-save-quizzes.json",
+            "name": "examlan-20261121-035513-before-save-quizzes.json",
+            "time": "2026-11-21T03:55:13+01:00",
+            "size": 327448,
+            "reason": "before save quizzes"
+        },
+        {
+            "file": "examlan-20261121-040542-before-save-quizzes.json",
+            "name": "examlan-20261121-040542-before-save-quizzes.json",
+            "time": "2026-11-21T04:05:42+01:00",
+            "size": 345073,
+            "reason": "before save quizzes"
+        },
+        {
+            "file": "examlan-20261121-044612-before-reset-results.json",
+            "name": "examlan-20261121-044612-before-reset-results.json",
+            "time": "2026-11-21T04:46:12+01:00",
+            "size": 336117,
+            "reason": "before reset results"
+        },
+        {
+            "file": "examlan-20261121-045224-before-save-quizzes.json",
+            "name": "examlan-20261121-045224-before-save-quizzes.json",
+            "time": "2026-11-21T04:52:24+01:00",
+            "size": 308223,
+            "reason": "before save quizzes"
+        },
+        {
+            "file": "examlan-20261121-053549-manual.json",
+            "name": "examlan-20261121-053549-manual.json",
+            "time": "2026-11-21T05:35:49+01:00",
+            "size": 1103199,
+            "reason": "manual"
+        },
+        {
+            "file": "examlan-20261121-063306-before-save-quizzes.json",
+            "name": "examlan-20261121-063306-before-save-quizzes.json",
+            "time": "2026-11-21T06:33:06+01:00",
+            "size": 1103387,
+            "reason": "before save quizzes"
+        },
+        {
+            "file": "examlan-20261121-063317-before-save-quizzes.json",
+            "name": "examlan-20261121-063317-before-save-quizzes.json",
+            "time": "2026-11-21T06:33:17+01:00",
+            "size": 1108720,
+            "reason": "before save quizzes"
+        },
+        {
+            "file": "examlan-20261121-064740-before-save-quizzes.json",
+            "name": "examlan-20261121-064740-before-save-quizzes.json",
+            "time": "2026-11-21T06:47:40+01:00",
+            "size": 1109229,
+            "reason": "before save quizzes"
+        },
+        {
+            "file": "examlan-20261121-064749-before-save-quizzes.json",
+            "name": "examlan-20261121-064749-before-save-quizzes.json",
+            "time": "2026-11-21T06:47:49+01:00",
+            "size": 1109715,
+            "reason": "before save quizzes"
+        },
+        {
+            "file": "examlan-20261121-064756-before-save-quizzes.json",
+            "name": "examlan-20261121-064756-before-save-quizzes.json",
+            "time": "2026-11-21T06:47:56+01:00",
+            "size": 1110206,
+            "reason": "before save quizzes"
+        }
+    ],
     "time_extension_requests": [],
     "settings": {
         "require_student_password": false

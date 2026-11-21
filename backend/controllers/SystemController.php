@@ -78,14 +78,18 @@ class SystemController {
     public static function createBackup() {
         AuthMiddleware::teacherOnly();
         $db = Database::load();
-        BackupService::createBackup('manual');
-        AuditService::log($db, 'Backup manual');
+        $backupName = BackupService::createBackup('manual', null, $db);
+        if (!$backupName) {
+            Response::error('Gagal membuat berkas cadangan di server.', 500);
+        }
+        AuditService::log($db, 'Backup manual', $backupName);
+        BackupService::getBackupsList($db);
         Database::save($db);
-        // Reload after backup saved
-        $db = Database::load();
+
         Response::json([
             'status' => 'success',
-            'message' => 'Backup berhasil dibuat.',
+            'message' => 'Berkas cadangan database berhasil dibuat: ' . $backupName,
+            'file' => $backupName,
             'backups' => $db['backups']
         ]);
     }
@@ -136,7 +140,7 @@ class SystemController {
             }
         }
 
-        $db['backups'] = $newBackups;
+        $db['backups'] = BackupService::getBackupsList($db);
         $auditDetail = count($files) > 1 
             ? count($files) . ' berkas: ' . implode(', ', array_slice($files, 0, 5)) . (count($files) > 5 ? '...' : '') 
             : $files[0];
