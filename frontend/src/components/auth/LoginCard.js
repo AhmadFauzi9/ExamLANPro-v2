@@ -143,13 +143,17 @@ export async function handleStudentLogin(e) {
         }
 
         // Tampilkan Informasi Ujian & Simpan ke Session Storage
+        const mergedQuiz = {
+            ...(selectedQuiz || {}),
+            ...(data.quiz || {})
+        };
         renderExamInfoScreen({
             quizId,
             nis,
             name: data.student?.name || name,
             classId: data.student?.class || classId,
             password: password,
-            quiz: selectedQuiz
+            quiz: mergedQuiz
         });
 
     } catch (err) {

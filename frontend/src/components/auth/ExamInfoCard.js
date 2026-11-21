@@ -12,6 +12,14 @@ import { updateNavbarStudentProfile } from '../common/Header.js';
 import { appAlert } from '../common/Modal.js';
 import { hydrateAttempt } from '../quiz/QuizScreen.js';
 
+export function checkQuizNeedsToken(quiz) {
+    if (!quiz) return false;
+    if (quiz.has_token !== undefined) return Boolean(quiz.has_token);
+    if (quiz.pin_enabled !== undefined) return Boolean(quiz.pin_enabled);
+    if (quiz.pin !== undefined) return Boolean(quiz.pin && String(quiz.pin).trim() !== '');
+    return false;
+}
+
 export function renderExamInfoScreen(info) {
     if (!info) return;
 
@@ -41,7 +49,7 @@ export function renderExamInfoScreen(info) {
         const maxQ = (selectedQuiz.max_questions && selectedQuiz.max_questions > 0) ? parseInt(selectedQuiz.max_questions) : 0;
         if (questionsEl) {
             if (maxQ > 0 && maxQ < totalQ) {
-                questionsEl.innerText = `${maxQ} Soal Acak (dari total ${totalQ} soal di bank) • ${selectedQuiz.duration} Menit`;
+                questionsEl.innerText = `${maxQ} Soal Acak (dari ${totalQ} soal) • ${selectedQuiz.duration} Menit`;
             } else {
                 questionsEl.innerText = `${totalQ} Soal (${selectedQuiz.duration} Menit)`;
             }
@@ -59,6 +67,16 @@ export function renderExamInfoScreen(info) {
         dateEl.innerText = formatIndonesianDate(new Date());
     }
 
+    const hasToken = checkQuizNeedsToken(selectedQuiz);
+    const tokenCard = document.getElementById('student-exam-token-container') || document.getElementById('exam-token-input')?.closest('.rounded-2xl');
+    if (tokenCard) {
+        if (!hasToken) {
+            tokenCard.classList.add('hidden');
+        } else {
+            tokenCard.classList.remove('hidden');
+        }
+    }
+
     const tokenInput = document.getElementById('exam-token-input');
     if (tokenInput && !tokenInput.value) tokenInput.value = '';
 
@@ -71,7 +89,7 @@ export function renderExamInfoScreen(info) {
     document.getElementById('student-result-screen')?.classList.add('hidden');
     document.getElementById('student-exam-info-screen')?.classList.remove('hidden');
 
-    if (tokenInput) setTimeout(() => tokenInput.focus(), 150);
+    if (hasToken && tokenInput) setTimeout(() => tokenInput.focus(), 150);
 }
 
 export function backToStudentLogin() {
@@ -96,16 +114,19 @@ export async function submitExamTokenAndStart() {
         return;
     }
 
+    const { quizId, nis, name, classId, password } = pendingSession;
+    const quizzes = ExamContext.quizzes || [];
+    const selectedQuiz = pendingSession.quiz || quizzes.find(q => q.id === quizId);
+    const hasToken = checkQuizNeedsToken(selectedQuiz);
+
     const tokenInput = document.getElementById('exam-token-input');
     const pin = tokenInput ? tokenInput.value.trim().toUpperCase() : '';
 
-    if (!pin) {
+    if (hasToken && !pin) {
         appAlert("Silakan masukkan Token Ujian terlebih dahulu!\nToken diberikan oleh guru pengawas ruang melalui halaman Bank Soal.", "Token Diperlukan");
         tokenInput?.focus();
         return;
     }
-
-    const { quizId, nis, name, classId, password } = pendingSession;
 
     try {
         const res = await examApi.startAttempt({

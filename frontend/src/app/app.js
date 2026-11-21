@@ -15,10 +15,12 @@ import {
     handleKioskShortcut,
     closeKioskModalAndContinue,
     exitKioskMode,
+    stopAntiCheat,
     checkAndEnforceFullScreen
 } from '../hooks/useAntiCheat.js';
-import { initAutoSaveNetworkListener } from '../hooks/useAutoSave.js';
+import { initAutoSaveNetworkListener, syncAnswers } from '../hooks/useAutoSave.js';
 import { initGlobalTooltipSystem } from '../hooks/useTooltip.js';
+import { stopTimer } from '../hooks/useTimer.js';
 
 // Components
 import { initHeader, updateNavbarStudentProfile } from '../components/common/Header.js';
@@ -89,11 +91,58 @@ window.handleKioskShortcut = handleKioskShortcut;
 window.closeKioskModalAndContinue = closeKioskModalAndContinue;
 window.exitKioskMode = exitKioskMode;
 window.resetStudentView = resetStudentView;
+window.handleStudentLogout = handleStudentLogout;
 window.appAlert = appAlert;
 window.appConfirm = appConfirm;
 window.closeAppModal = closeAppModal;
 window.resolveAppModal = resolveAppModal;
 window.showToast = showToast;
+
+/**
+ * Handle student logout from anywhere (exam info, active exam, result screen)
+ */
+export async function handleStudentLogout() {
+    const isQuizScreenVisible = document.getElementById('student-quiz-screen') && !document.getElementById('student-quiz-screen').classList.contains('hidden');
+    const isQuizActive = (typeof ExamContext.isExamActive === 'function' && ExamContext.isExamActive()) || isQuizScreenVisible;
+
+    let confirmMsg = 'Apakah Anda yakin ingin logout / keluar dari akun peserta ujian?';
+    let confirmTitle = 'Konfirmasi Logout Siswa';
+    let okText = 'Ya, Logout';
+
+    if (isQuizActive) {
+        confirmMsg = 'Peringatan: Ujian sedang berlangsung!\n\nSeluruh jawaban yang sudah Anda pilih telah tersimpan otomatis di server. Namun, waktu pengerjaan ujian Anda akan tetap berjalan di server.\n\nApakah Anda yakin ingin logout sekarang?';
+        confirmTitle = 'Logout Saat Ujian Berlangsung';
+        okText = 'Tetap Logout';
+    }
+
+    let confirmed = false;
+    if (typeof appConfirm === 'function') {
+        confirmed = await appConfirm(
+            confirmMsg,
+            confirmTitle,
+            isQuizActive ? 'Lanjutkan Ujian' : 'Batal',
+            okText,
+            'bg-rose-600 hover:bg-rose-700 text-white'
+        );
+    } else {
+        confirmed = window.confirm(confirmMsg);
+    }
+
+    if (!confirmed) return;
+
+    try {
+        if (isQuizActive) {
+            try { await syncAnswers(); } catch (e) {}
+            try { stopTimer(); } catch (e) {}
+            try { stopAntiCheat(); } catch (e) {}
+        }
+        await resetStudentView();
+        showToast('Anda telah berhasil logout.', 'info');
+    } catch (err) {
+        console.error('Error saat logout siswa:', err);
+        window.location.reload();
+    }
+}
 
 /**
  * Fetch and populate base student and quiz data

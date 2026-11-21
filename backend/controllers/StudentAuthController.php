@@ -50,10 +50,12 @@ class StudentAuthController {
 
         $quizId = trim((string)($input['quiz_id'] ?? ''));
         $quizTitle = '';
+        $selectedQuizObj = null;
         if ($quizId !== '') {
             foreach ($db['questions'] as $q) {
                 if ((string)($q['id'] ?? '') === $quizId) {
                     $quizTitle = (string)($q['title'] ?? $quizId);
+                    $selectedQuizObj = $q;
                     break;
                 }
             }
@@ -189,6 +191,7 @@ class StudentAuthController {
         AuditService::log($db, 'Login siswa', (string)$matched['nis'] . ' - ' . (string)$matched['name'], 'Kelas ' . (string)$matched['class'] . ($quizTitle ? ' (' . $quizTitle . ')' : ''));
         Database::save($db);
 
+        $hasToken = !empty($selectedQuizObj['pin']);
         Response::success([
             'message' => 'Login berhasil.',
             'student' => [
@@ -196,6 +199,12 @@ class StudentAuthController {
                 'name' => (string)$matched['name'],
                 'class' => (string)$matched['class'],
                 'tahun_ajaran' => (string)($matched['tahun_ajaran'] ?? '')
+            ],
+            'quiz' => [
+                'id' => $quizId,
+                'title' => $quizTitle,
+                'has_token' => $hasToken,
+                'pin_enabled' => $hasToken
             ]
         ]);
     }
@@ -213,7 +222,10 @@ class StudentAuthController {
                 $safe['_student_id'] = (string)$idx;
                 $safeQuestions[] = $safe;
             }
+            $hasToken = !empty($quiz['pin']);
             unset($quiz['pin']);
+            $quiz['has_token'] = $hasToken;
+            $quiz['pin_enabled'] = $hasToken;
             $quiz['questions'] = $safeQuestions;
             $studentQuizzes[] = $quiz;
         }

@@ -85,6 +85,7 @@ export async function resetStudentView() {
     Storage.clearPendingExamInfo();
     Storage.clearPendingResumeInfo();
     Storage.clearActiveAttempt();
+    Storage.clearPendingAnswers();
 
     StudentContext.clear();
     ExamContext.clearExam();
@@ -93,6 +94,10 @@ export async function resetStudentView() {
     document.getElementById('student-quiz-screen')?.classList.add('hidden');
     document.getElementById('student-exam-info-screen')?.classList.add('hidden');
     document.getElementById('student-resume-token-screen')?.classList.add('hidden');
+    document.getElementById('violation-overlay')?.classList.add('hidden');
+    document.getElementById('fullscreen-restore-overlay')?.classList.add('hidden');
+    document.getElementById('timeout-overlay')?.classList.add('hidden');
+    document.getElementById('modal-confirm-reload')?.classList.add('hidden');
     document.getElementById('student-login-card')?.classList.remove('hidden');
 
     const nisInput = document.getElementById('student-nis');

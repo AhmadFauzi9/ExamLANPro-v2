@@ -268,8 +268,8 @@ class MonitoringController {
                     'id' => (string)($q['id'] ?? ''),
                     'title' => (string)($q['title'] ?? ''),
                     'pin' => (string)($q['pin'] ?? ''),
-                    'pin_enabled' => !empty($q['pin_enabled']),
-                    'pin_auto_refresh' => ($q['pin_auto_refresh'] ?? true),
+                    'pin_enabled' => !empty($q['pin']) && !empty($q['pin_enabled']),
+                    'pin_auto_refresh' => !empty($q['pin']) && filter_var($q['pin_auto_refresh'] ?? true, FILTER_VALIDATE_BOOLEAN),
                     'pin_updated_at' => (int)($q['pin_updated_at'] ?? 0),
                     'status' => (string)($q['status'] ?? 'ACTIVE')
                 ];

@@ -496,7 +496,7 @@
                 };
                 const typeName = typeNames[q.quiz_type] || 'Campuran';
 
-                const isAutoPin = (q.pin && q.pin_auto_refresh !== false);
+                const isAutoPin = !!(q.pin && q.pin_auto_refresh !== false && q.pin_auto_refresh !== 'false');
                 const tokenBadge = q.pin ? `
                     <span class="inline-flex items-center gap-1.5 bg-blue-50 text-blue-800 border border-blue-200 px-2 py-0.5 rounded-lg text-xs font-mono font-bold" title="Token Akses Siswa ${isAutoPin ? '(Otomatis berganti tiap 10 menit)' : ''}">
                         <i class="fa-solid fa-key text-[10px] text-blue-600"></i> <span class="tracking-widest font-black" id="quiz-token-text-${q.id}">${q.pin}</span>
@@ -688,7 +688,7 @@
                     document.getElementById('quiz-status-input').value = q.status || 'ACTIVE';
                     document.getElementById('quiz-pin-input').value = q.pin || '';
                     const pinAuto = document.getElementById('quiz-pin-auto-refresh-input');
-                    if (pinAuto) pinAuto.checked = (q.pin_auto_refresh !== false);
+                    if (pinAuto) pinAuto.checked = !!(q.pin && q.pin_auto_refresh !== false && q.pin_auto_refresh !== 'false');
                     document.getElementById('quiz-modal-title').innerText = "Edit Paket Kuis";
                 }
             } else {
@@ -760,7 +760,7 @@
                     Object.assign(target, {
                         subject, class: className, start_at, end_at, status, pin,
                         pin_enabled: !!pin,
-                        pin_auto_refresh: pinAutoRefresh
+                        pin_auto_refresh: (pin !== '' && pinAutoRefresh)
                     });
                 }
             } else {
@@ -774,7 +774,7 @@
                     description: desc,
                     subject, class: className, start_at, end_at, status, pin,
                     pin_enabled: !!pin,
-                    pin_auto_refresh: pinAutoRefresh,
+                    pin_auto_refresh: (pin !== '' && pinAutoRefresh),
                     pin_updated_at: Math.floor(Date.now() / 1000),
                     questions: []
                 });

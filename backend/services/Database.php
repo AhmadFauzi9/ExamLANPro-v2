@@ -42,26 +42,28 @@ class Database {
         $chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 
         foreach ($db['questions'] as &$q) {
-            if (empty($q['pin'])) {
-                $q['pin'] = substr(str_shuffle($chars), 0, 6);
-                $q['pin_enabled'] = true;
-                $q['pin_updated_at'] = $now;
-                $q['pin_auto_refresh'] = true;
-                $dirty = true;
-            }
+            $pin = strtoupper(trim((string)($q['pin'] ?? '')));
+            $hasPin = ($pin !== '');
+            $q['pin'] = $pin;
+            $q['pin_enabled'] = $hasPin;
 
-            // Fitur rotasi token otomatis setiap 10 menit (600 detik) - Strict Security
-            $autoRefresh = ($q['pin_auto_refresh'] ?? true);
-            if ($autoRefresh && !empty($q['pin'])) {
-                $updatedAt = (int)($q['pin_updated_at'] ?? 0);
-                if ($updatedAt <= 0) {
-                    $q['pin_updated_at'] = $now;
-                    $dirty = true;
-                } elseif (($now - $updatedAt) >= TOKEN_ROTATION_INTERVAL) {
-                    $q['pin'] = substr(str_shuffle($chars), 0, 6);
-                    $q['pin_updated_at'] = $now;
-                    unset($q['prev_pin'], $q['prev_pin_expires_at']);
-                    $dirty = true;
+            if (!$hasPin) {
+                $q['pin_auto_refresh'] = false;
+            } else {
+                // Fitur rotasi token otomatis setiap 10 menit (600 detik) - Strict Security
+                $autoRefresh = filter_var($q['pin_auto_refresh'] ?? true, FILTER_VALIDATE_BOOLEAN);
+                $q['pin_auto_refresh'] = $autoRefresh;
+                if ($autoRefresh) {
+                    $updatedAt = (int)($q['pin_updated_at'] ?? 0);
+                    if ($updatedAt <= 0) {
+                        $q['pin_updated_at'] = $now;
+                        $dirty = true;
+                    } elseif (($now - $updatedAt) >= TOKEN_ROTATION_INTERVAL) {
+                        $q['pin'] = substr(str_shuffle($chars), 0, 6);
+                        $q['pin_updated_at'] = $now;
+                        unset($q['prev_pin'], $q['prev_pin_expires_at']);
+                        $dirty = true;
+                    }
                 }
             }
         }

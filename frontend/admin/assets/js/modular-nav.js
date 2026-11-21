@@ -88,34 +88,41 @@
 
         if (mode === 'student') {
             rightSideHTML = `
-                <!-- Profil Peserta di Kanan Navbar (NIS, Kelas, Nama) -->
-                <div id="navbar-student-profile" class="hidden items-center gap-2.5 bg-slate-800/80 border border-slate-700/80 px-3 py-1.5 rounded-xl">
-                    <div class="w-8 h-8 rounded-lg bg-brand-600/30 border border-brand-500/40 text-brand-300 flex items-center justify-center font-bold text-xs shrink-0">
-                        <i class="fa-solid fa-user-graduate"></i>
+                <!-- Profil Peserta di Kanan Navbar (NIS, Kelas, Nama, & Logout) -->
+                <div id="navbar-student-profile" class="hidden items-center gap-1.5 sm:gap-2.5 bg-slate-800/80 border border-slate-700/80 px-2 sm:px-3 py-1 sm:py-1.5 rounded-xl ml-auto min-w-0 max-w-[68%] sm:max-w-none shadow-xs">
+                    <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-brand-600/30 border border-brand-500/40 text-brand-300 flex items-center justify-center font-bold text-xs shrink-0">
+                        <i class="fa-solid fa-user-graduate text-xs sm:text-sm"></i>
                     </div>
-                    <div class="text-left leading-tight min-w-0">
-                        <div id="nav-student-name" class="font-bold text-xs sm:text-sm text-white truncate max-w-[130px] sm:max-w-[220px]">-</div>
-                        <div class="text-[10px] sm:text-[11px] text-slate-400 flex items-center justify-end gap-1.5 mt-0.5 font-mono">
-                            <span id="nav-student-nis" class="text-brand-300 font-semibold">-</span>
-                            <span class="text-slate-600">•</span>
-                            <span id="nav-student-class" class="text-slate-300 truncate max-w-[80px] sm:max-w-none">-</span>
+                    <div class="text-left leading-tight min-w-0 flex-1">
+                        <div id="nav-student-name" class="font-bold text-[11px] sm:text-sm text-white truncate max-w-full sm:max-w-[220px]">-</div>
+                        <div class="text-[9px] sm:text-[11px] text-slate-400 flex items-center gap-1 sm:gap-1.5 mt-0.5 font-mono min-w-0">
+                            <span class="hidden sm:inline text-slate-500">NIS:</span>
+                            <span id="nav-student-nis" class="text-brand-300 font-semibold shrink-0">-</span>
+                            <span class="text-slate-600 shrink-0">•</span>
+                            <span id="nav-student-class" class="text-slate-300 truncate min-w-0">-</span>
                         </div>
                     </div>
+                    <!-- Tombol Logout Siswa -->
+                    <div class="h-5 sm:h-6 w-px bg-slate-700 mx-0.5 sm:mx-1 shrink-0"></div>
+                    <button type="button" id="btn-navbar-student-logout" onclick="window.handleStudentLogout ? window.handleStudentLogout() : (window.ModularNav ? window.ModularNav.handleStudentLogout() : null)" class="p-1.5 sm:px-2.5 sm:py-1.5 rounded-lg bg-rose-500/15 hover:bg-rose-600 border border-rose-500/30 hover:border-rose-600 text-rose-300 hover:text-white text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer shadow-2xs group shrink-0" title="Logout / Keluar dari Akun Siswa">
+                        <i class="fa-solid fa-right-from-bracket text-xs text-rose-400 group-hover:text-white transition-colors"></i>
+                        <span class="hidden sm:inline">Logout</span>
+                    </button>
                 </div>
             `;
         } else {
             rightSideHTML = `
-                <div class="flex items-center gap-1 sm:gap-2">
+                <div class="flex items-center gap-1 sm:gap-2 shrink-0 ml-auto">
                     <!-- Admin Extension Bell (Permintaan Waktu Siswa) -->
-                    <a id="admin-bell-btn" href="${adminBase}notifikasi/" class="relative p-2 px-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 transition focus:outline-none" title="Permintaan Waktu Siswa">
-                        <i class="fa-solid fa-bell text-base"></i>
+                    <a id="admin-bell-btn" href="${adminBase}notifikasi/" class="relative p-2 px-2.5 sm:px-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 transition focus:outline-none" title="Permintaan Waktu Siswa">
+                        <i class="fa-solid fa-bell text-sm sm:text-base"></i>
                         <span id="admin-bell-dot" class="hidden absolute top-1 right-1 w-2.5 h-2.5 bg-rose-500 rounded-full ring-2 ring-slate-900 animate-pulse"></span>
                     </a>
 
                     <!-- Panduan Jaringan LAN -->
-                    <button type="button" onclick="window.AdminNav ? window.AdminNav.openLanGuide() : null" class="relative p-2 px-3 hover:text-white hover:bg-slate-800 text-slate-300 rounded-xl text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer" title="Informasi IP Server & Akses LAN Siswa">
-                        <i class="fa-solid fa-circle-question text-base"></i>
-                        <span class="hidden lg:inline text-[11px] text-slate-300">Info LAN</span>
+                    <button type="button" onclick="window.AdminNav ? window.AdminNav.openLanGuide() : null" class="relative p-2 px-2.5 sm:px-3 hover:text-white hover:bg-slate-800 text-slate-300 rounded-xl text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer" title="Informasi IP Server & Akses LAN Siswa">
+                        <i class="fa-solid fa-circle-question text-sm sm:text-base"></i>
+                        <span class="hidden sm:inline text-[11px] text-slate-300">Info LAN</span>
                     </button>
                 </div>
             `;
@@ -123,16 +130,17 @@
 
         return `
             <header class="bg-slate-900 text-white shadow-md sticky top-0 z-30">
-                <div class="w-full px-4 sm:px-6 lg:px-8 py-2.5 flex justify-between items-center gap-3">
-                    <div class="flex items-center space-x-2 shrink-0">
-                        <div class="bg-brand-600 p-2 px-2.5 rounded-lg text-white flex items-center justify-center shadow-xs">
-                            <i class="fa-solid fa-network-wired text-xl"></i>
+                <div class="w-full px-2.5 sm:px-6 lg:px-8 py-2 sm:py-2.5 flex justify-between items-center gap-1.5 sm:gap-3">
+                    <div class="flex items-center space-x-1.5 sm:space-x-2 shrink-0 min-w-0">
+                        <div class="bg-brand-600 p-1.5 sm:p-2 sm:px-2.5 rounded-lg text-white flex items-center justify-center shadow-xs shrink-0">
+                            <i class="fa-solid fa-network-wired text-base sm:text-xl"></i>
                         </div>
-                        <div>
-                            <h1 class="font-bold text-base sm:text-lg leading-tight flex items-center gap-2">
-                                ExamLAN Pro <span class="bg-amber-500/20 text-amber-300 text-[10px] px-2 py-0.5 rounded-full border border-amber-500/30">${version}</span>
+                        <div class="min-w-0">
+                            <h1 class="font-bold text-sm sm:text-lg leading-tight flex items-center gap-1.5 whitespace-nowrap">
+                                <span>ExamLAN Pro</span>
+                                <span class="hidden sm:inline-block bg-amber-500/20 text-amber-300 text-[10px] px-2 py-0.5 rounded-full border border-amber-500/30">${version}</span>
                             </h1>
-                            <p class="text-xs text-slate-400">${subtitle}</p>
+                            <p class="text-xs text-slate-400 hidden sm:block truncate">${subtitle}</p>
                         </div>
                     </div>
 
@@ -278,9 +286,22 @@
             const nameEl = document.getElementById('nav-student-name');
             const nisEl = document.getElementById('nav-student-nis');
             const classEl = document.getElementById('nav-student-class');
-            if (nameEl) nameEl.textContent = name || '-';
-            if (nisEl) nisEl.textContent = nis ? `NIS: ${nis}` : '-';
-            if (classEl) classEl.textContent = classId ? `Kelas: ${classId}` : '-';
+
+            const cleanNis = String(nis || '').replace(/^NIS:\s*/i, '');
+            const cleanClass = String(classId || '').replace(/^Kelas:\s*/i, '');
+
+            if (nameEl) {
+                nameEl.textContent = name || '-';
+                nameEl.title = name || '';
+            }
+            if (nisEl) {
+                nisEl.textContent = cleanNis || '-';
+                nisEl.title = cleanNis ? `NIS: ${cleanNis}` : '';
+            }
+            if (classEl) {
+                classEl.textContent = cleanClass || '-';
+                classEl.title = cleanClass ? `Kelas: ${cleanClass}` : '';
+            }
             container.classList.remove('hidden');
             container.classList.add('flex');
         },
@@ -333,6 +354,30 @@
                 try {
                     sessionStorage.removeItem('examlan_server_authenticated');
                     localStorage.removeItem('examlan_server_authenticated');
+                } catch (e) {}
+                window.location.reload();
+            }
+        },
+
+        handleStudentLogout() {
+            if (typeof global.handleStudentLogout === 'function') {
+                global.handleStudentLogout();
+                return;
+            }
+            if (typeof global.resetStudentView === 'function') {
+                if (confirm('Apakah Anda yakin ingin logout dari akun peserta ujian?')) {
+                    global.resetStudentView();
+                }
+                return;
+            }
+            if (confirm('Apakah Anda yakin ingin logout dari akun peserta ujian?')) {
+                try {
+                    sessionStorage.clear();
+                    localStorage.removeItem('examlan_active_attempt');
+                    localStorage.removeItem('examlan_pending_exam_info');
+                    localStorage.removeItem('examlan_student_session');
+                    localStorage.removeItem('examlan_pending_resume_info');
+                    localStorage.removeItem('examlan_pending_answers');
                 } catch (e) {}
                 window.location.reload();
             }

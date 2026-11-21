@@ -101,14 +101,22 @@ class QuizManagementController {
             $qid = $quiz['id'] ?? '';
             $existing = $existingMap[$qid] ?? null;
 
-            if (!isset($quiz['pin_auto_refresh'])) {
-                $quiz['pin_auto_refresh'] = $existing['pin_auto_refresh'] ?? true;
+            $pin = strtoupper(trim((string)($quiz['pin'] ?? '')));
+            $quiz['pin'] = $pin;
+            $quiz['pin_enabled'] = ($pin !== '');
+
+            if ($pin === '') {
+                $quiz['pin_auto_refresh'] = false;
+            } elseif (isset($quiz['pin_auto_refresh'])) {
+                $quiz['pin_auto_refresh'] = filter_var($quiz['pin_auto_refresh'], FILTER_VALIDATE_BOOLEAN);
+            } else {
+                $quiz['pin_auto_refresh'] = isset($existing['pin_auto_refresh']) ? filter_var($existing['pin_auto_refresh'], FILTER_VALIDATE_BOOLEAN) : true;
             }
 
-            if ($existing && !empty($existing['pin']) && !empty($quiz['pin']) && $existing['pin'] !== $quiz['pin']) {
+            if ($existing && !empty($existing['pin']) && $pin !== '' && $existing['pin'] !== $pin) {
                 $quiz['pin_updated_at'] = $now;
             } elseif ($existing && !empty($existing['pin_updated_at'])) {
-                $quiz['pin_updated_at'] = $existing['pin_updated_at'];
+                $quiz['pin_updated_at'] = (int)$existing['pin_updated_at'];
             } else {
                 $quiz['pin_updated_at'] = $now;
             }

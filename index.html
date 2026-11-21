@@ -161,7 +161,7 @@
                 </div>
 
                 <!-- Form Masukkan Token -->
-                <div class="bg-amber-50/80 border-2 border-amber-200/90 rounded-2xl p-5 mb-6 text-center">
+                <div id="student-exam-token-container" class="bg-amber-50/80 border-2 border-amber-200/90 rounded-2xl p-5 mb-6 text-center">
                     <div class="flex items-center justify-center gap-2 text-amber-800 font-bold text-sm uppercase tracking-wider mb-1.5">
                         <i class="fa-solid fa-key text-amber-600"></i>
                         <span>Token Ujian</span>
@@ -264,9 +264,13 @@
                     </div>
 
                     <div class="flex items-center gap-2.5 sm:gap-4 flex-wrap">
-                        <button type="button" id="btn-header-reload" onclick="promptReloadExam()" class="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-medium flex items-center gap-1.5 border border-slate-300 transition" title="Muat ulang data ujian jika koneksi terputus atau atas instruksi pengawas">
+                        <button type="button" id="btn-header-reload" onclick="promptReloadExam()" class="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-medium flex items-center gap-1.5 border border-slate-300 transition cursor-pointer" title="Muat ulang data ujian jika koneksi terputus atau atas instruksi pengawas">
                             <i class="fa-solid fa-rotate text-[11px]"></i>
                             <span class="hidden sm:inline">Refresh</span>
+                        </button>
+                        <button type="button" id="btn-header-logout" onclick="handleStudentLogout()" class="px-2.5 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-700 rounded-lg text-xs font-semibold flex items-center gap-1.5 border border-rose-200 transition cursor-pointer" title="Keluar / Logout dari Ujian">
+                            <i class="fa-solid fa-right-from-bracket text-[11px]"></i>
+                            <span class="hidden sm:inline">Logout</span>
                         </button>
                         <div class="bg-amber-50 text-amber-700 px-3 py-1.5 rounded-lg border border-amber-200 text-xs font-semibold flex items-center gap-2">
                             <i class="fa-solid fa-clock"></i>
