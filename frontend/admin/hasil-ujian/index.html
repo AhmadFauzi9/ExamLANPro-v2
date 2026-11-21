@@ -53,7 +53,7 @@
                         <p id="sum-students-subtitle" class="text-[10px] text-slate-400 mt-1">Siswa telah submit</p>
                     </div>
 
-                    <!-- 2. Status Pengerjaan (Card Khusus Selesai, Tes, & Belum Ikut) -->
+                    <!-- 2. Status Pengerjaan (Card Khusus Selesai & Sedang Tes) -->
                     <div class="bg-white border border-slate-200 rounded-2xl p-4 shadow-2xs">
                         <p class="text-[11px] text-slate-500 font-semibold flex items-center gap-1.5">
                             <i class="fa-solid fa-clipboard-check text-indigo-600"></i> Status Pengerjaan
@@ -61,8 +61,8 @@
                         <div id="sum-pengerjaan" class="mt-1 min-h-[32px] flex items-center">
                             <span class="text-2xl font-black text-slate-800">0</span>
                         </div>
-                        <div id="sum-pengerjaan-detail" class="text-[10px] text-slate-400 mt-1 flex items-center flex-wrap gap-1">
-                            0 selesai • 0 tes • 0 belum ikut
+                        <div id="sum-pengerjaan-detail" class="text-[10px] text-slate-400 mt-1">
+                            Siswa telah selesai ujian
                         </div>
                     </div>
 
@@ -764,22 +764,24 @@
                 }
             }
 
-            // 2. Card Khusus: Status Pengerjaan (selesai • tes • belum ikut)
+            // 2. Card Khusus: Status Pengerjaan (Selesai & Sedang Tes)
             if (elPengerjaan) {
-                const notTakenBadge = notTakenCount > 0
-                    ? `<button type="button" onclick="filterOnlyNotTaken()" class="inline-flex items-center gap-1 font-bold text-rose-600 hover:text-rose-800 bg-rose-50 px-1.5 py-0.5 rounded border border-rose-200 transition cursor-pointer" title="Klik untuk menampilkan siswa yang belum ujian"><i class="fa-solid fa-triangle-exclamation text-[9px]"></i> ${notTakenCount} belum ikut</button>`
-                    : (masterCount > 0 ? `<span class="text-emerald-700 font-bold">Lengkap 100%</span>` : `<span class="text-slate-400 font-medium">0 belum ikut</span>`);
-
                 elPengerjaan.innerHTML = `
-                    <div class="flex items-baseline gap-1.5">
+                    <div class="flex items-baseline gap-1.5 flex-wrap">
                         <span class="text-2xl font-black text-emerald-600">${total}</span>
                         <span class="text-xs font-bold text-slate-400">Selesai</span>
-                        ${inProgressCount > 0 ? `<span class="inline-flex items-center text-[10px] font-black px-1.5 py-0.5 rounded bg-sky-50 text-sky-700 border border-sky-200 ml-1">${inProgressCount} tes</span>` : ''}
+                        ${inProgressCount > 0 ? `<span class="inline-flex items-center text-[10px] font-black px-1.5 py-0.5 rounded bg-sky-50 text-sky-700 border border-sky-200 ml-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse mr-1"></span>${inProgressCount} tes</span>` : ''}
                     </div>
                 `;
 
                 if (elPengerjaanDetail) {
-                    elPengerjaanDetail.innerHTML = `<span class="text-emerald-700 font-bold">${total} selesai</span> • <span class="text-sky-700 font-bold">${inProgressCount} tes</span> • ${notTakenBadge}`;
+                    if (inProgressCount > 0) {
+                        elPengerjaanDetail.innerHTML = `<span class="text-sky-700 font-semibold">${inProgressCount} siswa sedang mengerjakan ujian</span>`;
+                    } else if (total > 0) {
+                        elPengerjaanDetail.innerHTML = `<span class="text-slate-400">Siswa telah selesai ujian</span>`;
+                    } else {
+                        elPengerjaanDetail.innerHTML = `<span class="text-slate-400">Belum ada siswa yang submit</span>`;
+                    }
                 }
             }
             const elAvg = document.getElementById('sum-avg');
