@@ -139,18 +139,11 @@ export function handleNameBlur(input) {
 }
 
 export function populateStudentDatalist() {
-    let datalist = document.getElementById('student-name-list');
-    if (!datalist) {
-        datalist = document.createElement('datalist');
-        datalist.id = 'student-name-list';
-        document.body.appendChild(datalist);
-    }
+    // Dinonaktifkan demi privasi dan keamanan agar siswa tidak memilih akun siswa lain
+    const datalist = document.getElementById('student-name-list');
+    if (datalist) datalist.remove();
     const nameInput = document.getElementById('student-name');
-    if (nameInput) {
-        nameInput.setAttribute('list', 'student-name-list');
-    }
-    const students = StudentContext.registeredStudents || [];
-    datalist.innerHTML = students.map(s => `<option value="${escapeHtml(s.name)}">${escapeHtml(s.class || '')}</option>`).join('');
+    if (nameInput) nameInput.removeAttribute('list');
 }
 
 export function populateQuizDropdowns() {
