@@ -40,6 +40,9 @@ export function renderExamInfoScreen(info) {
     const typesEl = document.getElementById('info-quiz-types');
     const dateEl = document.getElementById('info-exam-date');
 
+    const durationEl = document.getElementById('info-quiz-duration');
+    const subtitleEl = document.getElementById('info-exam-subtitle');
+
     if (nameEl) nameEl.innerText = info.name || '-';
     if (nisEl) nisEl.innerText = info.nis || '-';
     if (classEl) classEl.innerText = info.classId || '-';
@@ -50,10 +53,13 @@ export function renderExamInfoScreen(info) {
         const maxQ = (selectedQuiz.max_questions && selectedQuiz.max_questions > 0) ? parseInt(selectedQuiz.max_questions) : 0;
         if (questionsEl) {
             if (maxQ > 0 && maxQ < totalQ) {
-                questionsEl.innerText = `${maxQ} Soal Acak (dari ${totalQ} soal) • ${selectedQuiz.duration} Menit`;
+                questionsEl.innerHTML = `<span>${maxQ} Soal Acak</span><span class="block text-[10px] text-slate-400 font-normal">dari total ${totalQ} soal</span>`;
             } else {
-                questionsEl.innerText = `${totalQ} Soal (${selectedQuiz.duration} Menit)`;
+                questionsEl.innerHTML = `<span>${totalQ} Soal</span>`;
             }
+        }
+        if (durationEl) {
+            durationEl.innerText = `${selectedQuiz.duration || 0} Menit`;
         }
 
         const kkmVal = (selectedQuiz.kkm !== undefined && selectedQuiz.kkm !== null && !isNaN(Number(selectedQuiz.kkm))) ? Number(selectedQuiz.kkm) : 75;
@@ -62,13 +68,13 @@ export function renderExamInfoScreen(info) {
         const uniqueTypes = Array.from(new Set((selectedQuiz.questions || []).map(q => q.type || 'mc')));
         if (typesEl) {
             typesEl.innerHTML = uniqueTypes.map(t => 
-                `<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-brand-50 text-brand-700 border border-brand-200">${TYPE_LABELS[t] || t}</span>`
+                `<span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200">${TYPE_LABELS[t] || t}</span>`
             ).join('');
         }
     }
 
     if (dateEl) {
-        dateEl.innerText = formatIndonesianDate(new Date());
+        dateEl.innerHTML = `<i class="fa-regular fa-calendar text-slate-400 mr-1.5"></i><span>${formatIndonesianDate(new Date())}</span>`;
     }
 
     const hasToken = checkQuizNeedsToken(selectedQuiz);
@@ -78,6 +84,14 @@ export function renderExamInfoScreen(info) {
             tokenCard.classList.add('hidden');
         } else {
             tokenCard.classList.remove('hidden');
+        }
+    }
+
+    if (subtitleEl) {
+        if (hasToken) {
+            subtitleEl.innerText = 'Periksa kelengkapan data peserta dan masukkan Token Ujian dari guru pengawas';
+        } else {
+            subtitleEl.innerText = 'Periksa kelengkapan data peserta sebelum memulai ujian';
         }
     }
 
