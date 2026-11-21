@@ -24,6 +24,27 @@ class ExamAttemptController {
             }
         }
 
+        if (!$quiz) {
+            foreach (($db['trash']['quizzes'] ?? []) as $candidate) {
+                if ((string)($candidate['id'] ?? '') === $quizId) {
+                    $quiz = $candidate;
+                    break;
+                }
+            }
+        }
+
+        if (!$quiz) {
+            $emDb = Database::getEmergencyBackupDb();
+            if ($emDb && !empty($emDb['questions'])) {
+                foreach ($emDb['questions'] as $candidate) {
+                    if ((string)($candidate['id'] ?? '') === $quizId) {
+                        $quiz = $candidate;
+                        break;
+                    }
+                }
+            }
+        }
+
         if (!$quiz || empty($quiz['questions'])) {
             Response::error('Kuis tidak tersedia.', 404);
         }
@@ -187,6 +208,27 @@ class ExamAttemptController {
         }
 
         if (!$quiz) {
+            foreach (($db['trash']['quizzes'] ?? []) as $candidate) {
+                if ((string)($candidate['id'] ?? '') === (string)$attempt['quiz_id']) {
+                    $quiz = $candidate;
+                    break;
+                }
+            }
+        }
+
+        if (!$quiz) {
+            $emDb = Database::getEmergencyBackupDb();
+            if ($emDb && !empty($emDb['questions'])) {
+                foreach ($emDb['questions'] as $candidate) {
+                    if ((string)($candidate['id'] ?? '') === (string)$attempt['quiz_id']) {
+                        $quiz = $candidate;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (!$quiz) {
             Response::notFound('Kuis tidak ditemukan.');
         }
 
@@ -210,65 +252,78 @@ class ExamAttemptController {
         $attemptToken = (string)($input['attempt_token'] ?? '');
         $quizId = trim((string)($input['quiz_id'] ?? ''));
 
-        $db = Database::load();
-        $dirty = false;
-
-        if ($nis !== '') {
-            $db['student_sessions'] = $db['student_sessions'] ?? [];
-            if (isset($db['student_sessions'][$nis])) {
-                $db['student_sessions'][$nis]['last_seen'] = time();
-                if ($quizId !== '' && empty($db['student_sessions'][$nis]['quiz_id'])) {
-                    $db['student_sessions'][$nis]['quiz_id'] = $quizId;
+        Database::modify(function(array &$db) use ($nis, $attemptToken, $quizId) {
+            if ($nis !== '') {
+                $db['student_sessions'] = $db['student_sessions'] ?? [];
+                if (isset($db['student_sessions'][$nis])) {
+                    $db['student_sessions'][$nis]['last_seen'] = time();
+                    if ($quizId !== '' && empty($db['student_sessions'][$nis]['quiz_id'])) {
+                        $db['student_sessions'][$nis]['quiz_id'] = $quizId;
+                    }
                 }
-                $dirty = true;
             }
-        }
 
-        if ($attemptToken !== '') {
-            $key = Utils::attemptKey($attemptToken);
-            if (isset($db['active_attempts'][$key])) {
-                $db['active_attempts'][$key]['updated_at'] = time();
-                $dirty = true;
+            if ($attemptToken !== '') {
+                $key = Utils::attemptKey($attemptToken);
+                if (isset($db['active_attempts'][$key])) {
+                    $db['active_attempts'][$key]['updated_at'] = time();
+                }
             }
-        }
+        });
 
-        if ($dirty) Database::save($db);
         Response::success(['server_now' => time()]);
     }
 
     public static function saveAnswers(): void {
         $input = Utils::getJsonInput();
         $token = (string)($input['attempt_token'] ?? '');
-        $db = Database::load();
         $key = Utils::attemptKey($token);
-        $attempt = $db['active_attempts'][$key] ?? null;
 
-        if (!$attempt || !empty($attempt['finished'])) {
-            Response::notFound('Sesi ujian tidak aktif.');
-        }
+        $saved = false;
+        Database::modify(function(array &$db) use ($key, $input, &$saved) {
+            $attempt = $db['active_attempts'][$key] ?? null;
 
-        if (time() > (int)$attempt['ends_at']) {
-            Response::forbidden('Waktu ujian telah berakhir.');
-        }
+            if (!$attempt || !empty($attempt['finished'])) {
+                return;
+            }
 
-        $answers = Utils::normalizeAnswers($input['answers'] ?? []);
-        $allowed = count($attempt['question_order']);
-        foreach ($answers as $position => $answer) {
-            if ($position < 0 || $position >= $allowed) {
-                unset($answers[$position]);
+            if (time() > (int)$attempt['ends_at']) {
+                return;
+            }
+
+            $answers = Utils::normalizeAnswers($input['answers'] ?? []);
+            $allowed = count($attempt['question_order'] ?? []);
+            foreach ($answers as $position => $answer) {
+                if ($position < 0 || ($allowed > 0 && $position >= $allowed)) {
+                    unset($answers[$position]);
+                }
+            }
+
+            $db['active_attempts'][$key]['answers'] = $answers;
+            $db['active_attempts'][$key]['updated_at'] = time();
+
+            $nis = (string)($attempt['nis'] ?? '');
+            if ($nis !== '') {
+                $db['student_sessions'] = $db['student_sessions'] ?? [];
+                if (isset($db['student_sessions'][$nis])) {
+                    $db['student_sessions'][$nis]['last_seen'] = time();
+                    $db['student_sessions'][$nis]['status'] = 'WORKING';
+                }
+            }
+            $saved = true;
+        });
+
+        if (!$saved) {
+            $db = Database::load();
+            $attempt = $db['active_attempts'][$key] ?? null;
+            if (!$attempt || !empty($attempt['finished'])) {
+                Response::notFound('Sesi ujian tidak aktif.');
+            }
+            if (time() > (int)$attempt['ends_at']) {
+                Response::forbidden('Waktu ujian telah berakhir.');
             }
         }
 
-        $db['active_attempts'][$key]['answers'] = $answers;
-        $db['active_attempts'][$key]['updated_at'] = time();
-
-        $nis = (string)($attempt['nis'] ?? '');
-        if ($nis !== '' && isset($db['student_sessions'][$nis])) {
-            $db['student_sessions'][$nis]['last_seen'] = time();
-            $db['student_sessions'][$nis]['status'] = 'WORKING';
-        }
-
-        Database::save($db);
         Response::success([
             'message' => 'Jawaban tersimpan.',
             'server_now' => time()
@@ -277,140 +332,171 @@ class ExamAttemptController {
 
     public static function submitResult(): void {
         $input = Utils::getJsonInput();
-        $db = Database::load();
         $attemptToken = (string)($input['attempt_token'] ?? '');
         $attemptKey = Utils::attemptKey($attemptToken);
-        $attempt = $db['active_attempts'][$attemptKey] ?? null;
 
-        if (!$attempt || !empty($attempt['finished'])) {
-            Response::conflict('Sesi ujian tidak aktif atau sudah selesai.');
-        }
+        $resultData = null;
 
-        $quizId = (string)$attempt['quiz_id'];
-        $nis = (string)$attempt['nis'];
-        $quiz = null;
-        foreach ($db['questions'] as $candidate) {
-            if ((string)($candidate['id'] ?? '') === $quizId) {
-                $quiz = $candidate;
-                break;
+        Database::modify(function(array &$db) use ($attemptKey, $attemptToken, $input, &$resultData) {
+            $attempt = $db['active_attempts'][$attemptKey] ?? null;
+
+            if (!$attempt || !empty($attempt['finished'])) {
+                Response::conflict('Sesi ujian tidak aktif atau sudah selesai.');
             }
-        }
 
-        if (!$quiz || $nis === '') {
-            Response::error('Data ujian tidak valid.', 400);
-        }
+            $quizId = (string)$attempt['quiz_id'];
+            $nis = (string)$attempt['nis'];
+            $quiz = null;
 
-        if (isset($input['answers']) && is_array($input['answers'])) {
-            $submittedAnswers = Utils::normalizeAnswers($input['answers']);
-            $attempt['answers'] = array_replace($attempt['answers'] ?? [], $submittedAnswers);
-            $db['active_attempts'][$attemptKey]['answers'] = $attempt['answers'];
-            $db['active_attempts'][$attemptKey]['updated_at'] = time();
-        }
-
-        $questionOrder = $attempt['question_order'];
-        $answers = Utils::normalizeAnswers($attempt['answers'] ?? []);
-
-        foreach ($answers as $position => &$answer) {
-            $qid = $questionOrder[(int)$position] ?? null;
-            $q = ($qid !== null && isset($quiz['questions'][$qid])) ? $quiz['questions'][$qid] : null;
-            $qType = $q['type'] ?? 'mc';
-            $map = $attempt['option_order'][$qid] ?? [];
-
-            if (!empty($map)) {
-                if ($qType === 'complex' && is_array($answer)) {
-                    $answer = array_values(array_filter(array_map(fn($v) => $map[(int)$v] ?? null, $answer), fn($v) => $v !== null));
-                } elseif (($qType === 'mc' || $qType === 'case_analysis' || is_numeric($answer)) && isset($map[(int)$answer])) {
-                    $answer = $map[(int)$answer];
-                }
-            }
-        }
-        unset($answer);
-
-        $missing = [];
-        foreach ($questionOrder as $pos => $_qid) {
-            $v = $answers[$pos] ?? null;
-            if ($v === null || $v === '' || (is_array($v) && count($v) === 0)) {
-                $missing[] = $pos + 1;
-            }
-        }
-
-        $isExpired = (time() >= (int)($attempt['ends_at'] ?? 0)) || !empty($input['force_submit']);
-        if ($missing && !$isExpired) {
-            Response::error('Masih ada jawaban kosong.', 400, ['empty_questions' => $missing]);
-        }
-
-        [$score, $correct, $wrong, $breakdowns] = ScoringEngine::calculateSubmission($quiz, $questionOrder, $answers);
-
-        $token = bin2hex(random_bytes(32));
-        $recordId = 'res_' . bin2hex(random_bytes(16));
-        $record = [
-            'id' => $recordId,
-            'nis' => $nis,
-            'name' => (string)$attempt['name'],
-            'class' => (string)$attempt['class'],
-            'code' => $quizId,
-            'title' => (string)($quiz['title'] ?? ''),
-            'score' => $score,
-            'correct' => $correct,
-            'wrong' => $wrong,
-            'date' => date('d/m/Y H:i:s'),
-            'review_token' => $token,
-            'question_order' => $questionOrder,
-            'answers' => $answers,
-            'breakdowns' => $breakdowns
-        ];
-
-        $same = array_values(array_filter($db['results'], function($r) use ($nis, $quizId) {
-            return (string)($r['nis'] ?? '') === $nis && (string)($r['code'] ?? '') === $quizId;
-        }));
-
-        if (count($same) >= MAX_STUDENT_HISTORY) {
-            for ($i = count($db['results']) - 1; $i >= 0; $i--) {
-                if ((string)($db['results'][$i]['nis'] ?? '') === $nis && (string)($db['results'][$i]['code'] ?? '') === $quizId) {
-                    array_splice($db['results'], $i, 1);
+            foreach ($db['questions'] as $candidate) {
+                if ((string)($candidate['id'] ?? '') === $quizId) {
+                    $quiz = $candidate;
                     break;
                 }
             }
-        }
 
-        array_unshift($db['results'], $record);
-        $db['active_attempts'][$attemptKey]['finished'] = true;
-        $db['active_attempts'][$attemptKey]['result_token'] = $token;
-        $db['active_attempts'][$attemptKey]['score'] = $score;
+            if (!$quiz) {
+                foreach (($db['trash']['quizzes'] ?? []) as $candidate) {
+                    if ((string)($candidate['id'] ?? '') === $quizId) {
+                        $quiz = $candidate;
+                        break;
+                    }
+                }
+            }
 
-        $permissionKey = $nis . '_' . $quizId;
-        if (isset($db['retake_permissions'][$permissionKey]) && is_array($db['retake_permissions'][$permissionKey])) {
-            $db['retake_permissions'][$permissionKey]['remaining'] = max(0, (int)$db['retake_permissions'][$permissionKey]['remaining'] - 1);
-            if (!$db['retake_permissions'][$permissionKey]['remaining']) {
+            if (!$quiz) {
+                $emDb = Database::getEmergencyBackupDb();
+                if ($emDb && !empty($emDb['questions'])) {
+                    foreach ($emDb['questions'] as $candidate) {
+                        if ((string)($candidate['id'] ?? '') === $quizId) {
+                            $quiz = $candidate;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (!$quiz || $nis === '') {
+                Response::error('Data ujian tidak valid.', 400);
+            }
+
+            if (isset($input['answers']) && is_array($input['answers'])) {
+                $submittedAnswers = Utils::normalizeAnswers($input['answers']);
+                $attempt['answers'] = array_replace($attempt['answers'] ?? [], $submittedAnswers);
+                $db['active_attempts'][$attemptKey]['answers'] = $attempt['answers'];
+                $db['active_attempts'][$attemptKey]['updated_at'] = time();
+            }
+
+            $questionOrder = $attempt['question_order'];
+            $answers = Utils::normalizeAnswers($attempt['answers'] ?? []);
+
+            foreach ($answers as $position => &$answer) {
+                $qid = $questionOrder[(int)$position] ?? null;
+                $q = ($qid !== null && isset($quiz['questions'][$qid])) ? $quiz['questions'][$qid] : null;
+                $qType = $q['type'] ?? 'mc';
+                $map = $attempt['option_order'][$qid] ?? [];
+
+                if (!empty($map)) {
+                    if ($qType === 'complex' && is_array($answer)) {
+                        $answer = array_values(array_filter(array_map(fn($v) => $map[(int)$v] ?? null, $answer), fn($v) => $v !== null));
+                    } elseif (($qType === 'mc' || $qType === 'case_analysis' || is_numeric($answer)) && isset($map[(int)$answer])) {
+                        $answer = $map[(int)$answer];
+                    }
+                }
+            }
+            unset($answer);
+
+            $missing = [];
+            foreach ($questionOrder as $pos => $_qid) {
+                $v = $answers[$pos] ?? null;
+                if ($v === null || $v === '' || (is_array($v) && count($v) === 0)) {
+                    $missing[] = $pos + 1;
+                }
+            }
+
+            $isExpired = (time() >= (int)($attempt['ends_at'] ?? 0)) || !empty($input['force_submit']);
+            if ($missing && !$isExpired) {
+                Response::error('Masih ada jawaban kosong.', 400, ['empty_questions' => $missing]);
+            }
+
+            [$score, $correct, $wrong, $breakdowns] = ScoringEngine::calculateSubmission($quiz, $questionOrder, $answers);
+
+            $token = bin2hex(random_bytes(32));
+            $recordId = 'res_' . bin2hex(random_bytes(16));
+            $record = [
+                'id' => $recordId,
+                'nis' => $nis,
+                'name' => (string)$attempt['name'],
+                'class' => (string)$attempt['class'],
+                'code' => $quizId,
+                'title' => (string)($quiz['title'] ?? ''),
+                'score' => $score,
+                'correct' => $correct,
+                'wrong' => $wrong,
+                'date' => date('d/m/Y H:i:s'),
+                'review_token' => $token,
+                'question_order' => $questionOrder,
+                'answers' => $answers,
+                'breakdowns' => $breakdowns
+            ];
+
+            $same = array_values(array_filter($db['results'], function($r) use ($nis, $quizId) {
+                return (string)($r['nis'] ?? '') === $nis && (string)($r['code'] ?? '') === $quizId;
+            }));
+
+            if (count($same) >= MAX_STUDENT_HISTORY) {
+                for ($i = count($db['results']) - 1; $i >= 0; $i--) {
+                    if ((string)($db['results'][$i]['nis'] ?? '') === $nis && (string)($db['results'][$i]['code'] ?? '') === $quizId) {
+                        array_splice($db['results'], $i, 1);
+                        break;
+                    }
+                }
+            }
+
+            array_unshift($db['results'], $record);
+            $db['active_attempts'][$attemptKey]['finished'] = true;
+            $db['active_attempts'][$attemptKey]['result_token'] = $token;
+            $db['active_attempts'][$attemptKey]['score'] = $score;
+
+            $permissionKey = $nis . '_' . $quizId;
+            if (isset($db['retake_permissions'][$permissionKey]) && is_array($db['retake_permissions'][$permissionKey])) {
+                $db['retake_permissions'][$permissionKey]['remaining'] = max(0, (int)$db['retake_permissions'][$permissionKey]['remaining'] - 1);
+                if (!$db['retake_permissions'][$permissionKey]['remaining']) {
+                    unset($db['retake_permissions'][$permissionKey]);
+                }
+            } else {
                 unset($db['retake_permissions'][$permissionKey]);
             }
+
+            $db['student_sessions'] = $db['student_sessions'] ?? [];
+            $prev = $db['student_sessions'][$nis] ?? [];
+            $db['student_sessions'][$nis] = array_merge($prev, [
+                'nis' => $nis,
+                'name' => (string)($attempt['name'] ?? ($prev['name'] ?? $nis)),
+                'class' => (string)($attempt['class'] ?? ($prev['class'] ?? '')),
+                'quiz_id' => $quizId,
+                'quiz_title' => (string)($quiz['title'] ?? $quizId),
+                'status' => 'FINISHED',
+                'finished_at' => time(),
+                'score' => $score,
+                'last_seen' => time()
+            ]);
+
+            AuditService::log($db, 'Selesai ujian', "{$nis} - " . (string)($attempt['name'] ?? ''), "Nilai: {$score} ({$correct} Benar, {$wrong} Salah) - " . ($quiz['title'] ?? $quizId));
+
+            $resultData = [
+                'message' => 'Jawaban berhasil terkirim ke server',
+                'score' => $score,
+                'correct' => $correct,
+                'wrong' => $wrong,
+                'review_token' => $token
+            ];
+        });
+
+        if ($resultData) {
+            Response::success($resultData);
         } else {
-            unset($db['retake_permissions'][$permissionKey]);
+            Response::error('Gagal memproses pengumpulan ujian.', 500);
         }
-
-        $db['student_sessions'] = $db['student_sessions'] ?? [];
-        $prev = $db['student_sessions'][$nis] ?? [];
-        $db['student_sessions'][$nis] = array_merge($prev, [
-            'nis' => $nis,
-            'name' => (string)($attempt['name'] ?? ($prev['name'] ?? $nis)),
-            'class' => (string)($attempt['class'] ?? ($prev['class'] ?? '')),
-            'quiz_id' => $quizId,
-            'quiz_title' => (string)($quiz['title'] ?? $quizId),
-            'status' => 'FINISHED',
-            'finished_at' => time(),
-            'score' => $score,
-            'last_seen' => time()
-        ]);
-
-        AuditService::log($db, 'Selesai ujian', "{$nis} - " . (string)($attempt['name'] ?? ''), "Nilai: {$score} ({$correct} Benar, {$wrong} Salah) - " . ($quiz['title'] ?? $quizId));
-        Database::save($db);
-
-        Response::success([
-            'message' => 'Jawaban berhasil terkirim ke server',
-            'score' => $score,
-            'correct' => $correct,
-            'wrong' => $wrong,
-            'review_token' => $token
-        ]);
     }
 }

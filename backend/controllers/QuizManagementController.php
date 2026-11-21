@@ -124,6 +124,9 @@ class QuizManagementController {
         }
         unset($quiz);
 
+        if (empty($input)) {
+            $db['__allow_empty_quizzes'] = true;
+        }
         $db['questions'] = $input;
         AuditService::log($db, 'Simpan paket kuis', '', count($input) . ' paket');
         Database::save($db);

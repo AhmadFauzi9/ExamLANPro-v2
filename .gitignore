@@ -3,6 +3,9 @@ backend/storage/sessions/*
 !backend/storage/sessions/.gitkeep
 backend/storage/backups/*
 !backend/storage/backups/.gitkeep
+backend/storage/*.lock
+backend/storage/*.bak
+backend/storage/*.tmp
 sessions/*
 !sessions/.gitkeep
 backups/*

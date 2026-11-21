@@ -117,7 +117,34 @@
                             <i class="fa-solid fa-circle-question text-sky-600"></i>
                             <span>Panduan Pengawas Lab</span>
                         </button>
-                        <!-- Live Quiz Token Widget in Header (Menggantikan 0 aktif mengerjakan) -->
+                    </div>
+                </div>
+
+                <!-- Primary Quiz Selector & Token Control Banner -->
+                <div class="bg-gradient-to-r from-blue-50/80 via-sky-50/40 to-white p-3.5 sm:p-4 rounded-2xl border border-blue-200 shadow-xs flex flex-col lg:flex-row lg:items-center justify-between gap-3.5">
+                    <div class="flex items-center gap-3 flex-1 min-w-0">
+                        <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center text-lg font-bold shadow-xs shrink-0">
+                            <i class="fa-solid fa-file-circle-check"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center gap-2 mb-1">
+                                <label for="mon-filter-quiz" class="text-[11px] font-black uppercase tracking-wider text-blue-700 flex items-center gap-1">
+                                    <i class="fa-solid fa-bullseye text-[10px]"></i> Paket Ujian yang Dipantau:
+                                </label>
+                                <span id="mon-quiz-status-pill" class="hidden"></span>
+                            </div>
+                            <div class="relative max-w-xl">
+                                <select id="mon-filter-quiz" onchange="onMonQuizChange()" class="w-full pl-3 pr-8 py-2 rounded-xl border border-blue-300 bg-white font-bold text-xs sm:text-sm text-slate-800 shadow-2xs focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none cursor-pointer truncate">
+                                    <option value="ALL">Memuat daftar soal ujian...</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right side: Meta Info & Live Token Widget -->
+                    <div class="flex items-center gap-3 flex-wrap shrink-0 border-t lg:border-t-0 lg:border-l border-blue-200/70 pt-2.5 lg:pt-0 lg:pl-3.5">
+                        <div id="mon-quiz-meta-info" class="text-xs text-slate-600 flex items-center gap-2 flex-wrap"></div>
+                        <!-- Live Quiz Token Widget -->
                         <div id="mon-quiz-token-widget" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-50 text-blue-800 border border-blue-200 text-xs font-mono font-bold shadow-2xs transition shrink-0" title="Token Akses Siswa untuk Paket Ujian yang Sedang Dimonitoring">
                             <i class="fa-solid fa-key text-[11px] text-blue-600"></i>
                             <span id="mon-token-val" class="tracking-widest font-black text-xs sm:text-sm select-all">------</span>
@@ -173,12 +200,7 @@
                             <option value="ALL">Kelas</option>
                         </select>
 
-                        <!-- 5. Filter Soal Ujian -->
-                        <select id="mon-filter-quiz" onchange="handleMonFilter()" class="px-1.5 py-1.5 w-[100px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none" title="Filter Soal Ujian">
-                            <option value="ALL">Soal Ujian</option>
-                        </select>
-
-                        <!-- 6. Search Input -->
+                        <!-- 5. Search Input -->
                         <div class="relative min-w-[160px] sm:min-w-[200px] flex-1">
                             <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400"></i>
                             <input id="mon-search-input" type="text" oninput="handleMonFilter()" placeholder="Cari NIS, nama, atau kelas..." class="w-full pl-9 pr-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none text-xs text-slate-800 transition">
@@ -226,7 +248,6 @@
                                     <th class="min-w-[170px] whitespace-nowrap">Nama Siswa</th>
                                     <th class="text-center whitespace-nowrap">Tipe Ujian</th>
                                     <th>Kelas</th>
-                                    <th>Soal Ujian</th>
                                     <th class="text-center">Status Kehadiran</th>
                                     <th class="text-center whitespace-nowrap" title="Status Pelanggaran / Curang Siswa">Pelanggaran</th>
                                     <th class="text-center min-w-[130px]">Progres Siswa</th>
@@ -237,7 +258,7 @@
                             </thead>
                             <tbody id="monitoring-tbody" class="divide-y divide-slate-100">
                                 <tr>
-                                    <td colspan="13" class="p-8 text-center text-slate-400">
+                                    <td colspan="12" class="p-8 text-center text-slate-400">
                                         <i class="fa-solid fa-spinner fa-spin mr-1"></i> Memuat data monitoring real-time...
                                     </td>
                                 </tr>
@@ -501,43 +522,128 @@
                 }
             }
 
-            // 2. Populasi Filter Soal Ujian
+            // 2. Populasi Filter Soal Ujian (Primary Quiz Selector)
             if (quizSelect) {
+                const quizzes = (monQuizzes && monQuizzes.length) ? monQuizzes : ((activeDb && Array.isArray(activeDb.questions)) ? activeDb.questions : []);
                 const quizMap = new Map();
-                if (activeDb && Array.isArray(activeDb.questions)) {
-                    activeDb.questions.forEach(q => {
-                        if (q && q.id) {
-                            quizMap.set(String(q.id).trim(), String(q.title || q.id).trim());
-                        }
-                    });
-                }
+                quizzes.forEach(q => {
+                    if (q && q.id) {
+                        quizMap.set(String(q.id).trim(), {
+                            title: String(q.title || q.id).trim(),
+                            status: q.status || 'INACTIVE',
+                            quiz: q
+                        });
+                    }
+                });
                 if (Array.isArray(rawMonitoring)) {
                     rawMonitoring.forEach(m => {
                         if (m && m.quiz_id) {
                             const qid = String(m.quiz_id).trim();
-                            if (!quizMap.has(qid) || !quizMap.get(qid)) {
-                                quizMap.set(qid, String(m.quiz_title || qid).trim());
+                            if (!quizMap.has(qid)) {
+                                quizMap.set(qid, {
+                                    title: String(m.quiz_title || qid).trim(),
+                                    status: 'UNKNOWN',
+                                    quiz: null
+                                });
                             }
                         }
                     });
                 }
 
-                const signature = [...quizMap.entries()].map(e => e[0] + ':' + e[1]).sort().join('||');
+                const signature = [...quizMap.entries()].map(e => e[0] + ':' + e[1].title + ':' + e[1].status).join('||');
                 if (signature !== lastQuizzesSignature || quizSelect.options.length <= 1) {
                     lastQuizzesSignature = signature;
-                    const currentQuiz = quizSelect.value || 'ALL';
-                    let quizHtml = `<option value="ALL">Soal Ujian</option>`;
-                    quizMap.forEach((title, id) => {
-                        quizHtml += `<option value="${escapeHtml(id)}">${escapeHtml(title)}</option>`;
-                    });
+                    const currentQuiz = quizSelect.value || '';
+                    let quizHtml = '';
+
+                    if (quizMap.size === 0) {
+                        quizHtml = `<option value="ALL">Belum ada paket kuis</option>`;
+                    } else {
+                        quizMap.forEach((info, id) => {
+                            const activeMark = info.status === 'ACTIVE' ? ' 🟢 [Aktif]' : '';
+                            quizHtml += `<option value="${escapeHtml(id)}">${escapeHtml(info.title)}${activeMark}</option>`;
+                        });
+                        quizHtml += `<option value="ALL">🌐 Semua Paket Ujian (Campur)</option>`;
+                    }
                     quizSelect.innerHTML = quizHtml;
 
-                    if (currentQuiz !== 'ALL' && (quizMap.has(currentQuiz) || [...quizMap.values()].includes(currentQuiz))) {
+                    // Opsi 1: Otomatis memilih paket aktif teratas / terbaru jika belum dipilih
+                    if (currentQuiz && currentQuiz !== 'ALL' && quizMap.has(currentQuiz)) {
                         quizSelect.value = currentQuiz;
+                    } else if (quizMap.size > 0) {
+                        let autoTarget = null;
+                        for (const [id, info] of quizMap.entries()) {
+                            if (info.status === 'ACTIVE') {
+                                autoTarget = id;
+                                break;
+                            }
+                        }
+                        if (!autoTarget && Array.isArray(rawMonitoring)) {
+                            const workingStudent = rawMonitoring.find(m => m.status === 'WORKING' && m.quiz_id);
+                            if (workingStudent) autoTarget = String(workingStudent.quiz_id).trim();
+                        }
+                        if (!autoTarget) {
+                            autoTarget = quizMap.keys().next().value;
+                        }
+                        quizSelect.value = autoTarget || 'ALL';
                     } else {
                         quizSelect.value = 'ALL';
                     }
+                    updateMonitoringQuizMeta();
                 }
+            }
+        }
+
+        function onMonQuizChange() {
+            updateMonitoringQuizMeta();
+            updateMonitoringTokenWidget();
+            updateSummaryCounts({});
+            handleMonFilter();
+        }
+
+        function updateMonitoringQuizMeta() {
+            const quizSelect = document.getElementById('mon-filter-quiz');
+            const metaContainer = document.getElementById('mon-quiz-meta-info');
+            const statusPill = document.getElementById('mon-quiz-status-pill');
+            if (!quizSelect) return;
+
+            const selectedVal = quizSelect.value;
+            const activeDb = window.dbData || (typeof dbData !== 'undefined' ? dbData : null);
+            const quizzes = (monQuizzes && monQuizzes.length) ? monQuizzes : ((activeDb && Array.isArray(activeDb.questions)) ? activeDb.questions : []);
+
+            if (selectedVal === 'ALL') {
+                if (statusPill) {
+                    statusPill.className = "inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200";
+                    statusPill.innerHTML = '<i class="fa-solid fa-layer-group text-[9px]"></i> Semua Paket';
+                    statusPill.classList.remove('hidden');
+                }
+                if (metaContainer) {
+                    metaContainer.innerHTML = `<span class="text-slate-500 font-medium text-xs"><i class="fa-solid fa-list-check mr-1 text-slate-400"></i>${quizzes.length} Paket Terdaftar</span>`;
+                }
+                return;
+            }
+
+            const targetQuiz = quizzes.find(q => String(q.id).trim() === selectedVal.trim());
+            if (targetQuiz) {
+                const isActive = (targetQuiz.status === 'ACTIVE');
+                if (statusPill) {
+                    statusPill.className = `inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full ${isActive ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-slate-100 text-slate-500 border border-slate-200'}`;
+                    statusPill.innerHTML = isActive ? '<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Sedang Aktif' : '<i class="fa-solid fa-pause text-[9px]"></i> Nonaktif';
+                    statusPill.classList.remove('hidden');
+                }
+                if (metaContainer) {
+                    const dur = targetQuiz.duration ? `${targetQuiz.duration} Menit` : null;
+                    const qCount = targetQuiz.questions_count || (Array.isArray(targetQuiz.items) ? targetQuiz.items.length : null);
+                    const qClass = targetQuiz.class || targetQuiz.target_class;
+                    let metaBadges = [];
+                    if (dur) metaBadges.push(`<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white border border-slate-200 text-[11px] font-semibold text-slate-600" title="Durasi Ujian"><i class="fa-regular fa-clock text-slate-400"></i> ${escapeHtml(dur)}</span>`);
+                    if (qCount) metaBadges.push(`<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white border border-slate-200 text-[11px] font-semibold text-slate-600" title="Jumlah Butir Soal"><i class="fa-solid fa-list-ol text-slate-400"></i> ${qCount} Soal</span>`);
+                    if (qClass && qClass !== '-') metaBadges.push(`<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white border border-slate-200 text-[11px] font-semibold text-slate-600" title="Target Kelas"><i class="fa-solid fa-users text-slate-400"></i> ${escapeHtml(qClass)}</span>`);
+                    metaContainer.innerHTML = metaBadges.join('');
+                }
+            } else {
+                if (statusPill) statusPill.classList.add('hidden');
+                if (metaContainer) metaContainer.innerHTML = '';
             }
         }
 
@@ -567,7 +673,7 @@
             } catch (e) {
                 if (!silent) {
                     document.getElementById('monitoring-tbody').innerHTML = `
-                        <tr><td colspan="13" class="p-6 text-center text-rose-500 font-medium">Gagal memuat data monitoring dari server. Pastikan server aktif.</td></tr>
+                        <tr><td colspan="12" class="p-6 text-center text-rose-500 font-medium">Gagal memuat data monitoring dari server. Pastikan server aktif.</td></tr>
                     `;
                 }
             }
@@ -576,12 +682,18 @@
         let filterOnlyViolations = false;
 
         function updateSummaryCounts(counts) {
-            const total = counts.total ?? rawMonitoring.length;
-            const working = counts.working ?? rawMonitoring.filter(m => m.status === 'WORKING').length;
-            const standby = counts.standby ?? rawMonitoring.filter(m => m.status === 'STANDBY').length;
-            const finished = counts.finished ?? rawMonitoring.filter(m => m.status === 'FINISHED').length;
-            const offline = (counts.offline ?? 0) + (counts.time_over ?? 0);
-            const violations = rawMonitoring.reduce((sum, m) => sum + (Number(m.violations_count) || 0), 0);
+            const currentQuiz = document.getElementById('mon-filter-quiz')?.value || 'ALL';
+            let relevantMonitoring = rawMonitoring;
+            if (currentQuiz && currentQuiz !== 'ALL') {
+                relevantMonitoring = rawMonitoring.filter(m => String(m.quiz_id || '').trim() === String(currentQuiz).trim() || String(m.quiz_title || '').trim().toLowerCase() === String(currentQuiz).trim().toLowerCase());
+            }
+
+            const total = relevantMonitoring.length;
+            const working = relevantMonitoring.filter(m => m.status === 'WORKING').length;
+            const standby = relevantMonitoring.filter(m => m.status === 'STANDBY').length;
+            const finished = relevantMonitoring.filter(m => m.status === 'FINISHED').length;
+            const offline = relevantMonitoring.filter(m => m.status === 'OFFLINE' || m.status === 'TIME_OVER').length;
+            const violations = relevantMonitoring.reduce((sum, m) => sum + (Number(m.violations_count) || 0), 0);
 
             document.getElementById('sum-total').innerText = total;
             document.getElementById('sum-working').innerText = working;
@@ -689,7 +801,7 @@
             if (!filteredMonitoring.length) {
                 tbody.innerHTML = `
                     <tr>
-                        <td colspan="13" class="p-8 text-center text-slate-400">
+                        <td colspan="12" class="p-8 text-center text-slate-400">
                             <i class="fa-solid fa-mug-hot text-2xl mb-1 text-slate-300"></i>
                             <p class="text-xs">Tidak ada data peserta ujian yang sesuai filter.</p>
                         </td>
@@ -742,7 +854,6 @@
                             ${attemptBadge}
                         </td>
                         <td class="p-3 text-slate-600 whitespace-nowrap">${escapeHtml(m.class || '-')}</td>
-                        <td class="p-3 font-medium text-slate-700 max-w-[190px] truncate" title="${escapeHtml(m.quiz_title || '-')}">${escapeHtml(m.quiz_title || '-')}</td>
                         <td class="p-3 text-center whitespace-nowrap">${statusBadge}</td>
                         <td class="p-3 text-center whitespace-nowrap">
                             ${m.violations_count > 0 ? `
