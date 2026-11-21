@@ -159,13 +159,26 @@
                             <option value="name_desc">Nama (Z-A)</option>
                         </select>
 
-                        <!-- 3. Filter: Kelas -->
-                        <select id="results-filter-class" onchange="handleResultsFilter()" class="px-1.5 py-1.5 w-[80px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none truncate font-medium" title="Filter Kelas">
+                        <!-- 3. Filter: Tingkat / Kelas -->
+                        <select id="results-filter-class" onchange="onClassFilterChange()" class="px-1.5 py-1.5 w-[75px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none cursor-pointer font-medium truncate" title="Filter Tingkat / Kelas (7, 8, 9 / VII, VIII, IX)">
                             <option value="all">Kelas</option>
                         </select>
 
-                        <!-- 5. Filter: Ketuntasan KKM -->
-                        <select id="results-filter-kkm" onchange="handleResultsFilter()" class="px-1.5 py-1.5 w-[75px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none font-medium truncate" title="Filter Ketuntasan Nilai KKM">
+                        <!-- 4. Filter: Bagian / Rombel -->
+                        <select id="results-filter-section" onchange="onSectionFilterChange()" class="px-1.5 py-1.5 w-[75px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none cursor-pointer font-medium truncate" title="Filter Bagian / Rombel (A, B, C, ... M)">
+                            <option value="all">Bagian</option>
+                        </select>
+
+                        <!-- 5. Filter: Status Partisipasi Siswa -->
+                        <select id="results-filter-status" onchange="handleResultsFilter()" class="px-2 py-1.5 w-[75px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none cursor-pointer font-medium truncate" title="Filter Status Partisipasi Siswa (Selesai, Ujian, Belum Ikut)">
+                            <option value="all">Status</option>
+                            <option value="finished">Selesai</option>
+                            <option value="working">Mengerjakan</option>
+                            <option value="not_taken">Belum Ujian</option>
+                        </select>
+
+                        <!-- 6. Filter: Ketuntasan KKM -->
+                        <select id="results-filter-kkm" onchange="handleResultsFilter()" class="px-1.5 py-1.5 w-[75px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none cursor-pointer font-medium truncate" title="Filter Ketuntasan Nilai KKM">
                             <option value="all">Nilai</option>
                             <option id="filter-kkm-opt-pass" value="pass">Tuntas (≥ KKM)</option>
                             <option id="filter-kkm-opt-rem" value="remedial">Remedial (< KKM)</option>
@@ -539,12 +552,116 @@
             return (q && q.kkm !== undefined && q.kkm !== null && !isNaN(Number(q.kkm))) ? Number(q.kkm) : 75;
         }
 
+        // Parser Kelas & Bagian (Selaras dengan Halaman Data Siswa)
+        function parseStudentClass(classStr) {
+            if (!classStr) return { level: '', section: '', raw: '' };
+            const str = String(classStr).trim();
+            const clean = str.replace(/\s+/g, ' ');
+            const m = clean.match(/^(IX|VIII|VII|X|XI|XII|12|11|10|[789])(?:\s*[-_.]?\s*(.*))?$/i);
+            if (m) {
+                let level = m[1].toUpperCase();
+                let romanMap = { '7': 'VII', '8': 'VIII', '9': 'IX', '10': 'X', '11': 'XI', '12': 'XII' };
+                if (romanMap[level]) level = romanMap[level];
+                let rem = (m[2] || '').trim();
+                let section = '';
+                if (rem) {
+                    const secMatch = rem.match(/^([A-Za-z0-9]+)(?:\s*\(.*\))?$/);
+                    if (secMatch) {
+                        section = secMatch[1].trim().toUpperCase();
+                    } else {
+                        section = rem.replace(/\s*\(.*\)$/, '').trim().toUpperCase();
+                    }
+                }
+                return { level, section, raw: str };
+            }
+            return { level: clean, section: '', raw: str };
+        }
+
+        function sortClassLevels(a, b) {
+            const order = { 'VII': 7, '7': 7, 'VIII': 8, '8': 8, 'IX': 9, '9': 9, 'X': 10, '10': 10, 'XI': 11, '11': 11, 'XII': 12, '12': 12 };
+            const numA = order[a] || parseInt(a) || 99;
+            const numB = order[b] || parseInt(b) || 99;
+            if (numA !== numB) return numA - numB;
+            return String(a).localeCompare(String(b));
+        }
+
+        function isStudentInClassFilter(classStr, fClass, fSection) {
+            if (fClass === 'all' && fSection === 'all') return true;
+            const p = parseStudentClass(classStr);
+            const matchClass = (fClass === 'all' || p.level === fClass || (classStr && classStr.toUpperCase().startsWith(fClass)));
+            const matchSection = (fSection === 'all' || p.section === fSection);
+            return matchClass && matchSection;
+        }
+
+        function getActiveFilterClassName() {
+            const fClass = document.getElementById('results-filter-class')?.value || 'all';
+            const fSection = document.getElementById('results-filter-section')?.value || 'all';
+            if (fClass !== 'all' && fSection !== 'all') return `${fClass} ${fSection}`;
+            if (fClass !== 'all') return fClass;
+            if (fSection !== 'all') return `Bagian ${fSection}`;
+            return 'all';
+        }
+
+        // Helper pencocokan tingkat kelas kuis (misal 7, 8, 9) dengan kelas siswa (misal 'VIII M')
+        function matchStudentToQuizGrade(studentClass, quizClass) {
+            if (!quizClass || quizClass === 'all') return true;
+            const s = (studentClass || '').trim().toUpperCase();
+            const q = String(quizClass).trim().toUpperCase();
+            if (q === '7' || q === 'VII') return s.startsWith('VII ') || s.startsWith('VII(') || s.startsWith('7');
+            if (q === '8' || q === 'VIII') return s.startsWith('VIII ') || s.startsWith('VIII(') || s.startsWith('8');
+            if (q === '9' || q === 'IX') return s.startsWith('IX ') || s.startsWith('IX(') || s.startsWith('9');
+            return s.includes(q);
+        }
+
+        function onClassFilterChange() {
+            populateClassAndSectionFilters();
+            updateSummaryCards();
+            handleResultsFilter(true);
+        }
+
+        function onSectionFilterChange() {
+            updateSummaryCards();
+            handleResultsFilter(true);
+        }
+
+        function filterOnlyNotTaken() {
+            const statusSelect = document.getElementById('results-filter-status');
+            if (statusSelect) {
+                statusSelect.value = 'not_taken';
+                handleResultsFilter(true);
+            }
+        }
+
+        function alertStudentNotTaken(nis, name, className) {
+            appAlert(
+                `<div class="space-y-2 text-left text-xs">
+                    <p class="text-slate-700">Siswa berikut tercatat <strong>belum mengikuti</strong> paket ujian ini:</p>
+                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 font-mono space-y-1">
+                        <div><strong class="text-slate-600">Nama:</strong> ${escapeHtml(name)}</div>
+                        <div><strong class="text-slate-600">NIS:</strong> ${escapeHtml(nis)}</div>
+                        <div><strong class="text-slate-600">Kelas:</strong> ${escapeHtml(className)}</div>
+                    </div>
+                    <p class="text-slate-500 text-[11px]">Pastikan siswa login menggunakan NIS miliknya dan memasukkan token ujian untuk mengerjakan ulangan susulan.</p>
+                </div>`,
+                'Informasi Siswa Belum Ujian'
+            );
+        }
+
         // Summary Cards
         function updateSummaryCards() {
             const filterQuiz = document.getElementById('teacher-quiz-filter')?.value || 'all';
-            const relevantResults = (filterQuiz === 'all')
+            const fClass = document.getElementById('results-filter-class')?.value || 'all';
+            const fSection = document.getElementById('results-filter-section')?.value || 'all';
+            const hasClassFilter = (fClass !== 'all' || fSection !== 'all');
+
+            // Filter relevant results
+            let relevantResults = (filterQuiz === 'all')
                 ? allResults
                 : allResults.filter(r => r.code === filterQuiz || r.quiz_id === filterQuiz);
+
+            if (hasClassFilter) {
+                relevantResults = relevantResults.filter(r => isStudentInClassFilter(r.class, fClass, fSection));
+            }
 
             const finishedResults = relevantResults.filter(r => !r.is_in_progress);
             const total = finishedResults.length;
@@ -553,7 +670,24 @@
             const avg = total ? Math.round(scores.reduce((a, b) => a + b, 0) / total) : 0;
             const maxScore = total ? Math.max(...scores) : 0;
             const minScore = total ? Math.min(...scores) : 0;
-            
+
+            // Hitung siswa di kelas (jika kelas dipilih atau target kuis terdeteksi)
+            let masterCount = 0;
+            let notTakenCount = 0;
+            const targetQuiz = (dbData.questions || []).find(q => q.id === filterQuiz);
+
+            if (hasClassFilter) {
+                const classStudents = (dbData.students || []).filter(s => isStudentInClassFilter(s.class, fClass, fSection));
+                masterCount = classStudents.length;
+                const participatedNises = new Set(relevantResults.map(r => String(r.nis || '').trim()));
+                notTakenCount = classStudents.filter(s => !participatedNises.has(String(s.nis || '').trim())).length;
+            } else if (targetQuiz && targetQuiz.class) {
+                const gradeStudents = (dbData.students || []).filter(s => matchStudentToQuizGrade(s.class, targetQuiz.class));
+                masterCount = gradeStudents.length;
+                const participatedNises = new Set(relevantResults.map(r => String(r.nis || '').trim()));
+                notTakenCount = gradeStudents.filter(s => !participatedNises.has(String(s.nis || '').trim())).length;
+            }
+
             // KKM dinamis paket kuis yang dipilih (atau per-kuis jika 'all')
             const activeKkm = getQuizKkm(filterQuiz);
             const passed = finishedResults.filter(r => {
@@ -569,7 +703,23 @@
             const elStudents = document.getElementById('sum-students');
             const elStudentsSub = document.getElementById('sum-students-subtitle');
             if (elStudents) {
-                if (inProgressCount > 0) {
+                if (masterCount > 0) {
+                    const takenTotal = masterCount - notTakenCount;
+                    const pct = masterCount > 0 ? Math.round((takenTotal / masterCount) * 100) : 0;
+                    elStudents.innerHTML = `
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-2xl font-black text-slate-800">${takenTotal}</span>
+                            <span class="text-xs font-bold text-slate-400">/ ${masterCount} Siswa</span>
+                            <span class="inline-flex items-center text-[10px] font-extrabold px-1.5 py-0.5 rounded ${pct >= 100 ? 'bg-emerald-100 text-emerald-800' : 'bg-brand-50 text-brand-700'}">${pct}%</span>
+                        </div>
+                    `;
+                    if (elStudentsSub) {
+                        const notTakenBadge = notTakenCount > 0
+                            ? `<button type="button" onclick="filterOnlyNotTaken()" class="inline-flex items-center gap-1 font-bold text-rose-600 hover:text-rose-800 bg-rose-50 px-1.5 py-0.5 rounded border border-rose-200 transition cursor-pointer" title="Klik untuk menampilkan siswa yang belum ujian"><i class="fa-solid fa-triangle-exclamation text-[9px]"></i> ${notTakenCount} belum ikut</button>`
+                            : `<span class="text-emerald-700 font-bold">Lengkap 100%</span>`;
+                        elStudentsSub.innerHTML = `<span class="text-emerald-700 font-bold">${total} selesai</span> • <span class="text-sky-700 font-bold">${inProgressCount} tes</span> • ${notTakenBadge}`;
+                    }
+                } else if (inProgressCount > 0) {
                     elStudents.innerHTML = `
                         <div class="flex items-center gap-1.5 flex-wrap">
                             <span class="inline-flex items-center gap-1 text-xs font-black text-sky-700 bg-sky-50 border border-sky-200 px-2 py-0.5 rounded-lg" title="${inProgressCount} siswa sedang mengerjakan ujian">
@@ -638,6 +788,7 @@
         function onResQuizChange() {
             updateResQuizMeta();
             updateTeacherReviewControl();
+            populateClassFilter();
             updateSummaryCards();
             handleResultsFilter(true);
         }
@@ -703,15 +854,44 @@
             }
         }
 
-        function populateClassFilter() {
-            const select = document.getElementById('results-filter-class');
-            if (!select) return;
-            const currentVal = select.value || 'all';
-            const classes = Array.from(new Set(allResults.map(r => (r.class || '').trim()).filter(Boolean))).sort((a, b) => a.localeCompare(b));
+        function populateClassAndSectionFilters() {
+            const classSelect = document.getElementById('results-filter-class');
+            const sectionSelect = document.getElementById('results-filter-section');
+            if (!classSelect) return;
 
-            select.innerHTML = '<option value="all">Kelas</option>' + classes.map(c => `
-                <option value="${escapeHtml(c)}" ${c === currentVal ? 'selected' : ''}>${escapeHtml(c)}</option>
+            const currentClass = classSelect.value || 'all';
+            const currentSection = sectionSelect ? (sectionSelect.value || 'all') : 'all';
+
+            const rawClasses = [];
+            (dbData.students || []).forEach(s => { if (s.class) rawClasses.push(s.class); });
+            allResults.forEach(r => { if (r.class) rawClasses.push(r.class); });
+
+            const parsedList = rawClasses.map(c => parseStudentClass(c));
+            const levels = Array.from(new Set(parsedList.map(p => p.level).filter(Boolean))).sort(sortClassLevels);
+
+            const availableSections = Array.from(new Set(
+                parsedList
+                    .filter(p => currentClass === 'all' || p.level === currentClass)
+                    .map(p => p.section)
+                    .filter(Boolean)
+            )).sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+
+            classSelect.innerHTML = '<option value="all">Kelas</option>' + levels.map(c => `
+                <option value="${c}" ${c === currentClass ? 'selected' : ''}>${c}</option>
             `).join('');
+
+            if (sectionSelect) {
+                const sectionValid = availableSections.includes(currentSection);
+                sectionSelect.innerHTML = '<option value="all">Bagian</option>' + availableSections.map(s => `
+                    <option value="${s}" ${s === currentSection && sectionValid ? 'selected' : ''}>${s}</option>
+                `).join('');
+                if (!sectionValid && currentSection !== 'all') {
+                    sectionSelect.value = 'all';
+                }
+            }
+        }
+        function populateClassFilter() {
+            populateClassAndSectionFilters();
         }
 
         // Helper konversi tanggal hasil ujian ke timestamp (menghindari bug NaN pada status 'Sedang Mengerjakan')
@@ -727,31 +907,92 @@
         // Filter Logic & Sorting
         function handleResultsFilter(resetPage = true) {
             const filterQuiz = document.getElementById('teacher-quiz-filter')?.value || 'all';
-            const filterClass = document.getElementById('results-filter-class')?.value || 'all';
+            const fClass = document.getElementById('results-filter-class')?.value || 'all';
+            const fSection = document.getElementById('results-filter-section')?.value || 'all';
+            const hasClassFilter = (fClass !== 'all' || fSection !== 'all');
+            const filterStatus = document.getElementById('results-filter-status')?.value || 'all';
             const filterKkm = document.getElementById('results-filter-kkm')?.value || 'all';
             const sortMode = document.getElementById('results-sort')?.value || 'date_desc';
             const query = (document.getElementById('results-search-input')?.value || '').trim().toLowerCase();
             const activeKkm = getQuizKkm(filterQuiz);
+            const targetQuiz = (dbData.questions || []).find(q => q.id === filterQuiz);
 
-            filteredResults = allResults.filter(r => {
+            // 1. Kumpulkan hasil pengerjaan aktual (selesai maupun sedang berlangsung)
+            let baseResults = allResults.filter(r => {
                 const matchQuiz = (filterQuiz === 'all' || r.code === filterQuiz || r.quiz_id === filterQuiz);
-                const matchClass = (filterClass === 'all' || (r.class || '').trim().toLowerCase() === filterClass.toLowerCase());
-                
-                const score = Number(r.score ?? 0);
-                const itemKkm = (filterQuiz !== 'all') ? activeKkm : getQuizKkm(r.code || r.quiz_id);
-                let matchKkm = true;
-                if (filterKkm === 'pass') matchKkm = score >= itemKkm;
-                else if (filterKkm === 'remedial') matchKkm = score < itemKkm;
-
-                const matchQuery = !query ||
-                    (r.name && r.name.toLowerCase().includes(query)) ||
-                    (r.nis && String(r.nis).includes(query)) ||
-                    (r.class && r.class.toLowerCase().includes(query));
-                return matchQuiz && matchClass && matchKkm && matchQuery;
+                const matchClass = isStudentInClassFilter(r.class, fClass, fSection);
+                return matchQuiz && matchClass;
             });
 
-            // Multi-criteria sorting
-            filteredResults.sort((a, b) => {
+            // 2. Kumpulkan siswa yang BELUM MENGIKUTI UJIAN
+            let notTakenList = [];
+            if (hasClassFilter || filterStatus === 'not_taken' || (targetQuiz && targetQuiz.class)) {
+                let candidateStudents = (dbData.students || []);
+                if (hasClassFilter) {
+                    candidateStudents = candidateStudents.filter(s => isStudentInClassFilter(s.class, fClass, fSection));
+                } else if (targetQuiz && targetQuiz.class) {
+                    candidateStudents = candidateStudents.filter(s => matchStudentToQuizGrade(s.class, targetQuiz.class));
+                }
+
+                const participatedNises = new Set();
+                allResults.forEach(r => {
+                    if (filterQuiz === 'all' || r.code === filterQuiz || r.quiz_id === filterQuiz) {
+                        if (r.nis) participatedNises.add(String(r.nis).trim());
+                    }
+                });
+
+                candidateStudents.forEach(s => {
+                    const sNis = String(s.nis || '').trim();
+                    if (!participatedNises.has(sNis)) {
+                        notTakenList.push({
+                            nis: s.nis,
+                            name: s.name,
+                            class: s.class,
+                            code: filterQuiz !== 'all' ? filterQuiz : '',
+                            title: targetQuiz ? (targetQuiz.title || targetQuiz.id) : (filterQuiz !== 'all' ? filterQuiz : ''),
+                            score: null,
+                            correct: null,
+                            wrong: null,
+                            date: '-',
+                            is_not_taken: true,
+                            is_in_progress: false,
+                            attempt_number: 0,
+                            total_questions: targetQuiz ? (targetQuiz.questions_count || (targetQuiz.questions ? targetQuiz.questions.length : 0)) : 0
+                        });
+                    }
+                });
+            }
+
+            // 3. Gabungkan baseResults dan notTakenList
+            let unified = [...baseResults, ...notTakenList];
+
+            // 4. Terapkan filter status partisipasi
+            if (filterStatus === 'finished') {
+                unified = unified.filter(r => !r.is_in_progress && !r.is_not_taken);
+            } else if (filterStatus === 'working') {
+                unified = unified.filter(r => r.is_in_progress);
+            } else if (filterStatus === 'not_taken') {
+                unified = unified.filter(r => r.is_not_taken);
+            }
+
+            // 5. Terapkan filter KKM
+            if (filterKkm === 'pass') {
+                unified = unified.filter(r => !r.is_not_taken && !r.is_in_progress && Number(r.score ?? 0) >= ((filterQuiz !== 'all') ? activeKkm : getQuizKkm(r.code || r.quiz_id)));
+            } else if (filterKkm === 'remedial') {
+                unified = unified.filter(r => !r.is_not_taken && !r.is_in_progress && Number(r.score ?? 0) < ((filterQuiz !== 'all') ? activeKkm : getQuizKkm(r.code || r.quiz_id)));
+            }
+
+            // 6. Terapkan pencarian (query)
+            if (query) {
+                unified = unified.filter(r => 
+                    (r.name && r.name.toLowerCase().includes(query)) ||
+                    (r.nis && String(r.nis).includes(query)) ||
+                    (r.class && r.class.toLowerCase().includes(query))
+                );
+            }
+
+            // 7. Pengurutan data (multi-criteria)
+            unified.sort((a, b) => {
                 if (sortMode === 'nis_asc') {
                     return String(a.nis || '').localeCompare(String(b.nis || ''), undefined, { numeric: true });
                 } else if (sortMode === 'nis_desc') {
@@ -761,24 +1002,30 @@
                 } else if (sortMode === 'name_desc') {
                     return String(b.name || '').localeCompare(String(a.name || ''));
                 } else if (sortMode === 'score_desc') {
-                    return (Number(b.score) || 0) - (Number(a.score) || 0);
+                    const scoreA = (a.score !== null && a.score !== undefined) ? Number(a.score) : -1;
+                    const scoreB = (b.score !== null && b.score !== undefined) ? Number(b.score) : -1;
+                    return scoreB - scoreA;
                 } else if (sortMode === 'score_asc') {
-                    return (Number(a.score) || 0) - (Number(b.score) || 0);
+                    const scoreA = (a.score !== null && a.score !== undefined) ? Number(a.score) : 999;
+                    const scoreB = (b.score !== null && b.score !== undefined) ? Number(b.score) : 999;
+                    return scoreA - scoreB;
                 } else if (sortMode === 'date_asc') {
-                    const timeA = getResultSortTime(a);
-                    const timeB = getResultSortTime(b);
+                    const timeA = a.is_not_taken ? Infinity : getResultSortTime(a);
+                    const timeB = b.is_not_taken ? Infinity : getResultSortTime(b);
                     return timeA - timeB;
                 } else {
-                    // date_desc (default / Terbaru) - Sesi aktif selalu di urutan paling atas
-                    if (a.is_in_progress && b.is_in_progress) {
-                        return (Number(b.updated_at) || 0) - (Number(a.updated_at) || 0);
-                    }
+                    // date_desc (default / Terbaru)
+                    if (a.is_in_progress && !b.is_in_progress) return -1;
+                    if (!a.is_in_progress && b.is_in_progress) return 1;
+                    if (a.is_not_taken && !b.is_not_taken) return 1;
+                    if (!a.is_not_taken && b.is_not_taken) return -1;
                     const timeA = getResultSortTime(a);
                     const timeB = getResultSortTime(b);
                     return timeB - timeA;
                 }
             });
 
+            filteredResults = unified;
             if (resetPage) currentPage = 1;
             renderResultsTable();
         }
@@ -831,6 +1078,43 @@
                     const globalIdx = startIdx + idx;
                     const itemKey = getResultKey(s);
                     const isChecked = selectedKeys.has(itemKey);
+
+                    // Tampilan khusus Siswa yang BELUM MENGIKUTI UJIAN
+                    if (s.is_not_taken) {
+                        return `
+                            <tr class="hover:bg-slate-50/80 transition bg-slate-50/40">
+                                <td class="p-3 text-center text-slate-300 text-[10px]">-</td>
+                                <td class="p-3 text-center font-bold text-slate-400 whitespace-nowrap">${rowNumber}</td>
+                                <td class="p-3 font-mono font-bold text-slate-500 whitespace-nowrap">${escapeHtml(s.nis || '-')}</td>
+                                <td class="p-3 whitespace-nowrap min-w-[180px]">
+                                    <span class="font-bold text-slate-700">${escapeHtml(s.name || '-')}</span>
+                                </td>
+                                <td class="p-3 text-center whitespace-nowrap">
+                                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 text-slate-500 border border-slate-200 shrink-0">
+                                        <i class="fa-regular fa-clock text-[9px]"></i> Belum Mulai
+                                    </span>
+                                </td>
+                                <td class="p-3 text-slate-500 whitespace-nowrap">${escapeHtml(s.class || '-')}</td>
+                                <td class="p-3 text-center text-slate-300 whitespace-nowrap">-</td>
+                                <td class="p-3 text-center text-slate-300 whitespace-nowrap">-</td>
+                                <td class="p-3 text-center whitespace-nowrap">
+                                    <span class="inline-block px-2.5 py-0.5 rounded-lg text-xs font-bold text-slate-300 bg-slate-100">-</span>
+                                </td>
+                                <td class="p-3 text-center whitespace-nowrap">
+                                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-black bg-rose-50 text-rose-700 border border-rose-200" title="Siswa belum mengikuti ulangan ini">
+                                        <i class="fa-solid fa-circle-exclamation text-[9px]"></i> BELUM IKUT
+                                    </span>
+                                </td>
+                                <td class="p-3 text-slate-400 italic text-[11px] whitespace-nowrap">Belum Mengerjakan</td>
+                                <td class="p-3 text-center whitespace-nowrap">
+                                    <button type="button" onclick="alertStudentNotTaken('${escapeHtml(s.nis)}', '${escapeHtml(s.name)}', '${escapeHtml(s.class)}')" class="action-menu-btn w-7 h-7 rounded-lg border border-slate-200 bg-white hover:bg-rose-50 text-slate-400 hover:text-rose-600 transition inline-flex items-center justify-center shadow-2xs cursor-pointer" title="Lihat detail siswa belum ujian">
+                                        <i class="fa-solid fa-user-xmark text-xs pointer-events-none"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        `;
+                    }
+
                     const score = Number(s.score ?? 0);
                     const isInProgress = !!s.is_in_progress;
                     const itemKkm = getQuizKkm(s.code || s.quiz_id);
@@ -1206,24 +1490,137 @@
         }
 
         // Export to Excel (.xlsx) / CSV Lengkap untuk Buku Nilai
-        function exportToCSV() {
-            const dataToExport = (filteredResults && filteredResults.length > 0) ? filteredResults : allResults;
-            if (!dataToExport || !dataToExport.length) {
-                appAlert("Belum ada data hasil ujian untuk diekspor!");
-                return;
-            }
-
-            const studentExamCounts = getStudentExamCounts();
+        async function exportToCSV() {
+            const filterQuiz = document.getElementById('teacher-quiz-filter')?.value || 'all';
+            const fClass = document.getElementById('results-filter-class')?.value || 'all';
+            const fSection = document.getElementById('results-filter-section')?.value || 'all';
+            const hasClassFilter = (fClass !== 'all' || fSection !== 'all');
+            const activeClassName = getActiveFilterClassName();
+            const currentClass = activeClassName;
+            const sortMode = document.getElementById('results-sort')?.value || 'nis_asc';
+            const targetQuiz = (dbData.questions || []).find(q => q.id === filterQuiz);
+            const quizTitle = targetQuiz ? (targetQuiz.title || targetQuiz.id) : (filterQuiz !== 'all' ? filterQuiz : 'Semua Paket Ujian');
+            const activeKkm = getQuizKkm(filterQuiz);
             const dateStr = new Date().toISOString().slice(0, 10);
 
-            // 1. Coba ekspor Native Excel (.xlsx) dengan SheetJS jika tersedia
-            if (typeof XLSX !== 'undefined') {
-                const headers = ["No", "NIS", "Nama Siswa", "Tipe Ujian", "Kelas", "Paket Kuis", "Benar", "Salah", "Nilai Akhir", "Status KKM", "Waktu Selesai"];
-                const rows = dataToExport.map((s, idx) => {
-                    const score = Number(s.score ?? 0);
-                    const itemKkm = getQuizKkm(s.code || s.quiz_id);
-                    const kkmStatus = score >= itemKkm ? 'TUNTAS' : 'REMEDIAL';
-                    const studentKey = (s.nis || '') + '_' + (s.code || s.quiz_id || '');
+            // 1. Konfirmasi jika belum memilih kelas tertentu (misal masih "Semua Kelas" atau belum pilih bagian)
+            if (!hasClassFilter || fClass === 'all' || fSection === 'all') {
+                const promptDesc = (!hasClassFilter)
+                    ? 'Anda saat ini belum memilih kelas atau bagian tertentu (Filter: <strong>Semua Kelas</strong>).'
+                    : `Anda baru memilih ${fClass !== 'all' ? 'Tingkat ' + fClass : 'Bagian ' + fSection}, belum memilih rombel kelas secara spesifik.`;
+
+                const ok = await appConfirm(
+                    `${promptDesc}<br><br>
+                    <div class="text-xs text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-200 text-left space-y-1.5">
+                      <p>• <strong>Saran:</strong> Pilih <strong>Kelas</strong> (misal <em>VIII</em>) dan <strong>Bagian</strong> (misal <em>M</em>) agar baris nilai tersusun rapi 100% sesuai urutan nomor absen/buku leger kelas dan siswa yang belum ujian tampak bernilai kosong.</p>
+                      <p>• Jika melanjutkan, sistem akan mengekspor seluruh data yang tampil saat ini.</p>
+                    </div><br>
+                    Apakah Anda ingin memilih kelas terlebih dahulu, atau melanjutkan ekspor?`,
+                    'Konfirmasi Kelas Ekspor Nilai',
+                    'Pilih Kelas Dulu',
+                    'Lanjutkan Ekspor'
+                );
+
+                if (!ok) {
+                    const targetEl = (fClass === 'all') ? document.getElementById('results-filter-class') : document.getElementById('results-filter-section');
+                    if (targetEl) {
+                        targetEl.focus();
+                        targetEl.classList.add('ring-2', 'ring-brand-500');
+                        setTimeout(() => targetEl.classList.remove('ring-2', 'ring-brand-500'), 2500);
+                    }
+                    return;
+                }
+            }
+
+            const headers = ["No", "NIS", "Nama Siswa", "Kelas", "Paket Kuis", "Tipe Ujian", "Benar", "Salah", "Nilai Akhir", "Status KKM", "Waktu Selesai"];
+            let rows = [];
+            const studentExamCounts = getStudentExamCounts();
+
+            if (hasClassFilter) {
+                // KELAS DIPILIH (misal: VIII M): Urutkan 100% mengikuti master siswa di kelas tersebut
+                const masterClassStudents = (dbData.students || []).filter(s => isStudentInClassFilter(s.class, fClass, fSection));
+
+                if (!masterClassStudents.length) {
+                    appAlert("Tidak ada data siswa yang terdaftar di kelas " + activeClassName);
+                    return;
+                }
+
+                // Urutkan siswa: default NIS (0-9) atau Nama (A-Z) jika user memilih sort nama
+                masterClassStudents.sort((a, b) => {
+                    if (sortMode === 'name_asc') {
+                        return String(a.name || '').localeCompare(String(b.name || ''));
+                    } else if (sortMode === 'name_desc') {
+                        return String(b.name || '').localeCompare(String(a.name || ''));
+                    }
+                    return String(a.nis || '').localeCompare(String(b.nis || ''), undefined, { numeric: true });
+                });
+
+                rows = masterClassStudents.map((s, idx) => {
+                    const sNis = String(s.nis || '').trim();
+                    const matchingResults = allResults.filter(r => 
+                        String(r.nis || '').trim() === sNis &&
+                        (filterQuiz === 'all' || r.code === filterQuiz || r.quiz_id === filterQuiz)
+                    );
+
+                    if (matchingResults.length > 0) {
+                        // Siswa SUDAH MENGERJAKAN (ambil nilai terbaik jika remedial)
+                        const best = matchingResults.reduce((p, c) => (Number(c.score ?? 0) >= Number(p.score ?? 0) ? c : p), matchingResults[0]);
+                        const score = Number(best.score ?? 0);
+                        const studentKey = sNis + '_' + (best.code || best.quiz_id || '');
+                        const recordsForStudent = studentExamCounts[studentKey] || [];
+                        let attemptNum = 1;
+                        if (recordsForStudent.length > 1) {
+                            const recIdx = recordsForStudent.indexOf(best);
+                            attemptNum = recordsForStudent.length - (recIdx >= 0 ? recIdx : 0);
+                        } else if (best.attempt_number) {
+                            attemptNum = Number(best.attempt_number) || 1;
+                        }
+                        const tipeUjian = (attemptNum > 1 || (recordsForStudent.length > 1 && best.is_in_progress)) ? `Remedial (${attemptNum})` : 'Pertama';
+                        const isPassed = score >= activeKkm;
+                        const kkmStatus = best.is_in_progress ? 'SEMENTARA' : (isPassed ? 'TUNTAS' : 'REMEDIAL');
+
+                        return [
+                            idx + 1,
+                            String(s.nis || ''),
+                            String(s.name || ''),
+                            String(s.class || currentClass),
+                            String(best.title || quizTitle),
+                            tipeUjian,
+                            Number(best.correct ?? 0),
+                            Number(best.wrong ?? 0),
+                            score,
+                            kkmStatus,
+                            String(best.date || (best.is_in_progress ? 'Sedang Mengerjakan' : '-'))
+                        ];
+                    } else {
+                        // Siswa BELUM MENGIKUTI UJIAN:
+                        // Nilai Akhir KOSONG ('') agar guru tahu persis yang nilainya kosong berarti belum ikut ujian!
+                        return [
+                            idx + 1,
+                            String(s.nis || ''),
+                            String(s.name || ''),
+                            String(s.class || currentClass),
+                            String(quizTitle),
+                            '-',
+                            '-',
+                            '-',
+                            '', // Nilai kosong
+                            'BELUM IKUT',
+                            '-'
+                        ];
+                    }
+                });
+            } else {
+                // SEMUA KELAS (Jika user memilih tetap ekspor semua)
+                const dataToExport = filteredResults.length ? filteredResults : allResults;
+                if (!dataToExport.length) {
+                    appAlert("Belum ada data hasil ujian untuk diekspor!");
+                    return;
+                }
+
+                rows = dataToExport.map((s, idx) => {
+                    const sNis = String(s.nis || '').trim();
+                    const studentKey = sNis + '_' + (s.code || s.quiz_id || '');
                     const recordsForStudent = studentExamCounts[studentKey] || [];
                     let attemptNum = 1;
                     if (recordsForStudent.length > 1) {
@@ -1232,84 +1629,83 @@
                     } else if (s.attempt_number) {
                         attemptNum = Number(s.attempt_number) || 1;
                     }
+
+                    if (s.is_not_taken) {
+                        return [
+                            idx + 1,
+                            String(s.nis || ''),
+                            String(s.name || ''),
+                            String(s.class || '-'),
+                            String(s.title || quizTitle),
+                            '-',
+                            '-',
+                            '-',
+                            '', // Nilai kosong
+                            'BELUM IKUT',
+                            '-'
+                        ];
+                    }
+
+                    const score = Number(s.score ?? 0);
+                    const itemKkm = getQuizKkm(s.code || s.quiz_id);
+                    const isPassed = score >= itemKkm;
                     const tipeUjian = (attemptNum > 1 || (recordsForStudent.length > 1 && s.is_in_progress)) ? `Remedial (${attemptNum})` : 'Pertama';
+                    const kkmStatus = s.is_in_progress ? 'SEMENTARA' : (isPassed ? 'TUNTAS' : 'REMEDIAL');
 
                     return [
                         idx + 1,
                         String(s.nis || ''),
                         String(s.name || ''),
+                        String(s.class || '-'),
+                        String(s.title || s.code || quizTitle),
                         tipeUjian,
-                        String(s.class || ''),
-                        String(s.title || s.code || ''),
                         Number(s.correct ?? 0),
                         Number(s.wrong ?? 0),
                         score,
                         kkmStatus,
-                        String(s.date || '-')
+                        String(s.date || (s.is_in_progress ? 'Sedang Mengerjakan' : '-'))
                     ];
                 });
+            }
 
+            const cleanClassName = currentClass !== 'all' ? currentClass.replace(/[^a-zA-Z0-9_-]/g, '_') : 'Semua_Kelas';
+            const fileName = `Buku_Rekap_Nilai_${cleanClassName}_${dateStr}`;
+
+            // 1. Ekspor Native Excel (.xlsx) dengan SheetJS jika tersedia
+            if (typeof XLSX !== 'undefined') {
                 const ws = XLSX.utils.aoa_to_sheet([headers, ...rows]);
                 ws['!cols'] = [
                     { wch: 6 },  // No
                     { wch: 14 }, // NIS
-                    { wch: 28 }, // Nama
-                    { wch: 16 }, // Tipe
-                    { wch: 14 }, // Kelas
-                    { wch: 32 }, // Paket
+                    { wch: 30 }, // Nama Siswa
+                    { wch: 18 }, // Kelas
+                    { wch: 35 }, // Paket Kuis
+                    { wch: 16 }, // Tipe Ujian
                     { wch: 8 },  // Benar
                     { wch: 8 },  // Salah
-                    { wch: 12 }, // Nilai
-                    { wch: 14 }, // Status KKM
-                    { wch: 22 }  // Waktu
+                    { wch: 12 }, // Nilai Akhir
+                    { wch: 15 }, // Status KKM
+                    { wch: 22 }  // Waktu Selesai
                 ];
                 const wb = XLSX.utils.book_new();
                 XLSX.utils.book_append_sheet(wb, ws, "Rekap Nilai");
-                XLSX.writeFile(wb, `Buku_Rekap_Nilai_ExamLAN_${dateStr}.xlsx`);
+                XLSX.writeFile(wb, `${fileName}.xlsx`);
                 return;
             }
 
             // 2. Fallback CSV (UTF-8 BOM untuk Excel)
             let csvContent = "\uFEFF";
-            csvContent += "No,NIS,Nama Siswa,Tipe Ujian,Kelas,Paket Kuis,Benar,Salah,Nilai Akhir,Status KKM,Waktu Selesai\r\n";
-
-            dataToExport.forEach((s, idx) => {
-                const clean = (str) => `"${String(str || '').replace(/"/g, '""')}"`;
-                const score = Number(s.score ?? 0);
-                const itemKkm = getQuizKkm(s.code || s.quiz_id);
-                const kkmStatus = score >= itemKkm ? 'TUNTAS' : 'REMEDIAL';
-                const studentKey = (s.nis || '') + '_' + (s.code || s.quiz_id || '');
-                const recordsForStudent = studentExamCounts[studentKey] || [];
-                let attemptNum = 1;
-                if (recordsForStudent.length > 1) {
-                    const recIdx = recordsForStudent.indexOf(s);
-                    attemptNum = recordsForStudent.length - (recIdx >= 0 ? recIdx : 0);
-                } else if (s.attempt_number) {
-                    attemptNum = Number(s.attempt_number) || 1;
-                }
-                const tipeUjian = (attemptNum > 1 || (recordsForStudent.length > 1 && s.is_in_progress)) ? `Remedial (${attemptNum})` : 'Pertama';
-
-                const row = [
-                    idx + 1,
-                    clean(s.nis),
-                    clean(s.name),
-                    clean(tipeUjian),
-                    clean(s.class),
-                    clean(s.title || s.code),
-                    s.correct ?? 0,
-                    s.wrong ?? 0,
-                    score,
-                    kkmStatus,
-                    clean(s.date || '-')
-                ];
-                csvContent += row.join(",") + "\r\n";
+            csvContent += headers.join(",") + "\r\n";
+            rows.forEach(r => {
+                const cleanRow = r.map(val => `"${String(val ?? '').replace(/"/g, '""')}"`);
+                csvContent += cleanRow.join(",") + "\r\n";
             });
 
             const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement("a");
             const url = URL.createObjectURL(blob);
             link.setAttribute("href", url);
-            link.setAttribute("download", `Buku_Rekap_Nilai_ExamLAN_${dateStr}.csv`);
+            link.setAttribute("download", `${fileName}.csv`);
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -1319,27 +1715,56 @@
 
         // Cetak Rekap Nilai Resmi Dokumen Kurikulum / Sekolah
         function printGradeReport() {
-            if (!filteredResults.length) {
+            const filterQuiz = document.getElementById('teacher-quiz-filter')?.value || 'all';
+            const fClass = document.getElementById('results-filter-class')?.value || 'all';
+            const fSection = document.getElementById('results-filter-section')?.value || 'all';
+            const hasClassFilter = (fClass !== 'all' || fSection !== 'all');
+            const currentClass = getActiveFilterClassName();
+            const currentQuizTitle = document.getElementById('teacher-quiz-filter')?.selectedOptions[0]?.text || 'Semua Paket Ujian';
+            const printDate = new Date().toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            const activeKkm = getQuizKkm(filterQuiz);
+
+            let dataToPrint = filteredResults;
+            if (hasClassFilter) {
+                const masterClassStudents = (dbData.students || []).filter(s => isStudentInClassFilter(s.class, fClass, fSection));
+                if (masterClassStudents.length > 0) {
+                    masterClassStudents.sort((a, b) => String(a.nis || '').localeCompare(String(b.nis || ''), undefined, { numeric: true }));
+                    dataToPrint = masterClassStudents.map((s, idx) => {
+                        const sNis = String(s.nis || '').trim();
+                        const matching = allResults.filter(r => String(r.nis || '').trim() === sNis && (filterQuiz === 'all' || r.code === filterQuiz || r.quiz_id === filterQuiz));
+                        if (matching.length > 0) {
+                            return matching.reduce((p, c) => (Number(c.score ?? 0) >= Number(p.score ?? 0) ? c : p), matching[0]);
+                        } else {
+                            return {
+                                nis: s.nis,
+                                name: s.name,
+                                class: s.class,
+                                score: null,
+                                correct: null,
+                                wrong: null,
+                                is_not_taken: true,
+                                date: '-'
+                            };
+                        }
+                    });
+                }
+            }
+
+            if (!dataToPrint || !dataToPrint.length) {
                 appAlert("Tidak ada data hasil ujian yang dapat dicetak!");
                 return;
             }
 
-            const currentQuizTitle = document.getElementById('teacher-quiz-filter')?.selectedOptions[0]?.text || 'Semua Paket Ujian';
-            const currentClass = document.getElementById('results-filter-class')?.value !== 'all' ? document.getElementById('results-filter-class')?.value : 'Semua Kelas';
-            const printDate = new Date().toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-
-            const filterQuiz = document.getElementById('teacher-quiz-filter')?.value || 'all';
-            const activeKkm = getQuizKkm(filterQuiz);
-            const scores = filteredResults.map(x => Number(x.score ?? 0));
-            const avg = scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0;
-            const maxScore = scores.length ? Math.max(...scores) : 0;
-            const minScore = scores.length ? Math.min(...scores) : 0;
-            const passed = filteredResults.filter(s => {
-                const itemKkm = (filterQuiz !== 'all') ? activeKkm : getQuizKkm(s.code || s.quiz_id);
-                return Number(s.score ?? 0) >= itemKkm;
-            }).length;
-            const remedial = scores.length - passed;
-            const passPct = scores.length ? Math.round((passed / scores.length) * 100) : 0;
+            const takenScores = dataToPrint.filter(x => !x.is_not_taken && x.score !== null).map(x => Number(x.score ?? 0));
+            const totalStudents = dataToPrint.length;
+            const takenCount = takenScores.length;
+            const notTakenCount = totalStudents - takenCount;
+            const avg = takenScores.length ? Math.round(takenScores.reduce((a, b) => a + b, 0) / takenScores.length) : 0;
+            const maxScore = takenScores.length ? Math.max(...takenScores) : 0;
+            const minScore = takenScores.length ? Math.min(...takenScores) : 0;
+            const passed = takenScores.filter(s => s >= activeKkm).length;
+            const remedial = takenCount - passed;
+            const passPct = takenCount ? Math.round((passed / takenCount) * 100) : 0;
 
             const printWin = window.open('', '_blank', 'width=950,height=750');
             if (!printWin) {
@@ -1348,7 +1773,24 @@
             }
 
             const studentExamCounts = getStudentExamCounts();
-            let rowsHtml = filteredResults.map((s, idx) => {
+            let rowsHtml = dataToPrint.map((s, idx) => {
+                if (s.is_not_taken) {
+                    return `
+                        <tr style="background-color: #fafafa;">
+                            <td style="text-align: center;">${idx + 1}</td>
+                            <td style="font-family: monospace; text-align: center;">${escapeHtml(s.nis || '-')}</td>
+                            <td><b>${escapeHtml(s.name || '-')}</b></td>
+                            <td style="text-align: center; color: #64748b;">-</td>
+                            <td style="text-align: center;">${escapeHtml(s.class || currentClass)}</td>
+                            <td>${escapeHtml(currentQuizTitle)}</td>
+                            <td style="text-align: center; color: #94a3b8;">-</td>
+                            <td style="text-align: center; color: #94a3b8;">-</td>
+                            <td style="text-align: center; font-weight: bold; color: #94a3b8;">-</td>
+                            <td style="text-align: center; font-weight: bold; color: #dc2626;">BELUM IKUT</td>
+                        </tr>
+                    `;
+                }
+
                 const score = Number(s.score ?? 0);
                 const itemKkm = (filterQuiz !== 'all') ? activeKkm : getQuizKkm(s.code || s.quiz_id);
                 const isPassed = score >= itemKkm;
