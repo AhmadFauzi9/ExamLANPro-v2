@@ -195,9 +195,14 @@
                             <option value="FINISHED">Selesai</option>
                         </select>
 
-                        <!-- 4. Filter Kelas -->
-                        <select id="mon-filter-class" onchange="handleMonFilter()" class="px-1.5 py-1.5 w-[80px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none max-w-[160px]" title="Filter Kelas">
+                        <!-- 4. Filter Tingkat / Kelas -->
+                        <select id="mon-filter-class" onchange="onMonClassFilterChange()" class="px-1.5 py-1.5 w-[75px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none font-medium cursor-pointer truncate" title="Filter Tingkat / Kelas (7, 8, 9 / VII, VIII, IX)">
                             <option value="ALL">Kelas</option>
+                        </select>
+
+                        <!-- 5. Filter Bagian / Rombel -->
+                        <select id="mon-filter-section" onchange="onMonSectionFilterChange()" class="px-1.5 py-1.5 w-[75px] rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none font-medium cursor-pointer truncate" title="Filter Bagian / Rombel (A, B, C, ... M)">
+                            <option value="ALL">Bagian</option>
                         </select>
 
                         <!-- 5. Search Input -->
@@ -480,44 +485,112 @@
             }
         });
 
+        // Parser Kelas & Bagian (Selaras dengan Halaman Data Siswa dan Hasil Ujian)
+        function parseStudentClass(classStr) {
+            if (!classStr) return { level: '', section: '', raw: '' };
+            const str = String(classStr).trim();
+            const clean = str.replace(/\s+/g, ' ');
+            const m = clean.match(/^(IX|VIII|VII|X|XI|XII|12|11|10|[789])(?:\s*[-_.]?\s*(.*))?$/i);
+            if (m) {
+                let level = m[1].toUpperCase();
+                let romanMap = { '7': 'VII', '8': 'VIII', '9': 'IX', '10': 'X', '11': 'XI', '12': 'XII' };
+                if (romanMap[level]) level = romanMap[level];
+                let rem = (m[2] || '').trim();
+                let section = '';
+                if (rem) {
+                    const secMatch = rem.match(/^([A-Za-z0-9]+)(?:\s*\(.*\))?$/);
+                    if (secMatch) {
+                        section = secMatch[1].trim().toUpperCase();
+                    } else {
+                        section = rem.replace(/\s*\(.*\)$/, '').trim().toUpperCase();
+                    }
+                }
+                return { level, section, raw: str };
+            }
+            return { level: clean, section: '', raw: str };
+        }
+
+        function sortClassLevels(a, b) {
+            const order = { 'VII': 7, '7': 7, 'VIII': 8, '8': 8, 'IX': 9, '9': 9, 'X': 10, '10': 10, 'XI': 11, '11': 11, 'XII': 12, '12': 12 };
+            const rankA = order[a] || 99;
+            const rankB = order[b] || 99;
+            if (rankA !== rankB) return rankA - rankB;
+            return a.localeCompare(b, undefined, { numeric: true });
+        }
+
+        function isStudentInClassFilter(studentClass, fLevel, fSection) {
+            if (!fLevel || fLevel === 'all' || fLevel === 'ALL') {
+                if (!fSection || fSection === 'all' || fSection === 'ALL') return true;
+                const p = parseStudentClass(studentClass);
+                return p.section === fSection;
+            }
+            const p = parseStudentClass(studentClass);
+            if (p.level !== fLevel) return false;
+            if (fSection && fSection !== 'all' && fSection !== 'ALL') {
+                return p.section === fSection;
+            }
+            return true;
+        }
+
+        function onMonClassFilterChange() {
+            populateFilterDropdowns();
+            updateSummaryCounts();
+            handleMonFilter();
+        }
+
+        function onMonSectionFilterChange() {
+            updateSummaryCounts();
+            handleMonFilter();
+        }
+
         function populateFilterDropdowns() {
             const classSelect = document.getElementById('mon-filter-class');
+            const sectionSelect = document.getElementById('mon-filter-section');
             const quizSelect = document.getElementById('mon-filter-quiz');
             if (!classSelect && !quizSelect) return;
 
             const activeDb = window.dbData || (typeof dbData !== 'undefined' ? dbData : null);
 
-            // 1. Populasi Filter Kelas
+            // 1. Populasi Filter Kelas & Bagian
             if (classSelect) {
-                const classSet = new Set();
+                const currentClass = classSelect.value || 'ALL';
+                const currentSection = sectionSelect ? (sectionSelect.value || 'ALL') : 'ALL';
+
+                const rawClasses = [];
                 if (activeDb && Array.isArray(activeDb.students)) {
                     activeDb.students.forEach(s => {
                         const c = (s && s.class ? String(s.class).trim() : '');
-                        if (c && c !== '-') classSet.add(c);
+                        if (c && c !== '-') rawClasses.push(c);
                     });
                 }
                 if (Array.isArray(rawMonitoring)) {
                     rawMonitoring.forEach(m => {
                         const c = (m && m.class ? String(m.class).trim() : '');
-                        if (c && c !== '-') classSet.add(c);
+                        if (c && c !== '-') rawClasses.push(c);
                     });
                 }
 
-                const sortedClasses = [...classSet].sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
-                const signature = sortedClasses.join('||');
-                if (signature !== lastClassesSignature || classSelect.options.length <= 1) {
-                    lastClassesSignature = signature;
-                    const currentClass = classSelect.value || 'ALL';
-                    let classHtml = `<option value="ALL">Kelas</option>`;
-                    sortedClasses.forEach(c => {
-                        classHtml += `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`;
-                    });
-                    classSelect.innerHTML = classHtml;
+                const parsedList = rawClasses.map(c => parseStudentClass(c));
+                const levels = Array.from(new Set(parsedList.map(p => p.level).filter(Boolean))).sort(sortClassLevels);
 
-                    if (currentClass !== 'ALL' && sortedClasses.includes(currentClass)) {
-                        classSelect.value = currentClass;
-                    } else {
-                        classSelect.value = 'ALL';
+                const availableSections = Array.from(new Set(
+                    parsedList
+                        .filter(p => currentClass === 'ALL' || p.level === currentClass)
+                        .map(p => p.section)
+                        .filter(Boolean)
+                )).sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+
+                classSelect.innerHTML = '<option value="ALL">Kelas</option>' + levels.map(c => `
+                    <option value="${c}" ${c === currentClass ? 'selected' : ''}>${c}</option>
+                `).join('');
+
+                if (sectionSelect) {
+                    const sectionValid = availableSections.includes(currentSection);
+                    sectionSelect.innerHTML = '<option value="ALL">Bagian</option>' + availableSections.map(s => `
+                        <option value="${s}" ${s === currentSection && sectionValid ? 'selected' : ''}>${s}</option>
+                    `).join('');
+                    if (!sectionValid && currentSection !== 'ALL') {
+                        sectionSelect.value = 'ALL';
                     }
                 }
             }
@@ -683,9 +756,16 @@
 
         function updateSummaryCounts(counts) {
             const currentQuiz = document.getElementById('mon-filter-quiz')?.value || 'ALL';
+            const fClass = document.getElementById('mon-filter-class')?.value || 'ALL';
+            const fSection = document.getElementById('mon-filter-section')?.value || 'ALL';
+
             let relevantMonitoring = rawMonitoring;
             if (currentQuiz && currentQuiz !== 'ALL') {
                 relevantMonitoring = rawMonitoring.filter(m => String(m.quiz_id || '').trim() === String(currentQuiz).trim() || String(m.quiz_title || '').trim().toLowerCase() === String(currentQuiz).trim().toLowerCase());
+            }
+
+            if (fClass !== 'ALL' || fSection !== 'ALL') {
+                relevantMonitoring = relevantMonitoring.filter(m => isStudentInClassFilter(m.class, fClass, fSection));
             }
 
             const total = relevantMonitoring.length;
@@ -737,7 +817,8 @@
 
         function handleMonFilter() {
             const statusFilter = document.getElementById('mon-filter-status')?.value || 'ALL';
-            const classFilter = document.getElementById('mon-filter-class')?.value || 'ALL';
+            const fClass = document.getElementById('mon-filter-class')?.value || 'ALL';
+            const fSection = document.getElementById('mon-filter-section')?.value || 'ALL';
             const quizFilter = document.getElementById('mon-filter-quiz')?.value || 'ALL';
             const search = (document.getElementById('mon-search-input')?.value || '').trim().toLowerCase();
             const sort = document.getElementById('mon-sort')?.value || 'date_desc';
@@ -751,10 +832,7 @@
                         return false;
                     }
                 }
-                if (classFilter !== 'ALL') {
-                    const mClass = String(m.class || '').trim().toLowerCase();
-                    if (mClass !== classFilter.trim().toLowerCase()) return false;
-                }
+                if (!isStudentInClassFilter(m.class, fClass, fSection)) return false;
                 if (quizFilter !== 'ALL') {
                     const mQuizId = String(m.quiz_id || '').trim();
                     const mQuizTitle = String(m.quiz_title || '').trim().toLowerCase();
