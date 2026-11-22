@@ -8,4 +8,8 @@
     # Rewrite internal: akses /admin/* langsung dilayani oleh frontend/admin/*
     # Alamat di browser tetap http://localhost/ExamLanPro/admin/
     RewriteRule ^admin/(.*)$ frontend/admin/$1 [L]
+
+    # Rewrite internal: akses /assets/* langsung dilayani oleh frontend/assets/*
+    # Mendukung path relatif ../../assets/* saat admin diakses melalui /admin/*
+    RewriteRule ^assets/(.*)$ frontend/assets/$1 [L]
 </IfModule>
