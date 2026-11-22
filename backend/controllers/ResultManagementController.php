@@ -166,7 +166,6 @@ class ResultManagementController {
     public static function clearResults() {
         AuthMiddleware::teacherOnly();
         $db = Database::load();
-        BackupService::createBackup('before-reset-results');
         $db['trash']['results'] = array_merge($db['trash']['results'] ?? [], $db['results']);
         AuditService::log($db, 'Reset hasil ujian');
         $db['results'] = [];

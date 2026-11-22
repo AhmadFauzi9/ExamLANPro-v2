@@ -84,7 +84,7 @@
                 <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-xs flex flex-wrap items-center justify-between gap-3 text-xs">
                     <!-- Left: View -> Sort -> Filter -> Search Group -->
                     <div class="flex items-center gap-2 flex-wrap flex-1 min-w-0">
-                        <!-- 1. View (Angka Saja) default 20 -->
+                        <!-- 1. View (Angka Saja) default 10 -->
                         <select id="student-per-page" onchange="changePerPage(this.value)" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 outline-none" title="Jumlah data per halaman">
                             <option value="10" selected>10</option>
                             <option value="20">20</option>
@@ -285,7 +285,7 @@
         let filteredStudents = [];
         let selectedNisSet = new Set();
         let currentPage = 1;
-        let perPage = 20;
+        let perPage = 10;
         let revealedPasswords = new Set();
 
         window.onDataLoaded = function(data) {
@@ -474,17 +474,27 @@
         }
 
         function changePerPage(val) {
-            perPage = parseInt(val) || 20;
+            perPage = parseInt(val) || 10;
             currentPage = 1;
             renderStudentsTable();
+        }
+
+        function getCurrentPageStudents() {
+            const total = filteredStudents.length;
+            if (total === 0) return [];
+            const totalPages = Math.ceil(total / perPage);
+            let p = currentPage;
+            if (p > totalPages) p = totalPages;
+            if (p < 1) p = 1;
+            const startIndex = (p - 1) * perPage;
+            const endIndex = Math.min(startIndex + perPage, total);
+            return filteredStudents.slice(startIndex, endIndex);
         }
 
         function renderStudentsTable() {
             const tbody = document.getElementById('students-tbody');
             const totalBadge = document.getElementById('student-total-badge');
             if (totalBadge) totalBadge.innerText = `${rawStudents.length} siswa terdaftar`;
-
-            updateSelectedToolbar();
 
             if (filteredStudents.length === 0) {
                 tbody.innerHTML = `
@@ -496,6 +506,7 @@
                     </tr>
                 `;
                 renderPagination(0, 0, 0);
+                updateSelectedToolbar();
                 return;
             }
 
@@ -506,7 +517,7 @@
 
             const startIndex = (currentPage - 1) * perPage;
             const endIndex = Math.min(startIndex + perPage, total);
-            const pageData = filteredStudents.slice(startIndex, endIndex);
+            const pageData = getCurrentPageStudents();
 
             tbody.innerHTML = pageData.map((st, idx) => {
                 const rowNo = startIndex + idx + 1; // Nomor Urut Dinamis Berdasarkan Pagination
@@ -550,6 +561,7 @@
             }).join('');
 
             renderPagination(startIndex + 1, endIndex, total);
+            updateSelectedToolbar();
         }
 
         function renderPagination(start, end, total) {
@@ -603,7 +615,8 @@
         }
 
         function toggleSelectAll(isChecked) {
-            filteredStudents.forEach(st => {
+            const pageData = getCurrentPageStudents();
+            pageData.forEach(st => {
                 const k = st.id || st.nis;
                 if (k) {
                     if (isChecked) selectedNisSet.add(k);
@@ -645,7 +658,12 @@
             }
 
             if (selectAllCheck) {
-                selectAllCheck.checked = filteredStudents.length > 0 && filteredStudents.every(st => selectedNisSet.has(st.id || st.nis));
+                const pageData = getCurrentPageStudents();
+                const hasPageData = pageData.length > 0;
+                const isAllSelected = hasPageData && pageData.every(st => selectedNisSet.has(st.id || st.nis));
+                const isSomeSelected = hasPageData && pageData.some(st => selectedNisSet.has(st.id || st.nis));
+                selectAllCheck.checked = isAllSelected;
+                selectAllCheck.indeterminate = isSomeSelected && !isAllSelected;
             }
         }
 
@@ -758,7 +776,13 @@
         async function deleteSelectedStudents() {
             const count = selectedNisSet.size;
             if (count === 0) return;
-            if (await appConfirm(`Hapus ${count} siswa yang dipilih?`, 'Hapus Siswa Terpilih', 'Batal', 'Hapus Semua Terpilih')) {
+
+            let confirmMsg = `Hapus ${count} siswa yang dipilih?`;
+            if (rawStudents.length > 0 && count === rawStudents.length) {
+                confirmMsg = `Apakah Anda yakin menghapus semua data siswa (${count} data)? Silakan filter per kelas atau pilih data yang ingin dihapus jika tidak ingin menghapus semua data siswa.`;
+            }
+
+            if (await appConfirm(confirmMsg, 'Hapus Siswa Terpilih', 'Batal', 'Hapus Semua Terpilih')) {
                 try {
                     const selectedList = Array.from(selectedNisSet);
                     const res = await fetch(`${API_URL}?action=delete_students`, {

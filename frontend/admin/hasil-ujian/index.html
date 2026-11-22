@@ -104,7 +104,7 @@
                     <!-- 5. Ketuntasan KKM -->
                     <div class="bg-white border border-slate-200 rounded-2xl p-4 shadow-2xs">
                         <p class="text-[11px] text-slate-500 font-semibold flex items-center gap-1.5">
-                            <i class="fa-solid fa-circle-check text-emerald-600"></i> Ketuntasan KKM (<span id="sum-kkm-label">≥75</span>)
+                            <i class="fa-solid fa-circle-check text-emerald-600"></i> Ketuntasan KKM (<span id="sum-kkm-label">-</span>)
                         </p>
                         <p id="sum-pass-rate" class="text-2xl font-black text-emerald-600 mt-1">0%</p>
                         <p id="sum-pass-detail" class="text-[10px] text-slate-400 mt-0.5">0 tuntas • 0 remedial</p>
@@ -158,7 +158,7 @@
                             <!-- KKM Paket Ujian di sebelah Tombol Pembahasan -->
                             <div id="res-quiz-kkm-pill" class="px-2.5 py-1.5 rounded-xl bg-indigo-50 text-indigo-700 border border-indigo-200/90 font-bold text-xs flex items-center gap-1.5 shadow-2xs" title="Standar KKM untuk kuis yang dipilih">
                                 <i class="fa-solid fa-bullseye text-indigo-600 text-xs"></i>
-                                <span>KKM: <strong id="res-kkm-val" class="font-black text-indigo-900">75</strong></span>
+                                <span>KKM: <strong id="res-kkm-val" class="font-black text-indigo-900">-</strong></span>
                             </div>
 
                             <button id="teacher-review-toggle" type="button" onclick="toggleTeacherReview()" class="btn-compact bg-slate-100 text-slate-400 border border-slate-200 cursor-not-allowed flex items-center gap-1.5 font-bold transition shadow-2xs" data-tooltip="Pilih Soal Ujian terlebih dahulu">
@@ -577,7 +577,7 @@
             handleResultsFilter(!silent);
         }
 
-        // Helper untuk mendapatkan KKM dinamis suatu paket kuis (default 75 jika belum ditentukan)
+        // Helper untuk mendapatkan KKM dinamis suatu paket kuis (default 70 jika belum ditentukan)
         function getQuizKkm(quizId) {
             if (!quizId || quizId === 'all') {
                 const currentSelected = document.getElementById('teacher-quiz-filter')?.value;
@@ -585,10 +585,10 @@
                     const q = (dbData.questions || []).find(x => String(x.id).trim() === String(currentSelected).trim());
                     if (q && q.kkm !== undefined && q.kkm !== null && !isNaN(Number(q.kkm))) return Number(q.kkm);
                 }
-                return 75;
+                return 70;
             }
             const q = (dbData.questions || []).find(x => String(x.id).trim() === String(quizId).trim());
-            return (q && q.kkm !== undefined && q.kkm !== null && !isNaN(Number(q.kkm))) ? Number(q.kkm) : 75;
+            return (q && q.kkm !== undefined && q.kkm !== null && !isNaN(Number(q.kkm))) ? Number(q.kkm) : 70;
         }
 
         // Parser Kelas & Bagian (Selaras dengan Halaman Data Siswa)
@@ -625,10 +625,13 @@
         }
 
         function isStudentInClassFilter(classStr, fClass, fSection) {
-            if (fClass === 'all' && fSection === 'all') return true;
+            if ((!fClass || fClass === 'all') && (!fSection || fSection === 'all')) return true;
             const p = parseStudentClass(classStr);
-            const matchClass = (fClass === 'all' || p.level === fClass || (classStr && classStr.toUpperCase().startsWith(fClass)));
-            const matchSection = (fSection === 'all' || p.section === fSection);
+            const romanMap = { '7': 'VII', '8': 'VIII', '9': 'IX', '10': 'X', '11': 'XI', '12': 'XII' };
+            const normFClass = (romanMap[fClass] || fClass || '').toUpperCase();
+            const normStudentLevel = (romanMap[p.level] || p.level || '').toUpperCase();
+            const matchClass = (!fClass || fClass === 'all' || normStudentLevel === normFClass);
+            const matchSection = (!fSection || fSection === 'all' || String(p.section || '').trim().toUpperCase() === String(fSection).trim().toUpperCase());
             return matchClass && matchSection;
         }
 
@@ -710,7 +713,7 @@
             const maxScore = total ? Math.max(...scores) : 0;
             const minScore = total ? Math.min(...scores) : 0;
 
-            // Hitung siswa di kelas (jika kelas dipilih atau target kuis terdeteksi)
+            // Hitung siswa di kelas (hanya jika kelas dipilih secara spesifik)
             let masterCount = 0;
             let notTakenCount = 0;
             const targetQuiz = (dbData.questions || []).find(q => q.id === filterQuiz);
@@ -720,11 +723,6 @@
                 masterCount = classStudents.length;
                 const participatedNises = new Set(relevantResults.map(r => String(r.nis || '').trim()));
                 notTakenCount = classStudents.filter(s => !participatedNises.has(String(s.nis || '').trim())).length;
-            } else if (targetQuiz && targetQuiz.class) {
-                const gradeStudents = (dbData.students || []).filter(s => matchStudentToQuizGrade(s.class, targetQuiz.class));
-                masterCount = gradeStudents.length;
-                const participatedNises = new Set(relevantResults.map(r => String(r.nis || '').trim()));
-                notTakenCount = gradeStudents.filter(s => !participatedNises.has(String(s.nis || '').trim())).length;
             }
 
             // KKM dinamis paket kuis yang dipilih (atau per-kuis jika 'all')
@@ -737,7 +735,14 @@
             const passRate = total ? Math.round((passed / total) * 100) : 0;
 
             const sumKkmLabel = document.getElementById('sum-kkm-label');
-            if (sumKkmLabel) sumKkmLabel.textContent = (filterQuiz !== 'all') ? `≥${activeKkm}` : '≥75';
+            const quizzes = dbData.questions || [];
+            if (sumKkmLabel) {
+                if (quizzes.length === 0) {
+                    sumKkmLabel.textContent = '-';
+                } else {
+                    sumKkmLabel.textContent = (filterQuiz !== 'all') ? `≥${activeKkm}` : `≥${activeKkm}`;
+                }
+            }
 
             const elStudents = document.getElementById('sum-students');
             const elStudentsSub = document.getElementById('sum-students-subtitle');
@@ -862,21 +867,26 @@
 
             const selectedVal = select.value;
             const quizzes = dbData.questions || [];
+            const hasQuizzes = quizzes.length > 0;
 
             // Update badge KKM di sebelah tombol pembahasan
-            const activeKkm = getQuizKkm(selectedVal);
+            const activeKkm = hasQuizzes ? getQuizKkm(selectedVal) : null;
             const kkmValEl = document.getElementById('res-kkm-val');
-            if (kkmValEl) kkmValEl.textContent = activeKkm;
+            if (kkmValEl) kkmValEl.textContent = hasQuizzes ? activeKkm : '-';
             const kkmPill = document.getElementById('res-quiz-kkm-pill');
             if (kkmPill) {
-                kkmPill.title = (selectedVal !== 'all') ? `Standar KKM Paket Ujian: ${activeKkm}` : `Standar KKM Acuan: ${activeKkm}`;
+                if (!hasQuizzes) {
+                    kkmPill.title = 'Belum ada paket kuis terdaftar';
+                } else {
+                    kkmPill.title = (selectedVal !== 'all') ? `Standar KKM Paket Ujian: ${activeKkm}` : `Standar KKM Acuan: ${activeKkm}`;
+                }
             }
 
             // Update label pada opsi dropdown filter KKM
             const optPass = document.getElementById('filter-kkm-opt-pass');
             const optRem = document.getElementById('filter-kkm-opt-rem');
-            if (optPass) optPass.textContent = `Tuntas (≥ ${activeKkm})`;
-            if (optRem) optRem.textContent = `Remedial (< ${activeKkm})`;
+            if (optPass) optPass.textContent = hasQuizzes ? `Tuntas (≥ ${activeKkm})` : 'Tuntas (≥ KKM)';
+            if (optRem) optRem.textContent = hasQuizzes ? `Remedial (< ${activeKkm})` : 'Remedial (< KKM)';
 
             if (selectedVal === 'all') {
                 if (statusPill) {
@@ -986,8 +996,10 @@
             });
 
             // 2. Kumpulkan siswa yang BELUM MENGIKUTI UJIAN
+            // Hanya disertakan jika filter kelas dipilih secara spesifik (misal 8M atau 7K),
+            // ATAU jika pengguna secara eksplisit memilih filter status "Belum Ujian"
             let notTakenList = [];
-            if (hasClassFilter || filterStatus === 'not_taken' || (targetQuiz && targetQuiz.class)) {
+            if (filterQuiz !== 'all' && (hasClassFilter || filterStatus === 'not_taken')) {
                 let candidateStudents = (dbData.students || []);
                 if (hasClassFilter) {
                     candidateStudents = candidateStudents.filter(s => isStudentInClassFilter(s.class, fClass, fSection));

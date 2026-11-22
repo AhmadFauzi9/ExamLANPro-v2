@@ -201,10 +201,8 @@ class SystemController {
             Response::error('Berkas ini bukan berkas cadangan database ExamLAN Pro yang valid.', 400);
         }
 
-        // Buat cadangan penyelamat kondisi database saat ini sebelum ditimpa (Auto Safety Backup)
+        // Muat database saat ini sebelum ditimpa
         $currentDb = Database::load();
-        $safetyPrefix = 'before-restore-' . preg_replace('/[^a-z0-9_-]/i', '-', pathinfo($fileName, PATHINFO_FILENAME));
-        BackupService::createBackup($safetyPrefix);
 
         // Pertahankan dan gabungkan daftar riwayat backup agar tidak hilang
         $existingBackups = $currentDb['backups'] ?? [];

@@ -136,7 +136,7 @@ class Database {
         $db = is_string($content) ? json_decode($content, true) : null;
 
         // Auto-recovery jika file terbaca kosong atau rusak akibat benturan proses (race condition)
-        if (!is_array($db) || empty($db) || (empty($db['questions']) && file_exists(EXAMLAN_DB_FILE . '.bak'))) {
+        if (!is_array($db) || empty($db)) {
             $recovered = self::getEmergencyBackupDb();
             if ($recovered !== null && !empty($recovered['questions'])) {
                 error_log('[ExamLAN Pro Auto-Recovery] db_kuis.json invalid/empty, recovered ' . count($recovered['questions']) . ' quizzes from backup.');

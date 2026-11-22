@@ -62,7 +62,7 @@ export function renderExamInfoScreen(info) {
             durationEl.innerText = `${selectedQuiz.duration || 0} Menit`;
         }
 
-        const kkmVal = (selectedQuiz.kkm !== undefined && selectedQuiz.kkm !== null && !isNaN(Number(selectedQuiz.kkm))) ? Number(selectedQuiz.kkm) : 75;
+        const kkmVal = (selectedQuiz.kkm !== undefined && selectedQuiz.kkm !== null && !isNaN(Number(selectedQuiz.kkm))) ? Number(selectedQuiz.kkm) : 70;
         if (kkmEl) kkmEl.innerText = `KKM: ${kkmVal}`;
 
         const uniqueTypes = Array.from(new Set((selectedQuiz.questions || []).map(q => q.type || 'mc')));

@@ -1015,6 +1015,7 @@
             if (action === 'reset') confirmResetSession(nis, name, attempt);
             else if (action === 'force_finish') confirmForceFinish(nis, name, attempt);
             else if (action === 'delete') confirmDeleteSession(nis, name, attempt);
+            else if (action === 'grant_15') quickGrantExtension(attempt, nis, 15);
         }
         window.runMonAction = runMonAction;
 
@@ -1053,6 +1054,8 @@
             }
             if (!m) return;
 
+            const nis = String(m.nis || '');
+            const attempt = String(m.attempt_id || '');
             const isWorkingOrOffline = (m.status === 'WORKING' || m.status === 'OFFLINE' || m.status === 'TIME_OVER');
 
             let itemsHtml = `
@@ -1064,7 +1067,7 @@
 
             if (isWorkingOrOffline) {
                 itemsHtml += `
-                    <button type="button" onclick="quickGrantExtension('${escapeHtml(attempt)}', '${escapeHtml(nis)}', 15)" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-left text-brand-700 hover:bg-brand-50 font-medium transition cursor-pointer">
+                    <button type="button" onclick="runMonAction('grant_15', ${globalIdx})" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-left text-brand-700 hover:bg-brand-50 font-medium transition cursor-pointer">
                         <i class="fa-solid fa-clock-rotate-left text-brand-600 w-4 text-center"></i>
                         <span>Beri +15 Menit Waktu</span>
                     </button>

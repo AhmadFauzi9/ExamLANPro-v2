@@ -89,7 +89,6 @@ class QuizManagementController {
         unset($quiz);
 
         $db = Database::load();
-        BackupService::createBackup('before-save-quizzes');
 
         $existingMap = [];
         foreach ($db['questions'] as $eq) {

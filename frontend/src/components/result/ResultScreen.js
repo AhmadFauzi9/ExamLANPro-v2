@@ -31,7 +31,7 @@ export function renderResultScreen(sub) {
 
     // Evaluasi Status Kelulusan KKM
     const currentQuiz = ExamContext.currentQuiz;
-    const kkmVal = (currentQuiz && currentQuiz.kkm !== undefined && currentQuiz.kkm !== null && !isNaN(Number(currentQuiz.kkm))) ? Number(currentQuiz.kkm) : 75;
+    const kkmVal = (currentQuiz && currentQuiz.kkm !== undefined && currentQuiz.kkm !== null && !isNaN(Number(currentQuiz.kkm))) ? Number(currentQuiz.kkm) : 70;
     const scoreVal = Number(sub.score || 0);
     const isPassed = scoreVal >= kkmVal;
 
