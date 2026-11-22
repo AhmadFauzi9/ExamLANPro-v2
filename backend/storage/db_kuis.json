@@ -448,7 +448,7 @@
         {
             "id": "quiz-1795303174416",
             "title": "Ulangan Bersama TIK Kelas 7 Semester Ganjil 2026-2027",
-            "duration": 40,
+            "duration": 5,
             "max_questions": 10,
             "kkm": 70,
             "quiz_type": "mc",
@@ -892,6 +892,264 @@
         }
     ],
     "results": [
+        {
+            "id": "res_2986eac9b74d4bd806f8a77b91543775",
+            "nis": "260025",
+            "name": "AHMAD ADYA SURYA",
+            "class": "VII A (UNGGULAN MIPA)",
+            "code": "quiz-1795303174416",
+            "title": "Ulangan Bersama TIK Kelas 7 Semester Ganjil 2026-2027",
+            "score": 0,
+            "correct": 0,
+            "wrong": 10,
+            "date": "22/11/2026 04:06:58",
+            "review_token": "428dcd60c50d6785e35c01b86299e56b6f893f438fdd3e469c0f239fcada2c4d",
+            "question_order": [
+                14,
+                4,
+                2,
+                11,
+                12,
+                23,
+                10,
+                15,
+                6,
+                18
+            ],
+            "answers": [],
+            "breakdowns": [
+                {
+                    "question": {
+                        "type": "mc",
+                        "question": "Roni ingin menambah slide baru dengan tata letak (layout) tertentu pada lembar kerjanya. Grup tool yang harus dipilih Roni pada Ribbon Tab Home adalah ...",
+                        "options": [
+                            "Slides",
+                            "Paragraph",
+                            "Editing",
+                            "Tables"
+                        ],
+                        "answer": 0,
+                        "answers": [],
+                        "explanation": "Perintah New Slide dan Layout terletak pada grup Slides di tab Home.",
+                        "image": "",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": []
+                    },
+                    "studentAnswer": null,
+                    "isCorrect": false,
+                    "studentAnswerText": "Tidak dijawab",
+                    "correctAnswerText": "A. Slides"
+                },
+                {
+                    "question": {
+                        "type": "mc",
+                        "question": "Perhatikan beberapa nama perangkat lunak berikut:\nPerangkat lunak yang dikelompokkan ke dalam jenis Sistem Operasi (Operating System) adalah ...",
+                        "options": [
+                            "1, 2, dan 4",
+                            "1, 2, dan 3",
+                            "2, 3, dan 4",
+                            "Hanya 3 saja"
+                        ],
+                        "answer": 0,
+                        "answers": [],
+                        "explanation": "Microsoft Windows, Linux, dan macOS merupakan sistem operasi, sedangkan Microsoft PowerPoint 2007 adalah perangkat lunak aplikasi.",
+                        "image": "uploads/soal/img_soal_quiz-1795303174416_1795303174_b9cbd8.png",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": []
+                    },
+                    "studentAnswer": null,
+                    "isCorrect": false,
+                    "studentAnswerText": "Tidak dijawab",
+                    "correctAnswerText": "A. 1, 2, dan 4"
+                },
+                {
+                    "question": {
+                        "type": "mc",
+                        "question": "Perangkat keras yang berfungsi sebagai pusat pemroses utama data atau \"otak\" komputer adalah...",
+                        "options": [
+                            "Processor/CPU (Central Processing Unit)",
+                            "Power Supply",
+                            "RAM",
+                            "Motherboard"
+                        ],
+                        "answer": 0,
+                        "answers": [],
+                        "explanation": "Processor/CPU bertugas mengolah dan mengeksekusi seluruh instruksi pemrosesan data pada komputer.",
+                        "image": "",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": []
+                    },
+                    "studentAnswer": null,
+                    "isCorrect": false,
+                    "studentAnswerText": "Tidak dijawab",
+                    "correctAnswerText": "A. Processor/CPU (Central Processing Unit)"
+                },
+                {
+                    "question": {
+                        "type": "mc",
+                        "question": "Pak Guru ingin membuat dokumen presentasi baru, membuka file yang sudah ada, dan mencetak slide ke kertas. Fitur pada PowerPoint 2007 yang memuat seluruh fungsi dasar tersebut adalah ...",
+                        "options": [
+                            "Ribbon Tab",
+                            "Tombol Microsoft Office (Office Button)",
+                            "Quick Access Toolbar",
+                            "Dialog Box Launcher"
+                        ],
+                        "answer": 1,
+                        "answers": [],
+                        "explanation": "Office Button menyediakan perintah dasar file: New (baru), Open (buka), Save (simpan), dan Print (cetak).",
+                        "image": "",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": []
+                    },
+                    "studentAnswer": null,
+                    "isCorrect": false,
+                    "studentAnswerText": "Tidak dijawab",
+                    "correctAnswerText": "B. Tombol Microsoft Office (Office Button)"
+                },
+                {
+                    "question": {
+                        "type": "mc",
+                        "question": "Kombinasi tombol pintas (shortcut) keyboard yang berfungsi untuk menyimpan file presentasi yang sedang diubah adalah ...",
+                        "options": [
+                            "Ctrl + C",
+                            "Ctrl + P",
+                            "Ctrl + S",
+                            "Ctrl + O"
+                        ],
+                        "answer": 2,
+                        "answers": [],
+                        "explanation": "Ctrl + S adalah shortcut untuk Save (menyimpan file).",
+                        "image": "",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": []
+                    },
+                    "studentAnswer": null,
+                    "isCorrect": false,
+                    "studentAnswerText": "Tidak dijawab",
+                    "correctAnswerText": "C. Ctrl + S"
+                },
+                {
+                    "question": {
+                        "type": "mc",
+                        "question": "Perangkat lunak seperti Microsoft Word, Microsoft Excel, dan Microsoft PowerPoint dikelompokkan ke dalam jenis...",
+                        "options": [
+                            "Software Sistem Operasi",
+                            "Software Aplikasi (Application Software)",
+                            "Firmware",
+                            "Software Bahasa Pemrograman"
+                        ],
+                        "answer": 1,
+                        "answers": [],
+                        "explanation": "Word, Excel, dan PowerPoint merupakan perangkat lunak aplikasi perkantoran (Application Software).",
+                        "image": "",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": []
+                    },
+                    "studentAnswer": null,
+                    "isCorrect": false,
+                    "studentAnswerText": "Tidak dijawab",
+                    "correctAnswerText": "B. Software Aplikasi (Application Software)"
+                },
+                {
+                    "question": {
+                        "type": "mc",
+                        "question": "Perintah New, Open, Save, dan Print dapat diakses secara langsung melalui...",
+                        "options": [
+                            "Ribbon Tab View",
+                            "Tombol Microsoft Office (Office Button)",
+                            "Status Bar",
+                            "Dialog Box Launcher"
+                        ],
+                        "answer": 1,
+                        "answers": [],
+                        "explanation": "Menu pengelolaan berkas dasar seperti New, Open, Save, dan Print berada di dalam Office Button.",
+                        "image": "",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": []
+                    },
+                    "studentAnswer": null,
+                    "isCorrect": false,
+                    "studentAnswerText": "Tidak dijawab",
+                    "correctAnswerText": "B. Tombol Microsoft Office (Office Button)"
+                },
+                {
+                    "question": {
+                        "type": "mc",
+                        "question": "Pada Microsoft PowerPoint 2007, ikon/tombol yang berfungsi untuk memiringkan teks (Italic) ditandai dengan simbol ...",
+                        "options": [
+                            "B",
+                            "I",
+                            "U",
+                            "S"
+                        ],
+                        "answer": 1,
+                        "answers": [],
+                        "explanation": "Simbol I pada grup Font berfungsi untuk memiringkan teks (Italic).",
+                        "image": "",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": []
+                    },
+                    "studentAnswer": null,
+                    "isCorrect": false,
+                    "studentAnswerText": "Tidak dijawab",
+                    "correctAnswerText": "B. I"
+                },
+                {
+                    "question": {
+                        "type": "mc",
+                        "question": "Urutan langkah standar untuk membuka Microsoft PowerPoint 2007 melalui tombol Start adalah...",
+                        "options": [
+                            "Start > All Programs > Microsoft Office > PowerPoint 2007",
+                            "Start > Control Panel > Microsoft Office > PowerPoint 2007",
+                            "Start > Accessories > PowerPoint 2007",
+                            "Start > Documents > Microsoft Office > PowerPoint 2007"
+                        ],
+                        "answer": 0,
+                        "answers": [],
+                        "explanation": "Aplikasi Microsoft Office diakses melalui Start > All Programs > Microsoft Office > Microsoft Office PowerPoint 2007.",
+                        "image": "",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": []
+                    },
+                    "studentAnswer": null,
+                    "isCorrect": false,
+                    "studentAnswerText": "Tidak dijawab",
+                    "correctAnswerText": "A. Start > All Programs > Microsoft Office > PowerPoint 2007"
+                },
+                {
+                    "question": {
+                        "type": "mc",
+                        "question": "Ketika suatu kata atau kalimat diblok lalu ditekan ikon Bold (B) pada grup Font, maka perubahan yang terjadi pada teks tersebut adalah ...",
+                        "options": [
+                            "Teks menjadi lebih tebal",
+                            "Teks menjadi bergaris bawah",
+                            "Warna teks berubah menjadi merah",
+                            "Ukuran teks bertambah besar"
+                        ],
+                        "answer": 0,
+                        "answers": [],
+                        "explanation": "Bold (B) berfungsi menebalkan huruf/teks yang dipilih.",
+                        "image": "",
+                        "premises": [],
+                        "targets": [],
+                        "pairs": []
+                    },
+                    "studentAnswer": null,
+                    "isCorrect": false,
+                    "studentAnswerText": "Tidak dijawab",
+                    "correctAnswerText": "A. Teks menjadi lebih tebal"
+                }
+            ]
+        },
         {
             "id": "res_5750061a3cd99a0b9bd8768db5e11c5a",
             "nis": "260012",
@@ -43977,6 +44235,228 @@
             "finished": true,
             "result_token": "be6eabb656f6410dab3b3d9be333cbfa92282c32fbb17704adb4156bdc94d4f5",
             "score": 70
+        },
+        "32cd3f247cb5787dc2218b83829ca0fb6d6d65ea786b7d5bcf8db2590fb06dc7": {
+            "token": "1bebaf5b28d8f06c76035b277bef7e7a59c0a2f2b91dfa45979822514055fbe3",
+            "token_hash": "32cd3f247cb5787dc2218b83829ca0fb6d6d65ea786b7d5bcf8db2590fb06dc7",
+            "quiz_id": "quiz-1795303174416",
+            "quiz_title": "Ulangan Bersama TIK Kelas 7 Semester Ganjil 2026-2027",
+            "nis": "260008",
+            "name": "ACHMAD KHOTIBUL UMAM",
+            "class": "VII A (UNGGULAN MIPA)",
+            "question_order": [
+                2,
+                23,
+                6,
+                4,
+                14,
+                9,
+                7,
+                17,
+                0,
+                16
+            ],
+            "option_order": {
+                "2": [
+                    2,
+                    3,
+                    0,
+                    1
+                ],
+                "23": [
+                    2,
+                    3,
+                    1,
+                    0
+                ],
+                "6": [
+                    1,
+                    2,
+                    0,
+                    3
+                ],
+                "4": [
+                    0,
+                    3,
+                    2,
+                    1
+                ],
+                "14": [
+                    0,
+                    2,
+                    3,
+                    1
+                ],
+                "9": [
+                    0,
+                    2,
+                    3,
+                    1
+                ],
+                "7": [
+                    3,
+                    1,
+                    2,
+                    0
+                ],
+                "17": [
+                    3,
+                    1,
+                    2,
+                    0
+                ],
+                "0": [
+                    1,
+                    2,
+                    0,
+                    3
+                ],
+                "16": [
+                    0,
+                    2,
+                    1,
+                    3
+                ]
+            },
+            "answers": [],
+            "started_at": 1795315002,
+            "ends_at": 1795316202,
+            "updated_at": 1795315371,
+            "violations_count": 1,
+            "last_violation_at": 1795315114,
+            "last_violation_type": "app_switch",
+            "violations_log": [
+                {
+                    "time": "22/11/2026 03:38:34",
+                    "timestamp": 1795315114,
+                    "type": "app_switch",
+                    "details": "Fokus jendela Mode Kiosk berpindah ke aplikasi lain",
+                    "count": 1
+                }
+            ]
+        },
+        "8cf7e42a470db3354d4377b0af54fceeb36cc50c73b5d18f4258c5ff36bffed0": {
+            "token": "2d0d2a2b715bee9e894530146a91270f95fdffd94bed1ec16ebd68457ca16fed",
+            "token_hash": "8cf7e42a470db3354d4377b0af54fceeb36cc50c73b5d18f4258c5ff36bffed0",
+            "quiz_id": "quiz-1795303174416",
+            "quiz_title": "Ulangan Bersama TIK Kelas 7 Semester Ganjil 2026-2027",
+            "nis": "260025",
+            "name": "AHMAD ADYA SURYA",
+            "class": "VII A (UNGGULAN MIPA)",
+            "question_order": [
+                14,
+                4,
+                2,
+                11,
+                12,
+                23,
+                10,
+                15,
+                6,
+                18
+            ],
+            "option_order": {
+                "14": [
+                    2,
+                    1,
+                    3,
+                    0
+                ],
+                "4": [
+                    2,
+                    1,
+                    0,
+                    3
+                ],
+                "2": [
+                    3,
+                    1,
+                    0,
+                    2
+                ],
+                "11": [
+                    2,
+                    0,
+                    3,
+                    1
+                ],
+                "12": [
+                    0,
+                    2,
+                    3,
+                    1
+                ],
+                "23": [
+                    1,
+                    0,
+                    3,
+                    2
+                ],
+                "10": [
+                    3,
+                    0,
+                    1,
+                    2
+                ],
+                "15": [
+                    3,
+                    2,
+                    0,
+                    1
+                ],
+                "6": [
+                    2,
+                    3,
+                    1,
+                    0
+                ],
+                "18": [
+                    1,
+                    3,
+                    2,
+                    0
+                ]
+            },
+            "answers": [],
+            "started_at": 1795315101,
+            "ends_at": 1795315401,
+            "updated_at": 1795316818,
+            "violations_count": 4,
+            "last_violation_at": 1795315129,
+            "last_violation_type": "tab_switch",
+            "violations_log": [
+                {
+                    "time": "22/11/2026 03:38:33",
+                    "timestamp": 1795315113,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 1
+                },
+                {
+                    "time": "22/11/2026 03:38:42",
+                    "timestamp": 1795315122,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela Mode Kiosk",
+                    "count": 2
+                },
+                {
+                    "time": "22/11/2026 03:38:45",
+                    "timestamp": 1795315125,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela Mode Kiosk",
+                    "count": 3
+                },
+                {
+                    "time": "22/11/2026 03:38:49",
+                    "timestamp": 1795315129,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela Mode Kiosk",
+                    "count": 4
+                }
+            ],
+            "finished": true,
+            "result_token": "428dcd60c50d6785e35c01b86299e56b6f893f438fdd3e469c0f239fcada2c4d",
+            "score": 0
         }
     },
     "student_sessions": {
@@ -44889,6 +45369,81 @@
             "login_at": 1795312597,
             "last_seen": 1795312597,
             "attempt_token_hash": ""
+        },
+        "260008": {
+            "nis": "260008",
+            "name": "ACHMAD KHOTIBUL UMAM",
+            "class": "VII A (UNGGULAN MIPA)",
+            "quiz_id": "quiz-1795303174416",
+            "quiz_title": "Ulangan Bersama TIK Kelas 7 Semester Ganjil 2026-2027",
+            "status": "WORKING",
+            "ip": "192.168.0.1",
+            "login_at": 1795314970,
+            "last_seen": 1795315371,
+            "attempt_token_hash": "32cd3f247cb5787dc2218b83829ca0fb6d6d65ea786b7d5bcf8db2590fb06dc7",
+            "started_at": 1795315002,
+            "ends_at": 1795316202,
+            "violations_count": 1,
+            "last_violation_at": 1795315114,
+            "last_violation_type": "app_switch",
+            "violations_log": [
+                {
+                    "time": "22/11/2026 03:38:34",
+                    "timestamp": 1795315114,
+                    "type": "app_switch",
+                    "details": "Fokus jendela Mode Kiosk berpindah ke aplikasi lain",
+                    "count": 1
+                }
+            ]
+        },
+        "260025": {
+            "nis": "260025",
+            "name": "AHMAD ADYA SURYA",
+            "class": "VII A (UNGGULAN MIPA)",
+            "quiz_id": "quiz-1795303174416",
+            "quiz_title": "Ulangan Bersama TIK Kelas 7 Semester Ganjil 2026-2027",
+            "status": "FINISHED",
+            "ip": "192.168.0.12",
+            "login_at": 1795315091,
+            "last_seen": 1795316818,
+            "attempt_token_hash": "8cf7e42a470db3354d4377b0af54fceeb36cc50c73b5d18f4258c5ff36bffed0",
+            "started_at": 1795315101,
+            "ends_at": 1795315401,
+            "violations_count": 4,
+            "last_violation_at": 1795315129,
+            "last_violation_type": "tab_switch",
+            "violations_log": [
+                {
+                    "time": "22/11/2026 03:38:33",
+                    "timestamp": 1795315113,
+                    "type": "exit_fullscreen",
+                    "details": "Keluar dari Mode Kiosk Resmi (Layar Penuh)",
+                    "count": 1
+                },
+                {
+                    "time": "22/11/2026 03:38:42",
+                    "timestamp": 1795315122,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela Mode Kiosk",
+                    "count": 2
+                },
+                {
+                    "time": "22/11/2026 03:38:45",
+                    "timestamp": 1795315125,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela Mode Kiosk",
+                    "count": 3
+                },
+                {
+                    "time": "22/11/2026 03:38:49",
+                    "timestamp": 1795315129,
+                    "type": "tab_switch",
+                    "details": "Pindah tab atau meminimalkan jendela Mode Kiosk",
+                    "count": 4
+                }
+            ],
+            "finished_at": 1795316818,
+            "score": 0
         }
     },
     "audit_logs": [
@@ -47579,18 +48134,144 @@
             "action": "Login siswa",
             "target": "260012 - ADILIA NABILA PUTRI",
             "detail": "Kelas VII I (UNGGULAN MIPA) (Ulangan Bersama TIK Kelas 7 Semester Ganjil 2026-2027)"
+        },
+        {
+            "time": "2026-11-22T03:36:10+01:00",
+            "user": "guru",
+            "action": "Login siswa",
+            "target": "260008 - ACHMAD KHOTIBUL UMAM",
+            "detail": "Kelas VII A (UNGGULAN MIPA) (Ulangan Bersama TIK Kelas 7 Semester Ganjil 2026-2027)"
+        },
+        {
+            "time": "2026-11-22T03:36:30+01:00",
+            "user": "guru",
+            "action": "Simpan paket kuis",
+            "target": "",
+            "detail": "2 paket"
+        },
+        {
+            "time": "2026-11-22T03:36:42+01:00",
+            "user": "guru",
+            "action": "Mulai ujian",
+            "target": "260008 - ACHMAD KHOTIBUL UMAM",
+            "detail": "Paket: Ulangan Bersama TIK Kelas 7 Semester Ganjil 2026-2027"
+        },
+        {
+            "time": "2026-11-22T03:37:10+01:00",
+            "user": "guru",
+            "action": "Setujui perpanjangan waktu +15m",
+            "target": "260008",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-22T03:38:11+01:00",
+            "user": "guru",
+            "action": "Login siswa",
+            "target": "260025 - AHMAD ADYA SURYA",
+            "detail": "Kelas VII A (UNGGULAN MIPA) (Ulangan Bersama TIK Kelas 7 Semester Ganjil 2026-2027)"
+        },
+        {
+            "time": "2026-11-22T03:38:21+01:00",
+            "user": "guru",
+            "action": "Mulai ujian",
+            "target": "260025 - AHMAD ADYA SURYA",
+            "detail": "Paket: Ulangan Bersama TIK Kelas 7 Semester Ganjil 2026-2027"
+        },
+        {
+            "time": "2026-11-22T03:38:33+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ADYA SURYA (NIS: 260025) terdeteksi: Keluar dari Mode Kiosk Resmi (Layar Penuh) (ke-1)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-22T03:38:34+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa ACHMAD KHOTIBUL UMAM (NIS: 260008) terdeteksi: Fokus jendela Mode Kiosk berpindah ke aplikasi lain (ke-1)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-22T03:38:42+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ADYA SURYA (NIS: 260025) terdeteksi: Pindah tab atau meminimalkan jendela Mode Kiosk (ke-2)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-22T03:38:45+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ADYA SURYA (NIS: 260025) terdeteksi: Pindah tab atau meminimalkan jendela Mode Kiosk (ke-3)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-22T03:38:49+01:00",
+            "user": "guru",
+            "action": "Peringatan Kecurangan",
+            "target": "Siswa AHMAD ADYA SURYA (NIS: 260025) terdeteksi: Pindah tab atau meminimalkan jendela Mode Kiosk (ke-4)",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-22T03:45:24+01:00",
+            "user": "guru",
+            "action": "Hapus berkas cadangan",
+            "target": "examlan-20261122-022438-manual.json",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-22T03:45:25+01:00",
+            "user": "guru",
+            "action": "Backup manual",
+            "target": "examlan-20261122-034525-manual.json",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-22T04:06:37+01:00",
+            "user": "guru",
+            "action": "Minta perpanjangan waktu",
+            "target": "260025 / quiz-1795303174416",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-22T04:06:51+01:00",
+            "user": "guru",
+            "action": "Tolak perpanjangan waktu",
+            "target": "260025",
+            "detail": ""
+        },
+        {
+            "time": "2026-11-22T04:06:58+01:00",
+            "user": "guru",
+            "action": "Selesai ujian",
+            "target": "260025 - AHMAD ADYA SURYA",
+            "detail": "Nilai: 0 (0 Benar, 10 Salah) - Ulangan Bersama TIK Kelas 7 Semester Ganjil 2026-2027"
         }
     ],
     "backups": [
         {
-            "file": "examlan-20261122-022438-manual.json",
-            "name": "examlan-20261122-022438-manual.json",
-            "time": "2026-11-22T02:24:38+01:00",
-            "size": 1222166,
+            "file": "examlan-20261122-034525-manual.json",
+            "name": "examlan-20261122-034525-manual.json",
+            "time": "2026-11-22T03:45:25+01:00",
+            "size": 1873626,
             "reason": "manual"
         }
     ],
-    "time_extension_requests": [],
+    "time_extension_requests": [
+        {
+            "id": "req_eae31f398d3ec99f",
+            "token_hash": "8cf7e42a470db3354d4377b0af54fceeb36cc50c73b5d18f4258c5ff36bffed0",
+            "nis": "260025",
+            "name": "AHMAD ADYA SURYA",
+            "class": "VII A (UNGGULAN MIPA)",
+            "quiz_id": "quiz-1795303174416",
+            "quiz_title": "Ulangan Bersama TIK Kelas 7 Semester Ganjil 2026-2027",
+            "requested_at": 1795316797,
+            "status": "REJECTED",
+            "added_minutes": 0,
+            "responded_at": 1795316811
+        }
+    ],
     "settings": {
         "require_student_password": false
     },
